@@ -5,9 +5,10 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        About
+        Phil International
     </h2>
     <p>
-        Put content here.
+        Please visit us again on January 2011<br />
+        Visitateci ancora a Gennaio 2011
     </p>
 </asp:Content>
