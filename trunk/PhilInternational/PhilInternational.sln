@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhilInternational", "PhilInternational\PhilInternational.csproj", "{F338BA46-02C6-4E8F-83B2-7200F1D7A46E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhilInternational", "PhilInternational.csproj", "{F338BA46-02C6-4E8F-83B2-7200F1D7A46E}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
