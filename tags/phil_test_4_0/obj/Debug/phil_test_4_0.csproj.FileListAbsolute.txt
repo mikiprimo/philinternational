@@ -1,5 +1,0 @@
-G:\project\phil_test_4_0\phil_test_4_0\bin\phil_test_4_0.dll
-G:\project\phil_test_4_0\phil_test_4_0\bin\phil_test_4_0.pdb
-G:\project\phil_test_4_0\phil_test_4_0\obj\Debug\ResolveAssemblyReference.cache
-G:\project\phil_test_4_0\phil_test_4_0\obj\Debug\phil_test_4_0.dll
-G:\project\phil_test_4_0\phil_test_4_0\obj\Debug\phil_test_4_0.pdb
