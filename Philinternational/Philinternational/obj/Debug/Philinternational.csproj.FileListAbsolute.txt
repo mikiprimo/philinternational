@@ -1,0 +1,5 @@
+D:\PROGETTI\DOTNET\Philinternational\Philinternational\bin\Philinternational.dll
+D:\PROGETTI\DOTNET\Philinternational\Philinternational\bin\Philinternational.pdb
+D:\PROGETTI\DOTNET\Philinternational\Philinternational\obj\Debug\ResolveAssemblyReference.cache
+D:\PROGETTI\DOTNET\Philinternational\Philinternational\obj\Debug\Philinternational.dll
+D:\PROGETTI\DOTNET\Philinternational\Philinternational\obj\Debug\Philinternational.pdb
