@@ -13,7 +13,7 @@ namespace Philinternational
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+            Session.Add("ContinueDestinationPageUrl",Request.QueryString["ReturnUrl"]);
         }
 
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
@@ -28,5 +28,9 @@ namespace Philinternational
             //Response.Redirect(continueUrl);
         }
 
+        protected void CreateUserButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

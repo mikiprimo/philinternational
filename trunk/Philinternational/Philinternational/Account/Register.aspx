@@ -8,7 +8,7 @@
         Crea un nuovo account
     </h2>
     <p>
-        Compila il modulo per la richiesta di un account personale
+        Compila il modulo per la richiesta di un account personale.
     </p>
     <p>
         La Password deve avere almeno <%= Membership.MinRequiredPasswordLength %> caratteri.
@@ -22,40 +22,34 @@
         <fieldset class="register">
             <legend>Informazioni richieste</legend>
             <p>
-                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Nome utente:</asp:Label>
-                <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
-                    CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required."
-                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-            </p>
-            <p>
                 <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
                 <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email"
-                    CssClass="failureNotification" ErrorMessage="E-mail is required." ToolTip="E-mail is required."
+                    CssClass="failureNotification" ErrorMessage="E-mail é obbligatoria." ToolTip="E-mail is required."
                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
             </p>
             <p>
                 <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
                 <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
-                    CssClass="failureNotification" ErrorMessage="Password is required." ToolTip="Password is required."
+                    CssClass="failureNotification" ErrorMessage="La Password é obbligatoria." ToolTip="Password is required."
                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
             </p>
             <p>
                 <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Conferma Password:</asp:Label>
                 <asp:TextBox ID="ConfirmPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
                 <asp:RequiredFieldValidator ControlToValidate="ConfirmPassword" CssClass="failureNotification"
-                    Display="Dynamic" ErrorMessage="Confirm Password is required." ID="ConfirmPasswordRequired"
-                    runat="server" ToolTip="Confirm Password is required." ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                    Display="Dynamic" ErrorMessage="La conferma della Password é obbligatoria." ID="ConfirmPasswordRequired"
+                    runat="server" ToolTip="La conferma della Password é obbligatoria." ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                 <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password"
                     ControlToValidate="ConfirmPassword" CssClass="failureNotification" Display="Dynamic"
-                    ErrorMessage="The Password and Confirmation Password must match." ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
+                    ErrorMessage="La Password e la Password di conferma devono coincidere." ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
             </p>
         </fieldset>
         <p class="submitButton">
-            <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="Create User"
-                ValidationGroup="RegisterUserValidationGroup" />
+            <asp:Button ID="CreateUserButton" runat="server" Text="Richiedi registrazione."
+                ValidationGroup="RegisterUserValidationGroup" 
+                onclick="CreateUserButton_Click" />
         </p>
     </div>
 </asp:Content>
