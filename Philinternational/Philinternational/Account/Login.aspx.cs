@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Philinternational.Gateway;
+using Philinternational.Layers;
 
-namespace Philinternational.Account
+namespace Philinternational
 {
     public partial class Login : System.Web.UI.Page
     {
@@ -18,7 +18,7 @@ namespace Philinternational.Account
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            if (AccountFacilities.Authenticate(LoginUser.UserName, LoginUser.Password))
+            if (Philinternational.Layers.AccountLayer.Authenticate(LoginUser.UserName, LoginUser.Password))
             {
                 FormsAuthentication.RedirectFromLoginPage(LoginUser.UserName, true);
             }
