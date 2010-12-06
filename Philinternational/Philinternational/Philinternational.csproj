@@ -225,7 +225,6 @@
     <Folder Include="src\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Documentation\Philinternational.cd" />
     <None Include="Documentation\PhilinternationalBanner.psd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
