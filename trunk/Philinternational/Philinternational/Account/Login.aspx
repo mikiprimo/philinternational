@@ -8,8 +8,8 @@
         Log In
     </h2>
     <p>
-        Please enter your username and password.
-        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false">Register</asp:HyperLink> if you don't have an account.
+       Inserisci le credenziali oppure 
+        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false">Registrati</asp:HyperLink> se non possiedi un account.
     </p>
     <asp:Login ID="LoginUser" runat="server" EnableViewState="false" 
         RenderOuterTable="false">
