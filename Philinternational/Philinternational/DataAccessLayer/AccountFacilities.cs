@@ -22,9 +22,9 @@ namespace Philinternational.Gateway
         internal static bool Authenticate(string userName, string password)
         {
             //Se trova l'utente nel db fa questo:
-            GetUserInfos(userName,password);
-            AccountFacilities.SetLogInfos(new logInfos(userName, password, true)); //Ho messo a true che vuol dire che é anche amministratore
-            return true;
+            logInfos userInfos = GetUserInfos(userName,password);
+            AccountFacilities.SetLogInfos(userInfos); //Ho messo a true che vuol dire che é anche amministratore
+            return userInfos.IsAuthenticated;
 
             //altrimenti fa questo (scommentare):
             //return false;
