@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Security;
 using System.Web.UI.WebControls;
-using Philinternational.Gateway;
+using Philinternational.Layers;
 
 namespace Philinternational
 {
@@ -10,10 +10,10 @@ namespace Philinternational
         protected void Page_Load(object sender, EventArgs e)
         {
             //Verifica della visualizzazione Menu left
-            if (AccountFacilities.IsLogged())
+            if (AccountLayer.IsLogged())
             {
-                this.menuLeftAdministration.Visible = AccountFacilities.IsAdministrator();
-                this.menuLeftAuthenticated.Visible = AccountFacilities.IsLogged();
+                this.menuLeftAdministration.Visible = AccountLayer.IsAdministrator();
+                this.menuLeftAuthenticated.Visible = AccountLayer.IsLogged();
                 try
                 {
                     ((Label)this.HeadLoginView.FindControl("LoginName")).Text = ((logInfos)Session["log"]).nome;
