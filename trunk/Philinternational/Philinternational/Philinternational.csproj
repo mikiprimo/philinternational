@@ -59,7 +59,7 @@
     <Content Include="Account\ChangePassword_todo.aspx" />
     <Content Include="Account\ChangePasswordSuccess_todo.aspx" />
     <Content Include="Account\Login.aspx" />
-    <Content Include="Account\Register_todo.aspx" />
+    <Content Include="Account\Register.aspx" />
     <Content Include="Documentation\philinternational.sql" />
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
     <Content Include="Management\Legenda.aspx" />
@@ -115,15 +115,15 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Register_todo.aspx.cs">
-      <DependentUpon>Register_todo.aspx</DependentUpon>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Register_todo.aspx.designer.cs">
-      <DependentUpon>Register_todo.aspx</DependentUpon>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DataAccessLayer\AccountFacilities.cs" />
-    <Compile Include="DataAccessLayer\GeneralPurpose.cs" />
+    <Compile Include="Layers\AccountLayer.cs" />
+    <Compile Include="Layers\DatabaseGateway.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,7 +212,7 @@
     <Compile Include="Management\Varie.aspx.designer.cs">
       <DependentUpon>Varie.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DataAccessLayer\Entities\logInfos.Entity.cs" />
+    <Compile Include="Layers\Entities\logInfos.Entity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
