@@ -30,6 +30,9 @@ namespace Philinternational.Gateway
                     myLogInfos.UserName = (String)dr["email"];
                     myLogInfos.Password = (String)dr["password"];
 
+                    myLogInfos.RoleDescription = (String)dr["RoleDescription"];
+                    myLogInfos.Role = (int)dr["Role"];
+
                     myLogInfos.idAnagrafica = (int)dr["idanagrafica"];
                     myLogInfos.nome = (String)dr["nome"];
                     myLogInfos.cognome = (String)dr["cognome"];
@@ -51,7 +54,14 @@ namespace Philinternational.Gateway
                 return new logInfos();
             }
 
+            SetLogInfos(myLogInfos);
             return myLogInfos;
+        }
+
+        internal static void SetLogInfos(logInfos logInfos)
+        {
+            //TODO: Da centralizzare la gestione delle sessioni
+            HttpContext.Current.Session["log"] = logInfos;
         }
     }
 }
