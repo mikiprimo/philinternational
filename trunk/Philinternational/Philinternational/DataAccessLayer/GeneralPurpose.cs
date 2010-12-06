@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Web;
 
-namespace Philinternational.DBGateway
+namespace Philinternational.Gateway
 {
-    public class MySQLGateway
+    public class Gateway
     {
     }
 }
