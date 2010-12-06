@@ -14,10 +14,23 @@ namespace Philinternational
             {
                 this.menuLeftAdministration.Visible = AccountFacilities.IsAdministrator();
                 this.menuLeftAuthenticated.Visible = AccountFacilities.IsLogged();
+                try
+                {
+                    ((Label)this.HeadLoginView.FindControl("LoginName")).Text = ((logInfos)Session["log"]).nome;
+                }
+                catch (Exception)
+                {
+                    RefreshUnloggedUser();
+                }
             }
         }
 
         protected void HeadLoginStatus_LoggingOut(object sender, LoginCancelEventArgs e)
+        {
+            RefreshUnloggedUser();
+        }
+
+        private void RefreshUnloggedUser()
         {
             FormsAuthentication.SignOut();
             Response.Redirect("~/Default.aspx");

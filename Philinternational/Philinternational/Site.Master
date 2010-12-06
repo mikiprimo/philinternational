@@ -21,7 +21,8 @@
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         Benvenuto <span class="bold">
-                            <asp:LoginName ID="HeadLoginName" runat="server" />
+                            <!--<asp:LoginName ID="HeadLoginName" runat="server" />-->
+                            <asp:Label ID="LoginName" runat="server" />
                         </span>[
                         <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
                             OnLoggingOut="HeadLoginStatus_LoggingOut" />

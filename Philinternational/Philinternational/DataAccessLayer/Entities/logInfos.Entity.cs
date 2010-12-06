@@ -19,8 +19,41 @@ namespace Philinternational
             get { return password; }
             set { password = value; }
         }
-        Boolean isAdmin;
-        Boolean isAuthenticated;
+
+        private String _RoleDescription;
+        public String RoleDescription
+        {
+            get { return _RoleDescription; }
+            set
+            {
+                _RoleDescription = value;
+                if (value == "Amministratore" || value == "webmaster")
+                {
+                    this._IsAdmin = true;
+                }
+                else this._IsAdmin = false;
+                this._IsAuthenticated = true;
+            }
+        }
+
+        private int _Role;
+        public int Role
+        {
+            get { return _Role; }
+            set { _Role = value; }
+        }
+
+        private Boolean _IsAdmin = false;
+        public Boolean IsAdmin
+        {
+            get { return this._IsAdmin; }
+        }
+
+        private Boolean _IsAuthenticated = false;
+        public bool IsAuthenticated
+        {
+            get { return this._IsAuthenticated; }
+        }
         public int idAnagrafica;
         public string nome;
         public string cognome;
@@ -36,30 +69,16 @@ namespace Philinternational
         public int idprofilo;
         public DateTime datainserimento;
 
-        public Boolean IsAdmin
-        {
-            get { return this.isAdmin; }
-            set { this.isAdmin = value; }
-        }
-
-        public bool IsAuthenticated
-        {
-            get { return this.isAuthenticated; }
-            set { this.isAuthenticated = value; }
-        }
-
-        public logInfos(String newUser, String newPassword, Boolean isAdmin, Boolean isAuthenticated)
+        public logInfos(String newUser, String newPassword)
         {
             this.userName = newUser;
             this.password = newPassword;
-            this.IsAdmin = isAdmin;
-            this.IsAuthenticated = isAuthenticated;
         }
 
         public logInfos()
         {
-            this.isAdmin = false;
-            this.IsAuthenticated = false;
+            this._IsAdmin = false;
+            this._IsAuthenticated = false;
         }
     }
 }

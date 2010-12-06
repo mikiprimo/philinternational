@@ -5,25 +5,12 @@ using System.Web.Security;
 
 namespace Philinternational.Gateway
 {
-     public partial class AccountFacilities
+    public partial class AccountFacilities
     {
-        internal static bool IsAdministrator()
-        {
-            //TODO: Impl. Verifica se l'utente registrato é un amministratore
-            if (HttpContext.Current.Session["log"] != null)
-            {
-                logInfos logInfos = (logInfos)HttpContext.Current.Session["log"];
-                return logInfos.IsAdmin;
-            }
-            else return false;
-        }
-
-        //TODO: Chiamata fisica al db (MOCKED TO TRUE)
         internal static bool Authenticate(string userName, string password)
         {
             //Se trova l'utente nel db fa questo:
-            logInfos userInfos = GetUserInfos(userName,password);
-            AccountFacilities.SetLogInfos(userInfos); //Ho messo a true che vuol dire che é anche amministratore
+            logInfos userInfos = GetUserInfos(userName, password);
             return userInfos.IsAuthenticated;
 
             //altrimenti fa questo (scommentare):
@@ -35,10 +22,15 @@ namespace Philinternational.Gateway
             return HttpContext.Current.User.Identity.IsAuthenticated;
         }
 
-        internal static void SetLogInfos(logInfos logInfos)
+        internal static bool IsAdministrator()
         {
-            //TODO: Da centralizzare la gestione delle sessioni
-            HttpContext.Current.Session["log"] = logInfos;
+            //TODO: Impl. Verifica se l'utente registrato é un amministratore
+            if (HttpContext.Current.Session["log"] != null)
+            {
+                logInfos logInfos = (logInfos)HttpContext.Current.Session["log"];
+                return logInfos.IsAdmin;
+            }
+            else return false;
         }
     }
 }
