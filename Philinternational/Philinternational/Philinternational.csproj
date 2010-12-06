@@ -214,6 +214,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Documentation\Philinternational.cd" />
+    <None Include="Documentation\PhilinternationalBanner.psd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
