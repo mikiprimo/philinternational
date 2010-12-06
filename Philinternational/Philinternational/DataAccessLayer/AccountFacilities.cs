@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 
-namespace Philinternational.Account
+namespace Philinternational.Gateway.Account
 {
     public class AccountFacilities
     {
@@ -25,7 +25,7 @@ namespace Philinternational.Account
             AccountFacilities.SetLogInfos(new logInfos(userName, password, true)); //Ho messo a true che vuol dire che é anche amministratore
             return true;
 
-            //altrimenti fa questo:
+            //altrimenti fa questo (scommentare):
             //return false;
         }
 
@@ -36,6 +36,7 @@ namespace Philinternational.Account
 
         internal static void SetLogInfos(logInfos logInfos)
         {
+            //TODO: Da centralizzare la gestione delle sessioni
             HttpContext.Current.Session["log"] = logInfos;
         }
     }
