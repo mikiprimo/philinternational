@@ -34,12 +34,12 @@ namespace Philinternational.Layers
                     myLogInfos.nome = (String)dr["nome"];
                     myLogInfos.cognome = (String)dr["cognome"];
                     myLogInfos.codicefiscale = dr["codice_fiscale"] != null ? dr["codice_fiscale"].ToString() : "";
-                    myLogInfos.via = (String)dr["via"];
-                    myLogInfos.indirizzo = (String)dr["indirizzo"];
-                    myLogInfos.numcivico = (String)dr["num_civico"];
-                    myLogInfos.cap = (String)dr["cap"];
-                    myLogInfos.comune = (String)dr["comune"];
-                    myLogInfos.provincia = (String)dr["provincia"];
+                    myLogInfos.res_via = (String)dr["via"];
+                    myLogInfos.res_indirizzo = (String)dr["indirizzo"];
+                    myLogInfos.res_numcivico = (String)dr["num_civico"];
+                    myLogInfos.res_cap = (String)dr["cap"];
+                    myLogInfos.res_comune = (String)dr["comune"];
+                    myLogInfos.res_provincia = (String)dr["provincia"];
                     myLogInfos.email = (String)dr["email"];
                     myLogInfos.stato = (int)dr["stato"];
                     myLogInfos.idprofilo = (int)dr["idprofilo"];
