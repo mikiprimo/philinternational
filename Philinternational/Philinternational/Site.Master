@@ -64,6 +64,7 @@
                     <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" />
                     <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" />
                     <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
+                    <asp:MenuItem NavigateUrl="~/Management/News.aspx" Text="News" />
                     <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerta" />
                     <asp:MenuItem NavigateUrl="~/Management/Varie.aspx" Text="Tabelle varie" />
                 </Items>
