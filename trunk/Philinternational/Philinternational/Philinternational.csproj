@@ -123,6 +123,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layers\AccountLayer.cs" />
+    <Compile Include="Layers\ConnectionGateway.cs" />
     <Compile Include="Layers\DatabaseGateway.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
