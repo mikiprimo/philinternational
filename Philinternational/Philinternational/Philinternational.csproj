@@ -234,6 +234,7 @@
     <Folder Include="src\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Documentation\Philinternational - Analisi Funzionale.docx" />
     <None Include="Documentation\PhilinternationalBanner.psd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
