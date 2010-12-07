@@ -7,11 +7,11 @@ namespace Philinternational.Layers
 {
     public class AccountLayer
     {
-        internal static bool Authenticate(string userName, string password)
+        internal static bool Authenticate(string eMail, string password)
         {
             //Se trova l'utente nel db fa questo:
 
-            logInfos userInfos = AccountDBTasks.GetUserInfos(userName, password);
+            logInfos userInfos = AccountDBTasks.GetUserInfos(eMail, password);
             return userInfos.IsAuthenticated;
         }
 
