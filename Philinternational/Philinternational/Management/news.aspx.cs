@@ -12,5 +12,10 @@ namespace Philinternational.Management
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            //Risposta all'evento Button1_Click
+        }
     }
 }
