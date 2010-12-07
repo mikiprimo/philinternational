@@ -16,7 +16,7 @@ namespace Philinternational
                 this.menuLeftAuthenticated.Visible = AccountLayer.IsLogged();
                 try
                 {
-                    ((Label)this.HeadLoginView.FindControl("Email")).Text = ((logInfos)Session["log"]).nome;
+                    ((Label)this.HeadLoginView.FindControl("LoginName")).Text = ((logInfos)Session["log"]).nome;
                 }
                 catch (Exception)
                 {
