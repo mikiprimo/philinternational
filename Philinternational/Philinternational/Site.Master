@@ -17,6 +17,7 @@
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
+                        [<a href="~/Account/Register.aspx" id="HeadRegisterStatus" runat="server">Registrati</a>]
                         [<a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Accedi</a>]
                     </AnonymousTemplate>
                     <LoggedInTemplate>
