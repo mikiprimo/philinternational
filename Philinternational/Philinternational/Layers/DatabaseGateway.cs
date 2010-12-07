@@ -6,6 +6,14 @@ using System.Configuration;
 
 namespace Philinternational.Layers
 {
+    private class ConnectionDBTasks {
+        private static void ConnectDB() {
+            MySql.Data.MySqlClient.MySqlConnection conn;
+            string myConnectionString = ConfigurationManager.ConnectionStrings["PhilinternationalConnectionString"].ToString();
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            conn.ConnectionString = myConnectionString;
+        }
+    }
     public class AccountDBTasks
     {
         public static logInfos GetUserInfos(string userName, string password)
