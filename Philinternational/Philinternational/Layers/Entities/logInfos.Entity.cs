@@ -6,18 +6,18 @@ namespace Philinternational
 {
     public class logInfos
     {
-        String userName;
-        public String UserName
+        private String _eMail;
+        public String eMail
         {
-            get { return userName; }
-            set { userName = value; }
+            get { return _eMail; }
+            set { _eMail = value; }
         }
 
-        String password;
+        private String _Password;
         public String Password
         {
-            get { return password; }
-            set { password = value; }
+            get { return _Password; }
+            set { _Password = value; }
         }
 
         private String _RoleDescription;
@@ -72,15 +72,14 @@ namespace Philinternational
         public string dom_comune;
         public string dom_provincia;
         public string dom_nazione;
-        public string email;
         public int stato;
         public int idprofilo;
         public DateTime datainserimento;
 
         public logInfos(String newUser, String newPassword)
         {
-            this.userName = newUser;
-            this.password = newPassword;
+            this._eMail = newUser;
+            this._Password = newPassword;
         }
 
         public logInfos()

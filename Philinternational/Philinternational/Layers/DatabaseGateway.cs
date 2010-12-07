@@ -8,7 +8,7 @@ namespace Philinternational.Layers
 {
     public class AccountDBTasks
     {
-        public static logInfos GetUserInfos(string userName, string password)
+        public static logInfos GetUserInfos(string eMail, string password)
         {
             logInfos myLogInfos = new logInfos();
             MySql.Data.MySqlClient.MySqlConnection conn = ConnectionDBTasks.ConnectDB();
@@ -19,12 +19,12 @@ namespace Philinternational.Layers
 
                 MySqlCommand command = new MySqlCommand(ConfigurationManager.AppSettings["UserInfos"].ToString(),conn);
                 command.CommandType = System.Data.CommandType.Text;
-                command.Parameters.AddWithValue("email", userName);
+                command.Parameters.AddWithValue("email", eMail);
                 command.Parameters.AddWithValue("password", password);
                 MySqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-                    myLogInfos.UserName = (String)dr["email"];
+                    myLogInfos.eMail = (String)dr["email"];
                     myLogInfos.Password = (String)dr["password"];
 
                     myLogInfos.RoleDescription = (String)dr["RoleDescription"];
@@ -40,7 +40,6 @@ namespace Philinternational.Layers
                     myLogInfos.res_cap = (String)dr["cap"];
                     myLogInfos.res_comune = (String)dr["comune"];
                     myLogInfos.res_provincia = (String)dr["provincia"];
-                    myLogInfos.email = (String)dr["email"];
                     myLogInfos.stato = (int)dr["stato"];
                     myLogInfos.idprofilo = (int)dr["idprofilo"];
                     myLogInfos.datainserimento = (DateTime)dr["data_inserimento"];
