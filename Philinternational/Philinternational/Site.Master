@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
     <title></title>
-    <script src="Scripts/jquery-1.4.1.js" type="text/javascript"></script>
     <script src="Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
@@ -55,14 +54,14 @@
             <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" EnableViewState="false"
                 IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
                 <Items>
-                    <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" />
+                    <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica"/>
                     <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" />
                     <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" />
                     <asp:MenuItem NavigateUrl="~/Management/Argomento.aspx" Text="Argomento" />
                     <asp:MenuItem NavigateUrl="~/Management/SubArgomento.aspx" Text="SubArgomento" />
                     <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" />
                     <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
-                    <asp:MenuItem NavigateUrl="~/Management/News.aspx" Text="News" />
+                    <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
                     <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerta" />
                     <asp:MenuItem NavigateUrl="~/Management/Legenda.aspx" Text="Legenda" />
                 </Items>

@@ -1,8 +1,41 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="News.aspx.cs" Inherits="Philinternational.Management.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="news.aspx.cs" Inherits="Philinternational.Management.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-</asp:Content>
+    <h1>Elenco delle news</h1>
+    <p><a href="newsDetail.aspx" title="Inserisci una nuova news">Inserisci una nuova news</a></p>
+    <div style="width:100%">
+        <asp:Repeater ID="repeaterNews" runat="server" DataSourceID="ConnectionDB" 
+            DataMember="DefaultView" >
+            <HeaderTemplate>
+            <table>
+                    <tr>
+                        <th>Data Pubblicazione</th>
+                        <th>Titolo</th>
+                        <th>Stato</th>
+                    </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                    <tr>
+                        <td><a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%#Eval("data_pubblicazione")%></a></td>
+                        <td><%#Eval("titolo")%></td>
+                        <td><%#ConvertiStato(Eval("stato"))%></td>
+                    </tr>
+
+            </ItemTemplate>
+            <AlternatingItemTemplate>
+                    <tr class="alternate">
+                        <td><a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%#Eval("data_pubblicazione")%></a></td>
+                        <td><%#Eval("titolo")%></td>
+                        <td><%#ConvertiStato(Eval("stato"))%></td>
+                    </tr>
+
+            </AlternatingItemTemplate>
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>
+        <asp:SqlDataSource ID="ConnectionDB" runat="server" 
+            ProviderName="MySql.Data.MySqlClient" ></asp:SqlDataSource>
+    </asp:Content>
