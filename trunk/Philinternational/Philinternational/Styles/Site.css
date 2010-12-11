@@ -306,3 +306,8 @@ div.accountInfo
     text-align: right;
     padding-right: 10px;
 }
+
+table{width:100%;}
+table tr th{font-weight:bold;line-height:26px;background-color:Fuchsia}
+table tr td{line-height:20px}
+table tr.alternate{background-color:#eaeaea;color:#F00}

@@ -13,5 +13,11 @@ namespace Philinternational.Layers
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["PhilinternationalConnectionString"].ToString());
             return conn;
         }
+
+        public static String StringConnectDB()
+        {
+            return ConfigurationManager.ConnectionStrings["PhilinternationalConnectionString"].ToString();
+            
+        }
     }
 }
