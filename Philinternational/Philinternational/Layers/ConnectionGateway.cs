@@ -19,5 +19,54 @@ namespace Philinternational.Layers
             return ConfigurationManager.ConnectionStrings["PhilinternationalConnectionString"].ToString();
             
         }
-    }
+
+        public static MySqlDataReader SelectQuery(String sql)
+        {
+            MySql.Data.MySqlClient.MySqlConnection conn = ConnectDB();
+            MySqlDataReader dr;
+            try{
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(sql, conn);
+                command.CommandType = System.Data.CommandType.Text;
+                dr = command.ExecuteReader();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex){
+                String a = ex.StackTrace;
+                conn.Close();
+                return null;
+            }
+
+            return dr;
+        }
+
+        public static int ExecuteQuery(String sql, String tableName) {
+            MySqlDataReader dr = SelectQuery(sql);
+            if (!(dr == null))
+            {
+                string sqlOptimize = "OPTIMIZE TABLE" + tableName;
+                MySqlDataReader optomizeSql = SelectQuery(sqlOptimize);
+            }
+            else {
+                return -1;
+            }
+            return 0;
+        }
+
+        public static int CreateNewIndex(String idKey, String tableName) { 
+            int newIndex =0;
+            String sql = "SELECT MAX( "+ idKey + " +1 ) AS indice FROM "+ tableName +"";
+            
+            MySqlDataReader dr = SelectQuery(sql);
+            if (!(dr == null)) { 
+                while(dr.Read()){
+                    newIndex = (int)dr["indice"];
+                }
+            }else{
+                    return -1;
+                }
+             return newIndex;
+
+            }
+
+       }
 }
