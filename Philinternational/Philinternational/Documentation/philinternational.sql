@@ -3,11 +3,17 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generato il: 07 dic, 2010 at 05:14 PM
+-- Generato il: 12 dic, 2010 at 11:14 PM
 -- Versione MySQL: 5.1.36
 -- Versione PHP: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: 'philinternational'
@@ -231,7 +237,7 @@ CREATE TABLE IF NOT EXISTS news (
   data_pubblicazione datetime DEFAULT NULL,
   titolo varchar(100) DEFAULT NULL,
   testo text,
-  stato char(1) DEFAULT NULL,
+  stato int(3) DEFAULT NULL,
   PRIMARY KEY (idnews)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -239,7 +245,35 @@ CREATE TABLE IF NOT EXISTS news (
 -- Dump dei dati per la tabella 'news'
 --
 
-INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(1, '2010-12-07 17:43:03', 'Prova', 'test', '1');
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(1, '2010-12-07 17:43:03', 'Prova', 'test', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(11, '2010-10-07 17:43:03', ' vProva', 'tedasst', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(12, '2010-11-05 17:43:03', 'b Prova', 'test', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(13, '2010-12-01 17:43:03', '0Prova', 'tesdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(9, '2010-12-06 17:43:03', 'Prova', '5465', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(10, '2010-12-05 17:43:03', 'dProva', 'test', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(8, '2010-11-07 17:43:03', 'Prova', ' gfdsgdgdswert45646', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(7, '2010-11-07 17:43:03', 'Prova', ' dfgdgdfsgdfs  dfgds df', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(14, '2010-12-01 17:43:03', '1Prova', 'test', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(6, '2010-12-09 17:43:03', 'Prova', 'fgdsgdsfgsd', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(5, '2010-11-01 17:43:03', 'Prova', 'tesadfdsafdsast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(4, '2010-11-07 17:43:03', 'Prova', 'tdsf  iudsagif dsa iadsifadsest', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(3, '2010-10-03 17:43:03', 'Prova fdsf', 'test', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(2, '2010-12-07 17:43:03', 'Prova', 'test', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(15, '2010-12-02 17:43:03', '2Prova', 'test', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(16, '2010-12-03 17:43:03', '3Prova', 'test', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(17, '2010-12-04 17:43:03', '4Prova', 'tdaest', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(18, '2010-12-05 17:43:03', '65Prova', 'tdasdaest', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(19, '2010-12-06 17:43:03', 'Prova', 'tedasst', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(20, '2010-12-12 00:00:00', 'miiiiiiiiiiiichel', 'tedasdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(21, '2010-12-08 10:00:21', '7Prova', 'tedasdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(22, '2010-12-08 10:00:22', '7Prova', 'tedasdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(23, '2010-12-08 10:00:23', '7Prova', 'tedasdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(24, '2010-12-08 10:00:24', '7Prova', 'tedasdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(25, '2010-12-08 10:00:25', '7Prova', 'tedasdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(26, '2010-12-08 10:00:26', '7Prova', 'tedasdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(27, '2010-12-08 10:00:27', '7Prova', 'tedasdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(28, '2010-12-08 10:00:28', '7Prova', 'tedasdast', 1);
+INSERT INTO news (idnews, data_pubblicazione, titolo, testo, stato) VALUES(29, '2010-12-08 10:00:21', '29Prova', 'tedasdast', 1);
 
 -- --------------------------------------------------------
 
