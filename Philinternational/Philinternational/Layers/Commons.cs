@@ -6,9 +6,9 @@ using System.Configuration;
 
 namespace Philinternational.Layers
 {
-    public class CommonFunction
+    public class Commons
     {
-        public static String getStato(int stato) {
+        public static String GetStato(int stato) {
             String retValue = "";
             String sql = "SELECT descrizione from legenda_stato where id_stato=" + stato;
             MySql.Data.MySqlClient.MySqlConnection conn = Layers.ConnectionDBTasks.ConnectDB();

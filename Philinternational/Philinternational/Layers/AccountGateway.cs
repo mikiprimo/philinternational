@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace Philinternational.Layers
 {
-    public class AccountDBTasks
+    public class AccountGateway
     {
         public static logInfos GetUserInfos(string eMail, string password)
         {

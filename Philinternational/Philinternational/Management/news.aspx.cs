@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
+using Philinternational.Layers;
 
 namespace Philinternational.Management
 {
@@ -21,9 +22,9 @@ namespace Philinternational.Management
             }
         }
 
-        protected static string ConvertiStato(int value) {
-            string getStato = Layers.CommonFunction.getStato(value);
-            return getStato;
+        protected static string ConvertiStato(int value)
+        {
+            return Commons.GetStato(value);
         }
     }
 }

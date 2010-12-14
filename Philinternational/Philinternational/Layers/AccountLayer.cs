@@ -11,7 +11,7 @@ namespace Philinternational.Layers
         {
             //Se trova l'utente nel db fa questo:
 
-            logInfos userInfos = AccountDBTasks.GetUserInfos(eMail, password);
+            logInfos userInfos = AccountGateway.GetUserInfos(eMail, password);
             return userInfos.IsAuthenticated;
         }
 
