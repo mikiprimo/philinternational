@@ -31,12 +31,12 @@ namespace Philinternational.Management {
         protected global::System.Web.UI.WebControls.Repeater repeaterNews;
         
         /// <summary>
-        /// ConnectionDB control.
+        /// NewsConnector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ConnectionDB;
+        protected global::System.Web.UI.WebControls.SqlDataSource NewsConnector;
     }
 }
