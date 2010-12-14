@@ -6,6 +6,8 @@ using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using Philinternational.Layers;
 
+//NOTA: Per il dettaglio si dovrebbe usare l'oggetto FormView che facilita un po le cose ma anche così va bene
+
 namespace Philinternational.Management
 {
     public partial class newsDetails : System.Web.UI.Page
@@ -18,7 +20,7 @@ namespace Philinternational.Management
                 if ((codice == null) || (codice == "-1")) codice = "-1";
                 txtCodice.Value = codice;
 
-                 MySqlDataReader dr = NewsGateway.GetNewsById(codice);
+                 MySqlDataReader dr = NewsGateway.GetNewsById(codice); //MAI concatenare le stringhe come avevi fatto prima! Fai sempre un metodo nel rispettivo Gateway (qui siamo in news quindi mi creo NewsGateway) può sembrare una palla ma rende futuri interventi molto più fattibili
                 if (!(dr == null))
                 {
                     while (dr.Read())
@@ -39,7 +41,7 @@ namespace Philinternational.Management
             }
         }
 
-        //Da incapsulare in NewsGateway
+        //TODO: Da incapsulare in NewsGateway
         protected void conferma(object sender, EventArgs e){
             int valueStato;
             String sqlNews="";
