@@ -10,8 +10,8 @@ namespace Philinternational.Management
         {
             if (!IsPostBack)
             {
-                ConnectionDB.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
-                ConnectionDB.SelectCommand = ConfigurationManager.AppSettings["News"].ToString();
+                NewsConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
+                NewsConnector.SelectCommand = ConfigurationManager.AppSettings["SelectNews"].ToString();
                 //  repeaterNews.DataBind();
                 //ConnectionDB.UpdateCommand = "UPDATE news set titolo=@titolo,testo=@testo,stato=@stato where idnews=@idnews";
                 //ConnectionDB.DeleteCommand = "DELETE FROM news where idnews=@idnews";

@@ -7,7 +7,7 @@
     <h1>Elenco news</h1>
     <asp:HyperLink ID="hlNewNews" runat="server" ToolTip="Inserisci una nuova news" NavigateUrl="newsDetail.aspx">Inserisci una nuova news</asp:HyperLink>
     <div style="width: 100%">
-        <asp:Repeater ID="repeaterNews" runat="server" DataSourceID="ConnectionDB" DataMember="DefaultView">
+        <asp:Repeater ID="repeaterNews" runat="server" DataSourceID="NewsConnector" DataMember="DefaultView">
             <ItemTemplate>
                 <div>
                     <strong><%#Eval("titolo")%></strong>
@@ -29,7 +29,7 @@
                 </div>
             </AlternatingItemTemplate>
         </asp:Repeater>
-        <asp:SqlDataSource ID="ConnectionDB" runat="server" ProviderName="MySql.Data.MySqlClient">
+        <asp:SqlDataSource ID="NewsConnector" runat="server" ProviderName="MySql.Data.MySqlClient">
         </asp:SqlDataSource>
     </div>
 </asp:Content>
