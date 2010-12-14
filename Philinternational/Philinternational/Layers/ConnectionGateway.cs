@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace Philinternational.Layers
 {
-    public class ConnectionDBTasks
+    public class ConnectionGateway
     {
         public static MySqlConnection ConnectDB()
         {

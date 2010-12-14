@@ -11,7 +11,7 @@ namespace Philinternational.Layers
         public static logInfos GetUserInfos(string eMail, string password)
         {
             logInfos myLogInfos = new logInfos();
-            MySql.Data.MySqlClient.MySqlConnection conn = ConnectionDBTasks.ConnectDB();
+            MySql.Data.MySqlClient.MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             try
             {
