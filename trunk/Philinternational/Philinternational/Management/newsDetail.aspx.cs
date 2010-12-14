@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
+using Philinternational.Layers;
 
 namespace Philinternational.Management
 {
@@ -16,9 +17,8 @@ namespace Philinternational.Management
                 String codice = Request["cod"];
                 if ((codice == null) || (codice == "-1")) codice = "-1";
                 txtCodice.Value = codice;
-                String sql = "SELECT idnews,titolo,testo,data_pubblicazione,stato from news where idnews=" + codice;
 
-                MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
+                 MySqlDataReader dr = NewsGateway.GetNewsById(codice);
                 if (!(dr == null))
                 {
                     while (dr.Read())
@@ -39,6 +39,7 @@ namespace Philinternational.Management
             }
         }
 
+        //Da incapsulare in NewsGateway
         protected void conferma(object sender, EventArgs e){
             int valueStato;
             String sqlNews="";
