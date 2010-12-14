@@ -10,7 +10,7 @@
 namespace Philinternational.Management {
     
     
-    public partial class WebForm1 {
+    public partial class News {
         
         /// <summary>
         /// repeaterNews control.

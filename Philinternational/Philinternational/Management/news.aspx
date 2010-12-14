@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="news.aspx.cs" Inherits="Philinternational.Management.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="news.aspx.cs" Inherits="Philinternational.Management.News" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -20,7 +20,7 @@
                     <tr>
                         <td><a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%#Eval("data_pubblicazione")%></a></td>
                         <td><%#Eval("titolo")%></td>
-                        <td><%#ConvertiStato(Eval("stato"))%></td>
+                        <td><%#Eval("stato")%></td>
                     </tr>
 
             </ItemTemplate>
@@ -28,7 +28,9 @@
                     <tr class="alternate">
                         <td><a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%#Eval("data_pubblicazione")%></a></td>
                         <td><%#Eval("titolo")%></td>
-                        <td><%#ConvertiStato(Eval("stato"))%></td>
+                        <td><%#Eval("stato")%></td>
+                        <td>
+                            <asp:HyperLink ID="eliminaRiga" runat="server">Elimina</asp:HyperLink></td>
                     </tr>
 
             </AlternatingItemTemplate>
@@ -36,6 +38,8 @@
                 </table>
             </FooterTemplate>
         </asp:Repeater>
+        
         <asp:SqlDataSource ID="ConnectionDB" runat="server" 
             ProviderName="MySql.Data.MySqlClient" ></asp:SqlDataSource>
-    </asp:Content>
+
+</div></asp:Content>
