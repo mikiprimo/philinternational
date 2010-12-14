@@ -14,7 +14,7 @@ namespace Philinternational.Management
         {
             if (!IsPostBack)
             {
-                ConnectionDB.ConnectionString = Layers.ConnectionDBTasks.StringConnectDB();
+                ConnectionDB.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
                 ConnectionDB.SelectCommand = "SELECT idnews, data_pubblicazione, titolo, testo, stato FROM news ORDER BY data_pubblicazione DESC";
                 //  repeaterNews.DataBind();
                 //ConnectionDB.UpdateCommand = "UPDATE news set titolo=@titolo,testo=@testo,stato=@stato where idnews=@idnews";

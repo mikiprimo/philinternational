@@ -11,7 +11,7 @@ namespace Philinternational.Layers
         public static String GetStato(int stato) {
             String retValue = "";
             String sql = "SELECT descrizione from legenda_stato where id_stato=" + stato;
-            MySql.Data.MySqlClient.MySqlConnection conn = Layers.ConnectionDBTasks.ConnectDB();
+            MySql.Data.MySqlClient.MySqlConnection conn = Layers.ConnectionGateway.ConnectDB();
             try
             {
                 conn.Open();

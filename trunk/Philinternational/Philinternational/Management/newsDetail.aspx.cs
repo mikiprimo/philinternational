@@ -18,7 +18,7 @@ namespace Philinternational.Management
                 txtCodice.Value = codice;
                 String sql = "SELECT idnews,titolo,testo,data_pubblicazione,stato from news where idnews=" + codice;
 
-                MySqlDataReader dr = Layers.ConnectionDBTasks.SelectQuery(sql);
+                MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
                 if (!(dr == null))
                 {
                     while (dr.Read())
@@ -55,7 +55,7 @@ namespace Philinternational.Management
 
             if (txtCodice.Value == "-1")
             {
-                int newIndice = Layers.ConnectionDBTasks.CreateNewIndex("idnews", "news");
+                int newIndice = Layers.ConnectionGateway.CreateNewIndex("idnews", "news");
                 if (newIndice>0){
                     String data_pubblicazione = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
                     sqlNews = "Insert into news(idnews,data_pubblicazione,titolo,testo,stato)" ;
@@ -74,7 +74,7 @@ namespace Philinternational.Management
                 
             }
 
-            int esito = Layers.ConnectionDBTasks.ExecuteQuery(sqlNews, "news");
+            int esito = Layers.ConnectionGateway.ExecuteQuery(sqlNews, "news");
             if (esito == 0)
             {
                 esitoMessaggio.InnerHtml = "<span style=\"color:red\">Operazione effettuato con successo</span>";
