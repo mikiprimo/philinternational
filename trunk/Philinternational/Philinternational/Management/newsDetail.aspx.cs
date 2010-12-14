@@ -27,7 +27,7 @@ namespace Philinternational.Management
                         txtTitolo.Text = (String)dr["titolo"];
                         titoloDettaglioNews.InnerText = (String)dr["titolo"];
                         txtTesto.Text = (String)dr["testo"];
-                        string getStato = Layers.CommonFunction.getStato((int)dr["stato"]);
+                        string getStato = Layers.Commons.GetStato((int)dr["stato"]);
                         if ((int)dr["stato"] == 1)
                             chkStato.Checked = true;
                         else

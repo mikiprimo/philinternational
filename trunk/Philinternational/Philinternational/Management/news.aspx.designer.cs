@@ -13,6 +13,15 @@ namespace Philinternational.Management {
     public partial class News {
         
         /// <summary>
+        /// hlNewNews control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlNewNews;
+        
+        /// <summary>
         /// repeaterNews control.
         /// </summary>
         /// <remarks>
