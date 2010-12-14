@@ -33,7 +33,7 @@ namespace Philinternational.Management
                         else
                             chkStato.Checked = false;
                         labelStato.InnerText = getStato;
-                        labelDataPubblicazione.InnerText = (DateTime)dr["data_pubblicazione"];
+                        labelDataPubblicazione.InnerHtml = Convert.ToString(dr["data_pubblicazione"]);
                     }
                 }
             }
@@ -55,9 +55,9 @@ namespace Philinternational.Management
 
             if (txtCodice.Value == "-1")
             {
-                int newIndice =Layers.ConnectionDBTasks.CreateNewIndex("idnews","news");
+                int newIndice = Layers.ConnectionDBTasks.CreateNewIndex("idnews", "news");
                 if (newIndice>0){
-                    String data_pubblicazione = DateTime.Now.ToString("dd-MM-yy hh:mm:ss");
+                    String data_pubblicazione = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
                     sqlNews = "Insert into news(idnews,data_pubblicazione,titolo,testo,stato)" ;
                     sqlNews += "VALUES";
                     sqlNews += "(" + newIndice + ",'" + data_pubblicazione + "','" + titolo + "','" + testo + "'," + valueStato + ")";
@@ -67,19 +67,20 @@ namespace Philinternational.Management
             }
             else {
                 sqlNews = "UPDATE news SET ";
-                sqlNews += ",titolo='"+ titolo+"'";
+                sqlNews += " titolo='"+ titolo+"'";
                 sqlNews += ",testo='" + testo + "'";
                 sqlNews += ",stato='" + valueStato + "'";
-                sqlNews += "WHERE idnews=" + txtCodice.Value;
+                sqlNews += " WHERE idnews=" + txtCodice.Value;
+                
             }
 
             int esito = Layers.ConnectionDBTasks.ExecuteQuery(sqlNews, "news");
             if (esito == 0)
             {
-                esitoMessaggio.InnerText = "Operazione effettuato con successo";
+                esitoMessaggio.InnerHtml = "<span style=\"color:red\">Operazione effettuato con successo</span>";
             }
             else {
-                esitoMessaggio.InnerText = "Operazione non effettuata";
+                esitoMessaggio.InnerHtml = "Operazione non effettuata";
             }
 
         }

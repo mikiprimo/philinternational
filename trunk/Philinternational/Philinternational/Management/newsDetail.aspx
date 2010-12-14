@@ -5,14 +5,15 @@
 <h1>Dettaglio news <label runat="server" id="titoloDettaglioNews"></label></h1>
 <p><label runat="server" id="esitoMessaggio"></label></p>
 <p>
-<label>Data Pubblicazione</label><label runat="server" ID="labelDataPubblicazione"></label>
+<label>Data Pubblicazione:</label><label style="font-weight:bold" runat="server" ID="labelDataPubblicazione"></label>
 </p>
 
 <p>
 <label id="labelTitolo" runat="server">Titolo</label><asp:TextBox runat="server" ID="txtTitolo"></asp:TextBox>
 </p>
 <p>
-<label>testo</label><asp:TextBox runat="server" id="txtTesto" Rows="10" Columns="50" TextMode="MultiLine"></asp:TextBox>
+    <label>testo</label><br />
+    <asp:TextBox runat="server" id="txtTesto" Rows="10" Columns="50" TextMode="MultiLine"></asp:TextBox>
 </p>
 <p>
 <label>Stato</label><asp:CheckBox runat="server" ID="chkStato"/><label id="labelStato" runat="server"></label>

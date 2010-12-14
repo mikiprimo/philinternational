@@ -54,12 +54,12 @@ namespace Philinternational.Layers
 
         public static int CreateNewIndex(String idKey, String tableName) { 
             int newIndex =0;
-            String sql = "SELECT MAX( "+ idKey + " +1 ) AS indice FROM "+ tableName +"";
+            String sql = "SELECT MAX( "+ idKey + " +1 ) indice FROM "+ tableName +"";
             
             MySqlDataReader dr = SelectQuery(sql);
             if (!(dr == null)) { 
                 while(dr.Read()){
-                    newIndex = (int)dr["indice"];
+                    newIndex = Convert.ToInt32(dr["indice"]);
                 }
             }else{
                     return -1;
