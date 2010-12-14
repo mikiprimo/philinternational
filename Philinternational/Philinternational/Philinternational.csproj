@@ -141,6 +141,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Layers\Entities\legendaStato.Entity.cs" />
+    <Compile Include="Layers\NewsGateway.cs" />
     <Compile Include="Management\AnagraficaDetail.aspx.cs">
       <DependentUpon>AnagraficaDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -250,7 +251,6 @@
     <Content Include="Management\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Layers\SessionLayer\" />
     <Folder Include="src\" />
   </ItemGroup>
   <ItemGroup>
