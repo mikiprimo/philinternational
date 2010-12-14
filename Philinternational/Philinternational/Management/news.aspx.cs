@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using MySql.Data.MySqlClient;
+using System.Configuration;
 using Philinternational.Layers;
 
 namespace Philinternational.Management
@@ -15,7 +11,7 @@ namespace Philinternational.Management
             if (!IsPostBack)
             {
                 ConnectionDB.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
-                ConnectionDB.SelectCommand = "SELECT idnews, data_pubblicazione, titolo, testo, stato FROM news ORDER BY data_pubblicazione DESC";
+                ConnectionDB.SelectCommand = ConfigurationManager.AppSettings["News"].ToString();
                 //  repeaterNews.DataBind();
                 //ConnectionDB.UpdateCommand = "UPDATE news set titolo=@titolo,testo=@testo,stato=@stato where idnews=@idnews";
                 //ConnectionDB.DeleteCommand = "DELETE FROM news where idnews=@idnews";

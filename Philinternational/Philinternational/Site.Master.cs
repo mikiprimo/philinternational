@@ -9,6 +9,9 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+           
+
             //Verifica della visualizzazione Menu left
             if (AccountLayer.IsLogged())
             {
