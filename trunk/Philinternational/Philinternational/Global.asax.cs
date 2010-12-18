@@ -29,7 +29,9 @@ namespace Philinternational
         void Session_Start(object sender, EventArgs e)
         {
             // Code that runs when a new session is started
-            Session.Add("legendaStato", new legendaStato());
+            legendaStato legends = new legendaStato();
+            legends.PopulateAvailableLegendaStato();
+            Session.Add("legendaStato", legends);
         }
 
         void Session_End(object sender, EventArgs e)

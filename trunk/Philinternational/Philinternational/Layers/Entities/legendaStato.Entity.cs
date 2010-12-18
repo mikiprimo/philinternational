@@ -33,7 +33,6 @@ namespace Philinternational
     {
         public legendaStato()
         {
-            this.PopulateAvailableLegendaStato();
         }
 
         private List<Stato> list = new List<Stato>();

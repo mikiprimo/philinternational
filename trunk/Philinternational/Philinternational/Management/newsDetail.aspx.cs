@@ -20,24 +20,11 @@ namespace Philinternational.Management
                 if ((codice == null) || (codice == "-1")) codice = "-1";
                 txtCodice.Value = codice;
 
-                 MySqlDataReader dr = NewsGateway.GetNewsById(codice); //MAI concatenare le stringhe come avevi fatto prima! Fai sempre un metodo nel rispettivo Gateway (qui siamo in news quindi mi creo NewsGateway) può sembrare una palla ma rende futuri interventi molto più fattibili
-                if (!(dr == null))
-                {
-                    while (dr.Read())
-                    {
-                        // = (DateTime)dr["data_pubblicazione"];
-                        txtTitolo.Text = (String)dr["titolo"];
-                        titoloDettaglioNews.InnerText = (String)dr["titolo"];
-                        txtTesto.Text = (String)dr["testo"];
-                        string getStato = Layers.Commons.GetStato((int)dr["stato"]);
-                        if ((int)dr["stato"] == 1)
-                            chkStato.Checked = true;
-                        else
-                            chkStato.Checked = false;
-                        labelStato.InnerText = getStato;
-                        labelDataPubblicazione.InnerHtml = Convert.ToString(dr["data_pubblicazione"]);
-                    }
-                }
+                NewsEntity myNews = NewsGateway.GetNewsById(codice);
+                lblDataPubblicazione.Text = myNews.dataPubblicazione.ToString("dd/MM/yyyy");
+                txtTitolo.Text = myNews.titolo;
+                txtTesto.Text = myNews.testo;
+                chkStato.Checked = Commons.GetCheckedState(myNews.state.id);
             }
         }
 
@@ -45,7 +32,7 @@ namespace Philinternational.Management
         protected void conferma(object sender, EventArgs e){
             int valueStato;
             String sqlNews="";
-            StringBuilder sqlNews = new StringBuilder();
+            //StringBuilder sqlNews = new StringBuilder();
             String testo = txtTesto.Text;
             String titolo = txtTitolo.Text;
             if (chkStato.Checked == true)

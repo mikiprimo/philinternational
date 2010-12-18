@@ -11,13 +11,13 @@ namespace Philinternational.Layers
         public static logInfos GetUserInfos(string eMail, string password)
         {
             logInfos myLogInfos = new logInfos();
-            MySql.Data.MySqlClient.MySqlConnection conn = ConnectionGateway.ConnectDB();
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             try
             {
                 conn.Open();
 
-                MySqlCommand command = new MySqlCommand(ConfigurationManager.AppSettings["UserInfos"].ToString(),conn);
+                MySqlCommand command = new MySqlCommand(ConfigurationManager.AppSettings["UserInfos"].ToString(), conn);
                 command.CommandType = System.Data.CommandType.Text;
                 command.Parameters.AddWithValue("email", eMail);
                 command.Parameters.AddWithValue("password", password);
@@ -49,6 +49,10 @@ namespace Philinternational.Layers
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 return new logInfos();
+            }
+            finally
+            {
+                conn.Close();
             }
 
             SetLogInfos(myLogInfos);

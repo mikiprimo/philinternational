@@ -17,7 +17,6 @@ namespace Philinternational.Layers
         public static String StringConnectDB()
         {
             return ConfigurationManager.ConnectionStrings["PhilinternationalConnectionString"].ToString();
-
         }
 
         [Obsolete("Non usare: rifarsi ai vari gateway!!")]
