@@ -8,8 +8,7 @@ namespace Philinternational.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
+            if (!IsPostBack){
                 NewsConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
                 NewsConnector.SelectCommand = ConfigurationManager.AppSettings["SelectNews"].ToString();
                 //  repeaterNews.DataBind();
