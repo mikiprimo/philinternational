@@ -12,7 +12,7 @@
                 <div>
                     <strong><%#Eval("titolo")%></strong>
                     <br />
-                    <a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"> <%#Eval("data_pubblicazione")%></a>
+                    <a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%# Eval("data_pubblicazione")%></a>
                     <br />
                     stato: <%#(ConvertiStato((int)Eval("stato"))) %>
                     <br />
@@ -22,7 +22,7 @@
                 <div class="alternate">
                     <strong><%#Eval("titolo")%></strong>
                     <br />
-                    <a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%#Eval("data_pubblicazione")%></a>
+                    <a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%#Eval("stato")%></a>
                     <br />
                     stato: <%#(ConvertiStato((int)Eval("stato")))%>
                     <br />

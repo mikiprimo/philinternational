@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using Philinternational.Layers;
-
+using System.Text;
 //NOTA: Per il dettaglio si dovrebbe usare l'oggetto FormView che facilita un po le cose ma anche così va bene
 
 namespace Philinternational.Management
@@ -45,6 +45,7 @@ namespace Philinternational.Management
         protected void conferma(object sender, EventArgs e){
             int valueStato;
             String sqlNews="";
+            StringBuilder sqlNews = new StringBuilder();
             String testo = txtTesto.Text;
             String titolo = txtTitolo.Text;
             if (chkStato.Checked == true)
@@ -60,7 +61,7 @@ namespace Philinternational.Management
             {
                 int newIndice = Layers.ConnectionGateway.CreateNewIndex("idnews", "news");
                 if (newIndice>0){
-                    String data_pubblicazione = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+                    String data_pubblicazione = DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss");
                     sqlNews = "Insert into news(idnews,data_pubblicazione,titolo,testo,stato)" ;
                     sqlNews += "VALUES";
                     sqlNews += "(" + newIndice + ",'" + data_pubblicazione + "','" + titolo + "','" + testo + "'," + valueStato + ")";
