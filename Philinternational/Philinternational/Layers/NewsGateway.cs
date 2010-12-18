@@ -23,14 +23,14 @@ namespace Philinternational.Layers
                 conn.Open();
                 dr = command.ExecuteReader();
                 myOnlyNews = new NewsEntity();
-                 if (dr != null) //diverso !=
+                 if (dr != null)
                 {
                     while (dr.Read())
                     {
                         DateTime.TryParse(dr["data_pubblicazione"].ToString(), out myOnlyNews.dataPubblicazione);
                         myOnlyNews.titolo = (String)dr["titolo"];
                         myOnlyNews.testo = (String)dr["testo"];
-                        myOnlyNews.state = new Stato((int)dr["stato"],Layers.Commons.GetStato((int)dr["stato"]));;
+                        myOnlyNews.state = new Stato((int)dr["stato"],Layers.Commons.GetStato((int)dr["stato"]));
                     }
                 }
             }
