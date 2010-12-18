@@ -6,6 +6,7 @@
 <p><label runat="server" id="esitoMessaggio"></label></p>
 <p>
 <label>Data Pubblicazione:</label><label style="font-weight:bold" runat="server" ID="labelDataPubblicazione"></label>
+    <asp:Label ID="lblDataPubblicazione" runat="server"></asp:Label>
 </p>
 
 <p>

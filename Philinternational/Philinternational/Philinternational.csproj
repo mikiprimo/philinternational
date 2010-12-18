@@ -141,6 +141,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Layers\Entities\legendaStato.Entity.cs" />
+    <Compile Include="Layers\Entities\News.Entity.cs" />
     <Compile Include="Layers\NewsGateway.cs" />
     <Compile Include="Management\AnagraficaDetail.aspx.cs">
       <DependentUpon>AnagraficaDetail.aspx</DependentUpon>
