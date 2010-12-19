@@ -52,12 +52,6 @@ namespace Philinternational.Management
                     sqlNews = "Insert into news(idnews,data_pubblicazione,titolo,testo,stato)" ;
                     sqlNews += "VALUES";
                     sqlNews += "(" + newIndice + ",'" + data_pubblicazione + "','" + titolo + "','" + testo + "'," + valueStato + ")";
-                    //In java come in C# non usare mai la concatenazione di stringhe perché ad ogni concatenazione crea una NUOVA copia della stringa fino a quel momento creata. Usa StringBuilder (namespace System.Text):
-                    //ESEMPIO: StringBuilder pippo = new StringBuilder();
-                    //pippo.Append("Michel ");
-                    //pippo.Append("sei un ");
-                    //pippo.Append("mito!");
-                    //Inn questo caso in memoria ci sarà solo "Michel sei un mito". Con la concatenazione di prima invece in memoria avremmo avuto: "Michel" e a seguire "Michel sei un" e a seguire "Michel sei un mito!" -- 3 is pegg che one!!
                 }else{
                 }
                 
