@@ -6,7 +6,6 @@ using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using Philinternational.Layers;
 using System.Text;
-//NOTA: Per il dettaglio si dovrebbe usare l'oggetto FormView che facilita un po le cose ma anche così va bene
 
 namespace Philinternational.Management
 {
