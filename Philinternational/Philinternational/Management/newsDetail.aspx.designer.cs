@@ -94,13 +94,13 @@ namespace Philinternational.Management {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelStato;
         
         /// <summary>
-        /// buttonConferma control.
+        /// btnConferma control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonConferma;
+        protected global::System.Web.UI.WebControls.Button btnConferma;
         
         /// <summary>
         /// buttonReset control.
@@ -110,14 +110,5 @@ namespace Philinternational.Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button buttonReset;
-        
-        /// <summary>
-        /// txtCodice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField txtCodice;
     }
 }

@@ -17,5 +17,11 @@ namespace Philinternational.Layers
             if (value == 1) return true;
             else return false;
         }
+
+        public static int GetCheckedState(Boolean b)
+        {
+            if (b) return 1;
+            else return 0;
+        }
     }
 }
