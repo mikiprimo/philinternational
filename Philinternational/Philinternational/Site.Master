@@ -54,16 +54,23 @@
             <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" EnableViewState="false"
                 IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
                 <Items>
-                    <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica"/>
-                    <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" />
-                    <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" />
-                    <asp:MenuItem NavigateUrl="~/Management/Argomento.aspx" Text="Argomento" />
-                    <asp:MenuItem NavigateUrl="~/Management/SubArgomento.aspx" Text="SubArgomento" />
-                    <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" />
-                    <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
+                    <asp:MenuItem Text="Amministrazione" Value="Amministrazione" >
+                        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" 
+                            Value="Paragrafo"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Management/Legenda.aspx" Text="Legenda" 
+                            Value="Legenda"></asp:MenuItem>
+                    </asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
-                    <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerta" />
-                    <asp:MenuItem NavigateUrl="~/Management/Legenda.aspx" Text="Legenda" />
+                    <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica"/>
+                    <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
+                    <asp:MenuItem Text="Gestione Asta" Value="Gestione Asta" >
+                        <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerte" 
+                            Value="Offerte"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" 
+                            Value="Nuova Asta"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto">
+                        </asp:MenuItem>
+                    </asp:MenuItem>
                 </Items>
             </asp:Menu>
             <asp:Menu ID="menuLeftAuthenticated" runat="server" CssClass="menu" EnableViewState="false"
@@ -80,14 +87,10 @@
             </asp:Menu>
         </div>
         <div class="main">
-            <div class="main">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            </div>
-            <div class="clear">
-            </div>
+                <div class="clear"></div>
         </div>
-        <div class="footer">
-        </div>
+        <div class="footer">Phil international 12345678901</div>
     </div>
     </form>
 </body>
