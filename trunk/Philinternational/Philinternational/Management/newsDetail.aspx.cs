@@ -11,70 +11,68 @@ namespace Philinternational.Management
 {
     public partial class newsDetails : System.Web.UI.Page
     {
+        public String Codice
+        {
+            get { return ((String)ViewState["operationCode"]); }
+            set { ViewState.Add("operationCode", value); }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 String codice = Request["cod"];
                 if ((codice == null) || (codice == "-1")) codice = "-1";
-                txtCodice.Value = codice;
+                this.Codice = codice;
 
-                NewsEntity myNews = NewsGateway.GetNewsById(codice);
-                lblDataPubblicazione.Text = myNews.dataPubblicazione.ToString("dd/MM/yyyy");
-                txtTitolo.Text = myNews.titolo;
-                txtTesto.Text = myNews.testo;
-                chkStato.Checked = Commons.GetCheckedState(myNews.state.id);
-            }
-        }
-
-        //TODO: Da incapsulare in NewsGateway, la insert sempre in web.config con le @ per ogni parametro
-        protected void conferma(object sender, EventArgs e){
-            int valueStato;
-            String sqlNews="";
-            //StringBuilder sqlNews = new StringBuilder();
-            String testo = txtTesto.Text;
-            String titolo = txtTitolo.Text;
-            if (chkStato.Checked == true)
-            {
-                valueStato = 1;
-            }
-            else {
-                valueStato = 0;
-            }
-                
-
-            if (txtCodice.Value == "-1")
-            {
-                int newIndice = Layers.ConnectionGateway.CreateNewIndex("idnews", "news");
-                if (newIndice>0){
-                    String data_pubblicazione = DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss");
-                    sqlNews = "Insert into news(idnews,data_pubblicazione,titolo,testo,stato)" ;
-                    sqlNews += "VALUES";
-                    sqlNews += "(" + newIndice + ",'" + data_pubblicazione + "','" + titolo + "','" + testo + "'," + valueStato + ")";
-                }else{
+                if (this.Codice != "-1")
+                {
+                    NewsEntity myNews = NewsGateway.GetNewsById(codice);
+                    lblDataPubblicazione.Text = myNews.dataPubblicazione.ToString("dd/MM/yyyy");
+                    txtTitolo.Text = myNews.titolo;
+                    txtTesto.Text = myNews.testo;
+                    chkStato.Checked = Commons.GetCheckedState(myNews.state.id);
                 }
-                
             }
-            else {
-                sqlNews = "UPDATE news SET ";
-                sqlNews += " titolo='"+ titolo+"'";
-                sqlNews += ",testo='" + testo + "'";
-                sqlNews += ",stato='" + valueStato + "'";
-                sqlNews += " WHERE idnews=" + txtCodice.Value;
-                
-            }
-
-            int esito = Layers.ConnectionGateway.ExecuteQuery(sqlNews, "news");
-            if (esito == 0)
-            {
-                esitoMessaggio.InnerHtml = "<span style=\"color:red\">Operazione effettuato con successo</span>";
-            }
-            else {
-                esitoMessaggio.InnerHtml = "Operazione non effettuata";
-            }
-
         }
 
+        protected void conferma(object sender, EventArgs e)
+        {
+            NewsEntity MyNews = new NewsEntity();
+            Boolean esito = false;
 
+            if (this.Codice == "-1")
+            {
+                MyNews.dataPubblicazione = DateTime.Now;
+                MyNews.id = Layers.ConnectionGateway.CreateNewIndex("idnews", "news");
+                MyNews.titolo = txtTitolo.Text;
+                MyNews.testo = txtTesto.Text;
+                MyNews.state = new Stato(Commons.GetCheckedState(chkStato.Checked), "");
+
+                esito = NewsGateway.InsertNews(MyNews);
+            }
+            else
+            {
+                MyNews.dataPubblicazione = DateTime.Now; // Da sostituire con la data immessa da utente
+                MyNews.id = Convert.ToInt32(this.Codice);
+                MyNews.titolo = txtTitolo.Text;
+                MyNews.testo = txtTesto.Text;
+                MyNews.state = new Stato(Commons.GetCheckedState(chkStato.Checked), "");
+
+                esito = NewsGateway.UpdateNews(MyNews);
+            }
+
+            ExamineResults(esito);
+        }
+
+        /// <summary>
+        /// Page level results manager
+        /// </summary>
+        /// <param name="esito"></param>
+        private void ExamineResults(Boolean esito)
+        {
+            if (esito) esitoMessaggio.InnerHtml = "<span style=\"color:red\">Operazione effettuato con successo</span>";
+            else esitoMessaggio.InnerHtml = "Operazione non effettuata";
+        }
     }
 }

@@ -19,9 +19,8 @@
 <p>
 <label>Stato</label><asp:CheckBox runat="server" ID="chkStato"/><label id="labelStato" runat="server"></label>
 </p>
-<p><asp:Button runat="server"  Text="Conferma" ID="buttonConferma"  OnClick="conferma"/>&nbsp;
+<p><asp:Button runat="server"  Text="Conferma" ID="btnConferma"  OnClick="conferma"/>&nbsp;
     <asp:Button runat="server" Text="Reset" ID="buttonReset" />
-    <asp:HiddenField ID="txtCodice" runat="server" />
 </p>
 
 </asp:Content>

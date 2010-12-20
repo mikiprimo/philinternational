@@ -57,7 +57,6 @@ namespace Philinternational.Layers
             return 0;
         }
 
-        [Obsolete("Non usare: rifarsi ai vari gateway!!")]
         public static int CreateNewIndex(String idKey, String tableName)
         {
             int newIndex = 0;
