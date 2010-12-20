@@ -6,7 +6,7 @@ body
     background: #b6b7bc;
     font-size: .80em;
     font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
-    margin: 0px;
+    margin:0px auto;
     padding: 0px;
     color: #696969;
 }
@@ -91,8 +91,9 @@ first child of the left and right table columns */
     width: 960px;
     height: 650px;
     background-color: #fff;
-    margin: 20px auto 0px auto;
     border: 1px solid #496077;
+    clear:both;
+    margin:0px auto;
 }
 
 .header
@@ -117,33 +118,39 @@ first child of the left and right table columns */
 
 .main
 {
+    background-color:#eaeaea;
     float: left;
-    padding: 10px;
+    width:75%;
 }
+.main  h1{line-height:30px;text-align:center;font-weight:bold;font-size:1.4em;color:#F00}
 
 .leftCol
 {
     padding: 6px 0px;
-    margin: 12px 8px 8px 8px;
-    width: 200px;
+    width: 25%;
     min-height: 200px;
+    
 }
 
 .footer
 {
     color: #4e5766;
-    padding: 8px 0px 0px 0px;
+    clear:both;
+    float:left;
+    height:50px;
     margin: 0px auto;
-    text-align: center;
-    font-size: 8px;
-    line-height: normal;
+    text-align:center;
+    font-size: 18px;
+    border:1px solid black;
+    width: 100%;
 }
 
 .leftmenu
 {
     float: left;
-    width: 130px;
-    padding: 10px;
+    width: 25%;
+    background-color:#000066;
+    padding:0px 0px 20px 0px;
 }
 
 /* TAB MENU   
@@ -157,7 +164,7 @@ div.hideSkiplink
 
 div.menu
 {
-    padding: 4px 0px 4px 8px;
+    padding: 4p4p 0px 4px 8px;
 }
 
 div.menu ul
@@ -307,7 +314,12 @@ div.accountInfo
     padding-right: 10px;
 }
 
-table{width:100%;}
+
+
+
+table{margin-right: 0px;
+}
 table tr th{font-weight:bold;line-height:26px;background-color:Fuchsia}
 table tr td{line-height:20px}
-table tr.alternate{background-color:#eaeaea;color:#F00}
+table tr{background-color:#FFF;color:#F00}
+table tr.alternate{background-color:#F00;color:#FFF;}
