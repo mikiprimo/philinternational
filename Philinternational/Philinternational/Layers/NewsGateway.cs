@@ -5,13 +5,11 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
 
-namespace Philinternational.Layers
-{
+namespace Philinternational.Layers {
     /// <summary>
     /// Operational functions About News (News.aspx and NewsDetails.aspx)
     /// </summary>
-    public class NewsGateway
-    {
+    public class NewsGateway {
         private static String _SELECT = ConfigurationManager.AppSettings["SelectNewsById"].ToString();
         private static String _INSERT = "INSERT INTO NEWS (idnews, data_pubblicazione, titolo, testo, stato) VALUES (@idNews, @data_pubblicazione, @titolo, @testo, @valueStato)";
         private static String _UPDATE = "UPDATE NEWS SET titolo = @titolo, testo = @testo, stato = @stato WHERE idnews = @idNews";
@@ -22,8 +20,7 @@ namespace Philinternational.Layers
         /// </summary>
         /// <param name="codice"></param>
         /// <returns></returns>
-        internal static NewsEntity GetNewsById(string codice)
-        {
+        internal static NewsEntity GetNewsById(string codice) {
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
@@ -31,28 +28,21 @@ namespace Philinternational.Layers
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("codice", codice);
             NewsEntity myOnlyNews;
-            try
-            {
+            try {
                 conn.Open();
                 dr = command.ExecuteReader();
                 myOnlyNews = new NewsEntity();
-                if (dr != null)
-                {
-                    while (dr.Read())
-                    {
+                if (dr != null) {
+                    while (dr.Read()) {
                         DateTime.TryParse(dr["data_pubblicazione"].ToString(), out myOnlyNews.dataPubblicazione);
                         myOnlyNews.titolo = (String)dr["titolo"];
                         myOnlyNews.testo = (String)dr["testo"];
                         myOnlyNews.state = new Stato((int)dr["stato"], Layers.Commons.GetStato((int)dr["stato"]));
                     }
                 }
-            }
-            catch (MySql.Data.MySqlClient.MySqlException)
-            {
+            } catch (MySql.Data.MySqlClient.MySqlException) {
                 return null;
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
             return myOnlyNews;
@@ -63,8 +53,7 @@ namespace Philinternational.Layers
         /// </summary>
         /// <param name="MyNews"></param>
         /// <returns></returns>
-        internal static Boolean InsertNews(NewsEntity MyNews)
-        {
+        internal static Boolean InsertNews(NewsEntity MyNews) {
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
@@ -75,17 +64,12 @@ namespace Philinternational.Layers
             command.Parameters.AddWithValue("titolo", MyNews.titolo);
             command.Parameters.AddWithValue("testo", MyNews.testo);
             command.Parameters.AddWithValue("stato", MyNews.state.id);
-            try
-            {
+            try {
                 conn.Open();
                 command.ExecuteNonQuery();
-            }
-            catch (MySql.Data.MySqlClient.MySqlException)
-            {
+            } catch (MySql.Data.MySqlClient.MySqlException) {
                 return false;
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
             return true;
@@ -95,8 +79,7 @@ namespace Philinternational.Layers
         /// NEWS (UPDATE)
         /// </summary>
         /// <param name="MyNews"></param>
-        internal static Boolean UpdateNews(NewsEntity MyNews)
-        {
+        internal static Boolean UpdateNews(NewsEntity MyNews) {
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
@@ -106,22 +89,23 @@ namespace Philinternational.Layers
             command.Parameters.AddWithValue("titolo", MyNews.titolo);
             command.Parameters.AddWithValue("testo", MyNews.testo);
             command.Parameters.AddWithValue("stato", MyNews.state.id);
-            try
-            {
+            try {
                 conn.Open();
                 command.ExecuteNonQuery();
-            }
-            catch (MySql.Data.MySqlClient.MySqlException)
-            {
+            } catch (MySql.Data.MySqlClient.MySqlException) {
                 return false;
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
             return true;
         }
 
+        /// <summary>
+        /// NEWS (UPDATE STATUS BY ID)
+        /// </summary>
+        /// <param name="idNews"></param>
+        /// <param name="newState"></param>
+        /// <returns></returns>
         internal static Boolean UpdateNewsStateById(string idNews, int newState) {
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
