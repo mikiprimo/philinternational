@@ -24,11 +24,7 @@ namespace Philinternational.Management {
             return Commons.GetStatoBoolean(value);
         }
 
-        //[WebMethod]
-        //public static void ChangeStatus(int obj) {
-
-        //}
-
+        //GESTIONE STATO
         protected void chkStatus_OnDataBinding(object sender, EventArgs e) {
             ((CheckBox)sender).Text = ConvertiStato((int)Eval("stato"));
             ((CheckBox)sender).Checked = ConvertiStatoBoolean((int)Eval("stato"));
@@ -38,6 +34,11 @@ namespace Philinternational.Management {
             CheckBox chk = ((CheckBox)sender);
             String idNews = ((CheckBox)sender).Attributes["MyIDNews"].ToString();
             NewsGateway.UpdateNewsStateById(idNews, chk.Checked ? 1 : 0);
+        }
+
+        //CANCELLAZIONE NEWS
+        protected void btnEraseSelectedNews_OnClick(object sender, EventArgs e) { 
+
         }
     }
 }
