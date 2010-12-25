@@ -19,7 +19,6 @@ namespace Philinternational.Layers
             return ConfigurationManager.ConnectionStrings["PhilinternationalConnectionString"].ToString();
         }
 
-        [Obsolete("Non usare: rifarsi ai vari gateway!!")]
         public static MySqlDataReader SelectQuery(String sql)
         {
             MySql.Data.MySqlClient.MySqlConnection conn = ConnectDB();
@@ -41,7 +40,6 @@ namespace Philinternational.Layers
             return dr;
         }
 
-        [Obsolete("Non usare: rifarsi ai vari gateway!!")]
         public static int ExecuteQuery(String sql, String tableName)
         {
             MySqlDataReader dr = SelectQuery(sql);
