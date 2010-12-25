@@ -12,6 +12,10 @@ namespace Philinternational.Layers
            return ((legendaStato)HttpContext.Current.Session["legendaStato"]).GetStatoById(id_stato).descrizione;
         }
 
+        public static Boolean GetStatoBoolean(int id_stato) {
+            return GetStato(id_stato) == "attivo" ? true : false;
+        }
+
         public static Boolean GetCheckedState(int value)
         {
             if (value == 1) return true;

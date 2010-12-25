@@ -73,6 +73,7 @@
     <Content Include="Management\Newsletter.aspx" />
     <Content Include="Management\Offerta.aspx" />
     <Content Include="Management\Paragrafo.aspx" />
+    <Content Include="Scripts\NewsScript.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
