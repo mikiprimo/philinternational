@@ -9,12 +9,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Elenco
     news</h1>
     <asp:HyperLink ID="hlNewNews" runat="server" ToolTip="Inserisci una nuova news" NavigateUrl="newsDetail.aspx">Inserisci una nuova news</asp:HyperLink>
-    <asp:LinkButton ID="btnEraseSelectedNews" runat="server" ToolTip="Cancella le News selezionate" OnClick="btnEraseSelectedNews_OnClick"></asp:LinkButton>
+    <asp:LinkButton ID="btnEraseSelectedNews" runat="server" ToolTip="Cancella le News selezionate" OnClick="btnEraseSelectedNews_OnClick">Cancella le News selezionate</asp:LinkButton>
     <div style="width: 100%">
         <asp:Repeater ID="repeaterNews" runat="server" DataSourceID="NewsConnector" DataMember="DefaultView">
             <ItemTemplate>
                 <div>
                     <br />
+                    <asp:CheckBox ID="chkErase" runat="server" MyIDNewsToErase='<%#Eval("idnews")%>' />
                     <strong><%#Eval("titolo")%></strong> <br />
                     <a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%# Eval("data_pubblicazione")%></a>
                     <br />
