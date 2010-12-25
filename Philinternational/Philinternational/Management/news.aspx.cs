@@ -24,10 +24,10 @@ namespace Philinternational.Management {
             return Commons.GetStatoBoolean(value);
         }
 
-        [WebMethod]
-        public static void ChangeStatus(int obj) {
+        //[WebMethod]
+        //public static void ChangeStatus(int obj) {
 
-        }
+        //}
 
         protected void chkStatus_OnDataBinding(object sender, EventArgs e) {
             ((CheckBox)sender).Text = ConvertiStato((int)Eval("stato"));

@@ -13,12 +13,14 @@
         <asp:Repeater ID="repeaterNews" runat="server" DataSourceID="NewsConnector" DataMember="DefaultView">
             <ItemTemplate>
                 <div>
+                    <br />
                     <strong><%#Eval("titolo")%></strong> <br />
                     <a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%# Eval("data_pubblicazione")%></a>
                     <br />
                     <%--                    stato: <input id="statusCheckBox_<%#Eval("idnews")%>" runat="server" type="checkbox" onclick="ChangeStatusCheckBox(<%#Eval("idnews")%>);" />
                     <div id="lblStatus_<%#Eval("idnews")%>"><%#ConvertiStato((int)Eval("stato"))%></div>--%>
-                    <asp:CheckBox ID="chkStatus" runat="server" AutoPostBack="true" MyIDNews=<%#Eval("idnews")%> OnDataBinding="chkStatus_OnDataBinding" OnCheckedChanged="chkStatus_OnCheckedChanged" />
+                    <asp:CheckBox ID="chkStatus" runat="server" AutoPostBack="true" MyIDNews='<%#Eval("idnews")%>'
+                        OnDataBinding="chkStatus_OnDataBinding" OnCheckedChanged="chkStatus_OnCheckedChanged" />
                     <br />
                 </div>
             </ItemTemplate>
