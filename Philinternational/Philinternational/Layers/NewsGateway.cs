@@ -14,6 +14,8 @@ namespace Philinternational.Layers {
         private static String _INSERT = "INSERT INTO NEWS (idnews, data_pubblicazione, titolo, testo, stato) VALUES (@idNews, @data_pubblicazione, @titolo, @testo, @valueStato)";
         private static String _UPDATE = "UPDATE NEWS SET titolo = @titolo, testo = @testo, stato = @stato WHERE idnews = @idNews";
         private static String _UPDATE_NEWSSTATE = "UPDATE NEWS SET stato = @stato WHERE idnews = @idNews";
+        //Da modificare ... specia neh! faccio il bagordo di natale e poi stasera finisco!!!!
+        private static String _DELETE_IDNEWSLIST = "DELETE FROM forum_members WHERE e_mail='email@email.it' OR e_mail'=email2@email.it' OR e_mail='email3@email.it'";
 
         /// <summary>
         /// NEWS (Get News By ID)
@@ -123,6 +125,10 @@ namespace Philinternational.Layers {
                 conn.Close();
             }
             return true;
+        }
+
+        internal static void DeleteNewsByIdList(List<string> NewsIdToBeErased) {
+            // AAHAHHAHAHHAHHAHAHRGHH! Ma ci arrivo neh!! e poi anche la cancellazione funzia
         }
     }
 }
