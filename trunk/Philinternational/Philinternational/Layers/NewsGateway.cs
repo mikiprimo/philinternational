@@ -4,6 +4,7 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
+using System.Text;
 
 namespace Philinternational.Layers {
     /// <summary>
@@ -14,8 +15,7 @@ namespace Philinternational.Layers {
         private static String _INSERT = "INSERT INTO NEWS (idnews, data_pubblicazione, titolo, testo, stato) VALUES (@idNews, @data_pubblicazione, @titolo, @testo, @valueStato)";
         private static String _UPDATE = "UPDATE NEWS SET titolo = @titolo, testo = @testo, stato = @stato WHERE idnews = @idNews";
         private static String _UPDATE_NEWSSTATE = "UPDATE NEWS SET stato = @stato WHERE idnews = @idNews";
-        //Da modificare ... specia neh! faccio il bagordo di natale e poi stasera finisco!!!!
-        private static String _DELETE_IDNEWSLIST = "DELETE FROM forum_members WHERE e_mail='email@email.it' OR e_mail'=email2@email.it' OR e_mail='email3@email.it'";
+        
 
         /// <summary>
         /// NEWS (Get News By ID)
@@ -56,7 +56,6 @@ namespace Philinternational.Layers {
         /// <param name="MyNews"></param>
         /// <returns></returns>
         internal static Boolean InsertNews(NewsEntity MyNews) {
-            MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_INSERT, conn);
@@ -82,7 +81,6 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="MyNews"></param>
         internal static Boolean UpdateNews(NewsEntity MyNews) {
-            MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_UPDATE, conn);
@@ -109,7 +107,6 @@ namespace Philinternational.Layers {
         /// <param name="newState"></param>
         /// <returns></returns>
         internal static Boolean UpdateNewsStateById(string idNews, int newState) {
-            MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_UPDATE_NEWSSTATE, conn);
@@ -127,8 +124,28 @@ namespace Philinternational.Layers {
             return true;
         }
 
-        internal static void DeleteNewsByIdList(List<string> NewsIdToBeErased) {
-            // AAHAHHAHAHHAHHAHAHRGHH! Ma ci arrivo neh!! e poi anche la cancellazione funzia
+        internal static Boolean DeleteNewsByIdList(List<string> NewsIdToBeErased) {
+            String _DELETE_IDNEWSLIST = "DELETE FROM NEWS WHERE @ComposedConditions";
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            StringBuilder sb = new StringBuilder();
+            foreach (String item in NewsIdToBeErased) {
+                sb.Append( "idnews = " + item + " OR ");
+            }
+            sb.Append("1=0");
+
+            _DELETE_IDNEWSLIST = _DELETE_IDNEWSLIST.Replace("@ComposedConditions",sb.ToString());
+            MySqlCommand command = new MySqlCommand(_DELETE_IDNEWSLIST, conn);
+            command.CommandType = CommandType.Text;
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySql.Data.MySqlClient.MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
         }
     }
 }
