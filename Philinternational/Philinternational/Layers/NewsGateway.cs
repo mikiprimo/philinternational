@@ -124,6 +124,11 @@ namespace Philinternational.Layers {
             return true;
         }
 
+        /// <summary>
+        /// NEWS (DELETE NEWS BY A LIST OF NEWSID)
+        /// </summary>
+        /// <param name="NewsIdToBeErased"></param>
+        /// <returns></returns>
         internal static Boolean DeleteNewsByIdList(List<string> NewsIdToBeErased) {
             String _DELETE_IDNEWSLIST = "DELETE FROM NEWS WHERE @ComposedConditions";
             MySqlConnection conn = ConnectionGateway.ConnectDB();
