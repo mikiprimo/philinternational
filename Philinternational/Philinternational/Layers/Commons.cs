@@ -27,5 +27,9 @@ namespace Philinternational.Layers
             if (b) return 1;
             else return 0;
         }
+
+        internal static string GetStatoDescription(int p) {
+            return p == 1 ? "attivo" : "sospeso";
+        }
     }
 }

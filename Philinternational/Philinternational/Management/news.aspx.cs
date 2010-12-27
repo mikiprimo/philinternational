@@ -11,29 +11,28 @@ namespace Philinternational.Management {
     public partial class News : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
-                NewsConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
-                NewsConnector.SelectCommand = ConfigurationManager.AppSettings["SelectNews"].ToString();
+                BindData();
             }
         }
 
-        protected static string ConvertiStato(int value) {
-            return Commons.GetStato(value);
-        }
-
-        protected static Boolean ConvertiStatoBoolean(int value) {
-            return Commons.GetStatoBoolean(value);
+        private void BindData() {
+            NewsConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
+            NewsConnector.SelectCommand = ConfigurationManager.AppSettings["SelectNews"].ToString();
+            repeaterNews.DataBind();
         }
 
         //GESTIONE STATO
         protected void chkStatus_OnDataBinding(object sender, EventArgs e) {
-            ((CheckBox)sender).Text = ConvertiStato((int)Eval("stato"));
-            ((CheckBox)sender).Checked = ConvertiStatoBoolean((int)Eval("stato"));
+            CheckBox chk = ((CheckBox)sender);
+            chk.Checked = Commons.GetStatoBoolean((int)Eval("stato"));
+            chk.Text = Commons.GetStatoDescription((int)Eval("stato"));
         }
 
         protected void chkStatus_OnCheckedChanged(object sender, EventArgs e) {
             CheckBox chk = ((CheckBox)sender);
-            String idNews = ((CheckBox)sender).Attributes["MyIDNews"].ToString();
+            String idNews = chk.Attributes["MyIDNews"].ToString();
             NewsGateway.UpdateNewsStateById(idNews, chk.Checked ? 1 : 0);
+            chk.Text = Commons.GetStatoDescription(chk.Checked ? 1 : 0);
         }
 
         //CANCELLAZIONE NEWS
@@ -51,6 +50,7 @@ namespace Philinternational.Management {
                 //Prevedere un dato di ritorno per il controllo delle avvenute cancellazioni
                 NewsGateway.DeleteNewsByIdList(NewsIdToBeErased); 
             }
+            BindData();
         }
     }
 }
