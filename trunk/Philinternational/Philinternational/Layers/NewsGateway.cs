@@ -59,7 +59,7 @@ namespace Philinternational.Layers {
 
             MySqlCommand command = new MySqlCommand(_INSERT, conn);
             command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("idNews", MyNews.id);
+            command.Parameters.AddWithValue("idnews", MyNews.id);
             command.Parameters.AddWithValue("data_pubblicazione", MyNews.dataPubblicazione);
             command.Parameters.AddWithValue("titolo", MyNews.titolo);
             command.Parameters.AddWithValue("testo", MyNews.testo);
