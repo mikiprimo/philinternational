@@ -34,6 +34,7 @@
     </p>
     <p>
         <asp:Button runat="server" Text="Conferma" ID="btnConferma" OnClick="conferma" />&nbsp;
-        <asp:Button runat="server" Text="Reset" ID="buttonReset" />
+        <asp:Button runat="server" Text="Reset" ID="buttonReset" OnClick="pulisci" />&nbsp;
+        <asp:Button runat="server" Text="Torna Indietro" ID="btnComeBack" OnClick="comeBack" />
     </p>
 </asp:Content>
