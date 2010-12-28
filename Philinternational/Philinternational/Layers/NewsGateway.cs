@@ -63,7 +63,7 @@ namespace Philinternational.Layers {
             command.Parameters.AddWithValue("data_pubblicazione", MyNews.dataPubblicazione);
             command.Parameters.AddWithValue("titolo", MyNews.titolo);
             command.Parameters.AddWithValue("testo", MyNews.testo);
-            command.Parameters.AddWithValue("stato", MyNews.state.id);
+            command.Parameters.AddWithValue("valueStato", MyNews.state.id);
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
