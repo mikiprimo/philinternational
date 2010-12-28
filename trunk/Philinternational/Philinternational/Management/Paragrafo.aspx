@@ -12,5 +12,4 @@
         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
         <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
     </asp:GridView>
-    <asp:SqlDataSource ID="sqlDsParagrafi" runat="server" ></asp:SqlDataSource>
-</asp:Content>
+    </asp:Content>
