@@ -71,8 +71,18 @@ namespace Philinternational.Management
         /// <param name="esito"></param>
         private void ExamineResults(Boolean esito)
         {
-            if (esito) esitoMessaggio.InnerHtml = "<span style=\"color:red\">Operazione effettuato con successo</span>";
-            else esitoMessaggio.InnerHtml = "Operazione non effettuata";
+            if (esito) esitoMessaggio.InnerHtml = "<span style=\"color:green\">Operazione effettuato con successo</span>";
+            else esitoMessaggio.InnerHtml = "<span style=\"color:red\">Operazione non effettuata</span>";
+        }
+
+        protected void comeBack(object sender, EventArgs e)
+        {
+           Response.Redirect ("news.aspx");            
+        }
+
+        protected void pulisci(object sender, EventArgs e)
+        {
+            Response.Redirect("newsDetail.aspx?cod=" + this.Codice);
         }
     }
 }
