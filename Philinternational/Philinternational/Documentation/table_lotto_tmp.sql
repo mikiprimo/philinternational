@@ -27,6 +27,6 @@ CREATE TABLE IF NOT EXISTS lotto (
   prezzo_base float DEFAULT NULL,
   euro varchar(15) DEFAULT NULL,
   riferimento_sassone varchar(20) DEFAULT NULL,
-  stato int(3) 
+  stato int(3),
   PRIMARY KEY (idcatalogo)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
