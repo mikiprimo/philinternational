@@ -17,9 +17,6 @@ namespace Philinternational.Styles {
         private void BindData() {
             gvParagrafi.DataSource = ParagrafoGateway.SelectParag();
             gvParagrafi.DataBind();
-            //ParagrafoConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
-            //ParagrafoConnector.SelectCommand = ConfigurationManager.AppSettings["SelectParagrafi"].ToString();
-            //gvParagrafi.DataBind();
         }
 
         protected void gvParagrafi_RowEditing(object sender, GridViewEditEventArgs e) {
@@ -30,33 +27,16 @@ namespace Philinternational.Styles {
         protected void gvParagrafi_RowUpdating(object sender, GridViewUpdateEventArgs e) {
 
             GridViewRow row = gvParagrafi.Rows[e.RowIndex];
-            var newValues = this.GetValues(row);
-            //String Description = e.NewValues[0].ToString();
-            //String State = e.NewValues[1].ToString();
+            var newValues = Commons.GetValuesGridViewRow(row);
 
-            //ParagrafoEntity MyParagrafo = new ParagrafoEntity();
-            //MyParagrafo.descrizione = Description;
-            //MyParagrafo.idparagrafo = Convert.ToInt32(e.Keys[0].ToString());
-            //MyParagrafo.state = new Stato(Convert.ToInt32(State), "");
-            //this.BindData();
+            ////ParagrafoEntity MyParagrafo = new ParagrafoEntity();
+            ////MyParagrafo.descrizione = Description;
+            ////MyParagrafo.idparagrafo = Convert.ToInt32(e.Keys[0].ToString());
+            ////MyParagrafo.state = new Stato(Convert.ToInt32(State), "");
+            ////this.BindData();
         }
 
-        private IDictionary<string, object> GetValues(GridViewRow row) {
-            IOrderedDictionary dictionary = new OrderedDictionary();
-            foreach (Control control in row.Controls) {
-                DataControlFieldCell cell = control as DataControlFieldCell;
-
-                if ((cell != null) && cell.Visible) {
-                    cell.ContainingField.ExtractValuesFromCell(dictionary, cell, row.RowState, true);
-                }
-            }
-
-            IDictionary<string, object> values = new Dictionary<string, object>();
-            foreach (DictionaryEntry de in dictionary) {
-                values[de.Key.ToString()] = de.Value;
-            }
-            return values;
-        } 
+        
 
         protected void gvParagrafi_PageIndexChanged(object sender, EventArgs e) {
             this.BindData();
