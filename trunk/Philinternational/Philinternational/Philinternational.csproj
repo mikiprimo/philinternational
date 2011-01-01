@@ -62,6 +62,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Documentation\philinternational.sql" />
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
+    <Content Include="images\webControls\gridview_update.png" />
     <Content Include="images\webControls\select_gridview.png" />
     <Content Include="Management\AnagraficaDetail.aspx" />
     <Content Include="Management\Legenda.aspx" />
@@ -142,8 +143,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Layers\ParagrafoGateway.cs" />
     <Compile Include="Layers\Entities\legendaStato.Entity.cs" />
     <Compile Include="Layers\Entities\News.Entity.cs" />
+    <Compile Include="Layers\Entities\Paragrafo.Entity.cs" />
     <Compile Include="Layers\NewsGateway.cs" />
     <Compile Include="Management\AnagraficaDetail.aspx.cs">
       <DependentUpon>AnagraficaDetail.aspx</DependentUpon>
