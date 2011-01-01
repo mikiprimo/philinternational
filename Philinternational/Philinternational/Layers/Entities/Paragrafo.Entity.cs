@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Web;
 
 namespace Philinternational {
-    public class NewsEntity {
-        public int id;
-        public DateTime dataPubblicazione;
-        public String titolo, testo;
+    public class ParagrafoEntity {
+        public int idparagrafo;
+        public String descrizione;
         public Stato state;
     }
 }
