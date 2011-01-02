@@ -4,7 +4,7 @@
     <table style="width: 100%;">
         <tr>
             <td>
-                &nbsp;
+                &nbsp;<asp:HyperLink ID="lnkSelectOtherParagraph" runat="server" NavigateUrl="~/Management/Paragrafo.aspx">Seleziona un altro paragrafo</asp:HyperLink>
             </td>
             <td>
                 &nbsp;
@@ -12,7 +12,43 @@
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="gvArguments" runat="server"></asp:GridView>
+                <asp:GridView ID="gvArguments" runat="server" AutoGenerateColumns="False" 
+                    DataKeyNames="idargomento" 
+                    EmptyDataText="Nessun argomento associato al paragrafo" 
+                    EnableModelValidation="True" GridLines="None">
+                    <Columns>
+                        <asp:TemplateField>
+                            <EditItemTemplate>
+                                <asp:CheckBox ID="CheckBox1" runat="server" />
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:CheckBox ID="CheckBox1" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" 
+                                    CommandName="Select" Text="Select"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
             </td>
             <td>
                 <asp:GridView ID="gvSubArguments" runat="server"></asp:GridView>

@@ -64,9 +64,11 @@
     <Content Include="Documentation\GridView\GridViewCustom_EsempioCompleto.txt" />
     <Content Include="Documentation\philinternational.sql" />
     <Content Include="Documentation\table_lotto_tmp.sql" />
+    <Content Include="images\accept.png" />
+    <Content Include="images\add.png" />
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
-    <Content Include="images\webControls\gridview_update.png" />
-    <Content Include="images\webControls\select_gridview.png" />
+    <Content Include="images\select.png" />
+    <Content Include="images\selectfull.png" />
     <Content Include="Management\AnagraficaDetail.aspx" />
     <Content Include="Management\Legenda.aspx" />
     <Content Include="Management\Lotto.aspx" />

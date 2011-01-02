@@ -10,10 +10,10 @@
             <asp:BoundField DataField="idparagrafo" HeaderText="ID" ReadOnly="True" SortExpression="idparagrafo" />
             <asp:TemplateField>
                 <EditItemTemplate><asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
-                    CommandName="Update" ImageUrl="~/images/webControls/gridview_update.png" />
+                    CommandName="Update" ImageUrl="~/images/accept.png" />
                 </EditItemTemplate>
                 <ItemTemplate><asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False"
-                    CommandName="Edit" ImageUrl="~/images/webControls/select_gridview.png" />
+                    CommandName="Edit" ImageUrl="~/images/selectfull.png" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Descrizione" SortExpression="descrizione">
