@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Configuration;
 using Philinternational.Layers;
-using System.Collections.Specialized;
-using System.Collections;
 
 namespace Philinternational.Styles {
     public partial class Paragrafo : System.Web.UI.Page {
@@ -32,7 +32,7 @@ namespace Philinternational.Styles {
             ParagrafoEntity MyParagrafo = new ParagrafoEntity();
             MyParagrafo.descrizione = (String)newValues["descrizione"];
             MyParagrafo.idparagrafo = Convert.ToInt32(gvParagrafi.DataKeys[e.RowIndex]["idparagrafo"]);
-            MyParagrafo.state = new Stato(Convert.ToInt32(newValues["stato"]), "");
+            MyParagrafo.state = new Stato(((CheckBox)gvParagrafi.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1:0, "");
 
             ParagrafoGateway.UpdateParag(MyParagrafo);
 
