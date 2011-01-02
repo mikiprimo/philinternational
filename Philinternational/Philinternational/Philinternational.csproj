@@ -61,6 +61,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Documentation\Gestione Lotti.txt" />
+    <Content Include="Documentation\GridView\GridViewCustom_EsempioCompleto.txt" />
     <Content Include="Documentation\philinternational.sql" />
     <Content Include="Documentation\table_lotto_tmp.sql" />
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
@@ -84,7 +85,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Management\SubArgomento.aspx" />
+    <Content Include="Management\ArgoAndSubArgomento.aspx" />
     <Content Include="Management\Varie.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -235,12 +236,12 @@
     <Compile Include="Management\Paragrafo.aspx.designer.cs">
       <DependentUpon>Paragrafo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Management\SubArgomento.aspx.cs">
-      <DependentUpon>SubArgomento.aspx</DependentUpon>
+    <Compile Include="Management\ArgoAndSubArgomento.aspx.cs">
+      <DependentUpon>ArgoAndSubArgomento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Management\SubArgomento.aspx.designer.cs">
-      <DependentUpon>SubArgomento.aspx</DependentUpon>
+    <Compile Include="Management\ArgoAndSubArgomento.aspx.designer.cs">
+      <DependentUpon>ArgoAndSubArgomento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\Varie.aspx.cs">
       <DependentUpon>Varie.aspx</DependentUpon>

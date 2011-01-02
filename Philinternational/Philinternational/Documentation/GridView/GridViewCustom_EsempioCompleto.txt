@@ -1,0 +1,299 @@
+﻿ASPX 
+
+<%@ page autoeventwireup="true" codefile="CRUDWithADO.aspx.cs" inherits="GridView_CRUDWithADO"
+	language="C#" masterpagefile="~/MasterPages/Default.master" title="GridView: CRUD With ADO" %>
+
+<asp:content id="Content1" runat="Server" contentplaceholderid="ContentPlaceHolder1">
+	<asp:label id="lblMessage" runat="server" enableviewstate="false" />
+	<asp:gridview id="gvShippers" runat="server" allowpaging="True" allowsorting="True"
+		autogeneratecolumns="False" datakeynames="ShipperID" emptydatatext="There are no data records to display."
+		onpageindexchanging="gvShippers_PageIndexChanging" onrowcancelingedit="gvShippers_RowCancelingEdit"
+		onrowcommand="gvShippers_RowCommand" onrowdeleting="gvShippers_RowDeleting" onrowediting="gvShippers_RowEditing"
+		onrowupdating="gvShippers_RowUpdating" onsorting="gvShippers_Sorting" showfooter="true"
+		style="margin-top: 20px;">
+		<columns>
+			<asp:templatefield>
+				<itemtemplate>
+					<asp:linkbutton id="btnSelect" runat="server" commandname="Select" text="Select" />
+					<asp:linkbutton id="btnEdit" runat="server" commandname="Edit" text="Edit" />
+					<asp:linkbutton id="btnDelete" runat="server" commandname="Delete" text="Delete" />
+				</itemtemplate>
+				<edititemtemplate>
+					<asp:linkbutton id="btnUpdate" runat="server" commandname="Update" text="Update" />
+					<asp:linkbutton id="btnCancel" runat="server" commandname="Cancel" text="Cancel" />
+				</edititemtemplate>
+				<footertemplate>
+					<asp:linkbutton id="btnInsert" runat="server" commandname="Insert" text="Insert" />
+				</footertemplate>
+			</asp:templatefield>
+			<asp:boundfield datafield="ShipperID" headertext="ShipperID" insertvisible="false"
+				readonly="true" sortexpression="ShipperID" />
+			<asp:templatefield headertext="CompanyName" sortexpression="CompanyName">
+				<itemtemplate>
+					<%# Eval("CompanyName") %>
+				</itemtemplate>
+				<edititemtemplate>
+					<asp:textbox id="txtCompanyName" runat="server" text='<%# Bind("CompanyName") %>' />
+				</edititemtemplate>
+				<footertemplate>
+					<asp:textbox id="txtCompanyName" runat="server" />
+				</footertemplate>
+			</asp:templatefield>
+			<asp:templatefield headertext="Phone" sortexpression="Phone">
+				<itemtemplate>
+					<%# Eval("Phone") %>
+				</itemtemplate>
+				<edititemtemplate>
+					<asp:textbox id="txtPhone" runat="server" text='<%# Bind("Phone") %>' />
+				</edititemtemplate>
+				<footertemplate>
+					<asp:textbox id="txtPhone" runat="server" />
+				</footertemplate>
+			</asp:templatefield>
+		</columns>
+	</asp:gridview>
+</asp:content>
+
+ 
+
+CODE-BEHIND 
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class GridView_CRUDWithADO : System.Web.UI.Page
+{
+	private string Sort
+	{
+		get
+		{
+			return String.Concat(
+					this.SortExpression,
+					(this.SortDirection == SortDirection.Ascending) ? " ASC" : " DESC");
+		}
+	}
+	
+	private SortDirection SortDirection
+	{
+		get
+		{
+			if (ViewState["SortDirection"] == null)
+			{
+				ViewState["SortDirection"] = SortDirection.Ascending;
+			}
+
+			return (SortDirection)ViewState["SortDirection"];
+		}
+		set { ViewState["SortDirection"] = value; }
+	}
+
+	private string SortExpression
+	{
+		get
+		{
+			if (ViewState["SortExpression"] == null)
+			{
+				ViewState["SortExpression"] = "ShipperID";
+			}
+
+			return ViewState["SortExpression"].ToString();
+		}
+		set { ViewState["SortExpression"] = value; }
+	}
+
+    private IDictionary<string, object> GetValues(GridViewRow row)
+    {
+        IOrderedDictionary dictionary = new OrderedDictionary();
+
+        foreach (Control control in row.Controls)
+        {
+            DataControlFieldCell cell = control as DataControlFieldCell;
+
+            if ((cell != null) && cell.Visible)
+            {
+                cell.ContainingField.ExtractValuesFromCell(dictionary, cell, row.RowState, true);
+            }
+        }
+
+        IDictionary<string, object> values = new Dictionary<string, object>();
+
+        foreach (DictionaryEntry de in dictionary)
+        {
+            values[de.Key.ToString()] = de.Value;
+        }
+
+        return values;
+    } 
+
+	private void SetData()
+	{
+		using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["NorthwindConnectionString"].ConnectionString))
+		using (SqlCommand cmd = new SqlCommand("SELECT * FROM [Shippers]", conn))
+		using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+		{
+			try
+			{
+				conn.Open();
+				DataTable dt = new DataTable();
+				adapter.Fill(dt);
+				DataView dv = dt.DefaultView;
+				dv.Sort = this.Sort;
+
+				gvShippers.DataSource = dv;
+				gvShippers.DataBind();
+			}
+			catch{}
+		}
+	}
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+		if (!this.IsPostBack)
+		{
+			this.SetData();
+		}
+    }
+
+	protected void gvShippers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+	{
+		gvShippers.PageIndex = e.NewPageIndex;
+
+		this.SetData();
+	}
+
+	protected void gvShippers_Sorting(object sender, GridViewSortEventArgs e)
+	{
+		if (this.SortExpression.Equals(e.SortBLOCKED EXPRESSION
+		{
+			this.SortDirection = (this.SortDirection == SortDirection.Ascending) 
+                ? SortDirection.Descending 
+                : SortDirection.Ascending;
+		}
+		else
+		{
+			this.SortDirection = SortDirection.Ascending;
+		}
+
+		this.SortExpression = e.SortExpression;
+
+		this.SetData();
+	}
+	
+	protected void gvShippers_RowEditing(object sender, GridViewEditEventArgs e)
+	{
+		gvShippers.EditIndex = e.NewEditIndex;
+
+		this.SetData();
+	}
+
+	protected void gvShippers_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+	{
+		gvShippers.EditIndex = -1;
+
+		this.SetData();
+	}
+
+	protected void gvShippers_RowUpdating(object sender, GridViewUpdateEventArgs e)
+	{
+		GridViewRow row = gvShippers.Rows[e.RowIndex];
+        var newValues = this.GetValues(row);
+
+		using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["NorthwindConnectionString"].ConnectionString))
+		using (SqlCommand cmd = new SqlCommand("UPDATE [Shippers] SET [CompanyName] = @CompanyName, [Phone] = @Phone WHERE (ShipperID = @ShipperID)", conn))
+		{
+			cmd.Parameters.AddWithValue("ShipperID", gvShippers.DataKeys[row.RowIndex]["ShipperID"]);
+            cmd.Parameters.AddWithValue("CompanyName", newValues["CompanyName"]);
+            cmd.Parameters.AddWithValue("Phone", newValues["Phone"]);
+
+			try
+			{
+				conn.Open();
+
+				if (cmd.ExecuteNonQuery().Equals(1))
+				{
+					lblMessage.Text = String.Format(
+						"Shipper '{0}' successfully updated.",
+						cmd.Parameters["ShipperID"].Value);
+
+					gvShippers.EditIndex = -1;
+
+					this.SetData();
+				}
+			}
+			catch {}
+		}
+	}
+
+	protected void gvShippers_RowDeleting(object sender, GridViewDeleteEventArgs e)
+	{
+		using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["NorthwindConnectionString"].ConnectionString))
+		using (SqlCommand cmd = new SqlCommand("DELETE FROM [Shippers] WHERE (ShipperID = @ShipperID)", conn))
+		{
+			cmd.Parameters.AddWithValue("ShipperID", gvShippers.DataKeys[e.RowIndex]["ShipperID"]);
+
+			try
+			{
+				conn.Open();
+
+				if (cmd.ExecuteNonQuery().Equals(1))
+				{
+					lblMessage.Text = String.Format(
+						"Shipper '{0}' successfully deleted.",
+						cmd.Parameters["ShipperID"].Value);
+
+					this.SetData();
+				}
+			}
+			catch {}
+		}
+	}
+
+	protected void gvShippers_RowCommand(object sender, GridViewCommandEventArgs e)
+	{
+		if (e.CommandName.Equals("Insert"))
+		{
+			LinkButton btnInsert = e.CommandSource as LinkButton;
+
+			if (btnInsert == null) { return; }
+
+			GridViewRow row = btnInsert.NamingContainer as GridViewRow;
+
+            TextBox txtCompanyName = row.FindControl("txtCompanyName") as TextBox;
+            TextBox txtPhone = row.FindControl("txtPhone") as TextBox;
+
+            if (txtCompanyName == null) { return; }
+            if (txtPhone == null) { return; }
+
+			using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["NorthwindConnectionString"].ConnectionString))
+			using (SqlCommand cmd = new SqlCommand("INSERT INTO [Shippers] ([CompanyName], [Phone]) VALUES (@CompanyName, @Phone); SELECT @ShipperID = SCOPE_IDENTITY()", conn))
+			{
+				cmd.Parameters.AddWithValue("CompanyName", txtCompanyName.Text);
+				cmd.Parameters.AddWithValue("Phone", txtPhone.Text);
+				cmd.Parameters.Add("ShipperID", SqlDbType.Int);
+				cmd.Parameters["ShipperID"].Direction = ParameterDirection.Output;
+
+				try
+				{
+					conn.Open();
+
+					if (cmd.ExecuteNonQuery().Equals(1))
+					{
+						lblMessage.Text = String.Format(
+							"Shipper '{0}' successfully added.",
+							cmd.Parameters["ShipperID"].Value);
+
+						this.SetData();
+					}
+				}
+				catch {}
+			}
+		}
+	}
+}
