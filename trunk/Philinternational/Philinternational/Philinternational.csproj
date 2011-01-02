@@ -60,7 +60,9 @@
     <Content Include="Account\ChangePasswordSuccess_todo.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Documentation\Gestione Lotti.txt" />
     <Content Include="Documentation\philinternational.sql" />
+    <Content Include="Documentation\table_lotto_tmp.sql" />
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
     <Content Include="images\webControls\gridview_update.png" />
     <Content Include="images\webControls\select_gridview.png" />
@@ -260,6 +262,8 @@
     <Folder Include="src\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Documentation\catalogo 52.rar" />
+    <None Include="Documentation\mappatura_campi_upload_lotto.ods" />
     <None Include="Documentation\Philinternational - Analisi Funzionale.docx" />
     <None Include="Documentation\PhilinternationalBanner.psd" />
     <Compile Include="Layers\Commons.cs">
