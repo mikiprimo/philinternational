@@ -25,7 +25,6 @@ namespace Philinternational.Styles {
         }
 
         protected void gvParagrafi_RowUpdating(object sender, GridViewUpdateEventArgs e) {
-
             GridViewRow row = gvParagrafi.Rows[e.RowIndex];
             var newValues = Commons.GetValuesGridViewRow(row);
 
@@ -39,8 +38,6 @@ namespace Philinternational.Styles {
             gvParagrafi.EditIndex = -1;
             this.BindData();
         }
-
-        
 
         protected void gvParagrafi_PageIndexChanged(object sender, EventArgs e) {
             this.BindData();
