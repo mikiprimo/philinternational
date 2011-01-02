@@ -11,8 +11,11 @@ namespace Philinternational.Layers {
     /// Operational functions About Paragrafo
     /// </summary>
     public class ParagrafoGateway {
+        //PARAGRAFI
         private static String _SELECT = "SELECT idparagrafo, descrizione, stato FROM paragrafo";
         private static String _UPDATE = "UPDATE paragrafo SET descrizione = @descrizione, stato =@stato WHERE idparagrafo = @idparagrafo";
+        //ARGOMENTI
+        private static String _SELECT_ARGUMENTS = "SELECT idargomento, idparagrafo, descrizione, stato WHERE idparagrafo = @idparagrafo";
 
         /// <summary>
         /// UPDATE PARAGRAFO
@@ -56,13 +59,35 @@ namespace Philinternational.Layers {
                         dv = dt.DefaultView;
 
                         return dv;
-                    } catch (Exception err) {
+                    } catch  {
                         return dv;
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// SELECT ARGUMENTS
+        /// </summary>
+        /// <returns></returns>
+        internal static DataView SelectArgs() {
+            {
+                DataView dv = new DataView();
+                using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+                using (MySqlCommand cmd = new MySqlCommand(_SELECT_ARGUMENTS, conn))
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                    try {
+                        conn.Open();
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        dv = dt.DefaultView;
 
+                        return dv;
+                    } catch {
+                        return dv;
+                    }
+                }
+            }
+        }
     }
 }

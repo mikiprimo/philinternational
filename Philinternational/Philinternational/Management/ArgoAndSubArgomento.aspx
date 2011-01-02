@@ -27,8 +27,8 @@
                         </asp:TemplateField>
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" 
-                                    CommandName="Select" Text="Select"></asp:LinkButton>
+                                <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
+                                    CommandName="Select" Height="16px" ImageUrl="~/images/selectfull.png" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
