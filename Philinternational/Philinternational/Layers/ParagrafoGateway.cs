@@ -20,8 +20,8 @@ namespace Philinternational.Layers {
             MySqlCommand command = new MySqlCommand(_UPDATE, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idparagrafo", MyParagrafo.idparagrafo);
-            command.Parameters.AddWithValue("idparagrafo", MyParagrafo.descrizione);
-            command.Parameters.AddWithValue("idparagrafo", MyParagrafo.state.id);
+            command.Parameters.AddWithValue("descrizione", MyParagrafo.descrizione);
+            command.Parameters.AddWithValue("stato", MyParagrafo.state.id);
 
             try {
                 conn.Open();
