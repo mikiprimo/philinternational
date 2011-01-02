@@ -14,6 +14,11 @@ namespace Philinternational.Layers {
         private static String _SELECT = "SELECT idparagrafo, descrizione, stato FROM paragrafo";
         private static String _UPDATE = "UPDATE paragrafo SET descrizione = @descrizione, stato =@stato WHERE idparagrafo = @idparagrafo";
 
+        /// <summary>
+        /// UPDATE PARAGRAFO
+        /// </summary>
+        /// <param name="MyParagrafo"></param>
+        /// <returns></returns>
         internal static Boolean UpdateParag(ParagrafoEntity MyParagrafo) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
@@ -34,6 +39,10 @@ namespace Philinternational.Layers {
             return true;
         }
 
+        /// <summary>
+        /// SELECT PARAGRAFI
+        /// </summary>
+        /// <returns></returns>
         internal static DataView SelectParag() {
             {
                 DataView dv = new DataView();
@@ -53,5 +62,7 @@ namespace Philinternational.Layers {
                 }
             }
         }
+
+
     }
 }
