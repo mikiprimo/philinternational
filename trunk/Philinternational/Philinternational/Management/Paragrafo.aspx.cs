@@ -29,11 +29,15 @@ namespace Philinternational.Styles {
             GridViewRow row = gvParagrafi.Rows[e.RowIndex];
             var newValues = Commons.GetValuesGridViewRow(row);
 
-            ////ParagrafoEntity MyParagrafo = new ParagrafoEntity();
-            ////MyParagrafo.descrizione = Description;
-            ////MyParagrafo.idparagrafo = Convert.ToInt32(e.Keys[0].ToString());
-            ////MyParagrafo.state = new Stato(Convert.ToInt32(State), "");
-            ////this.BindData();
+            ParagrafoEntity MyParagrafo = new ParagrafoEntity();
+            MyParagrafo.descrizione = (String)newValues["descrizione"];
+            MyParagrafo.idparagrafo = Convert.ToInt32(gvParagrafi.DataKeys[e.RowIndex]["idparagrafo"]);
+            MyParagrafo.state = new Stato(Convert.ToInt32(newValues["stato"]), "");
+
+            ParagrafoGateway.UpdateParag(MyParagrafo);
+
+            gvParagrafi.EditIndex = -1;
+            this.BindData();
         }
 
         
