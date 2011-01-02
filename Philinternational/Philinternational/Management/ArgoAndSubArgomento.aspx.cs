@@ -17,13 +17,13 @@ namespace Philinternational.Styles
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                this.currentID = 1;
+                this.currentID = 3;
                 BindData();
             }
         }
 
         private void BindData() {
-            gvArguments.DataSource = ParagrafoGateway.SelectArgs();
+            gvArguments.DataSource = ParagrafoGateway.SelectArgs(this.currentID);
             gvArguments.DataBind();
         }
     }

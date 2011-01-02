@@ -15,7 +15,7 @@ namespace Philinternational.Layers {
         private static String _SELECT = "SELECT idparagrafo, descrizione, stato FROM paragrafo";
         private static String _UPDATE = "UPDATE paragrafo SET descrizione = @descrizione, stato =@stato WHERE idparagrafo = @idparagrafo";
         //ARGOMENTI
-        private static String _SELECT_ARGUMENTS = "SELECT idargomento, idparagrafo, descrizione, stato WHERE idparagrafo = @idparagrafo";
+        private static String _SELECT_ARGUMENTS = "SELECT idargomento, idparagrafo, descrizione, stato FROM paragrafo_argomento WHERE idparagrafo = @idparagrafo";
 
         /// <summary>
         /// UPDATE PARAGRAFO
@@ -66,24 +66,28 @@ namespace Philinternational.Layers {
             }
         }
 
+
         /// <summary>
         /// SELECT ARGUMENTS
         /// </summary>
         /// <returns></returns>
-        internal static DataView SelectArgs() {
+        internal static DataView SelectArgs(int idparagrafo) {
             {
                 DataView dv = new DataView();
                 using (MySqlConnection conn = ConnectionGateway.ConnectDB())
                 using (MySqlCommand cmd = new MySqlCommand(_SELECT_ARGUMENTS, conn))
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                 {
                     try {
+                        cmd.Parameters.AddWithValue("idparagrafo", idparagrafo);
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+
                         conn.Open();
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
                         dv = dt.DefaultView;
 
                         return dv;
-                    } catch {
+                    } catch (Exception err) {
                         return dv;
                     }
                 }
