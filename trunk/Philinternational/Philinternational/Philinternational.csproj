@@ -70,7 +70,6 @@
     <Content Include="images\select.png" />
     <Content Include="images\selectfull.png" />
     <Content Include="Management\AnagraficaDetail.aspx" />
-    <Content Include="Management\Legenda.aspx" />
     <Content Include="Management\Lotto.aspx" />
     <Content Include="Management\Anagrafica.aspx" />
     <Content Include="Management\Argomento.aspx" />
@@ -159,13 +158,6 @@
     </Compile>
     <Compile Include="Management\AnagraficaDetail.aspx.designer.cs">
       <DependentUpon>AnagraficaDetail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Management\Legenda.aspx.cs">
-      <DependentUpon>Legenda.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Management\Legenda.aspx.designer.cs">
-      <DependentUpon>Legenda.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\Lotto.aspx.cs">
       <DependentUpon>Lotto.aspx</DependentUpon>
