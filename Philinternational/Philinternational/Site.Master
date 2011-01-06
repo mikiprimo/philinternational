@@ -3,16 +3,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
-    <title></title>
-    
+    <title>Home Page</title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="Scripts/jquery-1.4.1.min.js"></script>
+    <script language="javascript" type="text/javascript" src="Scripts/jquery.slidingGallery-1.2.min.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $('div.gallery img').slidingGallery();
+    });
+    </script>
+    <style type="text/css">
+        div.gallery img { border: solid 1px #000;}
+    </style>
 </head>
 <body>
     <form runat="server">
-    <div class="page">
-        <div class="header bannerBackground">
+    <div id="page">
+        <div id="header">
+            <div class="Logo">&nbsp;</div>
+            <div class="BannerDisplay"><a href="http://localhost:82/gilardifilatelia.actual/" title="visita il nostro negozio"><img src="images/masterPage/banner_gilardi_468_60.jpg" width="468" height="60" alt="Banner Pubblocitario"/></a></div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
@@ -22,7 +33,7 @@
                     <LoggedInTemplate>
                         Benvenuto <span class="bold">
                             <asp:Label ID="LoginName" runat="server" />
-                        </span>[
+                        </span><br />[<a href="#">Carrello</a> ]<br />[<a href="#">Profilo</a>]<br />[
                         <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
                             OnLoggingOut="HeadLoginStatus_LoggingOut" />
                         ]
@@ -30,61 +41,59 @@
                 </asp:LoginView>
             </div>
         </div>
-        <div class="clear hideSkiplink" align="right">
-            <asp:Menu ID="menuUp" runat="server" CssClass="menu" EnableViewState="False" IncludeStyleBlock="false"
-                Orientation="Horizontal" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana"
-                Font-Size="0.8em" ForeColor="#284E98" StaticSubMenuIndent="10px">
-                <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
-                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                <DynamicMenuStyle BackColor="#B5C7DE" />
-                <DynamicSelectedStyle BackColor="#507CD1" />
-                <Items>
-                    <asp:MenuItem NavigateUrl="~/Default.aspx" Text="HOME" />
-                    <asp:MenuItem Text="&nbsp;|&nbsp;" />
-                    <asp:MenuItem NavigateUrl="~/Default.aspx" Text="FRANCOBOLLI" />
-                    <asp:MenuItem Text="&nbsp;|&nbsp;" />
-                    <asp:MenuItem NavigateUrl="~/About.aspx" Text="CONTATTI" />
-                </Items>
-                <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
-                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                <StaticSelectedStyle BackColor="#507CD1" />
-            </asp:Menu>
-        </div>
         <div class="leftmenu">
-            <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" EnableViewState="false"
-                IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
-                <Items>
-                    <asp:MenuItem Text="Amministrazione" Value="Amministrazione" >
-                        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" 
-                            Value="Paragrafo"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Management/Legenda.aspx" Text="Legenda" 
-                            Value="Legenda"></asp:MenuItem>
-                    </asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
-                    <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica"/>
-                    <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
-                    <asp:MenuItem Text="Gestione Asta" Value="Gestione Asta" >
-                        <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerte" 
-                            Value="Offerte"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" 
-                            Value="Nuova Asta"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto">
-                        </asp:MenuItem>
-                    </asp:MenuItem>
-                </Items>
+            <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
+	        <Items>
+		        <asp:MenuItem Text="Amministrazione" Value="Amministrazione" >
+			        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo"></asp:MenuItem>
+		        </asp:MenuItem>
+		        <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
+		        <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica"/>
+		        <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
+		        <asp:MenuItem Text="Gestione Asta" Value="Gestione Asta" >
+			           <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerte" Value="Offerte"></asp:MenuItem>
+			           <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" Value="Nuova Asta"></asp:MenuItem>
+			           <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto"></asp:MenuItem>
+                </asp:MenuItem>
+	        </Items>
             </asp:Menu>
-            <asp:Menu ID="menuLeftAuthenticated" runat="server" CssClass="menu" EnableViewState="false"
-                IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
-                <Items>
-                    <asp:MenuItem NavigateUrl="~/Management/AnagraficaDetail.aspx?cod=1" Text="Il mio profilo" />
-                </Items>
+            <asp:Menu ID="menuLeftAuthenticated" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
+	            <Items>
+		            <asp:MenuItem NavigateUrl="~/Management/AnagraficaDetail.aspx?cod=1" Text="Il mio profilo" />
+	            </Items>
             </asp:Menu>
-            <asp:Menu ID="menuCommon" runat="server" CssClass="menu" EnableViewState="false"
-                IncludeStyleBlock="false" Orientation="Vertical">
-                <Items>
-                    <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Menu per tutti" />
-                </Items>
-            </asp:Menu>
+            <ul>
+                <li class="paragrafo">PREFILATELICHE</li>
+                <li class="argomento"><a href="elencoLotto.aspx">Prefilateliche</a></li>
+                <li class="paragrafo">ANTICHI STATI</li>
+                <li class="argomento"><a href="elencoLotto.aspx">LOMBARDO VENETO</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">MODENA</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">NAPOLI</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">PARMA</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">PONTIFICIO</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">LOMBARDO VENETO</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">ROMAGNE</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">SARDEGNA</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">SICILIA</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">TOSCANA</a></li>
+                <li class="paragrafo">ITALIA REGNO</li>
+                <li class="argomento"><a href="elencoLotto.aspx">ITALIA REGNO</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">POSTA AEREA</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">SERVIZIO</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">ESPRESSI</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">POSTA PNEUMATICA</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">PACCHI POSTALI</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">SEGNATASSE</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">SERVIZIO COMMISSIONI</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">BLP</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">PUBBLICITARI</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">ENTI PARASTATALI</a></li>
+                <li class="paragrafo">REPUBBLICA SOCIALE ITALIANA</li>
+                <li class="argomento"><a href="elencoLotto.aspx">REPUBBLICA SOCIALE ITALIANA</a></li>
+                <li class="argomento"><a href="elencoLotto.aspx">RSI - PROVE E VARIETA'</a></li>
+                <li class="paragrafo">LUOGOTENENZA</li>
+                <li class="argomento"><a href="elencoLotto.aspx">LUOGOTENENZA</a></li>
+            </ul>        
         </div>
         <div class="main">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
