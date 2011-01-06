@@ -1,79 +1,17 @@
-﻿/* DEFAULTS
-----------------------------------------------------------*/
-
-body
-{
-    background: #b6b7bc;
-    font-size: .80em;
-    font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
-    margin:0px auto;
-    padding: 0px;
-    color: #696969;
-}
-
-a:link, a:visited
-{
-    color: #034af3;
-}
-
-a:hover
-{
-    color: #1d60ff;
-    text-decoration: none;
-}
-
-a:active
-{
-    color: #034af3;
-}
-
-p
-{
-    margin-bottom: 10px;
-    line-height: 1.6em;
-}
-
+﻿/* DEFAULTS ------------------------------------*/
+html{background-color:transparent;}
+body{background-color:#FFF;width:990px;height:100%;font-family:Tahoma;font-size:12px;clear:both;color:#000000;margin:0px auto;}
+select,input{clear:both;color:#000000;border:1px solid #920000;margin:1px 0px;height:24px;line-height:24px;}
+select:focus,input:focus{background-color:#000;color:#FFF;}
+textarea{clear:both;color:#000000;border:1px solid #eaeaea;}
+select:hover,input:hover,textarea:hover{background-color:#eaeaea;border:1px solid #000;}
+textarea:focus{background-color:#eaeaea;color:#fff}
+option{height:25px;line-height:25px;color:#FFF;}
+form,p,h1,h2,h3,h4,h5,h6,ul,li{margin:0px;padding:0px;}
 
 /* HEADINGS   
 ----------------------------------------------------------*/
 
-h1, h2, h3, h4, h5, h6
-{
-    font-size: 1.5em;
-    color: #666666;
-    font-variant: small-caps;
-    text-transform: none;
-    font-weight: 200;
-    margin-bottom: 0px;
-}
-
-h1
-{
-    font-size: 1.6em;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-}
-
-h2
-{
-    font-size: 1.5em;
-    font-weight: 600;
-}
-
-h3
-{
-    font-size: 1.2em;
-}
-
-h4
-{
-    font-size: 1.1em;
-}
-
-h5, h6
-{
-    font-size: 1em;
-}
 
 /* this rule styles <h1> and <h2> tags that are the 
 first child of the left and right table columns */
@@ -86,39 +24,43 @@ first child of the left and right table columns */
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
 
-.page
+#page
 {
-    width: 960px;
-    height: 650px;
-    background-color: #fff;
-    border: 1px solid #496077;
+    width: 990px;
+    background-color:transparent;
+    border: 1px solid green;
     clear:both;
     margin:0px auto;
 }
 
-.header
-{
-    position: relative;
+#header
+{clear: both;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
     width: 100%;
 }
-
-.header h1
-{
-    font-weight: 700;
-    margin: 0px;
-    padding: 0px 0px 0px 20px;
-    color: #f9f9f9;
-    border: none;
-    line-height: 2em;
-    font-size: 2em;
+#header .Logo{float:left;width:200px;height:100px; background-image:url(../images/masterPage/logo_philtinternational.png); background-repeat:no-repeat}
+#header .BannerDisplay{float:left;height:100px;width:470px;background-color:Black;text-align:center;}
+#header .BannerDisplay img{padding:20px 1px;margin:0px}
+#header .loginDisplay
+{   width:280px;
+    background-color:Yellow;
+    float:right;
+    height:100px;
+    font-size: 1.1em;
+    text-align: right;
+    padding: 10px;
+    color: #000;
+    margin-left: 0px;
 }
+
+#header .loginDisplay a:link{color: #000;}
+#header .loginDisplay a:visited{color: #000}
+#header .loginDisplay a:hover{color: #920000;}
+
 
 .main
 {
-    background-color:#eaeaea;
     float: left;
     width:75%;
 }
@@ -149,7 +91,6 @@ first child of the left and right table columns */
 {
     float: left;
     width: 25%;
-    background-color:#000066;
     padding:0px 0px 20px 0px;
 }
 
@@ -164,7 +105,7 @@ div.hideSkiplink
 
 div.menu
 {
-    padding: 4p4p 0px 4px 8px;
+    padding: 4px 0px 4px 8px;
 }
 
 div.menu ul
@@ -177,7 +118,6 @@ div.menu ul
 
 div.menu ul li a, div.menu ul li a:visited
 {
-    background-color: #465c71;
     border: 1px #4e667d solid;
     color: #dde4ec;
     display: block;
@@ -266,36 +206,6 @@ div.accountInfo
     width: auto;
 }
 
-.bannerBackground
-{
-    background-image: url("../images/masterPage/PhilinternationalBanner.png");
-    background-repeat: no-repeat;
-    background-position: top left;
-}
-
-.loginDisplay
-{
-    font-size: 1.1em;
-    display: block;
-    text-align: right;
-    padding: 10px;
-    color: White;
-}
-
-.loginDisplay a:link
-{
-    color: white;
-}
-
-.loginDisplay a:visited
-{
-    color: white;
-}
-
-.loginDisplay a:hover
-{
-    color: white;
-}
 
 .failureNotification
 {
@@ -323,3 +233,29 @@ table tr th{font-weight:bold;line-height:26px;background-color:Fuchsia}
 table tr td{line-height:20px}
 table tr{background-color:#FFF;color:#F00}
 table tr.alternate{background-color:#F00;color:#FFF;}
+
+.bloccoLotto
+{
+    float:left;
+    width:32%;
+    height:300px;
+    border:1px solid #eaeaea;
+    margin:1px
+}
+.bloccoLotto h4{text-transform:uppercase;padding:2px;color:#000066;height:20px;line-height:20px;text-align:center}
+.bloccoLotto img{padding:5px 66px}
+.bloccoLotto p
+{   
+    padding:3px;
+    margin:1px 0px;
+ }
+ .bloccoLotto span{font-weight:bold;color:#00aa00}
+.lottoOfferta{text-align:center;font-weight:bold;}
+.lottoOfferta a{display:block;height:20px;text-decoration:none;padding:3px}
+.lottoOfferta a:focus{color:#FF0000}
+.lottoOfferta a:hover{color:#920000}
+
+ul{list-style:none}
+ul li.paragrafo{font-weight:bold;height:25px;color:#f00;line-height:25px;}
+ul li.argomento{height:20px;color:#000;line-height:20px;}
+ul li.argomento a{display:block;color:Gray;text-decoration:none;}

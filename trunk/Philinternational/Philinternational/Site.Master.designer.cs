@@ -31,15 +31,6 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
         
         /// <summary>
-        /// menuUp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu menuUp;
-        
-        /// <summary>
         /// menuLeftAdministration control.
         /// </summary>
         /// <remarks>
@@ -56,15 +47,6 @@ namespace Philinternational {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Menu menuLeftAuthenticated;
-        
-        /// <summary>
-        /// menuCommon control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu menuCommon;
         
         /// <summary>
         /// MainContent control.
