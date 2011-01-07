@@ -15,23 +15,28 @@
             <td>
                 <asp:GridView ID="gvArguments" runat="server" AutoGenerateColumns="False" DataKeyNames="idargomento"
                     EmptyDataText="Nessun argomento associato al paragrafo" EnableModelValidation="True"
-                    GridLines="None">
+                    GridLines="None" onrowediting="gvArguments_RowEditing" 
+                    onrowupdating="gvArguments_RowUpdating" 
+                    onselectedindexchanging="gvArguments_SelectedIndexChanging">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ShowHeader="False">
-                            <ItemTemplate><asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False"
-                                CommandName="Select" Height="16px" ImageUrl="~/images/select.png" />
+                            <ItemTemplate>
+                                <asp:ImageButton ID="ibtnSelect" runat="server" CausesValidation="False"
+                                CommandName="Select" Height="16px" ImageUrl="~/images/select.png" 
+                                    ToolTip="Seleziona questo argomento"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ShowHeader="False">
-                            <ItemTemplate><asp:ImageButton ID="ibtnEdit" runat="server" CausesValidation="False"
-                                CommandName="Edit" Height="16px" ImageUrl="~/images/selectfull.png" />
+                            <ItemTemplate>
+                                <asp:ImageButton ID="ibtnEdit" runat="server" CausesValidation="False"
+                                CommandName="Edit" Height="16px" ImageUrl="~/images/selectfull.png" ToolTip="Modifica questo argomento" />
                             </ItemTemplate>
                             <EditItemTemplate><asp:ImageButton ID="ibtnUpdate" runat="server" CausesValidation="False"
-                                CommandName="Update" Height="16px" ImageUrl="~/images/accept.png" />
+                                CommandName="Update" Height="16px" ImageUrl="~/images/accept.png" ToolTip="Aggiorna con le modifiche apportate" />
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>

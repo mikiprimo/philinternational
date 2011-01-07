@@ -42,5 +42,10 @@ namespace Philinternational.Styles {
         protected void gvParagrafi_PageIndexChanged(object sender, EventArgs e) {
             this.BindData();
         }
+
+        protected void gvParagrafi_PageIndexChanging(object sender, GridViewPageEventArgs e) {
+            this.gvParagrafi.PageIndex = e.NewPageIndex;
+            this.BindData();
+        }
     }
 }
