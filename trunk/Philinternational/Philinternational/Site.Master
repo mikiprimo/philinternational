@@ -6,17 +6,14 @@
     <title>Home Page</title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript" src="Scripts/jquery-1.4.1.min.js"></script>
-    <script language="javascript" type="text/javascript" src="Scripts/jquery.slidingGallery-1.2.min.js"></script>
+    <script language="javascript" type="text/javascript" src="Scripts/jquery-ui-1.8.7.custom.min.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
-<script language="javascript" type="text/javascript">
-    $(function () {
-        $('div.gallery img').slidingGallery();
-    });
-    </script>
-    <style type="text/css">
-        div.gallery img { border: solid 1px #000;}
-    </style>
+	<script type="text/javascript" language="javascript">
+	    $(function () {
+	        $("#accordion").accordion();
+	    });
+	</script> 
 </head>
 <body>
     <form runat="server">
@@ -42,19 +39,25 @@
             </div>
         </div>
         <div class="leftmenu">
-            <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
+            <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" 
+                EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical" 
+                Visible="false" Width="244px">
 	        <Items>
 		        <asp:MenuItem Text="Amministrazione" Value="Amministrazione" >
-			        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo"></asp:MenuItem>
 		        </asp:MenuItem>
+		        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" 
+                    Value="Paragrafo"></asp:MenuItem>
 		        <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
 		        <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica"/>
 		        <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
 		        <asp:MenuItem Text="Gestione Asta" Value="Gestione Asta" >
-			           <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerte" Value="Offerte"></asp:MenuItem>
-			           <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" Value="Nuova Asta"></asp:MenuItem>
-			           <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto"></asp:MenuItem>
                 </asp:MenuItem>
+	            <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto">
+                </asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" 
+                    Value="Nuova Asta"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerte" 
+                    Value="Offerte"></asp:MenuItem>
 	        </Items>
             </asp:Menu>
             <asp:Menu ID="menuLeftAuthenticated" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
@@ -62,10 +65,17 @@
 		            <asp:MenuItem NavigateUrl="~/Management/AnagraficaDetail.aspx?cod=1" Text="Il mio profilo" />
 	            </Items>
             </asp:Menu>
+            <div id="accordion">
+            <h3><a href="#">PREFILATELICHE</a></h3> 
+            <div>
             <ul>
-                <li class="paragrafo">PREFILATELICHE</li>
                 <li class="argomento"><a href="elencoLotto.aspx">Prefilateliche</a></li>
-                <li class="paragrafo">ANTICHI STATI</li>
+            </ul>
+            </div>
+            <h3><a href="#">ANTICHI STATI</a></h3> 
+            <div>
+            <ul>
+                <li class="paragrafo"><a href="#"></a></li>
                 <li class="argomento"><a href="elencoLotto.aspx">LOMBARDO VENETO</a></li>
                 <li class="argomento"><a href="elencoLotto.aspx">MODENA</a></li>
                 <li class="argomento"><a href="elencoLotto.aspx">NAPOLI</a></li>
@@ -76,24 +86,32 @@
                 <li class="argomento"><a href="elencoLotto.aspx">SARDEGNA</a></li>
                 <li class="argomento"><a href="elencoLotto.aspx">SICILIA</a></li>
                 <li class="argomento"><a href="elencoLotto.aspx">TOSCANA</a></li>
-                <li class="paragrafo">ITALIA REGNO</li>
-                <li class="argomento"><a href="elencoLotto.aspx">ITALIA REGNO</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">POSTA AEREA</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">SERVIZIO</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">ESPRESSI</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">POSTA PNEUMATICA</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">PACCHI POSTALI</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">SEGNATASSE</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">SERVIZIO COMMISSIONI</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">BLP</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">PUBBLICITARI</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">ENTI PARASTATALI</a></li>
-                <li class="paragrafo">REPUBBLICA SOCIALE ITALIANA</li>
-                <li class="argomento"><a href="elencoLotto.aspx">REPUBBLICA SOCIALE ITALIANA</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">RSI - PROVE E VARIETA'</a></li>
-                <li class="paragrafo">LUOGOTENENZA</li>
-                <li class="argomento"><a href="elencoLotto.aspx">LUOGOTENENZA</a></li>
-            </ul>        
+            </ul>
+            </div>
+            <h3><a href="#">ITALIA REGNO</a></h3> 
+            <div>
+                <ul>
+                    <li class="argomento"><a href="elencoLotto.aspx">ITALIA REGNO</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">POSTA AEREA</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">SERVIZIO</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">ESPRESSI</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">POSTA PNEUMATICA</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">PACCHI POSTALI</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">SEGNATASSE</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">SERVIZIO COMMISSIONI</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">BLP</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">PUBBLICITARI</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">ENTI PARASTATALI</a></li>
+                </ul>
+            </div>
+            <h3><a href="#">REPUBBLICA SOCIALE ITALIANA</a></h3> 
+            <div>
+                <ul>
+                    <li class="argomento"><a href="elencoLotto.aspx">REPUBBLICA SOCIALE ITALIANA</a></li>
+                    <li class="argomento"><a href="elencoLotto.aspx">RSI - PROVE E VARIETA'</a></li>
+                </ul>
+            </div>
+            </div>
         </div>
         <div class="main">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
