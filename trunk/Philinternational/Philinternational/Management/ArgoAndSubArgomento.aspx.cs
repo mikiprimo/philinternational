@@ -17,7 +17,7 @@ namespace Philinternational.Styles
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                this.currentID = 3;
+                this.currentID = Convert.ToInt32(Request.QueryString["Query"]);
                 BindData();
             }
         }
@@ -25,6 +25,32 @@ namespace Philinternational.Styles
         private void BindData() {
             gvArguments.DataSource = ParagrafoGateway.SelectArgs(this.currentID);
             gvArguments.DataBind();
+        }
+
+        protected void gvArguments_RowEditing(object sender, GridViewEditEventArgs e) {
+            gvArguments.EditIndex = e.NewEditIndex;
+            this.BindData();
+        }
+
+        protected void gvArguments_RowUpdating(object sender, GridViewUpdateEventArgs e) {
+            GridViewRow row = gvArguments.Rows[e.RowIndex];
+            var newValues = Commons.GetValuesGridViewRow(row);
+
+            ParagArgomentoEntity MyArgument = new ParagArgomentoEntity();
+            MyArgument.id = Convert.ToInt32(gvArguments.DataKeys[e.RowIndex]["idargomento"]);
+            MyArgument.idparagrafo = Convert.ToInt32(gvArguments.DataKeys[e.RowIndex]["idparagrafo"]);
+            MyArgument.descrizione = (String)newValues["descrizione"];
+            MyArgument.state = new Stato(((CheckBox)gvArguments.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1 : 0, "");
+
+            ParagrafoGateway.UpdateParagArgomento(MyArgument);
+            gvArguments.EditIndex = -1;
+            this.BindData();
+        }
+
+        protected void gvArguments_SelectedIndexChanging(object sender, GridViewSelectEventArgs e) {
+            int selectedArgumentID = Convert.ToInt32(gvArguments.DataKeys[e.NewSelectedIndex]["idargomento"]);
+            gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgs(selectedArgumentID);
+            gvSubArguments.DataBind();
         }
     }
 }
