@@ -147,6 +147,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Layers\Entities\legendaStato.Entity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Layers\Entities\logInfos.Entity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Layers\Entities\news.Entity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Layers\Entities\paragArgomento.Entity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Layers\Entities\paragrafo.Entity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Layers\Entities\paragSubArgomento.Entity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Layers\ParagrafoGateway.cs" />
     <Compile Include="Layers\NewsGateway.cs" />
     <Compile Include="Management\AnagraficaDetail.aspx.cs">
