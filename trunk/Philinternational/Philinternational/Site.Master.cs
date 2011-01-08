@@ -76,7 +76,7 @@ namespace Philinternational
                             if (drArg != null)
                             {
                                 if (drArg.HasRows) {
-                                    a += "<h3><a href=\"#\">" + (String)dr["descrizione"] + "</a></h3>\n";
+                                    a += "<h3 class=\"paragrafo\"><a href=\"#\">" + (String)dr["descrizione"] + "</a></h3>\n";
                                     String rowArg = "";
                                     b = "<div><ul>\n";
                                     while (drArg.Read())
