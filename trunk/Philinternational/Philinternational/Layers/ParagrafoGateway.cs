@@ -21,6 +21,7 @@ namespace Philinternational.Layers {
         private static String _SELECT_SUBARGUMENTS = "SELECT idsub_argomento, idargomento, descrizione, stato FROM paragrafo_subargomento WHERE idargomento = @idargomento";
         private static String _UPDATE_SUBARGUMENT = "UPDATE paragrafo_subargomento SET descrizione = @descrizione, stato = @stato WHERE idsub_argomento = @idsub_argomento";
 
+        //----------PARAGRAFI-------------//
 
         /// <summary>
         /// UPDATE PARAGRAFO
@@ -203,7 +204,7 @@ namespace Philinternational.Layers {
         }
 
         /// <summary>
-        /// ARGUMENTS AND SUB ARGUMENTS (DELETE Arguments and all dependencies (subArgs and Lotto states)
+        /// ARGUMENTS AND SUB ARGUMENTS : DELETE Arguments and all dependencies (subArgs and Lotto states)
         /// </summary>
         /// <param name="ArgsIdToBeErased"></param>
         /// <returns></returns>
