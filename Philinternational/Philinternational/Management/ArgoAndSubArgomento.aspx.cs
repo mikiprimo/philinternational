@@ -91,7 +91,19 @@ namespace Philinternational.Styles {
                     if (chk.Checked) list.Add((int)gvSubArguments.DataKeys[row.RowIndex]["idsub_argomento"]);
                 }
             }
-             if(list.Count > 0) ParagrafoGateway.DeleteArgument(list);
+             if(list.Count > 0) ParagrafoGateway.DeleteSubArguments(list);
+        }
+
+        protected void ibtnDeleteSelectedArgs_Click(object sender, ImageClickEventArgs e) {
+            List<Int32> list = new List<Int32>();
+
+            foreach (GridViewRow row in gvArguments.Rows) {
+                if (row.RowType == DataControlRowType.DataRow) {
+                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
+                    if (chk.Checked) list.Add((int)gvArguments.DataKeys[row.RowIndex]["idargomento"]);
+                }
+            }
+            if (list.Count > 0) ParagrafoGateway.DeleteArguments(list);
         }
     }
 }

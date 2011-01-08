@@ -17,10 +17,12 @@ namespace Philinternational.Layers {
         //ARGOMENTI
         private static String _SELECT_ARGUMENTS = "SELECT idargomento, idparagrafo, descrizione, stato FROM paragrafo_argomento WHERE idparagrafo = @idparagrafo";
         private static String _UPDATE_ARGUMENTS = "UPDATE paragrafo_argomento SET descrizione = @descrizione, stato = @stato WHERE idargomento = @idargomento";
+        private static String _DELETE_ARGUMENTS = "DELETE FROM paragrafo_argomento WHERE @ComposedConditions";
         //SUB ARGOMENTI
         private static String _SELECT_SUBARGUMENTS = "SELECT idsub_argomento, idargomento, descrizione, stato FROM paragrafo_subargomento WHERE idargomento = @idargomento";
         private static String _UPDATE_SUBARGUMENT = "UPDATE paragrafo_subargomento SET descrizione = @descrizione, stato = @stato WHERE idsub_argomento = @idsub_argomento";
         private static String _DELETE_SUBARGUMENTS = "DELETE FROM paragrafo_subargomento WHERE @ComposedConditions";
+
 
 
         /// <summary>
@@ -179,17 +181,40 @@ namespace Philinternational.Layers {
         /// DELETE SUB ARGUMENT
         /// </summary>
         /// <param name="p"></param>
-        internal static Boolean DeleteArgument(List<Int32> SubArgsIdToBeErased) {
+        internal static Boolean DeleteSubArguments(List<Int32> SubArgsIdToBeErased) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             StringBuilder sb = new StringBuilder();
             foreach (int item in SubArgsIdToBeErased) {
-                sb.Append("idnews = " + item.ToString() + " OR ");
+                sb.Append("idsub_argomento = " + item.ToString() + " OR ");
             }
             sb.Append("1=0");
 
             _DELETE_SUBARGUMENTS = _DELETE_SUBARGUMENTS.Replace("@ComposedConditions", sb.ToString());
             MySqlCommand command = new MySqlCommand(_DELETE_SUBARGUMENTS, conn);
+            command.CommandType = CommandType.Text;
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySql.Data.MySqlClient.MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
+
+        internal static Boolean DeleteArguments(List<Int32> ArgsIdToBeErased) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            StringBuilder sb = new StringBuilder();
+            foreach (int item in ArgsIdToBeErased) {
+                sb.Append("idargomento = " + item.ToString() + " OR ");
+            }
+            sb.Append("1=0");
+
+            _DELETE_ARGUMENTS = _DELETE_ARGUMENTS.Replace("@ComposedConditions", sb.ToString());
+            MySqlCommand command = new MySqlCommand(_DELETE_ARGUMENTS, conn);
             command.CommandType = CommandType.Text;
             try {
                 conn.Open();

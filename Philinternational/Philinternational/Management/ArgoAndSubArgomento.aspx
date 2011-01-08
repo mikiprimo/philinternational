@@ -100,7 +100,7 @@
         <tr>
             <td class="style1">
                 <asp:ImageButton ID="ibtnDeleteSelectedArgs" runat="server" AlternateText="Cancella selezionati"
-                    ToolTip="Argomenti selezionati" /><br />
+                    ToolTip="Argomenti selezionati" onclick="ibtnDeleteSelectedArgs_Click" /><br />
                 <asp:ImageButton ID="ibtnCreateNewArgument" runat="server" AlternateText="Crea un nuovo argomento" />
             </td>
             <td>
