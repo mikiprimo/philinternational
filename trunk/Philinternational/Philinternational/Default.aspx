@@ -12,7 +12,24 @@
     <hr style="background:#000;height:2px"/>
     <div style="width:100%;clear:both">
         <div style="float:left;width:32%; height:150px;text-align:center;font-size:2.5em;"><a href="#" style="display:block;padding:20px 0px">Login</a></div>
-        <div style="float:left;width:32%;height:150px;">Scorrimento news</div>
+        <div style="float:left;width:32%;height:150px;" id="News">
+            <ul>            
+                <li style="background-color:Green;height:150px;z-index:1000;">
+                    <h3>Titolo News</h3>
+                    <p style="padding:5px;">testo news</p>
+                </li>
+            <li style="background-color:violet;height:150px;z-index:1001;">
+                <h3>Titolo News</h3>
+                <p style="padding:5px;">testo news</p>
+            </li>
+            <li style="background-color:yellow;height:150px;z-index:1002;">
+                <h3>Titolo News</h3>
+                <p style="padding:5px;">testo news</p>
+            </li>
+
+            </ul>
+
+        </div>
         <div style="float:right;width:32%;height:150px;text-align:center;font-size:2.5em"><a href="#" style="display:block;padding:20px 0px">Registrati</a></div>
         
     </div>
