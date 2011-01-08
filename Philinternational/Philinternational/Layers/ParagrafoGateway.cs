@@ -27,7 +27,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="MyParagrafo"></param>
         /// <returns></returns>
-        internal static Boolean UpdateParag(ParagrafoEntity MyParagrafo) {
+        internal static Boolean UpdateParag(paragrafoEntity MyParagrafo) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_UPDATE, conn);
@@ -102,7 +102,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="MyArgument"></param>
         /// <returns></returns>
-        internal static Boolean UpdateParagArgomento(ParagArgomentoEntity MyArgument) {
+        internal static Boolean UpdateParagArgomento(paragArgomentoEntity MyArgument) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_UPDATE_ARGUMENTS, conn);

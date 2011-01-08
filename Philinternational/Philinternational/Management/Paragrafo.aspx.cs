@@ -28,7 +28,7 @@ namespace Philinternational.Styles {
             GridViewRow row = gvParagrafi.Rows[e.RowIndex];
             var newValues = Commons.GetValuesGridViewRow(row);
 
-            ParagrafoEntity MyParagrafo = new ParagrafoEntity();
+            paragrafoEntity MyParagrafo = new paragrafoEntity();
             MyParagrafo.descrizione = (String)newValues["descrizione"];
             MyParagrafo.idparagrafo = Convert.ToInt32(gvParagrafi.DataKeys[e.RowIndex]["idparagrafo"]);
             MyParagrafo.state = new Stato(((CheckBox)gvParagrafi.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1:0, "");

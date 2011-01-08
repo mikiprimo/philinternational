@@ -37,7 +37,7 @@ namespace Philinternational.Styles
             GridViewRow row = gvArguments.Rows[e.RowIndex];
             var newValues = Commons.GetValuesGridViewRow(row);
 
-            ParagArgomentoEntity MyArgument = new ParagArgomentoEntity();
+            paragArgomentoEntity MyArgument = new paragArgomentoEntity();
             MyArgument.id = Convert.ToInt32(gvArguments.DataKeys[e.RowIndex]["idargomento"]);
             MyArgument.idparagrafo = Convert.ToInt32(gvArguments.DataKeys[e.RowIndex]["idparagrafo"]);
             MyArgument.descrizione = (String)newValues["descrizione"];
