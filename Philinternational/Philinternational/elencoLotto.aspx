@@ -18,7 +18,7 @@
 </div>
 <div class="bloccoLotto">
     <h4>2</h4>
-    <a href="#" onclick="zoom_immagine('2')" id="opener2"><img src="images/asta/2.jpg" width="100" height="100" alt="Lotto 1..."  /> </a>
+    <a href="images/asta/2.jpg" rel="shadowbox;handleOversize:resize" title="Lotto 2"><img src="images/asta/2.jpg" width="100" height="100" alt="Lotto 1..."  /> </a>
     <p>Anno:<span>1915/16</span></p>
     <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
     <p>Condizione: <span>buono</span></p>
@@ -55,7 +55,7 @@
 </div>
 <div class="bloccoLotto">
     <h4>6</h4>
-    <img src="images/asta/6.jpg" width="100" height="100" alt="Lotto 1..."/> 
+    <a href="images/asta/6.jpg" rel="shadowbox;height=333;width=590" title="Lotto 6"><img src="images/asta/6.jpg" width="100" height="100" alt="Lotto 1..."/> </a>
     <p>Anno:<span>1915/16</span></p>
     <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
     <p>Condizione: <span>buono</span></p>
@@ -73,7 +73,7 @@
 </div>
 <div class="bloccoLotto">
     <h4>8</h4>
-    <img src="images/asta/8.jpg" width="100" height="100" alt="Lotto 1..."/> 
+    <a href="images/asta/8.jpg" rel="shadowbox;handleOversize:resize" title="Lotto 8"><img src="images/asta/8.jpg" width="100" height="100" alt="Lotto 1..."/></a>
     <p>Anno:<span>1915/16</span></p>
     <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
     <p>Condizione: <span>buono</span></p>
