@@ -31,7 +31,7 @@ namespace Philinternational.Layers {
                 conn.Open();
                 command.ExecuteNonQuery();
             } catch (MySqlException) {
-                return false;
+                return false; //TODO: sbattere nella scartati quelli che non é riuscita a piazzare nella tmp
             } finally {
                 conn.Close();
             }

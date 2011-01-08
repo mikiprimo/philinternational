@@ -9,8 +9,6 @@ namespace Philinternational.Layers
     {
         internal static bool Authenticate(string eMail, string password)
         {
-            //Se trova l'utente nel db fa questo:
-
             logInfos userInfos = AccountGateway.GetUserInfos(eMail, password);
             return userInfos.IsAuthenticated;
         }
@@ -22,7 +20,6 @@ namespace Philinternational.Layers
 
         internal static bool IsAdministrator()
         {
-            //TODO: Impl. Verifica se l'utente registrato é un amministratore
             if (HttpContext.Current.Session["log"] != null)
             {
                 logInfos logInfos = (logInfos)HttpContext.Current.Session["log"];
