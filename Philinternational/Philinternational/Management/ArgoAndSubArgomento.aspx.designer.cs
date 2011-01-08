@@ -38,5 +38,41 @@ namespace Philinternational.Styles {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvSubArguments;
+        
+        /// <summary>
+        /// ibtnDeleteSelectedArgs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnDeleteSelectedArgs;
+        
+        /// <summary>
+        /// ibtnCreateNewArgument control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnCreateNewArgument;
+        
+        /// <summary>
+        /// ibtnDeleteSelectedSubArguments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnDeleteSelectedSubArguments;
+        
+        /// <summary>
+        /// ibtnCreateNewSubArgument control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnCreateNewSubArgument;
     }
 }

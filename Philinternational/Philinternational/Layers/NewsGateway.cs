@@ -21,18 +21,18 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="codice"></param>
         /// <returns></returns>
-        internal static NewsEntity GetNewsById(string codice) {
+        internal static newsEntity GetNewsById(string codice) {
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_SELECT, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("codice", codice);
-            NewsEntity myOnlyNews;
+            newsEntity myOnlyNews;
             try {
                 conn.Open();
                 dr = command.ExecuteReader();
-                myOnlyNews = new NewsEntity();
+                myOnlyNews = new newsEntity();
                 if (dr != null) {
                     while (dr.Read()) {
                         DateTime.TryParse(dr["data_pubblicazione"].ToString(), out myOnlyNews.dataPubblicazione);
@@ -54,7 +54,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="MyNews"></param>
         /// <returns></returns>
-        internal static Boolean InsertNews(NewsEntity MyNews) {
+        internal static Boolean InsertNews(newsEntity MyNews) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_INSERT, conn);
@@ -79,7 +79,7 @@ namespace Philinternational.Layers {
         /// NEWS (UPDATE)
         /// </summary>
         /// <param name="MyNews"></param>
-        internal static Boolean UpdateNews(NewsEntity MyNews) {
+        internal static Boolean UpdateNews(newsEntity MyNews) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_UPDATE, conn);
