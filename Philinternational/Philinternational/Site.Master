@@ -17,7 +17,7 @@
 	    });
 
 	    $(function () {
-	        $("#accordion").accordion();
+	        $("#accordion").accordion({autoHeight: true,navigation: true});
 	    });
 	</script> 
 </head>
@@ -71,7 +71,6 @@
 	            </Items>
             </asp:Menu>
             <div id="srvAccordion" runat="server"></div>
-           <asp:HyperLink runat="server" NavigateUrl="~/elencoLotto.aspx" />
         </div>
         <div class="main">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />

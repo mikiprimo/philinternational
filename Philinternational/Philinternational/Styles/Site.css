@@ -26,7 +26,6 @@ first child of the left and right table columns */
 {
     width: 990px;
     background-color:transparent;
-    border: 1px solid green;
     clear:both;
     margin:0px auto;
 }
@@ -81,7 +80,6 @@ first child of the left and right table columns */
     margin: 0px auto;
     text-align:center;
     font-size: 18px;
-    border:1px solid black;
     width: 100%;
 }
 
@@ -113,7 +111,7 @@ div.menu ul
     padding: 0px;
     width: auto;
 }
-
+/*
 div.menu ul li a, div.menu ul li a:visited
 {
     border: 1px #4e667d solid;
@@ -138,7 +136,7 @@ div.menu ul li a:active
     color: #cfdbe6;
     text-decoration: none;
 }
-
+*/
 /* FORM ELEMENTS   
 ----------------------------------------------------------*/
 
@@ -255,10 +253,18 @@ table tr.alternate{background-color:#F00;color:#FFF;}
 .lottoOfferta a:hover{color:#920000}
 .offerta_fatta{height:20px;color:#fff;background-color:gray}
 ul{list-style:none}
-ul li.paragrafo{font-weight:bold;height:25px;color:#f00;line-height:25px;}
-ul li.argomento{height:20px;color:#000;line-height:20px;}
-ul li.argomento a{display:block;color:Gray;text-decoration:none;}
+#accordion div:hover{background-color:transparent}
+
+h3.paragrafo a{display:block;font-weight:bold;height:25px;color:#000;text-decoration:none;font-size:12px;margin:2px 0px;}
+h3.paragrafo a:focus,.paragrafo a:active{color:#920000;}
+h3.paragrafo a:hover{border:none;}
+ul li.argomento a{display:block;color:#000;text-decoration:none;height:20px;line-height:20px;margin:1px 0px;}
+ul li.argomento a:hover{text-decoration:underline;}
+ul li.subargomento a{display:block;text-decoration:none;height:20px;line-height:20px;margin:1px 0px;color:#060}
+ul li.subargomento a:hover{text-decoration:underline;}
+
 /* jquery */
+/*
 .ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
 
 .ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
@@ -273,7 +279,8 @@ ul li.argomento a{display:block;color:Gray;text-decoration:none;}
 .ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
 .ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
 .ui-draggable .ui-dialog-titlebar { cursor: move; }
-
+*/
+/*
 .ui-corner-tl { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; }
 .ui-corner-tr { -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; }
 .ui-corner-bl { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
@@ -283,7 +290,8 @@ ul li.argomento a{display:block;color:Gray;text-decoration:none;}
 .ui-corner-right {  -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
 .ui-corner-left { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
 .ui-corner-all { -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
-
+*/
+/*
 .ui-accordion { width: 100%; }
 .ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
 .ui-accordion .ui-accordion-li-fix { display: inline; }
@@ -292,8 +300,8 @@ ul li.argomento a{display:block;color:Gray;text-decoration:none;}
 .ui-accordion-icons .ui-accordion-header a { padding-left: 2.2em; }
 .ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
 .ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; zoom: 1; }
-.ui-accordion .ui-accordion-content-active { display: block; }/*
-
+.ui-accordion .ui-accordion-content-active { display: block; }
+*/
 
 /*shadowbox */
 #sb-title-inner,#sb-info-inner,#sb-loading-inner,div.sb-message{font-family:"HelveticaNeue-Light","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:200;color:#fff;}
