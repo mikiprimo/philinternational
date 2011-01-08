@@ -15,7 +15,6 @@ namespace Philinternational.Layers {
         private static String _INSERT = "INSERT INTO NEWS (idnews, data_pubblicazione, titolo, testo, stato) VALUES (@idNews, @data_pubblicazione, @titolo, @testo, @valueStato)";
         private static String _UPDATE = "UPDATE NEWS SET titolo = @titolo, testo = @testo, stato = @stato WHERE idnews = @idNews";
         private static String _UPDATE_NEWSSTATE = "UPDATE NEWS SET stato = @stato WHERE idnews = @idNews";
-        private static String _DELETE_IDNEWSLIST = "DELETE FROM NEWS WHERE @ComposedConditions";
 
         /// <summary>
         /// NEWS (Get News By ID)
@@ -51,7 +50,7 @@ namespace Philinternational.Layers {
         }
 
         /// <summary>
-        /// NEWS (Insert)
+        ///INSERT NEWS
         /// </summary>
         /// <param name="MyNews"></param>
         /// <returns></returns>
@@ -77,7 +76,7 @@ namespace Philinternational.Layers {
         }
 
         /// <summary>
-        /// NEWS (UPDATE)
+        /// UPDATE NEWS
         /// </summary>
         /// <param name="MyNews"></param>
         internal static Boolean UpdateNews(newsEntity MyNews) {
@@ -130,15 +129,17 @@ namespace Philinternational.Layers {
         /// <param name="NewsIdToBeErased"></param>
         /// <returns></returns>
         internal static Boolean DeleteNewsByIdList(List<String> NewsIdToBeErased) {
+            String _DELETE_IDNEWSLIST = "DELETE FROM NEWS WHERE @ComposedConditions";
+
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             StringBuilder sb = new StringBuilder();
             foreach (String item in NewsIdToBeErased) {
-                sb.Append( "idnews = " + item + " OR ");
+                sb.Append("idnews = " + item + " OR ");
             }
             sb.Append("1=0");
 
-            _DELETE_IDNEWSLIST = _DELETE_IDNEWSLIST.Replace("@ComposedConditions",sb.ToString());
+            _DELETE_IDNEWSLIST = _DELETE_IDNEWSLIST.Replace("@ComposedConditions", sb.ToString());
             MySqlCommand command = new MySqlCommand(_DELETE_IDNEWSLIST, conn);
             command.CommandType = CommandType.Text;
             try {

@@ -91,7 +91,8 @@ namespace Philinternational.Styles {
                     if (chk.Checked) list.Add((int)gvSubArguments.DataKeys[row.RowIndex]["idsub_argomento"]);
                 }
             }
-             if(list.Count > 0) ParagrafoGateway.DeleteSubArguments(list);
+            if (list.Count > 0) ParagrafoGateway.DeleteSubArguments(list);
+            this.BindData();
         }
 
         protected void ibtnDeleteSelectedArgs_Click(object sender, ImageClickEventArgs e) {
@@ -104,6 +105,7 @@ namespace Philinternational.Styles {
                 }
             }
             if (list.Count > 0) ParagrafoGateway.DeleteArguments(list);
+            this.BindData();
         }
     }
 }
