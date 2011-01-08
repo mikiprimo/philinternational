@@ -265,6 +265,11 @@ namespace Philinternational.Layers {
             return true;
         }
 
+        /// <summary>
+        /// INSERT SUB ARGUMENT
+        /// </summary>
+        /// <param name="MySubArgument"></param>
+        /// <returns></returns>
         internal static bool InsertSubArgomento(paragSubArgomentoEntity MySubArgument) {
             //TODO: Da testare (inserimento sub argomento)
             MySqlConnection conn = ConnectionGateway.ConnectDB();
