@@ -107,5 +107,9 @@ namespace Philinternational.Styles {
             if (list.Count > 0) ParagrafoGateway.DeleteArguments(list);
             this.BindData();
         }
+
+        protected void ibtnCreateNewArgument_Click(object sender, ImageClickEventArgs e) {
+
+        }
     }
 }
