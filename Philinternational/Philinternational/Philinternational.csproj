@@ -186,7 +186,7 @@
     <Compile Include="Layers\Entities\logInfos.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Layers\Entities\LottiGateway.cs" />
+    <Compile Include="Layers\LottiGateway.cs" />
     <Compile Include="Layers\Entities\news.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
