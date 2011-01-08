@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 
 namespace Philinternational {
-    public class ParagArgomentoEntity {
+    public class paragArgomentoEntity {
         public int id;
         public int idparagrafo;
         public String descrizione;
