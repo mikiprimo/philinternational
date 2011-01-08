@@ -147,7 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Layers\Entities\News.Entity.cs">
+    <Compile Include="Layers\Entities\news.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Layers\Entities\paragArgomento.Entity.cs">
