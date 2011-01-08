@@ -51,6 +51,21 @@ namespace Philinternational.Layers
                 values[de.Key.ToString()] = de.Value;
             }
             return values;
-        } 
+        }
+
+        public static String EpuratePriceForDBFloat(String prezzo) {
+            String nuovoPrezzo = "";
+
+            CharEnumerator charEnum = prezzo.GetEnumerator();
+            Int32 counter = 0;
+            Int32 convertedPw;
+            while (charEnum.MoveNext()) {
+                convertedPw = Convert.ToInt32(prezzo[counter]);
+                if (convertedPw < 126) nuovoPrezzo = nuovoPrezzo + prezzo[counter];
+                counter++;
+            }
+            nuovoPrezzo = nuovoPrezzo.Replace(",", "").Trim();
+            return nuovoPrezzo;
+        }
     }
 }
