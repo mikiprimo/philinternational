@@ -70,52 +70,8 @@
 		            <asp:MenuItem NavigateUrl="~/Management/AnagraficaDetail.aspx?cod=1" Text="Il mio profilo" />
 	            </Items>
             </asp:Menu>
-            <div id="accordion">
-            <h3><a href="#">PREFILATELICHE</a></h3> 
-            <div>
-            <ul>
-                <li class="argomento"><a href="elencoLotto.aspx">Prefilateliche</a></li>
-            </ul>
-            </div>
-            <h3><a href="#">ANTICHI STATI</a></h3> 
-            <div>
-            <ul>
-                <li class="argomento"><asp:DynamicHyperLink NavigateUrl="~/elencoLotto.aspx" runat="server" Text="LOMBARDO VENETO"/></li>
-                <li class="argomento"><asp:DynamicHyperLink NavigateUrl="~/elencoLotto.aspx"  runat="server" Text="Modena" /></li>
-                <li class="argomento"><a href="elencoLotto.aspx">NAPOLI</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">PARMA</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">PONTIFICIO</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">LOMBARDO VENETO</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">ROMAGNE</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">SARDEGNA</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">SICILIA</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">TOSCANA</a></li>
-            </ul>
-            </div>
-            <h3><a href="#">ITALIA REGNO</a></h3> 
-            <div>
-                <ul>
-                    <li class="argomento"><a href="elencoLotto.aspx">ITALIA REGNO</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">POSTA AEREA</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">SERVIZIO</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">ESPRESSI</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">POSTA PNEUMATICA</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">PACCHI POSTALI</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">SEGNATASSE</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">SERVIZIO COMMISSIONI</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">BLP</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">PUBBLICITARI</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">ENTI PARASTATALI</a></li>
-                </ul>
-            </div>
-            <h3><a href="#">REPUBBLICA SOCIALE ITALIANA</a></h3> 
-            <div>
-                <ul>
-                    <li class="argomento"><a href="elencoLotto.aspx">REPUBBLICA SOCIALE ITALIANA</a></li>
-                    <li class="argomento"><a href="elencoLotto.aspx">RSI - PROVE E VARIETA'</a></li>
-                </ul>
-            </div>
-            </div>
+            <div id="srvAccordion" runat="server"></div>
+           <asp:HyperLink runat="server" NavigateUrl="~/elencoLotto.aspx" />
         </div>
         <div class="main">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
