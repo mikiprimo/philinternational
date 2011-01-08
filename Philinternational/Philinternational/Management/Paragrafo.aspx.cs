@@ -47,5 +47,11 @@ namespace Philinternational.Styles {
             this.gvParagrafi.PageIndex = e.NewPageIndex;
             this.BindData();
         }
+
+        protected void gvParagrafi_RowDataBound(object sender, GridViewRowEventArgs e) {
+            if (e.Row.RowType == DataControlRowType.DataRow) {
+                ((HyperLink)e.Row.Cells[0].FindControl("hlGoToArgumentsView")).NavigateUrl = "~/Management/ArgoAndSubArgomento.aspx?Query=" + gvParagrafi.DataKeys[e.Row.RowIndex]["idparagrafo"];
+            }
+        }
     }
 }

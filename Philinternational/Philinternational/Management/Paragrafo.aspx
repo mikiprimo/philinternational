@@ -3,15 +3,17 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:HyperLink ID="HyperLink1" runat="server" 
-        NavigateUrl="~/Management/ArgoAndSubArgomento.aspx?Query=3">HyperLink</asp:HyperLink>
     <asp:GridView ID="gvParagrafi" runat="server" AllowPaging="True" AutoGenerateColumns="False"
         DataKeyNames="idparagrafo" OnRowUpdating="gvParagrafi_RowUpdating" OnPageIndexChanged="gvParagrafi_PageIndexChanged"
-        OnRowEditing="gvParagrafi_RowEditing" 
-        EmptyDataText="Nessun paragrafo presente" 
-        onpageindexchanging="gvParagrafi_PageIndexChanging">
+        OnRowEditing="gvParagrafi_RowEditing" EmptyDataText="Nessun paragrafo presente"
+        OnPageIndexChanging="gvParagrafi_PageIndexChanging" 
+        onrowdatabound="gvParagrafi_RowDataBound">
         <Columns>
-            <asp:BoundField DataField="idparagrafo" HeaderText="ID" ReadOnly="True" SortExpression="idparagrafo" />
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:HyperLink ID="hlGoToArgumentsView" runat="server">Vedi</asp:HyperLink>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField>
                 <EditItemTemplate><asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
                     CommandName="Update" ImageUrl="~/images/accept.png" />
@@ -29,11 +31,9 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Stato">
-                <EditItemTemplate>
-                    <asp:CheckBox ID="chkUpdateStatus" runat="server" Checked='<%# Philinternational.Layers.Commons.GetStatoBoolean(Convert.ToInt32(Eval("stato"))) %>' />
+                <EditItemTemplate><asp:CheckBox ID="chkUpdateStatus" runat="server" Checked='<%# Philinternational.Layers.Commons.GetStatoBoolean(Convert.ToInt32(Eval("stato"))) %>' />
                 </EditItemTemplate>
-                <ItemTemplate>
-                    <asp:CheckBox ID="chkStatus" runat="server" Enabled="False" Checked='<%# Philinternational.Layers.Commons.GetStatoBoolean(Convert.ToInt32(Eval("stato"))) %>' />
+                <ItemTemplate><asp:CheckBox ID="chkStatus" runat="server" Enabled="False" Checked='<%# Philinternational.Layers.Commons.GetStatoBoolean(Convert.ToInt32(Eval("stato"))) %>' />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
