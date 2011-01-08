@@ -76,9 +76,9 @@
     <Content Include="images\select.png" />
     <Content Include="images\selectfull.png" />
     <Content Include="Management\AnagraficaDetail.aspx" />
+    <Content Include="Management\ArgomentoDetail.aspx" />
     <Content Include="Management\Lotto.aspx" />
     <Content Include="Management\Anagrafica.aspx" />
-    <Content Include="Management\Argomento.aspx" />
     <Content Include="Management\Aste.aspx" />
     <Content Include="Management\News.aspx" />
     <Content Include="Management\NewsDetail.aspx" />
@@ -180,6 +180,13 @@
     <Compile Include="Management\AnagraficaDetail.aspx.designer.cs">
       <DependentUpon>AnagraficaDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Management\ArgomentoDetail.aspx.cs">
+      <DependentUpon>ArgomentoDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\ArgomentoDetail.aspx.designer.cs">
+      <DependentUpon>ArgomentoDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Management\Lotto.aspx.cs">
       <DependentUpon>Lotto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -215,13 +222,6 @@
     </Compile>
     <Compile Include="Management\Anagrafica.aspx.designer.cs">
       <DependentUpon>Anagrafica.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Management\Argomento.aspx.cs">
-      <DependentUpon>Argomento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Management\Argomento.aspx.designer.cs">
-      <DependentUpon>Argomento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\Aste.aspx.cs">
       <DependentUpon>Aste.aspx</DependentUpon>

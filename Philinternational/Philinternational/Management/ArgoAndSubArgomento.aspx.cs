@@ -8,8 +8,8 @@ using Philinternational.Layers;
 namespace Philinternational.Styles {
     public partial class SubArgomento : System.Web.UI.Page {
         public int selectedParagrafoID {
-            get { return (int)ViewState["currentID"]; }
-            set { ViewState["currentID"] = value; }
+            get { return (int)ViewState["selectedParagrafoID"]; }
+            set { ViewState["selectedParagrafoID"] = value; }
         }
 
         public int selectedArgumentID {
@@ -109,7 +109,7 @@ namespace Philinternational.Styles {
         }
 
         protected void ibtnCreateNewArgument_Click(object sender, ImageClickEventArgs e) {
-
+            Response.Redirect("ArgomentoDetail.aspx?Query=" + this.selectedParagrafoID);
         }
     }
 }
