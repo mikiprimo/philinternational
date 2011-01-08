@@ -1,22 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="ArgoAndSubArgomento.aspx.cs" Inherits="Philinternational.Styles.SubArgomento" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"><style
+    type="text/css">
+                                                                                 .style1
+                                                                                 {
+                                                                                     width: 300px;
+                                                                                 }
+                                                                             </style>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width: 100%;">
         <tr>
-            <td>
+            <td class="style1">
                 <asp:HyperLink ID="lnkSelectOtherParagraph" runat="server" NavigateUrl="~/Management/Paragrafo.aspx">Seleziona un altro paragrafo</asp:HyperLink>
             </td>
             <td>
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="style1">
                 <asp:GridView ID="gvArguments" runat="server" AutoGenerateColumns="False" DataKeyNames="idargomento"
                     EmptyDataText="Nessun argomento associato al paragrafo" EnableModelValidation="True"
                     GridLines="None" OnRowEditing="gvArguments_RowEditing" OnRowUpdating="gvArguments_RowUpdating"
-                    OnSelectedIndexChanging="gvArguments_SelectedIndexChanging">
+                    OnSelectedIndexChanging="gvArguments_SelectedIndexChanging" ShowHeader="False">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
@@ -54,8 +61,8 @@
             </td>
             <td>
                 <asp:GridView ID="gvSubArguments" runat="server" AutoGenerateColumns="False" DataKeyNames="idsub_argomento"
-                    EnableModelValidation="True" onrowediting="gvSubArguments_RowEditing" 
-                    onrowupdating="gvSubArguments_RowUpdating">
+                    EnableModelValidation="True" OnRowEditing="gvSubArguments_RowEditing" OnRowUpdating="gvSubArguments_RowUpdating"
+                    ShowHeader="False">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate><asp:CheckBox ID="chkSubArgsUserSelection" runat="server" />
@@ -78,9 +85,9 @@
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
-                            <ItemTemplate><asp:CheckBox ID="chkSubArgState" runat="server" Enabled="False" Checked='<%# Philinternational.Layers.Commons.GetStatoBoolean(Convert.ToInt32(Eval("stato"))) %>' />
+                            <ItemTemplate><asp:CheckBox ID="chkStatus" runat="server" Enabled="False" Checked='<%# Philinternational.Layers.Commons.GetStatoBoolean(Convert.ToInt32(Eval("stato"))) %>' />
                             </ItemTemplate>
-                            <EditItemTemplate><asp:CheckBox ID="chkSubArgStateEdit" runat="server" Checked='<%# Philinternational.Layers.Commons.GetStatoBoolean(Convert.ToInt32(Eval("stato"))) %>' />
+                            <EditItemTemplate><asp:CheckBox ID="chkUpdateStatus" runat="server" Checked='<%# Philinternational.Layers.Commons.GetStatoBoolean(Convert.ToInt32(Eval("stato"))) %>' />
                             </EditItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -88,15 +95,15 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="style1">
                 <asp:ImageButton ID="ibtnDeleteSelectedArgs" runat="server" AlternateText="Cancella selezionati"
-                    ToolTip="Argomenti selezionati" />
-                &nbsp;<asp:ImageButton ID="ibtnCreateNewArgument" runat="server" AlternateText="Crea un nuovo argomento" />
+                    ToolTip="Argomenti selezionati" /><br />
+                <asp:ImageButton ID="ibtnCreateNewArgument" runat="server" AlternateText="Crea un nuovo argomento" />
             </td>
             <td>
                 <asp:ImageButton ID="ibtnDeleteSelectedSubArguments" runat="server" AlternateText="Cancella selezionati"
-                    ToolTip="Sub argomenti selezionati"/>
-                &nbsp;<asp:ImageButton ID="ibtnCreateNewSubArgument" runat="server" AlternateText="Crea un nuovo sub argomento" />
+                    ToolTip="Sub argomenti selezionati" /><br />
+                <asp:ImageButton ID="ibtnCreateNewSubArgument" runat="server" AlternateText="Crea un nuovo sub argomento" />
             </td>
         </tr>
     </table>
