@@ -148,5 +148,9 @@ namespace Philinternational.Layers {
                 }
             }
         }
+
+        internal static void UpdateParagSubArgomento(paragSubArgomentoEntity MySubArgument) {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Web;
 
 namespace Philinternational {
-    public class newsEntity {
+    public class paragSubArgomentoEntity {
         public int id;
-        public DateTime dataPubblicazione;
-        public String titolo, testo;
+        public int idargomento;
+        public String descrizione;
         public Stato state;
     }
 }

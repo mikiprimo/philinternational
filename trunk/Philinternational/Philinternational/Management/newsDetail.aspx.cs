@@ -27,7 +27,7 @@ namespace Philinternational.Management
 
                 if (this.Codice != "-1")
                 {
-                    NewsEntity myNews = NewsGateway.GetNewsById(codice);
+                    newsEntity myNews = NewsGateway.GetNewsById(codice);
                     lblDataPubblicazione.Text = myNews.dataPubblicazione.ToString("dd/MM/yyyy");
                     txtTitolo.Text = myNews.titolo;
                     txtTesto.Text = myNews.testo;
@@ -38,7 +38,7 @@ namespace Philinternational.Management
 
         protected void conferma(object sender, EventArgs e)
         {
-            NewsEntity MyNews = new NewsEntity();
+            newsEntity MyNews = new newsEntity();
             Boolean esito = false;
 
             if (this.Codice == "-1")
