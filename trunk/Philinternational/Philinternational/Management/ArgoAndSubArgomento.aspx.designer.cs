@@ -58,13 +58,13 @@ namespace Philinternational.Styles {
         protected global::System.Web.UI.WebControls.ImageButton ibtnCreateNewArgument;
         
         /// <summary>
-        /// ibtnDeleteSelectedSubArguments control.
+        /// ibtnDeleteSelectedSubArgs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibtnDeleteSelectedSubArguments;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnDeleteSelectedSubArgs;
         
         /// <summary>
         /// ibtnCreateNewSubArgument control.

@@ -3,11 +3,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"><style
     type="text/css">
-                                                                                 .style1
-                                                                                 {
-                                                                                     width: 300px;
-                                                                                 }
-                                                                             </style>
+        .style1
+        {
+            width: 300px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width: 100%;">
@@ -23,7 +23,8 @@
                 <asp:GridView ID="gvArguments" runat="server" AutoGenerateColumns="False" DataKeyNames="idargomento"
                     EmptyDataText="Nessun argomento associato al paragrafo" EnableModelValidation="True"
                     GridLines="None" OnRowEditing="gvArguments_RowEditing" OnRowUpdating="gvArguments_RowUpdating"
-                    OnSelectedIndexChanging="gvArguments_SelectedIndexChanging" ShowHeader="False">
+                    OnSelectedIndexChanging="gvArguments_SelectedIndexChanging" 
+                    ShowHeader="False" AllowPaging="True">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
@@ -62,10 +63,12 @@
             <td>
                 <asp:GridView ID="gvSubArguments" runat="server" AutoGenerateColumns="False" DataKeyNames="idsub_argomento"
                     EnableModelValidation="True" OnRowEditing="gvSubArguments_RowEditing" OnRowUpdating="gvSubArguments_RowUpdating"
-                    ShowHeader="False">
+                    ShowHeader="False" 
+                    EmptyDataText="Nessun sub argomento associato all'argomento selezionato" 
+                    GridLines="None" AllowPaging="True">
                     <Columns>
                         <asp:TemplateField>
-                            <ItemTemplate><asp:CheckBox ID="chkSubArgsUserSelection" runat="server" />
+                            <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
@@ -101,8 +104,9 @@
                 <asp:ImageButton ID="ibtnCreateNewArgument" runat="server" AlternateText="Crea un nuovo argomento" />
             </td>
             <td>
-                <asp:ImageButton ID="ibtnDeleteSelectedSubArguments" runat="server" AlternateText="Cancella selezionati"
-                    ToolTip="Sub argomenti selezionati" /><br />
+                <asp:ImageButton ID="ibtnDeleteSelectedSubArgs" runat="server" AlternateText="Cancella selezionati"
+                    ToolTip="Sub argomenti selezionati" 
+                    onclick="ibtnDeleteSelectedSubArgs_Click" /><br />
                 <asp:ImageButton ID="ibtnCreateNewSubArgument" runat="server" AlternateText="Crea un nuovo sub argomento" />
             </td>
         </tr>
