@@ -24,7 +24,9 @@
                     EmptyDataText="Nessun argomento associato al paragrafo" EnableModelValidation="True"
                     GridLines="None" OnRowEditing="gvArguments_RowEditing" OnRowUpdating="gvArguments_RowUpdating"
                     OnSelectedIndexChanging="gvArguments_SelectedIndexChanging" 
-                    ShowHeader="False" AllowPaging="True">
+                    ShowHeader="False" AllowPaging="True" 
+                    onpageindexchanged="gvArguments_PageIndexChanged" 
+                    onpageindexchanging="gvArguments_PageIndexChanging">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
@@ -65,7 +67,9 @@
                     EnableModelValidation="True" OnRowEditing="gvSubArguments_RowEditing" OnRowUpdating="gvSubArguments_RowUpdating"
                     ShowHeader="False" 
                     EmptyDataText="Nessun sub argomento associato all'argomento selezionato" 
-                    GridLines="None" AllowPaging="True">
+                    GridLines="None" AllowPaging="True" 
+                    onpageindexchanged="gvSubArguments_PageIndexChanged" 
+                    onpageindexchanging="gvSubArguments_PageIndexChanging">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
@@ -108,7 +112,9 @@
                 <asp:ImageButton ID="ibtnDeleteSelectedSubArgs" runat="server" AlternateText="Cancella selezionati"
                     ToolTip="Sub argomenti selezionati" 
                     onclick="ibtnDeleteSelectedSubArgs_Click" /><br />
-                <asp:ImageButton ID="ibtnCreateNewSubArgument" runat="server" AlternateText="Crea un nuovo sub argomento" />
+                <asp:ImageButton ID="ibtnCreateNewSubArgument" runat="server" 
+                    AlternateText="Crea un nuovo sub argomento" 
+                    onclick="ibtnCreateNewSubArgument_Click" />
             </td>
         </tr>
     </table>

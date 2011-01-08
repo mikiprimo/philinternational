@@ -111,5 +111,30 @@ namespace Philinternational.Styles {
         protected void ibtnCreateNewArgument_Click(object sender, ImageClickEventArgs e) {
             Response.Redirect("ArgomentoDetail.aspx?Query=" + this.selectedParagrafoID);
         }
+
+        protected void ibtnCreateNewSubArgument_Click(object sender, ImageClickEventArgs e) {
+            try {
+                Response.Redirect("SubArgomentoDetail.aspx?QueryPar=" + this.selectedParagrafoID + "&QueryArg=" + this.selectedArgumentID);
+            } catch (Exception) {
+            }
+        }
+
+        protected void gvArguments_PageIndexChanged(object sender, EventArgs e) {
+            this.BindData();
+        }
+
+        protected void gvArguments_PageIndexChanging(object sender, GridViewPageEventArgs e) {
+            gvArguments.PageIndex = e.NewPageIndex;
+            this.BindData();
+        }
+
+        protected void gvSubArguments_PageIndexChanged(object sender, EventArgs e) {
+            this.BindData();
+        }
+
+        protected void gvSubArguments_PageIndexChanging(object sender, GridViewPageEventArgs e) {
+            gvSubArguments.PageIndex = e.NewPageIndex;
+            this.BindData();
+        }
     }
 }
