@@ -2,6 +2,11 @@
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using Philinternational.Layers;
+using System.Configuration;
+using System.Web.Services;
+using System.Web;
+using System.Web.UI;
+using System.Collections.Generic;
 
 namespace Philinternational
 {
@@ -39,6 +44,8 @@ namespace Philinternational
             Response.Redirect("~/Default.aspx");
         }
 
-  
+        private void LoadMenuAccordion() { }
+        private void LoadLottiRandom() { }
+        private void LoadBannerRandom() { }
     }
 }

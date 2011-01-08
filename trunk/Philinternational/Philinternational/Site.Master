@@ -8,30 +8,17 @@
     <script language="javascript" type="text/javascript" src="Scripts/jquery-1.4.1.min.js"></script>
     <script language="javascript" type="text/javascript" src="Scripts/jquery-ui-1.8.7.custom.min.js"></script>    
     <script language="javascript" type="text/javascript" src="Scripts/external/jquery.bgiframe-2.1.2.js"></script>
+    <script language="javascript" type="text/javascript" src="Scripts/shadowbox.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 	<script type="text/javascript" language="javascript">
-	    $(function () {
-	        $("#accordion").accordion();
-	        $("#dialog").dialog({
-	            autoOpen: false,
-	            modal: true,
-                width: 650,
-                height: 500,
-	            show: "blind",
-	            hide: "explode"
-	        });
+	    Shadowbox.init({
+	        handleOversize: "drag",
+	        modal: true
 	    });
 
-	    function zoom_immagine(id) {
-	        var id_immagine = "#opener" + id;
-	        //var crea_area = "<p class='zoomimmagine'><img src='images/asta/" + id + ".jpg' /></p>";
-	        var crea_area = "<img src='images/asta/" + id + ".jpg' />";
-            $(id_immagine).click(function() {
-            $( "#dialog" ).html(crea_area);
-			$( "#dialog" ).dialog("open");
-			return false;
-		    });
-        }
+	    $(function () {
+	        $("#accordion").accordion();
+	    });
 	</script> 
 </head>
 <body>
@@ -93,9 +80,8 @@
             <h3><a href="#">ANTICHI STATI</a></h3> 
             <div>
             <ul>
-                <li class="paragrafo"><a href="#"></a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">LOMBARDO VENETO</a></li>
-                <li class="argomento"><a href="elencoLotto.aspx">MODENA</a></li>
+                <li class="argomento"><asp:DynamicHyperLink NavigateUrl="~/elencoLotto.aspx" runat="server" Text="LOMBARDO VENETO"/></li>
+                <li class="argomento"><asp:DynamicHyperLink NavigateUrl="~/elencoLotto.aspx"  runat="server" Text="Modena" /></li>
                 <li class="argomento"><a href="elencoLotto.aspx">NAPOLI</a></li>
                 <li class="argomento"><a href="elencoLotto.aspx">PARMA</a></li>
                 <li class="argomento"><a href="elencoLotto.aspx">PONTIFICIO</a></li>
