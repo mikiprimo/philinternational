@@ -15,6 +15,7 @@ namespace Philinternational.Layers {
         private static String _INSERT = "INSERT INTO NEWS (idnews, data_pubblicazione, titolo, testo, stato) VALUES (@idNews, @data_pubblicazione, @titolo, @testo, @valueStato)";
         private static String _UPDATE = "UPDATE NEWS SET titolo = @titolo, testo = @testo, stato = @stato WHERE idnews = @idNews";
         private static String _UPDATE_NEWSSTATE = "UPDATE NEWS SET stato = @stato WHERE idnews = @idNews";
+        private static String _DELETE_IDNEWSLIST = "DELETE FROM NEWS WHERE @ComposedConditions";
 
         /// <summary>
         /// NEWS (Get News By ID)
@@ -128,8 +129,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="NewsIdToBeErased"></param>
         /// <returns></returns>
-        internal static Boolean DeleteNewsByIdList(List<string> NewsIdToBeErased) {
-            String _DELETE_IDNEWSLIST = "DELETE FROM NEWS WHERE @ComposedConditions";
+        internal static Boolean DeleteNewsByIdList(List<String> NewsIdToBeErased) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             StringBuilder sb = new StringBuilder();

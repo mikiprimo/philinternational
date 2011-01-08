@@ -5,10 +5,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Philinternational.Layers;
 
-namespace Philinternational.Styles
-{
-    public partial class SubArgomento : System.Web.UI.Page
-    {
+namespace Philinternational.Styles {
+    public partial class SubArgomento : System.Web.UI.Page {
         public int selectedParagrafoID {
             get { return (int)ViewState["currentID"]; }
             set { ViewState["currentID"] = value; }
@@ -19,8 +17,7 @@ namespace Philinternational.Styles
             set { ViewState["selectedArgumentID"] = value; }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
                 this.selectedParagrafoID = Convert.ToInt32(Request.QueryString["Query"]);
                 BindData();
@@ -33,7 +30,7 @@ namespace Philinternational.Styles
             try {
                 gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgs(this.selectedArgumentID);
                 gvSubArguments.DataBind();
-            } catch (Exception) {}
+            } catch (Exception) { }
         }
 
         protected void gvArguments_RowEditing(object sender, GridViewEditEventArgs e) {
@@ -82,6 +79,19 @@ namespace Philinternational.Styles
             ParagrafoGateway.UpdateParagSubArgomento(MySubArgument);
             gvSubArguments.EditIndex = -1;
             this.BindData();
+        }
+
+        //Delete sub args
+        protected void ibtnDeleteSelectedSubArgs_Click(object sender, ImageClickEventArgs e) {
+            List<Int32> list = new List<int>();
+
+            foreach (GridViewRow row in gvSubArguments.Rows) {
+                if (row.RowType == DataControlRowType.DataRow) {
+                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
+                    if (chk.Checked) list.Add((int)gvSubArguments.DataKeys[row.RowIndex]["idsub_argomento"]);
+                }
+            }
+             if(list.Count > 0) ParagrafoGateway.DeleteArgument(list);
         }
     }
 }
