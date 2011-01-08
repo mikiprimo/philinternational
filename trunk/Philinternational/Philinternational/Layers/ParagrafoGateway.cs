@@ -21,6 +21,7 @@ namespace Philinternational.Layers {
         //SUB ARGOMENTI
         private static String _SELECT_SUBARGUMENTS = "SELECT idsub_argomento, idargomento, descrizione, stato FROM paragrafo_subargomento WHERE idargomento = @idargomento";
         private static String _UPDATE_SUBARGUMENT = "UPDATE paragrafo_subargomento SET descrizione = @descrizione, stato = @stato WHERE idsub_argomento = @idsub_argomento";
+        private static String _INSERT_SUBARGUMENT = "INSERT INTO paragrafo_subargomento (idsub_argomento, idargomento, descrizione, stato) VALUES (@idsub_argomento, @idargomento, @descrizione, @stato)";
 
         //----------PARAGRAFI-------------//
 
@@ -265,7 +266,24 @@ namespace Philinternational.Layers {
         }
 
         internal static bool InsertSubArgomento(paragSubArgomentoEntity MySubArgument) {
-            throw new NotImplementedException(); //TODO: Finire l'inserimento di un nuovo subargomento
+            //TODO: Da testare (inserimento sub argomento)
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(_INSERT_SUBARGUMENT, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idsub_argomento", MySubArgument.id);
+            command.Parameters.AddWithValue("idargomento", MySubArgument.idargomento);
+            command.Parameters.AddWithValue("descrizione", MySubArgument.descrizione);
+            command.Parameters.AddWithValue("stato", MySubArgument.state.id);
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySql.Data.MySqlClient.MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
         }
     }
 }
