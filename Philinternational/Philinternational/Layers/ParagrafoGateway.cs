@@ -39,7 +39,7 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
-            } catch (MySql.Data.MySqlClient.MySqlException) {
+            } catch (MySqlException) {
                 return false;
             } finally {
                 conn.Close();
@@ -64,7 +64,7 @@ namespace Philinternational.Layers {
                         dv = dt.DefaultView;
 
                         return dv;
-                    } catch {
+                    } catch (MySqlException) {
                         return dv;
                     }
                 }
@@ -91,7 +91,7 @@ namespace Philinternational.Layers {
                     dv = dt.DefaultView;
 
                     return dv;
-                } catch (Exception) {
+                } catch (MySqlException) {
                     return dv;
                 }
             }
@@ -114,7 +114,7 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
-            } catch (MySql.Data.MySqlClient.MySqlException) {
+            } catch (MySqlException) {
                 return false;
             } finally {
                 conn.Close();
@@ -143,14 +143,35 @@ namespace Philinternational.Layers {
                     dv = dt.DefaultView;
 
                     return dv;
-                } catch (Exception err) {
+                } catch (MySqlException) {
                     return dv;
                 }
             }
         }
 
-        internal static void UpdateParagSubArgomento(paragSubArgomentoEntity MySubArgument) {
-            throw new NotImplementedException();
+        /// <summary>
+        /// UPDATE SUB ARGUMENT
+        /// </summary>
+        /// <param name="MySubArgument"></param>
+        /// <returns></returns>
+        internal static Boolean UpdateParagSubArgomento(paragSubArgomentoEntity MySubArgument) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(_UPDATE_SUBARGUMENT, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idsub_argomento", MySubArgument.id);
+            command.Parameters.AddWithValue("descrizione", MySubArgument.descrizione);
+            command.Parameters.AddWithValue("stato", MySubArgument.state.id);
+
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
         }
     }
 }

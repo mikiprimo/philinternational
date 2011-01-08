@@ -9,23 +9,31 @@ namespace Philinternational.Styles
 {
     public partial class SubArgomento : System.Web.UI.Page
     {
-        public int currentID {
+        public int selectedParagrafoID {
             get { return (int)ViewState["currentID"]; }
             set { ViewState["currentID"] = value; }
+        }
+
+        public int selectedArgumentID {
+            get { return (int)ViewState["selectedArgumentID"]; }
+            set { ViewState["selectedArgumentID"] = value; }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                this.currentID = Convert.ToInt32(Request.QueryString["Query"]);
+                this.selectedParagrafoID = Convert.ToInt32(Request.QueryString["Query"]);
                 BindData();
             }
         }
 
         private void BindData() {
-            gvArguments.DataSource = ParagrafoGateway.SelectArgs(this.currentID);
+            gvArguments.DataSource = ParagrafoGateway.SelectArgs(this.selectedParagrafoID);
             gvArguments.DataBind();
-            gvSubArguments.DataBind();
+            try {
+                gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgs(this.selectedArgumentID);
+                gvSubArguments.DataBind();
+            } catch (Exception) {}
         }
 
         protected void gvArguments_RowEditing(object sender, GridViewEditEventArgs e) {
@@ -49,8 +57,8 @@ namespace Philinternational.Styles
         }
 
         protected void gvArguments_SelectedIndexChanging(object sender, GridViewSelectEventArgs e) {
-            int selectedArgumentID = Convert.ToInt32(gvArguments.DataKeys[e.NewSelectedIndex]["idargomento"]);
-            gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgs(selectedArgumentID);
+            this.selectedArgumentID = Convert.ToInt32(gvArguments.DataKeys[e.NewSelectedIndex]["idargomento"]);
+            gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgs(this.selectedArgumentID);
             gvSubArguments.DataBind();
         }
 
@@ -66,13 +74,13 @@ namespace Philinternational.Styles
             var newValues = Commons.GetValuesGridViewRow(row);
 
             paragSubArgomentoEntity MySubArgument = new paragSubArgomentoEntity();
-            MySubArgument.id = Convert.ToInt32(gvArguments.DataKeys[e.RowIndex]["idsub_argomento"]);
-            MySubArgument.idargomento = Convert.ToInt32(gvArguments.DataKeys[e.RowIndex]["idargomento"]);
+            MySubArgument.id = Convert.ToInt32(gvSubArguments.DataKeys[e.RowIndex]["idsub_argomento"]);
+            MySubArgument.idargomento = Convert.ToInt32(gvSubArguments.DataKeys[e.RowIndex]["idargomento"]);
             MySubArgument.descrizione = (String)newValues["descrizione"];
-            MySubArgument.state = new Stato(((CheckBox)gvArguments.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1 : 0, "");
+            MySubArgument.state = new Stato(((CheckBox)gvSubArguments.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1 : 0, "");
 
             ParagrafoGateway.UpdateParagSubArgomento(MySubArgument);
-            gvArguments.EditIndex = -1;
+            gvSubArguments.EditIndex = -1;
             this.BindData();
         }
     }
