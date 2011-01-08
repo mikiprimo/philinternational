@@ -263,5 +263,9 @@ namespace Philinternational.Layers {
             }
             return true;
         }
+
+        internal static bool InsertSubArgomento(paragSubArgomentoEntity MySubArgument) {
+            throw new NotImplementedException();
+        }
     }
 }
