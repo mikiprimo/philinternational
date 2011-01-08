@@ -6,13 +6,32 @@
     <title>Home Page</title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript" src="Scripts/jquery-1.4.1.min.js"></script>
-    <script language="javascript" type="text/javascript" src="Scripts/jquery-ui-1.8.7.custom.min.js"></script>
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
-    </asp:ContentPlaceHolder>
+    <script language="javascript" type="text/javascript" src="Scripts/jquery-ui-1.8.7.custom.min.js"></script>    
+    <script language="javascript" type="text/javascript" src="Scripts/external/jquery.bgiframe-2.1.2.js"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 	<script type="text/javascript" language="javascript">
 	    $(function () {
 	        $("#accordion").accordion();
+	        $("#dialog").dialog({
+	            autoOpen: false,
+	            modal: true,
+                width: 650,
+                height: 500,
+	            show: "blind",
+	            hide: "explode"
+	        });
 	    });
+
+	    function zoom_immagine(id) {
+	        var id_immagine = "#opener" + id;
+	        //var crea_area = "<p class='zoomimmagine'><img src='images/asta/" + id + ".jpg' /></p>";
+	        var crea_area = "<img src='images/asta/" + id + ".jpg' />";
+            $(id_immagine).click(function() {
+            $( "#dialog" ).html(crea_area);
+			$( "#dialog" ).dialog("open");
+			return false;
+		    });
+        }
 	</script> 
 </head>
 <body>
@@ -43,8 +62,7 @@
                 EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical" 
                 Visible="false" Width="244px">
 	        <Items>
-		        <asp:MenuItem Text="Amministrazione" Value="Amministrazione" >
-		        </asp:MenuItem>
+		        <asp:MenuItem Text="Amministrazione" Value="Amministrazione" ></asp:MenuItem>
 		        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" 
                     Value="Paragrafo"></asp:MenuItem>
 		        <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
@@ -117,7 +135,8 @@
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
                 <div class="clear"></div>
         </div>
-        <div class="footer">Phil international 12345678901</div>
+        <div class="footer">
+            <label style="float:right;padding:3px;">Phil international 12345678901</label></div>
     </div>
     </form>
 </body>
