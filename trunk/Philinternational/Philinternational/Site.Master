@@ -17,9 +17,33 @@
 	    });
 
 	    $(function () {
+
+	        var ticker = function () {
+	            setTimeout(function () {
+	                $('#ticker li:first').animate({ marginTop: '-120px' }, 800, function () {
+	                    $(this).detach().appendTo('ul#ticker').removeAttr('style');
+	                });
+	                ticker();
+	            }, 4000);
+	        };
+	        ticker();
 	        $("#accordion").accordion({autoHeight: true,navigation: true});
 	    });
-	</script> 
+	</script>
+    <style type="text/css">
+        div#info {float:left;width:65%;}
+        div#info.ok {border-left-color: #ACD083;}
+        div#info.otravez {border-left-color: #DC7873}
+        div#info ul {margin-top: 10px;}
+        div#info ul li {float: left;margin-right: 10px}
+        div#info ul li a:hover img {border: 1px solid #666;}
+        div#info ul li img {border: 1px solid #ccc;}
+        
+        ul#ticker {height: 150px;overflow: hidden;}
+        ul#ticker li {padding: 10px;height:130px;}
+        ul#ticker li a {color: #666;}
+        ul#ticker li span {display: block;color: #06C;}
+    </style>
 </head>
 <body>
     <form runat="server">
