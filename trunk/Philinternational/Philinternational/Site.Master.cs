@@ -15,8 +15,7 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            srvAccordion.InnerHtml = LoadMenuAccordion();
+            TmpAccordion.InnerHtml = LoadMenuAccordion();
             //Verifica della visualizzazione Menu left
             if (AccountLayer.IsLogged())
             {
@@ -45,8 +44,8 @@ namespace Philinternational
         }
 
         private String LoadMenuAccordion() {
-            String a = "";
-            String b="";
+            String paragrafo = "";
+            String argomento="";
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
             String sql = "SELECT idparagrafo,descrizione FROM paragrafo order by idparagrafo";
@@ -58,15 +57,12 @@ namespace Philinternational
                 dr = command.ExecuteReader();
                 if (dr != null)
                 {
-                    a = "<div id=\"accordion\">";
+                    paragrafo = "<div id=\"accordion\">\n";
                     while (dr.Read())
                     {
-                        
                         MySqlDataReader drArg;
-                        MySqlConnection conn2 = ConnectionGateway.ConnectDB();
-                        
+                        MySqlConnection conn2 = ConnectionGateway.ConnectDB();   
                         String sqlArg = "SELECT idargomento,descrizione FROM paragrafo_argomento where idparagrafo = "+ (int)dr["idparagrafo"]+" and stato !=0 order by idparagrafo";
-                       // Response.Write(sqlArg + "<br/>");
                         MySqlCommand commandArg = new MySqlCommand(sqlArg, conn2);
                         commandArg.CommandType = System.Data.CommandType.Text;
                         try
@@ -76,21 +72,16 @@ namespace Philinternational
                             if (drArg != null)
                             {
                                 if (drArg.HasRows) {
-                                    a += "<h3 class=\"paragrafo\"><a href=\"#\">" + (String)dr["descrizione"] + "</a></h3>\n";
+                                    paragrafo += "<h3 class=\"paragrafo\"><a href=\"#\">" + (String)dr["descrizione"] + "</a></h3>\n";
                                     String rowArg = "";
-                                    b = "<div><ul>\n";
+                                    argomento = "<div>\n<ul>\n";
                                     while (drArg.Read())
                                     {
-                                        //rowArg += "<li class=\"argomento\"><asp:HyperLink NavigateUrl=\"~/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0\" runat=\"server\" />" + (String)drArg["descrizione"] + "</asp:HyperLink></li>\n";
-                                        rowArg += "<li class=\"argomento\"><a href=\"elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0\" />" + (String)drArg["descrizione"] + "</a></li>\n";
-
+                                        rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0") + "\" />" + (String)drArg["descrizione"] + "</a></li>\n";
                                     }
-                                    b += rowArg + "</ul>\n</div>\n";
-                                    //Response.Write(a + "<br/>");
-                                    a += b;
-                                }
-                                
-                                
+                                    argomento += rowArg + "</ul>\n</div>\n";
+                                    paragrafo += argomento;
+                                }//fine if
                             }
                             
 
@@ -104,19 +95,19 @@ namespace Philinternational
                         }
 
                     }
-                    a += "</div>\n";//fine div accordion
+                    paragrafo += "</div>\n";//fine div accordion
                 }
             }
             catch (MySql.Data.MySqlClient.MySqlException)
             {
-                return a;
+                return paragrafo;
             }
             finally
             {
                 conn.Close();
             }
 
-            return a;
+            return paragrafo;
 
         }
         private void LoadLottiRandom() { }

@@ -9,12 +9,12 @@
     <p style="padding:10px;font-size:20px">Data di scadenza <span style="color:red;font-weight:bold">01 gennaio 2011</span></p>
     <p style="padding:10px;font-size:20px">Prima di registrarsi, leggere attentamente le condizioni di vendita etc etc etc</p>
     <br />
-    <hr style="background:#000;height:2px"/>
+    <hr style="background-color:#000;height:2px;border:1px dashed #eee"/>
     <div style="width:100%;clear:both">
         <div id="info" class="block">
 				<ul id="ticker">
 					<li>						
-						<span>Titolo Lorem Ipsum 1</span>
+						<span >Titolo Lorem Ipsum 1</span>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit, ante id porttitor faucibus, odio 
 							eros pellentesque sapien, at consectetur mi nibh at massa.
 					</li>
@@ -33,9 +33,9 @@
 				</ul>
 			</div>
         <div style="float:right;width:35%;height:150px;text-align:center;font-size:2.5em">
-            <a href="#" style="display:block;padding:20px 0px">Effettua il Login</a>
-            <a href="#" style="display:block;padding:20px 0px">Registrati</a>
-            </div>
+            <asp:HyperLink runat="server" NavigateUrl="~/Account/Login.aspx" Text="Effettua il login" style="display:block;padding:20px 0px"></asp:HyperLink>
+            <asp:HyperLink ID="registrati" runat="server" NavigateUrl="~/Account/Register.aspx" Text="Registrati" style="display:block;padding:20px 0px"></asp:HyperLink>
+        </div>
     </div>
     <br />
     <h3 style="clear:both">Alcuni lotti della nostra asta</h3>

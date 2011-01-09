@@ -1,22 +1,27 @@
-ï»¿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Philinternational.SiteMaster" %>
-
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Philinternational.SiteMaster" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
-    <title>Home Page</title><link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-    <script language="javascript" type="text/javascript" src="Scripts/jquery-1.4.1.min.js"></script>
-    <script language="javascript" type="text/javascript" src="Scripts/jquery-ui-1.8.7.custom.min.js"></script>
-    <script language="javascript" type="text/javascript" src="Scripts/external/jquery.bgiframe-2.1.2.js"></script>
-    <script language="javascript" type="text/javascript" src="Scripts/shadowbox.js"></script>
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+
+        <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.4.1.min.js") %>"></script>
+        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-ui-1.8.7.custom.min.js") %>"></script>
+        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/external/jquery.bgiframe-2.1.2.js") %>"></script>
+        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("Scripts/shadowbox.js") %>"></script>    
+        <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+            <title>Offerta filatelica per corrsipondenza</title>
+            <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />
+            <meta name="DESCRIPTION" content="PhilInternarional è un sito di offerta filatelica per corrispondenza." />
+            <meta name="ROBOTS" content="INDEX,FOLLOW" />
+            <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+            <meta name="rating" content="General" />
+            <meta name="revisit-after" content="7 days" />		
+            <meta http-equiv="Cache-Control" content="no-cache" />
+        </asp:ContentPlaceHolder>
     <script type="text/javascript" language="javascript">
-        Shadowbox.init({
-            handleOversize: "drag",
-            modal: true
-        });
+        Shadowbox.init({handleOversize: "drag",modal: true});
 
         $(function () {
-
             var ticker = function () {
                 setTimeout(function () {
                     $('#ticker li:first').animate({ marginTop: '-120px' }, 800, function () {
@@ -26,8 +31,8 @@
                 }, 4000);
             };
             ticker();
-            $("#accordion").accordion({ autoHeight: true, navigation: true });
         });
+        $("#accordion").accordion({ autoHeight: true, navigation: true });
     </script>
 </head>
 <body>
@@ -78,8 +83,7 @@
                     <asp:MenuItem NavigateUrl="~/Management/AnagraficaDetail.aspx?cod=1" Text="Il mio profilo" />
                 </Items>
             </asp:Menu>
-            <div id="srvAccordion" runat="server">
-            </div>
+            <div id="TmpAccordion" runat="server"></div>
         </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
@@ -90,9 +94,10 @@
             <asp:HyperLink ID="condizionivendita" NavigateUrl="~/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
             <asp:HyperLink ID="chisiamo" NavigateUrl="~/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
             <asp:HyperLink ID="dovesiamo" NavigateUrl="~/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
-            <asp:HyperLink id="contatti" NavigateUrl="~/conttti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
+            <asp:HyperLink id="contatti" NavigateUrl="~/contatti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
             <label style="float:right;padding:3px;">Phil international 12345678901</label>
-    </div>
+        </div>
+</div>
     </form>
 </body>
 </html>
