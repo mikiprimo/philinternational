@@ -222,7 +222,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Layers\Entities\aste.Entity.cs" />
+    <Compile Include="Layers\Entities\asta.Entity.cs" />
     <Compile Include="Layers\Entities\legendaStato.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
