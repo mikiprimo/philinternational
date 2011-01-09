@@ -55,21 +55,19 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <returns></returns>
         internal static DataView SelectParag() {
-            {
-                DataView dv = new DataView();
-                using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-                using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
-                    try {
-                        conn.Open();
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-                        dv = dt.DefaultView;
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
 
-                        return dv;
-                    } catch (MySqlException) {
-                        return dv;
-                    }
+                    return dv;
+                } catch (MySqlException) {
+                    return dv;
                 }
             }
         }

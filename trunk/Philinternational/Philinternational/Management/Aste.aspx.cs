@@ -17,16 +17,9 @@ namespace Philinternational.Styles
         }
 
         private void BindData() {
-            //gvAste.DataSource = AsteGateway.
-            //NewsConnector.SelectCommand = ConfigurationManager.AppSettings["SelectNews"].ToString();
-            //repeaterNews.DataBind();
+            gvAste.DataSource = AsteGateway.SelectAste();
+            gvAste.DataBind();
         }
-
-        //protected void chkStatus_OnDataBinding(object sender, EventArgs e) {
-        //    CheckBox chk = ((CheckBox)sender);
-        //    chk.Checked = Commons.GetStatoBoolean((int)Eval("stato"));
-        //    chk.Text = Commons.GetStatoDescription((int)Eval("stato"));
-        //}
 
         //protected void chkStatus_OnCheckedChanged(object sender, EventArgs e) {
         //    CheckBox chk = ((CheckBox)sender);

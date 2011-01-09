@@ -68,6 +68,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Documentation\Gestione Lotti.txt" />
     <Content Include="Documentation\GridView\GridViewCustom_EsempioCompleto.txt" />
+    <Content Include="Documentation\load_paragrafi.sql" />
     <Content Include="Documentation\philinternational.sql" />
     <Content Include="Documentation\table_lotto_tmp.sql" />
     <Content Include="elencoLotto.aspx" />
