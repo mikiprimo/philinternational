@@ -1,120 +1,22 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="elencoLotto.aspx.cs" Inherits="Philinternational.WebForm1" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="elencoLotto.aspx.cs" Inherits="Philinternational.elencoLotto" %>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
+    <title runat="server" id="titlePage">Titolo</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div title="Zoom Lotto" id="dialog"></div>
-
-    <h1>NOME ARGOMENTO</h1>
-    <h2>per chieregatti!!!! Bisogna fare la multipagina...12 per pagina credo che possa andare bene</h2>
-    <div class="bloccoLotto">
-    <h4>1</h4>
-    <img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..."  />
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div class="bloccoLotto">
-    <h4>2</h4>
-    <a href="images/asta/2.jpg" rel="shadowbox;handleOversize:resize" title="Lotto 2"><img src="images/asta/2.jpg" width="100" height="100" alt="Lotto 1..."  /> </a>
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div class="bloccoLotto">
-    <h4>3</h4>
-    <img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..."/>
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div class="bloccoLotto">
-    <h4>4</h4>
-    <img src="images/asta/4.jpg" width="100" height="100" alt="Lotto 1..."/> 
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-
-<div class="bloccoLotto">
-    <h4>5</h4>
-    <img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..."/> 
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta offerta_fatta">Offerta già effettuata</p>
-</div>
-<div class="bloccoLotto">
-    <h4>6</h4>
-    <a href="images/asta/6.jpg" rel="shadowbox;height=333;width=590" title="Lotto 6"><img src="images/asta/6.jpg" width="100" height="100" alt="Lotto 1..."/> </a>
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div class="bloccoLotto">
-    <h4>7</h4>
-    <img src="images/asta/7.jpg"" width="100" height="100" alt="Lotto 1..."/> 
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div class="bloccoLotto">
-    <h4>8</h4>
-    <a href="images/asta/8.jpg" rel="shadowbox;handleOversize:resize" title="Lotto 8"><img src="images/asta/8.jpg" width="100" height="100" alt="Lotto 1..."/></a>
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div  class="bloccoLotto">
-    <h4>9</h4>
-    <img src="images/asta/9.jpg"" width="100" height="100" alt="Lotto 1..."/> 
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div class="bloccoLotto">
-    <h4>10</h4>
-    <img src="images/immagine_non_disponibile.jpg" height="100" width="100" alt="Lotto 1..."/>
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div  class="bloccoLotto">
-    <h4>11</h4>
-    <img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..."/> 
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div class="bloccoLotto">
-    <h4>12</h4>
-    <img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..."/> 
-    <p>Anno:<span>1915/16</span></p>
-    <p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-    <p>Condizione: <span>buono</span></p>
-    <p>Prezzo: <span>40 soldini</span></p>
-    <p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-
+    <h1 runat="server" id="nomeArgomento"></h1>
+    <asp:SqlDataSource ID="LottoConnector" runat="server" ProviderName="MySql.Data.MySqlClient"></asp:SqlDataSource>
+    <asp:Repeater runat="server" ID="elencoLotti" DataSourceID="LottoConnector"  DataMember="DefaultView">
+    <ItemTemplate>
+        <div class="bloccoLotto">
+            <h4 id="idlotto" runat="server" ><%# Eval("idlotto")%></h4>
+            <asp:HyperLink  NavigateUrl="images/asta/2.jpg" rel="shadowbox;handleOversize:resize" runat="server" text="Lotto 2" id="shadowimages"><img src="images/asta/2.jpg" width="100" height="100" alt="Lotto 1..."  /></asp:HyperLink>
+            <img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..." runat="server" id="imagesNonDisponibile" />
+            <p>Anno:<span id="annoLotto"><%# Eval("anno")%></span></p>
+            <p id="descrizioneLotto" runat="server"><%# Eval("descrizione")%></p>
+            <p>Condizione: <span id="statoLotto" runat="server"><%# Eval("tipo_lotto")%></span></p>
+            <p>Prezzo: <span id="prezzLotto" runat="server"><%# Eval("euro")%></span></p>
+            <p class="lottoOfferta"></p>
+        </div>  
+    </ItemTemplate>
+    </asp:Repeater>
 </asp:Content>
