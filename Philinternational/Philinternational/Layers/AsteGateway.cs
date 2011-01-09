@@ -46,7 +46,7 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
-            } catch (MySqlException err) {
+            } catch (MySqlException) {
                 return false;
             } finally {
                 conn.Close();

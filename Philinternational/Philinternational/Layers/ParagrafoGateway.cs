@@ -139,7 +139,7 @@ namespace Philinternational.Layers {
                 sb.Append("idargomento = " + item.ToString() + " OR ");
             }
             sb.Append("1=0");
-            //TODO: Update also lotto states
+
             _DELETE_ARGUMENTS = _DELETE_ARGUMENTS.Replace("@ComposedConditions", sb.ToString());
             _DELETE_SUBARGUMENTS = _DELETE_SUBARGUMENTS.Replace("@ComposedConditions", sb.ToString());
             MySqlCommand command = new MySqlCommand(_DELETE_ARGUMENTS, conn);
@@ -154,8 +154,40 @@ namespace Philinternational.Layers {
                 return false;
             } finally {
                 conn.Close();
+                LottiGateway.EpurateLottoByArguments(ArgsIdToBeErased);
             }
             return true;
+        }
+
+        /// <summary>
+        /// Data una lista di Paragrafi, ricava una lista di tutti gli argomenti distinti e coinvolti
+        /// </summary>
+        /// <param name="ParList"></param>
+        /// <returns></returns>
+        public static DataView SelectArgumentsByParagraphsList(List<Int32> ParList) {
+            String _EPURATE_LOTTO_PARAGRAPHS = "SELECT DISTINCT idargomento FROM paragrafo_argomento WHERE @ComposedConditions";
+
+            //Fase 1: costruisco la query mettendo in ora la lista degli idparagrafo
+            StringBuilder sb = new StringBuilder();
+            foreach (int item in ParList) {
+                sb.Append("idparagrafo = " + item.ToString() + " OR ");
+            }
+            sb.Append("1=0");
+
+            //Fase 2: Effettuo la query che restituisce una collection di idargomenti
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(_EPURATE_LOTTO_PARAGRAPHS, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+                } catch (MySqlException) {
+                }
+            }
+            return dv;
         }
 
         /// <summary>
@@ -255,10 +287,12 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
+
             } catch (MySql.Data.MySqlClient.MySqlException) {
                 return false;
             } finally {
                 conn.Close();
+                LottiGateway.EpurateLottoBySubArguments(SubArgsIdToBeErased);
             }
             return true;
         }
