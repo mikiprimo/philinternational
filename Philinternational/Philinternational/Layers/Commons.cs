@@ -16,6 +16,11 @@ namespace Philinternational.Layers
            return ((legendaStato)HttpContext.Current.Session["legendaStato"]).GetStatoById(id_stato).descrizione;
         }
 
+        //Alias of GetStato
+        internal static String GetStatoDescription(int id_stato) {
+            return GetStato(id_stato);
+        }
+
         public static Boolean GetStatoBoolean(int id_stato) {
             return GetStato(id_stato) == "attivo" ? true : false;
         }
@@ -26,15 +31,13 @@ namespace Philinternational.Layers
             else return false;
         }
 
-        public static int GetCheckedState(Boolean b)
+        public static Int32 GetCheckedState(Boolean b)
         {
             if (b) return 1;
             else return 0;
         }
 
-        internal static string GetStatoDescription(int p) {
-            return p == 1 ? "attivo" : "sospeso";
-        }
+        //-------MISCELLANEUS-------//
 
         public static IDictionary<string, object> GetValuesGridViewRow(GridViewRow row) {
             IOrderedDictionary dictionary = new OrderedDictionary();
