@@ -36,7 +36,7 @@ first child of the left and right table columns */
     padding: 0px;
     width: 100%;
 }
-#header .Logo{float:left;width:200px;height:100px; background-image:url(.../images/masterPage/logo_philtinternational.png); background-repeat:no-repeat}
+#header .Logo{float:left;width:200px;height:100px; background-image:url(../images/masterPage/logo_philtinternational.png); background-repeat:no-repeat}
 #header .BannerDisplay{float:left;height:100px;width:470px;text-align:center;}
 #header .BannerDisplay img{padding:20px 1px;margin:0px}
 #header .loginDisplay
