@@ -7,7 +7,9 @@
 </h1>
     <asp:GridView ID="gvAste" runat="server" AllowPaging="True" AutoGenerateColumns="False"
         DataKeyNames="idasta" EmptyDataText="Nessuna asta attualmente presente." GridLines="None"
-        ShowHeader="False">
+        ShowHeader="False" onpageindexchanged="gvAste_PageIndexChanged" 
+        onpageindexchanging="gvAste_PageIndexChanging" onrowediting="gvAste_RowEditing" 
+        onrowupdating="gvAste_RowUpdating">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />

@@ -11,7 +11,12 @@ namespace Philinternational.Layers {
 
         private static String _SELECT = "SELECT idasta, data_fine, stato FROM asta_elenco";
         private static String _INSERT_ASTA = "INSERT INTO asta_elenco (idasta, data_fine, stato) VALUES (@idasta, @data_fine, @stato)";
+        private static String _UPDATE_ASTA = "UPDATE asta_elenco  SET idasta = @idasta, data_fine = @data_fine , stato = @stato WHERE idasta = @idasta";
 
+        /// <summary>
+        /// SELECT ASTE
+        /// </summary>
+        /// <returns></returns>
         internal static DataView SelectAste() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
@@ -30,6 +35,11 @@ namespace Philinternational.Layers {
             }
         }
 
+        /// <summary>
+        /// DELETE a list of ASTE
+        /// </summary>
+        /// <param name="AsteIdToBeErased"></param>
+        /// <returns></returns>
         internal static Boolean DeleteAste(List<Int32> AsteIdToBeErased) {
             String _DELETE_ASTE = "DELETE FROM asta_elenco WHERE @ComposedConditions";
             MySqlConnection conn = ConnectionGateway.ConnectDB();
@@ -54,7 +64,12 @@ namespace Philinternational.Layers {
             return true;
         }
 
-        internal static bool InsertArgomento(astaEntity MyAsta) {
+        /// <summary>
+        /// INSERT ASTA
+        /// </summary>
+        /// <param name="MyAsta"></param>
+        /// <returns></returns>
+        internal static bool InsertAsta(astaEntity MyAsta) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_INSERT_ASTA, conn);
@@ -72,5 +87,32 @@ namespace Philinternational.Layers {
             }
             return true;
         }
+
+        /// <summary>
+        /// UPDATE ASTA
+        /// </summary>
+        /// <param name="MyAsta"></param>
+        /// <returns></returns>
+        internal static Boolean UpdateAsta(astaEntity MyAsta) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(_UPDATE_ASTA, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idasta", MyAsta.id);
+            command.Parameters.AddWithValue("data_fine", MyAsta.data_fine);
+            command.Parameters.AddWithValue("stato", MyAsta.state.id);
+
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
+
+
     }
 }

@@ -37,5 +37,37 @@ namespace Philinternational.Styles
             if (list.Count > 0) AsteGateway.DeleteAste(list);
             this.BindData();
         }
+
+        protected void gvAste_RowEditing(object sender, GridViewEditEventArgs e) {
+            gvAste.EditIndex = e.NewEditIndex;
+            this.BindData();
+        }
+
+        //TODO: Da testare ancora
+        protected void gvAste_RowUpdating(object sender, GridViewUpdateEventArgs e) {
+            GridViewRow row = gvAste.Rows[e.RowIndex];
+            var newValues = Commons.GetValuesGridViewRow(row);
+
+            astaEntity MyAsta = new astaEntity();
+            MyAsta.id = Convert.ToInt32(gvAste.DataKeys[e.RowIndex]["idasta"]);
+            MyAsta.data_fine = DateTime.Parse((String)newValues["data_fine"]);
+            MyAsta.state = new Stato(((CheckBox)gvAste.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1 : 0, "");
+
+            AsteGateway.UpdateAsta(MyAsta);
+
+            gvAste.EditIndex = -1;
+            this.BindData();
+        }
+
+        protected void gvAste_PageIndexChanged(object sender, EventArgs e) {
+            this.BindData();
+        }
+
+        protected void gvAste_PageIndexChanging(object sender, GridViewPageEventArgs e) {
+            this.gvAste.PageIndex = e.NewPageIndex;
+            this.BindData();
+        }
+
+        //TODO: Manca la gestione della paginazione
     }
 }
