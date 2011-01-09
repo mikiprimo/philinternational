@@ -36,7 +36,7 @@ first child of the left and right table columns */
     padding: 0px;
     width: 100%;
 }
-#header .Logo{float:left;width:200px;height:100px; background-image:url(../images/masterPage/logo_philtinternational.png); background-repeat:no-repeat}
+#header .Logo{float:left;width:200px;height:100px; background-image:url(.../images/masterPage/logo_philtinternational.png); background-repeat:no-repeat}
 #header .BannerDisplay{float:left;height:100px;width:470px;text-align:center;}
 #header .BannerDisplay img{padding:20px 1px;margin:0px}
 #header .loginDisplay
@@ -334,3 +334,16 @@ ul li.subargomento a:hover{text-decoration:underline;}
 #sb-counter a.sb-counter-current{text-decoration:underline;}
 div.sb-message{font-size:12px;padding:10px;text-align:center;}
 div.sb-message a:link,div.sb-message a:visited{color:#fff;text-decoration:underline;}
+/* news ticker*/
+div#info {float:left;width:65%;}
+div#info.ok {border-left-color: #ACD083;}
+div#info.otravez {border-left-color: #DC7873}
+div#info ul {margin-top: 10px;}
+div#info ul li {float: left;margin-right: 10px}
+div#info ul li a:hover img {border: 1px solid #666;}
+div#info ul li img {border: 1px solid #ccc;}
+        
+ul#ticker {height: 150px;overflow: hidden;}
+ul#ticker li {padding: 10px;height:130px;}
+ul#ticker li a {color: #666;}
+ul#ticker li span {display: block;color: #06C;}
