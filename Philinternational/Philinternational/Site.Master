@@ -3,105 +3,144 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
-    <title>Home Page</title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <title>Home Page</title><link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript" src="Scripts/jquery-1.4.1.min.js"></script>
-    <script language="javascript" type="text/javascript" src="Scripts/jquery-ui-1.8.7.custom.min.js"></script>    
+    <script language="javascript" type="text/javascript" src="Scripts/jquery-ui-1.8.7.custom.min.js"></script>
     <script language="javascript" type="text/javascript" src="Scripts/external/jquery.bgiframe-2.1.2.js"></script>
     <script language="javascript" type="text/javascript" src="Scripts/shadowbox.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
-	<script type="text/javascript" language="javascript">
-	    Shadowbox.init({
-	        handleOversize: "drag",
-	        modal: true
-	    });
+    <script type="text/javascript" language="javascript">
+        Shadowbox.init({
+            handleOversize: "drag",
+            modal: true
+        });
 
-	    $(function () {
+        $(function () {
 
-	        var ticker = function () {
-	            setTimeout(function () {
-	                $('#ticker li:first').animate({ marginTop: '-120px' }, 800, function () {
-	                    $(this).detach().appendTo('ul#ticker').removeAttr('style');
-	                });
-	                ticker();
-	            }, 4000);
-	        };
-	        ticker();
-	        $("#accordion").accordion({autoHeight: true,navigation: true});
-	    });
-	</script>
+            var ticker = function () {
+                setTimeout(function () {
+                    $('#ticker li:first').animate({ marginTop: '-120px' }, 800, function () {
+                        $(this).detach().appendTo('ul#ticker').removeAttr('style');
+                    });
+                    ticker();
+                }, 4000);
+            };
+            ticker();
+            $("#accordion").accordion({ autoHeight: true, navigation: true });
+        });
+    </script>
     <style type="text/css">
-        div#info {float:left;width:65%;}
-        div#info.ok {border-left-color: #ACD083;}
-        div#info.otravez {border-left-color: #DC7873}
-        div#info ul {margin-top: 10px;}
-        div#info ul li {float: left;margin-right: 10px}
-        div#info ul li a:hover img {border: 1px solid #666;}
-        div#info ul li img {border: 1px solid #ccc;}
+        div#info
+        {
+            float: left;
+            width: 65%;
+        }
+        div#info.ok
+        {
+            border-left-color: #ACD083;
+        }
+        div#info.otravez
+        {
+            border-left-color: #DC7873;
+        }
+        div#info ul
+        {
+            margin-top: 10px;
+        }
+        div#info ul li
+        {
+            float: left;
+            margin-right: 10px;
+        }
+        div#info ul li a:hover img
+        {
+            border: 1px solid #666;
+        }
+        div#info ul li img
+        {
+            border: 1px solid #ccc;
+        }
         
-        ul#ticker {height: 150px;overflow: hidden;}
-        ul#ticker li {padding: 10px;height:130px;}
-        ul#ticker li a {color: #666;}
-        ul#ticker li span {display: block;color: #06C;}
+        ul#ticker
+        {
+            height: 150px;
+            overflow: hidden;
+        }
+        ul#ticker li
+        {
+            padding: 10px;
+            height: 130px;
+        }
+        ul#ticker li a
+        {
+            color: #666;
+        }
+        ul#ticker li span
+        {
+            display: block;
+            color: #06C;
+        }
     </style>
 </head>
 <body>
     <form runat="server">
     <div id="page">
         <div id="header">
-            <div class="Logo">&nbsp;</div>
-            <div class="BannerDisplay"><a href="http://localhost:82/gilardifilatelia.actual/" title="visita il nostro negozio"><img src="images/masterPage/banner_gilardi_468_60.jpg" width="468" height="60" alt="Banner Pubblocitario"/></a></div>
+            <div class="Logo">
+                &nbsp;</div>
+            <div class="BannerDisplay">
+                <a href="http://localhost:82/gilardifilatelia.actual/" title="visita il nostro negozio">
+                    <img src="images/masterPage/banner_gilardi_468_60.jpg" width="468" height="60" alt="Banner Pubblocitario" /></a></div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        [<a href="~/Account/Register.aspx" id="HeadRegisterStatus" runat="server">Registrati</a>]
+                    <AnonymousTemplate>[<a href="~/Account/Register.aspx" id="HeadRegisterStatus" runat="server">Registrati</a>]
                         [<a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Accedi</a>]
                     </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Benvenuto <span class="bold">
-                            <asp:Label ID="LoginName" runat="server" />
-                        </span><br />[<a href="#">Carrello</a> ]<br />[<a href="#">Profilo</a>]<br />[
-                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                    <LoggedInTemplate>Benvenuto <span class="bold">
+                        <asp:Label ID="LoginName" runat="server" />
+                    </span><br />
+                        [<a href="#">Carrello</a> ]<br />
+                        [<a href="#">Profilo</a>]<br />
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
                             OnLoggingOut="HeadLoginStatus_LoggingOut" />
-                        ]
-                    </LoggedInTemplate>
+                        ] </LoggedInTemplate>
                 </asp:LoginView>
             </div>
         </div>
         <div class="leftmenu">
-            <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" 
-                EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical" 
-                Visible="false" Width="244px">
-	        <Items>
-		        <asp:MenuItem Text="Amministrazione" Value="Amministrazione" ></asp:MenuItem>
-		        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" 
-                    Value="Paragrafo"></asp:MenuItem>
-		        <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
-		        <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica"/>
-		        <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
-		        <asp:MenuItem Text="Gestione Asta" Value="Gestione Asta" >
-                </asp:MenuItem>
-	            <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto">
-                </asp:MenuItem>
-                <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" 
-                    Value="Nuova Asta"></asp:MenuItem>
-                <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerte" 
-                    Value="Offerte"></asp:MenuItem>
-	        </Items>
+            <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" EnableViewState="false"
+                IncludeStyleBlock="false" Orientation="Vertical" Visible="false" Width="244px">
+                <Items>
+                    <asp:MenuItem Text="Amministrazione" Value="Amministrazione"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo">
+                    </asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
+                    <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" />
+                    <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
+                    <asp:MenuItem Text="Gestione Asta" Value="Gestione Asta"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" Value="Nuova Asta">
+                    </asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerte" Value="Offerte">
+                    </asp:MenuItem>
+                </Items>
             </asp:Menu>
-            <asp:Menu ID="menuLeftAuthenticated" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
-	            <Items>
-		            <asp:MenuItem NavigateUrl="~/Management/AnagraficaDetail.aspx?cod=1" Text="Il mio profilo" />
-	            </Items>
+            <asp:Menu ID="menuLeftAuthenticated" runat="server" CssClass="menu" EnableViewState="false"
+                IncludeStyleBlock="false" Orientation="Vertical" Visible="false">
+                <Items>
+                    <asp:MenuItem NavigateUrl="~/Management/AnagraficaDetail.aspx?cod=1" Text="Il mio profilo" />
+                </Items>
             </asp:Menu>
-            <div id="srvAccordion" runat="server"></div>
+            <div id="srvAccordion" runat="server">
+            </div>
         </div>
         <div class="main">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-                <div class="clear"></div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <div class="clear">
+            </div>
         </div>
         <div class="footer">
-            <label style="float:right;padding:3px;">Phil international 12345678901</label></div>
+            <label style="float: right; padding: 3px;">Phil international 12345678901</label></div>
     </div>
     </form>
 </body>
