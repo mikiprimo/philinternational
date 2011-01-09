@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Aste.aspx.cs" Inherits="Philinternational.Styles.Aste" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="Aste.aspx.cs" Inherits="Philinternational.Styles.Aste" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -16,10 +17,10 @@
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Label ID="lblEditData" runat="server" Text='<%# Eval("data_fine") %>'></asp:Label>
+                    <asp:Label ID="lblEditData" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("data_fine")) %>'></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:Label ID="lblEditData" runat="server" Text='<%# Eval("data_fine") %>'></asp:Label>
+                    <asp:Label ID="lblEditData" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("data_fine")) %>'></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
