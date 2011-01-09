@@ -29,65 +29,12 @@
             $("#accordion").accordion({ autoHeight: true, navigation: true });
         });
     </script>
-    <style type="text/css">
-        div#info
-        {
-            float: left;
-            width: 65%;
-        }
-        div#info.ok
-        {
-            border-left-color: #ACD083;
-        }
-        div#info.otravez
-        {
-            border-left-color: #DC7873;
-        }
-        div#info ul
-        {
-            margin-top: 10px;
-        }
-        div#info ul li
-        {
-            float: left;
-            margin-right: 10px;
-        }
-        div#info ul li a:hover img
-        {
-            border: 1px solid #666;
-        }
-        div#info ul li img
-        {
-            border: 1px solid #ccc;
-        }
-        
-        ul#ticker
-        {
-            height: 150px;
-            overflow: hidden;
-        }
-        ul#ticker li
-        {
-            padding: 10px;
-            height: 130px;
-        }
-        ul#ticker li a
-        {
-            color: #666;
-        }
-        ul#ticker li span
-        {
-            display: block;
-            color: #06C;
-        }
-    </style>
 </head>
 <body>
     <form runat="server">
     <div id="page">
         <div id="header">
-            <div class="Logo">
-                &nbsp;</div>
+            <div class="Logo">&nbsp;</div>
             <div class="BannerDisplay">
                 <a href="http://localhost:82/gilardifilatelia.actual/" title="visita il nostro negozio">
                     <img src="images/masterPage/banner_gilardi_468_60.jpg" width="468" height="60" alt="Banner Pubblocitario" /></a></div>
@@ -140,7 +87,11 @@
             </div>
         </div>
         <div class="footer">
-            <label style="float: right; padding: 3px;">Phil international 12345678901</label></div>
+            <asp:HyperLink ID="condizionivendita" NavigateUrl="~/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
+            <asp:HyperLink ID="chisiamo" NavigateUrl="~/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
+            <asp:HyperLink ID="dovesiamo" NavigateUrl="~/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
+            <asp:HyperLink id="contatti" NavigateUrl="~/conttti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
+            <label style="float:right;padding:3px;">Phil international 12345678901</label>
     </div>
     </form>
 </body>
