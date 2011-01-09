@@ -8,6 +8,10 @@
         ShowHeader="False">
         <Columns>
             <asp:TemplateField>
+                <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField>
                 <ItemTemplate><asp:ImageButton ID="ibtnEditAste" runat="server" CausesValidation="False"
                     CommandName="Edit" ImageUrl="~/images/selectfull.png" />
                 </ItemTemplate>
@@ -31,4 +35,7 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    <asp:ImageButton ID="ibtnCreateAsta" runat="server" AlternateText="Crea una nuova asta"
+        OnClick="ibtnCreateAsta_Click" />&nbsp;<asp:ImageButton ID="ibtnDeleteSelectedAste"
+            runat="server" OnClick="ibtnDeleteSelectedAste_Click" AlternateText="Cancella le aste selezionate" />
 </asp:Content>
