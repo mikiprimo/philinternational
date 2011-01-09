@@ -100,6 +100,7 @@
     <Content Include="images\webControls\select_gridview.png" />
     <Content Include="Management\AnagraficaDetail.aspx" />
     <Content Include="Management\ArgomentoDetail.aspx" />
+    <Content Include="Management\AstaDetail.aspx" />
     <Content Include="Management\SubArgomentoDetail.aspx" />
     <Content Include="Management\Lotto.aspx" />
     <Content Include="Management\Anagrafica.aspx" />
@@ -174,24 +175,28 @@
     </Compile>
     <Compile Include="chi-siamo.aspx.cs">
       <DependentUpon>chi-siamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="chi-siamo.aspx.designer.cs">
       <DependentUpon>chi-siamo.aspx</DependentUpon>
     </Compile>
     <Compile Include="condizioniVendita.aspx.cs">
       <DependentUpon>condizioniVendita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="condizioniVendita.aspx.designer.cs">
       <DependentUpon>condizioniVendita.aspx</DependentUpon>
     </Compile>
     <Compile Include="contatti.aspx.cs">
       <DependentUpon>contatti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="contatti.aspx.designer.cs">
       <DependentUpon>contatti.aspx</DependentUpon>
     </Compile>
     <Compile Include="dovesiamo.aspx.cs">
       <DependentUpon>dovesiamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="dovesiamo.aspx.designer.cs">
       <DependentUpon>dovesiamo.aspx</DependentUpon>
@@ -252,6 +257,13 @@
     </Compile>
     <Compile Include="Management\ArgomentoDetail.aspx.designer.cs">
       <DependentUpon>ArgomentoDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\AstaDetail.aspx.cs">
+      <DependentUpon>AstaDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\AstaDetail.aspx.designer.cs">
+      <DependentUpon>AstaDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\SubArgomentoDetail.aspx.cs">
       <DependentUpon>SubArgomentoDetail.aspx</DependentUpon>

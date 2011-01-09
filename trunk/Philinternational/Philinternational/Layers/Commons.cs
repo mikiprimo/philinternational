@@ -31,9 +31,9 @@ namespace Philinternational.Layers
             else return false;
         }
 
-        public static Int32 GetCheckedState(Boolean b)
+        public static Int32 GetCheckedState(Boolean MyBool)
         {
-            if (b) return 1;
+            if (MyBool) return 1;
             else return 0;
         }
 

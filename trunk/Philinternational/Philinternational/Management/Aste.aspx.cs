@@ -21,29 +21,21 @@ namespace Philinternational.Styles
             gvAste.DataBind();
         }
 
-        //protected void chkStatus_OnCheckedChanged(object sender, EventArgs e) {
-        //    CheckBox chk = ((CheckBox)sender);
-        //    String idNews = chk.Attributes["MyIDNews"].ToString();
-        //    NewsGateway.UpdateNewsStateById(idNews, chk.Checked ? 1 : 0);
-        //    chk.Text = Commons.GetStatoDescription(chk.Checked ? 1 : 0);
-        //}
+        protected void ibtnCreateAsta_Click(object sender, ImageClickEventArgs e) {
+            Response.Redirect("AstaDetail.aspx");
+        }
 
-        ////CANCELLAZIONE NEWS
-        //protected void btnEraseSelectedNews_OnClick(object sender, EventArgs e) {
-        //    List<String> NewsIdToBeErased = new List<String>();
-        //    foreach (RepeaterItem item in repeaterNews.Items) {
-        //        CheckBox chk = ((CheckBox)item.FindControl("chkErase"));
-        //        if (chk.Checked) {
-        //            String MyIDNewsToErase = chk.Attributes["MyIDNewsToErase"].ToString();
-        //            NewsIdToBeErased.Add(MyIDNewsToErase);
-        //        }
-        //    }
-        //    if (NewsIdToBeErased.Count > 0) {
-        //        //Prevedere un dato di ritorno per il controllo delle avvenute cancellazioni
-        //        NewsGateway.DeleteNewsByIdList(NewsIdToBeErased);
-        //    }
-        //    BindData();
-        //}
+        protected void ibtnDeleteSelectedAste_Click(object sender, ImageClickEventArgs e) {
+            List<Int32> list = new List<Int32>();
 
+            foreach (GridViewRow row in gvAste.Rows) {
+                if (row.RowType == DataControlRowType.DataRow) {
+                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
+                    if (chk.Checked) list.Add(Convert.ToInt32(gvAste.DataKeys[row.RowIndex]["idasta"]));
+                }
+            }
+            if (list.Count > 0) AsteGateway.DeleteAste(list);
+            this.BindData();
+        }
     }
 }
