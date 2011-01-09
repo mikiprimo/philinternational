@@ -66,6 +66,10 @@
     <Content Include="Account\ChangePasswordSuccess_todo.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="App_Data\ASPNETDB.MDF" />
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>ASPNETDB.MDF</DependentUpon>
+    </Content>
     <Content Include="Documentation\Gestione Lotti.txt" />
     <Content Include="Documentation\GridView\GridViewCustom_EsempioCompleto.txt" />
     <Content Include="Documentation\philinternational.sql" />
@@ -91,6 +95,8 @@
     <Content Include="images\shadowbox\pause.png" />
     <Content Include="images\shadowbox\play.png" />
     <Content Include="images\shadowbox\previous.png" />
+    <Content Include="images\webControls\gridview_update.png" />
+    <Content Include="images\webControls\select_gridview.png" />
     <Content Include="Management\AnagraficaDetail.aspx" />
     <Content Include="Management\ArgomentoDetail.aspx" />
     <Content Include="Management\SubArgomentoDetail.aspx" />
@@ -103,7 +109,14 @@
     <Content Include="Management\Offerta.aspx" />
     <Content Include="Management\Paragrafo.aspx" />
     <Content Include="Management\UploadLotti.aspx" />
+    <Content Include="Scripts\external\jquery.bgiframe-2.1.2.js" />
+    <Content Include="Scripts\external\jquery.cookie.js" />
+    <Content Include="Scripts\external\jquery.metadata.js" />
+    <Content Include="Scripts\external\qunit.css" />
+    <Content Include="Scripts\external\qunit.js" />
+    <Content Include="Scripts\jquery-ui-1.8.7.custom.min.js" />
     <Content Include="Scripts\NewsScript.js" />
+    <Content Include="Scripts\shadowbox.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -326,6 +339,7 @@
     <Compile Include="Layers\Commons.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="Philinternational.csproj.vs10x" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
