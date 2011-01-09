@@ -115,7 +115,7 @@
     <Content Include="Scripts\external\qunit.css" />
     <Content Include="Scripts\external\qunit.js" />
     <Content Include="Scripts\jquery-ui-1.8.7.custom.min.js" />
-    <Content Include="Scripts\NewsScript.js" />
+    <Content Include="Scripts\NewsScript_toverify.js" />
     <Content Include="Scripts\shadowbox.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
