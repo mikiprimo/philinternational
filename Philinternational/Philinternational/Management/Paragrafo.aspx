@@ -2,7 +2,8 @@
     CodeBehind="Paragrafo.aspx.cs" Inherits="Philinternational.Styles.Paragrafo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Gestione
+    Paragrafi</h1>
     <asp:GridView ID="gvParagrafi" runat="server" AllowPaging="True" AutoGenerateColumns="False"
         DataKeyNames="idparagrafo" OnRowUpdating="gvParagrafi_RowUpdating" OnPageIndexChanged="gvParagrafi_PageIndexChanged"
         OnRowEditing="gvParagrafi_RowEditing" EmptyDataText="Nessun paragrafo presente"

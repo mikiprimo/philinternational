@@ -229,6 +229,9 @@
     <Compile Include="Layers\Entities\logInfos.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Layers\Entities\lotto.Entity.cs" />
+    <Compile Include="Layers\Entities\newsletter.Entity.cs" />
+    <Compile Include="Layers\Entities\offerta.Entity.cs" />
     <Compile Include="Layers\LottiGateway.cs" />
     <Compile Include="Layers\Entities\news.Entity.cs">
       <SubType>Code</SubType>
@@ -242,6 +245,7 @@
     <Compile Include="Layers\Entities\paragSubArgomento.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Layers\NewsletterGateway.cs" />
     <Compile Include="Layers\ParagrafoGateway.cs" />
     <Compile Include="Layers\NewsGateway.cs" />
     <Compile Include="Management\AnagraficaDetail.aspx.cs">

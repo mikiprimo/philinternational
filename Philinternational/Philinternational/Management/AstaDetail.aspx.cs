@@ -20,7 +20,7 @@ namespace Philinternational.Management {
             MyAsta.data_fine = DateTime.Parse(txtDataFine.Text);
             MyAsta.state = new Stato(Commons.GetCheckedState(chkStatus.Checked), "");
 
-            esito = AsteGateway.InsertArgomento(MyAsta);
+            esito = AsteGateway.InsertAsta(MyAsta);
         }
 
         protected void calDataFine_SelectionChanged(object sender, EventArgs e) {
