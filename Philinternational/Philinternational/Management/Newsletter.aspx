@@ -51,5 +51,6 @@
     </asp:GridView>
     <asp:ImageButton ID="ibtnCreateNewsletter" runat="server" AlternateText="Crea una nuova newsletter"
         OnClick="ibtnCreateNewsletter_Click" />&nbsp;<asp:ImageButton ID="ibtnDeleteSelectedNewsletters"
-            runat="server" OnClick="ibtnDeleteSelectedNewsletters_Click" AlternateText="Cancella le newsletters selezionate" />
+            runat="server" OnClick="ibtnDeleteSelectedNewsletters_Click" 
+        AlternateText="Cancella le newsletters selezionate" style="width: 14px" />
 </asp:Content>
