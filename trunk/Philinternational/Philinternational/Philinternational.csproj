@@ -101,6 +101,7 @@
     <Content Include="Management\AnagraficaDetail.aspx" />
     <Content Include="Management\ArgomentoDetail.aspx" />
     <Content Include="Management\AstaDetail.aspx" />
+    <Content Include="Management\NewsletterDetail.aspx" />
     <Content Include="Management\SubArgomentoDetail.aspx" />
     <Content Include="Management\Lotto.aspx" />
     <Content Include="Management\Anagrafica.aspx" />
@@ -222,7 +223,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Layers\Entities\anagrafica.Entity.cs" />
     <Compile Include="Layers\Entities\asta.Entity.cs" />
+    <Compile Include="Layers\Entities\lottoScartato.Entity.cs" />
+    <Compile Include="Layers\Entities\lottoTemporaneo.Entity.cs" />
     <Compile Include="Layers\Entities\legendaStato.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -268,6 +272,13 @@
     </Compile>
     <Compile Include="Management\AstaDetail.aspx.designer.cs">
       <DependentUpon>AstaDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\NewsletterDetail.aspx.cs">
+      <DependentUpon>NewsletterDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\NewsletterDetail.aspx.designer.cs">
+      <DependentUpon>NewsletterDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\SubArgomentoDetail.aspx.cs">
       <DependentUpon>SubArgomentoDetail.aspx</DependentUpon>
