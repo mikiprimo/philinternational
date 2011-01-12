@@ -6,8 +6,7 @@
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.4.1.min.js") %>"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-ui-1.8.7.custom.min.js") %>"></script>
-        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/external/jquery.bgiframe-2.1.2.js") %>"></script>
-        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("Scripts/shadowbox.js") %>"></script>    
+        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>    
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
             <title>Offerta filatelica per corrsipondenza</title>
             <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />
@@ -19,9 +18,11 @@
             <meta http-equiv="Cache-Control" content="no-cache" />
         </asp:ContentPlaceHolder>
     <script type="text/javascript" language="javascript">
+        
         Shadowbox.init({handleOversize: "drag",modal: true});
 
         $(function () {
+            $("#accordion").accordion({ autoHeight: false, navigation: true });
             var ticker = function () {
                 setTimeout(function () {
                     $('#ticker li:first').animate({ marginTop: '-120px' }, 800, function () {
@@ -32,7 +33,7 @@
             };
             ticker();
         });
-        $("#accordion").accordion({ autoHeight: true, navigation: true });
+
     </script>
 </head>
 <body>
@@ -41,8 +42,8 @@
         <div id="header">
             <div class="Logo">&nbsp;</div>
             <div class="BannerDisplay">
-                <a href="http://localhost:82/gilardifilatelia.actual/" title="visita il nostro negozio">
-                    <img src="images/masterPage/banner_gilardi_468_60.jpg" width="468" height="60" alt="Banner Pubblocitario" /></a></div>
+                <asp:AdRotator   />
+            </div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>[<a href="~/Account/Register.aspx" id="HeadRegisterStatus" runat="server">Registrati</a>]
@@ -83,12 +84,12 @@
                     <asp:MenuItem NavigateUrl="~/Management/AnagraficaDetail.aspx?cod=1" Text="Il mio profilo" />
                 </Items>
             </asp:Menu>
-            <div id="TmpAccordion" runat="server"></div>
+            <div runat="server" id="loadMenuccordion"></div>
+            
         </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            <div class="clear">
-            </div>
+            <div class="clear"></div>
         </div>
         <div class="footer">
             <asp:HyperLink ID="condizionivendita" NavigateUrl="~/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>

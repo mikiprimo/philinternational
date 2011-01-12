@@ -49,13 +49,13 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.Menu menuLeftAuthenticated;
         
         /// <summary>
-        /// TmpAccordion control.
+        /// loadMenuccordion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TmpAccordion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loadMenuccordion;
         
         /// <summary>
         /// MainContent control.
