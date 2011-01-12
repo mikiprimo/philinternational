@@ -8,14 +8,13 @@
     <asp:Repeater runat="server" ID="elencoLotti" DataSourceID="LottoConnector"  DataMember="DefaultView">
     <ItemTemplate>
         <div class="bloccoLotto">
-            <h4 id="idlotto" runat="server" ><%# Eval("idlotto")%></h4>
-            <asp:HyperLink  NavigateUrl="images/asta/2.jpg" rel="shadowbox;handleOversize:resize" runat="server" text="Lotto 2" id="shadowimages"><img src="images/asta/2.jpg" width="100" height="100" alt="Lotto 1..."  /></asp:HyperLink>
-            <img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..." runat="server" id="imagesNonDisponibile" />
+            <h4 id="idlotto" runat="server" ><%#Eval("idlotto")%></h4>
+            <%# loadImmagine(DataBinder.Eval(Container.DataItem, "idlotto")) %>
             <p>Anno:<span id="annoLotto"><%# Eval("anno")%></span></p>
             <p id="descrizioneLotto" runat="server"><%# Eval("descrizione")%></p>
             <p>Condizione: <span id="statoLotto" runat="server"><%# Eval("tipo_lotto")%></span></p>
             <p>Prezzo: <span id="prezzLotto" runat="server"><%# Eval("euro")%></span></p>
-            <p class="lottoOfferta"></p>
+            <p class="lottoOfferta"><%# VerificaOfferta(DataBinder.Eval(Container.DataItem, "stato"), DataBinder.Eval(Container.DataItem, "idlotto"))%></p>
         </div>  
     </ItemTemplate>
     </asp:Repeater>

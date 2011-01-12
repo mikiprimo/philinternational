@@ -22,9 +22,6 @@ namespace Philinternational
                 String subargomento = Request["subarg"];
                 getTitle(codargomento, subargomento);
                 BindData(codargomento, subargomento);
-                bool pippo = searchImageFromDisk("2");
-                Response.Write("bool pippo:" + pippo);
-
             }
         }
         protected void getTitle(String codargomento, String subargomento)
@@ -52,7 +49,7 @@ namespace Philinternational
 
 
             titlePage.InnerText = "Lotti presenti per l'argomento:" + descrizione_argomento;
-            nomeArgomento.InnerText = descrizione_paragrafo + " [" + descrizione_argomento + "]";
+            nomeArgomento.InnerText = descrizione_paragrafo + " [ " + descrizione_argomento + " ]";
 
         
         }
@@ -73,9 +70,9 @@ namespace Philinternational
             LottoConnector.DataBind();
         }
 
-        private bool searchImageFromDisk(String idlotto) {
+        private bool searchImageFromDisk(String idLotto) {
             Boolean stato = false;
-            String nome_file = idlotto + ".jpg";
+            String nome_file = idLotto + ".jpg";
             String tmpPath = "";
             tmpPath = Server.MapPath(".")  + "\\images\\asta\\";
             //Response.Write("PATH["+ tmpPath +"]");
@@ -85,7 +82,39 @@ namespace Philinternational
             }            
             return stato;
         }
- 
 
+        public String loadImmagine(Object idLotto){
+            String  chiave = idLotto.ToString();
+            String outputImmagine ="";
+            bool esito = searchImageFromDisk(chiave);
+            if(esito){
+                String path = Page.ResolveClientUrl("~/images/asta/")  + chiave + ".jpg";
+                outputImmagine = "<a href=\"" + path + "\" rel=\"shadowbox;handleOversize:resize\" title=\"Lotto " + chiave + "\" id=\"shadowimages\"><img src=\"" + path  + "\" width=\"100\" height=\"100\" alt=\"Lotto "+ chiave +"\"/></a>";
+            }else{
+                String path = Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg");
+                outputImmagine = "<img src=\"" + path + "\" width=\"100\" height=\"100\" alt=\"Lotto " + chiave + "\"/>";
+            }
+            return outputImmagine;
+        }
+
+        public String VerificaOfferta(Object statoOfferta, Object idLotto)
+        {
+            String outputVerifica = "<a href=\"fai_offerta.aspx?cod=idLotto\">Fai l'offerta</a>\n";
+            String stato = statoOfferta.ToString();
+            String chiave = idLotto.ToString();
+            if (AccountLayer.IsLogged()) {
+                switch (stato)
+                {
+                    //case "1": outputVerifica = ""; break;
+                    case "99": outputVerifica = "Offerta già effettuata"; break;
+                    case "0": outputVerifica = "Prodotto 0"; break;
+                }
+            
+            }
+            return outputVerifica;
+
+
+
+        }
     }
 }
