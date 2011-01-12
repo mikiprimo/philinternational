@@ -15,7 +15,7 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TmpAccordion.InnerHtml = LoadMenuAccordion();
+            loadMenuccordion.InnerHtml = LoadMenuAccordion();
             //Verifica della visualizzazione Menu left
             if (AccountLayer.IsLogged())
             {
@@ -43,7 +43,7 @@ namespace Philinternational
             Response.Redirect("~/Default.aspx");
         }
 
-        private String LoadMenuAccordion() {
+        public String LoadMenuAccordion() {
             String paragrafo = "";
             String argomento="";
             MySqlDataReader dr;
@@ -57,7 +57,7 @@ namespace Philinternational
                 dr = command.ExecuteReader();
                 if (dr != null)
                 {
-                    paragrafo = "<div id=\"accordion\">\n";
+                    paragrafo = "<div id=\"accordion\">";
                     while (dr.Read())
                     {
                         MySqlDataReader drArg;

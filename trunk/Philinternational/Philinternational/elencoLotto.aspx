@@ -9,8 +9,8 @@
     <ItemTemplate>
         <div class="bloccoLotto">
             <h4 id="idlotto" runat="server" ><%#Eval("idlotto")%></h4>
-            <%# loadImmagine(DataBinder.Eval(Container.DataItem, "idlotto")) %>
-            <p>Anno:<span id="annoLotto"><%# Eval("anno")%></span></p>
+            <p><%# loadImmagine(DataBinder.Eval(Container.DataItem, "idlotto")) %></p>
+            <p>Anno: <span id="annoLotto"><%# Eval("anno")%></span></p>
             <p id="descrizioneLotto" runat="server"><%# Eval("descrizione")%></p>
             <p>Condizione: <span id="statoLotto" runat="server"><%# Eval("tipo_lotto")%></span></p>
             <p>Prezzo: <span id="prezzLotto" runat="server"><%# Eval("euro")%></span></p>

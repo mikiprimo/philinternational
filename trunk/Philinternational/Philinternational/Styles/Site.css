@@ -114,7 +114,7 @@ div.menu ul
 
 div.menu ul li a, div.menu ul li a:visited
 {
-    border: 1px #4e667d solid;
+    /*border: 1px #4e667d solid;*/
     color: #dde4ec;
     display: block;
     line-height: 1.35em;
@@ -233,32 +233,28 @@ table tr.alternate{background-color:#F00;color:#FFF;}
 .bloccoLotto
 {
     float:left;
-    width:32%;
+    width:49%;
     height:300px;
-    border:1px solid #eaeaea;
+    border:1px solid #999;
     margin:1px
 }
-.bloccoLotto h4{text-transform:uppercase;padding:2px;color:#000066;height:20px;line-height:20px;text-align:center}
-.bloccoLotto img{padding:5px 65px;border:0px;}
-.bloccoLotto p
-{   
-    padding:3px;
-    margin:1px 0px;
- }
- .bloccoLotto span{font-weight:bold;color:#00aa00}
- 
+.bloccoLotto h4{text-transform:uppercase;padding:2px;color:#000066;height:20px;line-height:20px;text-align:center;background-color:#eaeaea}
+.bloccoLotto img{padding:5px 35%;  border:0px;}
+.bloccoLotto p{padding:3px;margin:2px 0px; }
+.bloccoLotto span{font-weight:bold;color:#00aa00}
+ p.descrizioneLotto{padding:3px;}
 .lottoOfferta{text-align:center;font-weight:bold;}
 .lottoOfferta a{display:block;height:20px;text-decoration:none;padding:3px}
 .lottoOfferta a:focus{color:#FF0000}
 .lottoOfferta a:hover{color:#920000}
 .offerta_fatta{height:20px;color:#fff;background-color:gray}
 ul{list-style:none}
-#accordion div:hover{background-color:transparent}
+
 
 h3.paragrafo a{display:block;font-weight:bold;height:25px;color:#000;text-decoration:none;font-size:12px;margin:2px 0px;}
 h3.paragrafo a:focus,.paragrafo a:active{color:#920000;}
 h3.paragrafo a:hover{border:none;}
-ul li.argomento a{display:block;color:#000;text-decoration:none;height:20px;line-height:20px;margin:1px 0px;}
+ul li.argomento a{display:block;color:#999;text-decoration:none;height:25px;line-height:20px;margin:1px 0px;padding:3px 0px;}
 ul li.argomento a:hover{text-decoration:underline;}
 ul li.subargomento a{display:block;text-decoration:none;height:20px;line-height:20px;margin:1px 0px;color:#060}
 ul li.subargomento a:hover{text-decoration:underline;}
@@ -278,9 +274,10 @@ ul li.subargomento a:hover{text-decoration:underline;}
 .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
 .ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
 .ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+  
 .ui-draggable .ui-dialog-titlebar { cursor: move; }
-*/
-/*
+
+
 .ui-corner-tl { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; }
 .ui-corner-tr { -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; }
 .ui-corner-bl { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
@@ -290,7 +287,7 @@ ul li.subargomento a:hover{text-decoration:underline;}
 .ui-corner-right {  -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
 .ui-corner-left { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
 .ui-corner-all { -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
-*/
+
 
 .ui-accordion { width: 100%; }
 .ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
@@ -302,7 +299,7 @@ ul li.subargomento a:hover{text-decoration:underline;}
 .ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; zoom: 1; }
 .ui-accordion .ui-accordion-content-active { display: block; }
 
-
+*/
 /*shadowbox */
 #sb-title-inner,#sb-info-inner,#sb-loading-inner,div.sb-message{font-family:"HelveticaNeue-Light","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:200;color:#fff;}
 #sb-container{position:fixed;margin:0;padding:0;top:0;left:0;z-index:999;text-align:left;visibility:hidden;display:none;}
