@@ -49,7 +49,7 @@ namespace Philinternational
 
 
             titlePage.InnerText = "Lotti presenti per l'argomento:" + descrizione_argomento;
-            nomeArgomento.InnerText = descrizione_paragrafo + " [ " + descrizione_argomento + " ]";
+            nomeArgomento.InnerHtml = "<span style=\"font-size:1em;color:#000\">" + descrizione_paragrafo + "</span>"+ " [ " + descrizione_argomento + " ]";
 
         
         }
@@ -99,7 +99,7 @@ namespace Philinternational
 
         public String VerificaOfferta(Object statoOfferta, Object idLotto)
         {
-            String outputVerifica = "<a href=\"fai_offerta.aspx?cod=idLotto\">Fai l'offerta</a>\n";
+            String outputVerifica = "<a href=\"offerta.aspx?cod=idLotto\">Fai l'offerta</a>\n";
             String stato = statoOfferta.ToString();
             String chiave = idLotto.ToString();
             if (AccountLayer.IsLogged()) {
@@ -112,9 +112,6 @@ namespace Philinternational
             
             }
             return outputVerifica;
-
-
-
         }
     }
 }

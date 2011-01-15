@@ -16,6 +16,7 @@ namespace Philinternational
         protected void Page_Load(object sender, EventArgs e)
         {
             loadMenuccordion.InnerHtml = LoadMenuAccordion();
+            LogoOutput.InnerHtml = loadLogo();
             //Verifica della visualizzazione Menu left
             if (AccountLayer.IsLogged())
             {
@@ -43,7 +44,7 @@ namespace Philinternational
             Response.Redirect("~/Default.aspx");
         }
 
-        public String LoadMenuAccordion() {
+        private String LoadMenuAccordion() {
             String paragrafo = "";
             String argomento="";
             MySqlDataReader dr;
@@ -74,7 +75,7 @@ namespace Philinternational
                                 if (drArg.HasRows) {
                                     paragrafo += "<h3 class=\"paragrafo\"><a href=\"#\">" + (String)dr["descrizione"] + "</a></h3>\n";
                                     String rowArg = "";
-                                    argomento = "<div>\n<ul>\n";
+                                    argomento = "<div class=\"evidenziatore\">\n<ul>\n";
                                     while (drArg.Read())
                                     {
                                         rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0") + "\" />" + (String)drArg["descrizione"] + "</a></li>\n";
@@ -110,7 +111,18 @@ namespace Philinternational
             return paragrafo;
 
         }
-        private void LoadLottiRandom() { }
-        private void LoadBannerRandom() { }
+        private String loadLogo() {
+            String logohead = "<div class=\"Logo\">";
+            String logobody = "";
+            String logoend = "</div>\n";
+            String logoOutput = "";
+
+            logobody = "<a href=\"" + Page.ResolveClientUrl("~/default.aspx") + "\"><img src=\"" + Page.ResolveClientUrl("~/images/masterPage/logo_philtinternational.png") + "\" height=\"91\" width=\"197\" alt=\"Home Page PhilInternational\"/></a>\n";
+            logoOutput = (String)(logohead + logobody + logoend);
+            return logoOutput;
+        
+        }
+        private void LoadLottiRandom() { }   
+        
     }
 }

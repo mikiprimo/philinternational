@@ -40,9 +40,9 @@
     <form runat="server">
     <div id="page">
         <div id="header">
-            <div class="Logo">&nbsp;</div>
+            <div runat="server" id="LogoOutput"></div>
             <div class="BannerDisplay">
-                <asp:AdRotator   />
+                <asp:AdRotator runat="server" AdvertisementFile="~/Advertise.xml" Target="_blank"  Width="468" Height="60" />
             </div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
@@ -60,7 +60,7 @@
                 </asp:LoginView>
             </div>
         </div>
-        <div class="leftmenu">
+        <div id="leftmenu">
             <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" EnableViewState="false"
                 IncludeStyleBlock="false" Orientation="Vertical" Visible="false" Width="244px">
                 <Items>
@@ -85,18 +85,21 @@
                 </Items>
             </asp:Menu>
             <div runat="server" id="loadMenuccordion"></div>
-            
         </div>
-        <div class="main">
+        <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            <div class="clear"></div>
         </div>
-        <div class="footer">
+        <div id="rightmenu">
+            A cosa sono interessato<br />
+            Che offerte ho fatto<br />
+            Lotti Contesi<br />
+        </div>
+        <div id="footer">
             <asp:HyperLink ID="condizionivendita" NavigateUrl="~/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
             <asp:HyperLink ID="chisiamo" NavigateUrl="~/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
             <asp:HyperLink ID="dovesiamo" NavigateUrl="~/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
             <asp:HyperLink id="contatti" NavigateUrl="~/contatti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
-            <label style="float:right;padding:3px;">Phil international 12345678901</label>
+            <p class="piva">Phil international P.IVA: 12345678901</p>
         </div>
 </div>
     </form>

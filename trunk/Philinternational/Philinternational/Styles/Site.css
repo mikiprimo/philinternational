@@ -1,6 +1,6 @@
 ﻿/* DEFAULTS ------------------------------------*/
 html{background-color:transparent;}
-body{background-color:#FFF;width:990px;height:100%;font-family:Tahoma;font-size:12px;clear:both;color:#000000;margin:0px auto;}
+body{background-color:#FFF;width:990px;height:100%;    font-family: Verdana, Geneva, sans-serif;font-size: 10px;clear:both;color:#000000;margin:0px auto;}
 select,input{clear:both;color:#000000;border:1px solid #920000;margin:1px 0px;height:24px;line-height:24px;}
 select:focus,input:focus{background-color:#000;color:#FFF;}
 textarea{clear:both;color:#000000;border:1px solid #eaeaea;}
@@ -8,16 +8,7 @@ select:hover,input:hover,textarea:hover{background-color:#eaeaea;border:1px soli
 textarea:focus{background-color:#eaeaea;color:#fff}
 option{height:25px;line-height:25px;color:#FFF;}
 form,p,h1,h2,h3,h4,h5,h6,ul,li{margin:0px;padding:0px;}
-
-/* HEADINGS   
-----------------------------------------------------------*/
-/* this rule styles <h1> and <h2> tags that are the 
-first child of the left and right table columns */
-.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
-{
-    margin-top: 0px;
-}
-
+ul{list-style:none}
 
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
@@ -31,19 +22,20 @@ first child of the left and right table columns */
 }
 
 #header
-{clear: both;
+{
+    clear: both;
     margin: 0px;
     padding: 0px;
     width: 100%;
+    height:120px;
 }
-#header .Logo{float:left;width:200px;height:100px; background-image:url(../images/masterPage/logo_philtinternational.png); background-repeat:no-repeat}
+#header .Logo{float:left;width:200px;height:100px; }
 #header .BannerDisplay{float:left;height:100px;width:470px;text-align:center;}
 #header .BannerDisplay img{padding:20px 1px;margin:0px}
 #header .loginDisplay
 {
     width:280px;
-    float:right;
-    height:100px;
+    float:right;    
     font-size: 1.1em;
     text-align: right;
     padding: 10px;
@@ -56,40 +48,48 @@ first child of the left and right table columns */
 #header .loginDisplay a:hover{color: #920000;}
 
 
-.main
-{
-    float: left;
-    width:75%;
-}
-.main  h1{line-height:30px;text-align:center;font-weight:bold;font-size:1.4em;color:#F00}
+#main  {float: left;width:49%;  }
+#main  h1{text-align:center;font-weight:bold;font-size:1.4em;color:#F00;padding:3px}
+#main  h2,h3{line-height:20px;font-weight:bold;font-size:1.2em;color:#000}
+#main  h4{line-height:18px;font-weight:bold;font-size:1.0em;color:#000}
+#main  h5{line-height:16px;font-weight:bold;font-size:0.9em;color:#000}
+#main  h6{line-height:14px;font-weight:bold;font-size:0.8em;color:#000}
 
-.leftCol
+#footer
 {
-    padding: 6px 0px;
-    width: 25%;
-    min-height: 200px;
-    
-}
-
-.footer
-{
-    color: #4e5766;
-    clear:both;
+    color:#999;
     float:left;
     height:50px;
     margin: 0px auto;
     text-align:center;
-    font-size: 18px;
+    font-size:11px;
     width: 100%;
 }
-
-.leftmenu
+#footer .piva{text-align:center;margin:5px 0px;display:block}
+#footer a{font-size:11px;margin:0px 3px;text-decoration:none;color:#999}
+#footer a:hover{text-decoration:underline;color:#920000}
+#leftmenu
 {
     float: left;
     width: 25%;
     padding:0px 0px 20px 0px;
+    min-height:400px;
 }
 
+#rightmenu
+{
+    float: right;
+    width: 25%;
+    padding:0px 0px 20px 0px;
+    min-height:400px;
+}
+
+/*.....................*/
+#presentazione h1{font-size:1.4em;color:#F00;text-transform:uppercase}
+#presentazione p{margin:1px 0px;font-size:1.2em;padding:4px 0px;}
+#presentazione span{color:#F00;font-weight:bold;}
+#presentazione a{text-decoration:none;}
+#presentazione a:hover{text-decoration:underline}
 /* TAB MENU   
 ----------------------------------------------------------*/
 
@@ -189,42 +189,14 @@ div.accountInfo
 /* MISC  
 ----------------------------------------------------------*/
 
-.clear
-{
-    clear: both;
-}
+.clear{clear: both;}
+.title{display: block;float: left;text-align: left;width: auto;}
+.failureNotification{font-size: 1.2em;color: Red;}
+.bold{font-weight: bold;}
+.submitButton{text-align: right;padding-right: 10px;}
+.center{text-align:center}
 
-.title
-{
-    display: block;
-    float: left;
-    text-align: left;
-    width: auto;
-}
-
-
-.failureNotification
-{
-    font-size: 1.2em;
-    color: Red;
-}
-
-.bold
-{
-    font-weight: bold;
-}
-
-.submitButton
-{
-    text-align: right;
-    padding-right: 10px;
-}
-
-
-
-
-table{margin-right: 0px;
-}
+table{margin-right: 0px;}
 table tr th{font-weight:bold;line-height:26px;}
 table tr td{line-height:20px}
 table tr{background-color:#FFF;color:#F00}
@@ -241,23 +213,23 @@ table tr.alternate{background-color:#F00;color:#FFF;}
 .bloccoLotto h4{text-transform:uppercase;padding:2px;color:#000066;height:20px;line-height:20px;text-align:center;background-color:#eaeaea}
 .bloccoLotto img{padding:5px 35%;  border:0px;}
 .bloccoLotto p{padding:3px;margin:2px 0px; }
-.bloccoLotto span{font-weight:bold;color:#00aa00}
+.bloccoLotto span{font-weight:bold;}
  p.descrizioneLotto{padding:3px;}
 .lottoOfferta{text-align:center;font-weight:bold;}
 .lottoOfferta a{display:block;height:20px;text-decoration:none;padding:3px}
 .lottoOfferta a:focus{color:#FF0000}
 .lottoOfferta a:hover{color:#920000}
 .offerta_fatta{height:20px;color:#fff;background-color:gray}
-ul{list-style:none}
 
-
-h3.paragrafo a{display:block;font-weight:bold;height:25px;color:#000;text-decoration:none;font-size:12px;margin:2px 0px;}
-h3.paragrafo a:focus,.paragrafo a:active{color:#920000;}
-h3.paragrafo a:hover{border:none;}
-ul li.argomento a{display:block;color:#999;text-decoration:none;height:25px;line-height:20px;margin:1px 0px;padding:3px 0px;}
-ul li.argomento a:hover{text-decoration:underline;}
-ul li.subargomento a{display:block;text-decoration:none;height:20px;line-height:20px;margin:1px 0px;color:#060}
-ul li.subargomento a:hover{text-decoration:underline;}
+.evidenziatore{background-color:transparent}
+.evidenziatore:hover,.evidenziatore:focus,.evidenziatore:active{background-color:#eee;}
+h3.paragrafo{overflow:hidden;}
+h3.paragrafo a{display:block;font-weight:bold;color:#000;text-decoration:none;font-size:12px;}
+h3.paragrafo a:hover,.paragrafo a:active{color:#920000;border:none;}
+ul li.argomento a{display:block;color:#999;text-decoration:none;margin:1px 0px;padding:3px 0px;}
+ul li.argomento a:hover{text-decoration:underline;color:#920000;}
+ul li.subargomento a{display:block;text-decoration:none;margin:1px 0px;color:#060}
+ul li.subargomento a:hover{text-decoration:underline;color:#920000;}
 
 /* jquery */
 /*
@@ -332,7 +304,7 @@ ul li.subargomento a:hover{text-decoration:underline;}
 div.sb-message{font-size:12px;padding:10px;text-align:center;}
 div.sb-message a:link,div.sb-message a:visited{color:#fff;text-decoration:underline;}
 /* news ticker*/
-div#info {float:left;width:65%;}
+div#info {float:left;width:100%;}
 div#info.ok {border-left-color: #ACD083;}
 div#info.otravez {border-left-color: #DC7873}
 div#info ul {margin-top: 10px;}
@@ -340,7 +312,8 @@ div#info ul li {float: left;margin-right: 10px}
 div#info ul li a:hover img {border: 1px solid #666;}
 div#info ul li img {border: 1px solid #ccc;}
         
-ul#ticker {height: 150px;overflow: hidden;}
-ul#ticker li {padding: 10px;height:130px;}
+ul#ticker {height:130px;overflow: hidden;}
+ul#ticker li {width:100%;height:130px;overflow:hidden }
+ul#ticker li p{padding:5px;overflow:hidden;height:90px; text-align:justify}
 ul#ticker li a {color: #666;}
-ul#ticker li span {display: block;color: #06C;}
+ul#ticker li span {color: #06C;font-size:1.4em;margin:3px 0px;font-weight:bold;text-transform:uppercase;display:block;}
