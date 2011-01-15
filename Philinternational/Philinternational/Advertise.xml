@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Advertisements>
+  <Ad>
+    <ImageUrl>~/images/banner/banner_gilardi_468_60.jpg</ImageUrl>
+    <Height>60</Height>
+    <Width>468</Width>
+    <NavigateUrl>http://www.gilardifilatelia.it</NavigateUrl>
+    <AlternateText>Gilardi Filatelia</AlternateText>
+    <Impressions>10000</Impressions>
+    <Keyword>francobolli</Keyword>
+  </Ad>
+  <Ad>
+    <ImageUrl>~/images/banner/banner_test_468_60.png</ImageUrl>
+    <Height>60</Height>
+    <Width>468</Width>
+    <NavigateUrl>http://www.gilardifilatelia.it</NavigateUrl>
+    <AlternateText>Prova tecnicaGilardi Filatelia</AlternateText>
+    <Impressions>10000</Impressions>
+    <Keyword>francobolli</Keyword>
+  </Ad>
+</Advertisements>
