@@ -69,6 +69,7 @@
     <Content Include="chi-siamo.aspx" />
     <Content Include="condizioniVendita.aspx" />
     <Content Include="contatti.aspx" />
+    <Content Include="Documentation\esempio_dati_tabella_lotto.sql" />
     <Content Include="Documentation\Gestione Lotti.txt" />
     <Content Include="Documentation\GridView\GridViewCustom_EsempioCompleto.txt" />
     <Content Include="Documentation\load_paragrafi.sql" />
