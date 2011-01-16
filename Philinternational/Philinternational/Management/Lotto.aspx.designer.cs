@@ -13,6 +13,15 @@ namespace Philinternational.Management {
     public partial class Lotto {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// mvLotti control.
         /// </summary>
         /// <remarks>
@@ -20,33 +29,6 @@ namespace Philinternational.Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView mvLotti;
-        
-        /// <summary>
-        /// viewLottiTemporanei control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View viewLottiTemporanei;
-        
-        /// <summary>
-        /// gvLottiTemporanei control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvLottiTemporanei;
-        
-        /// <summary>
-        /// ibtnPubblicaLottiSelezionati control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibtnPubblicaLottiSelezionati;
         
         /// <summary>
         /// viewLottiPubblicati control.
@@ -101,6 +83,33 @@ namespace Philinternational.Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ibtnCercaLotto;
+        
+        /// <summary>
+        /// viewLottiTemporanei control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View viewLottiTemporanei;
+        
+        /// <summary>
+        /// gvLottiTemporanei control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvLottiTemporanei;
+        
+        /// <summary>
+        /// ibtnPubblicaLottiSelezionati control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnPubblicaLottiSelezionati;
         
         /// <summary>
         /// viewLottiScartati control.
