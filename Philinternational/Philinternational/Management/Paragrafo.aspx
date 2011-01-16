@@ -7,7 +7,8 @@
     <asp:GridView ID="gvParagrafi" runat="server" AllowPaging="True" AutoGenerateColumns="False"
         DataKeyNames="idparagrafo" OnRowUpdating="gvParagrafi_RowUpdating" OnPageIndexChanged="gvParagrafi_PageIndexChanged"
         OnRowEditing="gvParagrafi_RowEditing" EmptyDataText="Nessun paragrafo presente"
-        OnPageIndexChanging="gvParagrafi_PageIndexChanging" OnRowDataBound="gvParagrafi_RowDataBound">
+        OnPageIndexChanging="gvParagrafi_PageIndexChanging" 
+        OnRowDataBound="gvParagrafi_RowDataBound" GridLines="None">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
