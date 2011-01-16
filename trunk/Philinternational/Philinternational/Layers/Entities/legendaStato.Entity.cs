@@ -48,7 +48,7 @@ namespace Philinternational
                 MySqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-                    list.Add(new Stato((int)dr["id_stato"], (string)dr["descrizione"]));
+                    list.Add(new Stato((Int32)dr["id_stato"], (String)dr["descrizione"]));
                 }
             }
             catch (MySql.Data.MySqlClient.MySqlException)
@@ -57,7 +57,7 @@ namespace Philinternational
             finally { conn.Close(); }
         }
 
-        public Stato GetStatoById(int IDtoFind)
+        public Stato GetStatoById(Int32 IDtoFind)
         {
             Stato result = list.Find(
             delegate(Stato st)
@@ -67,6 +67,10 @@ namespace Philinternational
             );
             if (result != null) return result;
             else return new Stato(-1, "None");
+        }
+
+        internal List<Stato> GetListaStati() {
+            return this.list;
         }
     }
 }
