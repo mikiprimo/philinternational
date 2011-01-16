@@ -226,6 +226,7 @@
     </Compile>
     <Compile Include="Layers\Entities\anagrafica.Entity.cs" />
     <Compile Include="Layers\Entities\asta.Entity.cs" />
+    <Compile Include="Layers\Entities\carrello.Entity.cs" />
     <Compile Include="Layers\Entities\lottoScartato.Entity.cs" />
     <Compile Include="Layers\Entities\lottoTemporaneo.Entity.cs" />
     <Compile Include="Layers\Entities\legendaStato.Entity.cs">
