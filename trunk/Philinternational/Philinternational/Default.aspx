@@ -17,31 +17,5 @@
 		</div>
 	<br />
 	<h2 class="center">Alcuni lotti della nostra asta</h2>
-<div class="bloccoLotto">
-	<h4>1</h4>
-	<img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..." />
-	<p>Anno:<span>1915/16</span></p>
-	<p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-	<p>Condizione: <span>buono</span></p>
-	<p>Prezzo: <span>40 soldini</span></p>
-	<p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div class="bloccoLotto">
-	<h4>1</h4>
-	<img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..." />
-	<p>Anno:<span>1915/16</span></p>
-	<p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-	<p>Condizione: <span>buono</span></p>
-	<p>Prezzo: <span>40 soldini</span></p>
-	<p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
-<div class="bloccoLotto">
-	<h4>1</h4>
-	<img src="images/immagine_non_disponibile.jpg" width="100" height="100" alt="Lotto 1..." />
-	<p>Anno:<span>1915/16</span></p>
-	<p>Pro Croce Rossa (N. 102/ 05). Catal. € 200,00</p>
-	<p>Condizione: <span>buono</span></p>
-	<p>Prezzo: <span>40 soldini</span></p>
-	<p class="lottoOfferta"><a href="#">Fai offerta!</a></p>
-</div>
+    <div id="LottoRndOutput" runat="server"></div>
 </asp:Content>

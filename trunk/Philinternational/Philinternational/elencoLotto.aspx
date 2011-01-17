@@ -3,7 +3,8 @@
     <title runat="server" id="titlePage">Titolo</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h1 runat="server" id="nomeArgomento"></h1>
+    <h1 runat="server" id="nomeArgomentoOutput" class="NomeParagrafo"></h1>
+    <div runat="server" id="numPagineOutput"></div>
     <asp:SqlDataSource ID="LottoConnector" runat="server" ProviderName="MySql.Data.MySqlClient"></asp:SqlDataSource>
     <asp:Repeater runat="server" ID="elencoLotti" DataSourceID="LottoConnector"  DataMember="DefaultView">
     <ItemTemplate>
