@@ -21,7 +21,6 @@ namespace Philinternational
             if (AccountLayer.IsLogged())
             {
                 this.menuLeftAdministration.Visible = AccountLayer.IsAdministrator();
-                this.menuLeftAuthenticated.Visible = AccountLayer.IsLogged();
                 try
                 {
                     ((Label)this.HeadLoginView.FindControl("LoginName")).Text = ((logInfos)Session["log"]).nome;
@@ -79,6 +78,8 @@ namespace Philinternational
                                     while (drArg.Read())
                                     {
                                         rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0") + "\" />" + (String)drArg["descrizione"] + "</a></li>\n";
+
+
                                     }
                                     argomento += rowArg + "</ul>\n</div>\n";
                                     paragrafo += argomento;
@@ -122,7 +123,7 @@ namespace Philinternational
             return logoOutput;
         
         }
-        private void LoadLottiRandom() { }   
+       
         
     }
 }

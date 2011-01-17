@@ -16,6 +16,7 @@ namespace Philinternational
         protected void Page_Load(object sender, EventArgs e)
         {
             infoOutput.InnerHtml = lodRotationNews();
+            LottoRndOutput.InnerHtml = LoadLottiRandom();
 
         }
 
@@ -61,5 +62,55 @@ namespace Philinternational
             return elencoNews;
 
         }
+    
+     private String LoadLottiRandom() {
+
+            String esitoLotto = "";
+            String tmpLotto = "";
+
+            MySqlDataReader dr;
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+            String sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto where stato !=0 order by rand() limit 4";
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            command.CommandType = System.Data.CommandType.Text;
+            try{
+                conn.Open();
+                dr = command.ExecuteReader();
+                if (dr != null)
+                {
+                    if (dr.HasRows) {
+                        while (dr.Read())
+                        {
+                            elencoLotto a = new elencoLotto();
+                            String esitoImmagine = a.loadImmagine(dr["idlotto"]);
+                            String esitoOfferta = a.VerificaOfferta(dr["stato"],dr["idlotto"]);
+                            tmpLotto  = "<div class=\"bloccoLotto\">\n";
+                            tmpLotto += "<h4>"+ dr["idlotto"] + "</h4>\n";
+                            tmpLotto += "<p>"+ esitoImmagine + "</p>\n";
+                            tmpLotto += "<p>Anno: <span>"+ dr["anno"] + "</span></p>\n";
+                            tmpLotto += "<p>"+ dr["descrizione"] + "</p>\n";
+                            tmpLotto += "<p>Condizione: <span>"+ dr["tipo_lotto"] + "</span></p>\n";
+                            tmpLotto += "<p>Prezzo: <span>"+ dr["euro"] + "</span></p>\n";
+                            tmpLotto += "<p class=\"lottoOfferta\">"+ esitoOfferta + "</p>\n";
+                            tmpLotto += "</div>";
+
+                            esitoLotto += tmpLotto; 
+                        }//end while
+                    }
+                }//end if
+
+            }//end try
+            catch (MySql.Data.MySqlClient.MySqlException){
+                            return "Errore ";
+           }
+                        finally {
+                            conn.Close();
+                        }
+        
+        return esitoLotto;
+        }   
     }
+
+
+
 }
