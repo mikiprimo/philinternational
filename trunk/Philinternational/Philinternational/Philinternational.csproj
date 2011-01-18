@@ -129,6 +129,7 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Management\ArgoAndSubArgomento.aspx" />
     <Content Include="Management\Varie.aspx" />
+    <Content Include="uploadFiles.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -373,6 +374,13 @@
     </Compile>
     <Compile Include="Management\Varie.aspx.designer.cs">
       <DependentUpon>Varie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="uploadFiles.aspx.cs">
+      <DependentUpon>uploadFiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uploadFiles.aspx.designer.cs">
+      <DependentUpon>uploadFiles.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
