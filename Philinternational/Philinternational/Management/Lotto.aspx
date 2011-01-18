@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="Lotto.aspx.cs" Inherits="Philinternational.Management.Lotto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Lotto.aspx.cs" Inherits="Philinternational.Management.Lotto" %>
+<%@ Import Namespace="System" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -8,7 +8,8 @@
         <asp:View ID="viewLottiPubblicati" runat="server">
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"
                 OnPageIndexChanged="gvLottiPubblicati_PageIndexChanged" OnPageIndexChanging="gvLottiPubblicati_PageIndexChanging"
-                AutoGenerateColumns="False" ShowHeader="False" OnRowDataBound="gvLottiPubblicati_RowDataBound">
+                AutoGenerateColumns="False" ShowHeader="False" 
+                OnRowDataBound="gvLottiPubblicati_RowDataBound" GridLines="None">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
@@ -27,7 +28,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Label ID="lblDescrizione" runat="server" Text='<%# Bind("descrizione") %>'></asp:Label></ItemTemplate>
+                            <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>' Text= '<%# " [ " + ((String)Eval("descrizione")).Substring(0, 15) + "... ] " %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -50,10 +51,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
-            </asp:GridView>
-            <asp:ImageButton ID="ibtnAttivaSelezionati" runat="server" OnClick="ibtnAttivaSelezionati_Click" />
-            <asp:ImageButton ID="ibtnDisattivaSelezionati" runat="server" OnClick="ibtnDisattivaSelezionati_Click"
-                Style="height: 16px" />
+            </asp:GridView><br />
             <asp:TextBox ID="txtStringaRicerca" runat="server" />
             <asp:ImageButton ID="ibtnCercaLotto" runat="server" OnClick="ibtnCercaLotto_Click" />
         </asp:View>
