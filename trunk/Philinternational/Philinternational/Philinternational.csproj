@@ -66,6 +66,7 @@
     <Content Include="Account\ChangePasswordSuccess_todo.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="carrello.aspx" />
     <Content Include="chi-siamo.aspx" />
     <Content Include="condizioniVendita.aspx" />
     <Content Include="contatti.aspx" />
@@ -88,6 +89,8 @@
     <Content Include="images\asta\8.jpg" />
     <Content Include="images\asta\9.jpg" />
     <Content Include="images\immagine_non_disponibile.jpg" />
+    <Content Include="images\masterPage\banner_gilardi_468_60.jpg" />
+    <Content Include="images\masterPage\logo_philtinternational.png" />
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
     <Content Include="images\select.png" />
     <Content Include="images\selectfull.png" />
@@ -113,6 +116,7 @@
     <Content Include="Management\Offerta.aspx" />
     <Content Include="Management\Paragrafo.aspx" />
     <Content Include="Management\UploadLotti.aspx" />
+    <Content Include="offerta.aspx" />
     <Content Include="Scripts\external\jquery.bgiframe-2.1.2.js" />
     <Content Include="Scripts\external\jquery.cookie.js" />
     <Content Include="Scripts\external\jquery.metadata.js" />
@@ -175,6 +179,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="carrello.aspx.cs">
+      <DependentUpon>carrello.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="carrello.aspx.designer.cs">
+      <DependentUpon>carrello.aspx</DependentUpon>
     </Compile>
     <Compile Include="chi-siamo.aspx.cs">
       <DependentUpon>chi-siamo.aspx</DependentUpon>
@@ -317,6 +328,13 @@
     </Compile>
     <Compile Include="Management\UploadLotti.aspx.designer.cs">
       <DependentUpon>UploadLotti.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="offerta.aspx.cs">
+      <DependentUpon>offerta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="offerta.aspx.designer.cs">
+      <DependentUpon>offerta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
