@@ -18,16 +18,16 @@ namespace Philinternational
         {
             if (!IsPostBack)
             {
-                int numPage = 1;
+                int? numPage = 1;
                 if (Request["p"] != null) numPage = Int32.Parse(Request["p"]);
                 int limitForPage = 10;
 
                 String codargomento = Request["arg"];
                 String subargomento = Request["subarg"];
 
-                if (numPage == null || numPage == 0) numPage = 1;
+                if (numPage == null || numPage == 0) numPage = 1; // sarebbe scorretto
                 getTitle(codargomento, subargomento);
-                BindData(codargomento, subargomento, numPage, limitForPage);
+                BindData(codargomento, subargomento, (int)numPage, limitForPage);
             }
         }
         protected void getTitle(String codargomento, String subargomento)
