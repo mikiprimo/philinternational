@@ -22,13 +22,13 @@ namespace Philinternational {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl titlePage;
         
         /// <summary>
-        /// nomeArgomentoOutput control.
+        /// navigazioneOutput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nomeArgomentoOutput;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navigazioneOutput;
         
         /// <summary>
         /// numPagineOutput control.

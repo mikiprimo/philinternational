@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Configuration;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Data;
@@ -181,6 +183,76 @@ namespace Philinternational.Layers {
             return true;
         }
 
-        
+        public String[] getArgumentsByLotto(String idLotto) {
+            String sql = "SELECT id_argomento, id_subargomento FROM lotto WHERE idlotto=" + idLotto;
+            string[] str = new string[2];
+            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
+
+            try
+            {
+                if (!(dr == null))
+                {
+                    while (dr.Read())
+                    {
+                        str[0] = dr["id_argomento"].ToString();
+                        str[1] = dr["id_subargomento"].ToString();
+                    }
+                }
+                else
+                {
+                    str[0] = "";
+                    str[1] = "";
+                }
+            }
+            catch (MySqlException)
+            {
+                str[0] = "";
+                str[1] = "";
+
+                return str;
+            }
+            finally
+            {
+               // dr.Close();
+            }
+            return str;
+        }
+
+        private bool searchImageFromDisk(String idLotto)
+        {
+            Boolean stato = false;
+            String nome_file = idLotto + ".jpg";
+            String tmpPath = "";
+
+            tmpPath = System.Web.HttpContext.Current.Server.MapPath(".") + "\\images\\asta\\";
+            
+            //MapPath(".") + "\\images\\asta\\";
+            //Response.Write("PATH["+ tmpPath +"]");
+            DirectoryInfo MyDir = new DirectoryInfo(tmpPath);
+            foreach (FileInfo file in MyDir.GetFiles())
+            {
+                if (file.Name == nome_file) return true;
+            }
+            return stato;
+        }
+
+
+        public String LoadImageByLotto(String NamePageYes, String NamePageNo, String idLotto)
+        {
+
+            String outputImmagine = "";
+            bool esito = searchImageFromDisk(idLotto);
+            if (esito)
+            {
+                String path = NamePageYes + idLotto + ".jpg";
+                outputImmagine = "<a href=\"" + path + "\" rel=\"shadowbox;handleOversize:resize\" title=\"Lotto " + idLotto + "\" id=\"shadowimages\"><img src=\"" + path + "\" width=\"100\" height=\"100\" alt=\"Lotto " + idLotto + "\"/></a>\n";
+            }
+            else
+            {
+                outputImmagine = "<img src=\"" + NamePageNo + "\" width=\"100\" height=\"100\" alt=\"Lotto " + idLotto + "\"/>";
+            }
+            return outputImmagine;
+
+        }
     }
 }
