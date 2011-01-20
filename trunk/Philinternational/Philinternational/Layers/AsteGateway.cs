@@ -113,5 +113,82 @@ namespace Philinternational.Layers {
             return true;
         }
 
+        public String[] getDatiAsta()
+        {
+            String sql = "SELECT max(idasta) valore, data_fine FROM asta_elenco WHERE stato=1";
+            String idAsta = "";
+            String dataFine = "";
+            string[] str = new string[2];
+            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
+
+            try
+            {
+                if (!(dr == null))
+                {
+                    while (dr.Read())
+                    {
+                        idAsta = dr["valore"].ToString();
+                        dataFine = dr["data_fine"].ToString();
+                        if (idAsta == null) idAsta = "--";
+                        str[0] = idAsta;
+                        str[1] = dataFine;
+
+                    }
+                }
+                else
+                {
+                    str[0] = "--";
+                    str[1] = "--";
+                }
+            }
+            catch (MySqlException)
+            {
+                str[0] = "--";
+                str[1] = "--";
+
+                return str;
+            }
+            finally
+            {
+                dr.Close();
+            }
+            return str;
+        }
+
+        public Boolean getAstaAttiva()
+        {
+            String sql = "SELECT max(idasta) valore, stato FROM asta_elenco";;
+            String stato = "";
+            Boolean esito = false;
+            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
+
+            try
+            {
+                if (!(dr == null))
+                {
+                    while (dr.Read())
+                    {
+
+                        stato = dr["data_fine"].ToString();
+                        if (stato == "0") esito = false; else esito = true;
+                    }
+                }
+                else
+                {
+                    esito = false;
+                }
+            }
+            catch (MySqlException)
+            {
+
+                return false;
+            }
+            finally
+            {
+                dr.Close();
+            }
+            return esito;
+        }
+    
     }
 }

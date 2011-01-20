@@ -25,7 +25,6 @@ namespace Philinternational
                 String codargomento = Request["arg"];
                 String subargomento = Request["subarg"];
 
-                if (numPage == null || numPage == 0) numPage = 1; // sarebbe scorretto
                 getTitle(codargomento, subargomento);
                 BindData(codargomento, subargomento, (int)numPage, limitForPage);
             }
@@ -55,7 +54,7 @@ namespace Philinternational
 
 
             titlePage.InnerText = "Lotti presenti per l'argomento:" + descrizione_argomento;
-            nomeArgomentoOutput.InnerHtml = descrizione_paragrafo + " --><span class=\"NomeArgomento\">" + descrizione_argomento + "</span>";
+            navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
 
         
         }
@@ -78,30 +77,11 @@ namespace Philinternational
             LottoConnector.DataBind();
         }
 
-        private bool searchImageFromDisk(String idLotto) {
-            Boolean stato = false;
-            String nome_file = idLotto + ".jpg";
-            String tmpPath = "";
-            tmpPath = Server.MapPath(".")  + "\\images\\asta\\";
-            //Response.Write("PATH["+ tmpPath +"]");
-            DirectoryInfo MyDir = new DirectoryInfo(@tmpPath);
-            foreach(FileInfo file in MyDir.GetFiles()){
-                if (file.Name == nome_file) return true;
-            }            
-            return stato;
-        }
-
         public String loadImmagine(Object idLotto){
+            LottiGateway a = new LottiGateway();
             String  chiave = idLotto.ToString();
-            String outputImmagine ="";
-            bool esito = searchImageFromDisk(chiave);
-            if(esito){
-                String path = Page.ResolveClientUrl("~/images/asta/")  + chiave + ".jpg";
-                outputImmagine = "<a href=\"" + path + "\" rel=\"shadowbox;handleOversize:resize\" title=\"Lotto " + chiave + "\" id=\"shadowimages\"><img src=\"" + path  + "\" width=\"100\" height=\"100\" alt=\"Lotto "+ chiave +"\"/></a>";
-            }else{
-                String path = Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg");
-                outputImmagine = "<img src=\"" + path + "\" width=\"100\" height=\"100\" alt=\"Lotto " + chiave + "\"/>";
-            }
+            String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
+            
             return outputImmagine;
         }
 
@@ -109,8 +89,16 @@ namespace Philinternational
         {
             String stato = statoOfferta.ToString();
             String chiave = idLotto.ToString();
+            String idArgomento = "";
+            String idSubArgomento = "";
+            LottiGateway Lotti = new LottiGateway();
+            String[] esito = new String[2];
+            esito = Lotti.getArgumentsByLotto(chiave);
+            idArgomento = esito.GetValue(0).ToString();
+            idSubArgomento = esito.GetValue(1).ToString();
 
-            String outputVerifica = "<a href=\"carrello.aspx?cod=" + chiave + "\">Aggiungi al carrello</a><a href=\"offerta.aspx?cod=" + chiave + "\">Fai l'offerta</a>\n";
+            String outputVerifica    = "<a href=\"carrello.aspx?cod=" + chiave + "\">Aggiungi al carrello</a>\n";
+                   outputVerifica   += "<a href=\"offerta.aspx?cod="+ chiave +"&arg=" + idArgomento + "&subarg=" + idSubArgomento + "\">Fai l'offerta</a>\n";
             if (AccountLayer.IsLogged()) {
                 switch (stato)
                 {
@@ -213,8 +201,11 @@ namespace Philinternational
                 tmpSql = "<div class=\"numPagina\"><ul>";
                 for (int i = 1; i <= recordperPagina; i++)
                 {
+                    String iSelected = "";
+                    if (i == numPage) iSelected = "class=\"bold\"";
+                   
 
-                    tmpSql += "<li><a href=\"" +Page.ResolveClientUrl("~/elencoLotto.aspx?arg=" + codargomento +  "&subarg="+ subargomento+"&p=" + i +"") +  "\">" + i + "</a></li>";
+                    tmpSql += "<li " + iSelected  + "><a href=\"" + Page.ResolveClientUrl("~/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento + "&p=" + i + "") + "\">" + i + "</a></li>";
                 }
                 tmpSql += "</ul></div>";
                 Esito = tmpSql;

@@ -13,6 +13,24 @@ namespace Philinternational {
     public partial class _Default {
         
         /// <summary>
+        /// numeroAsta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl numeroAsta;
+        
+        /// <summary>
+        /// dataScadenza control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dataScadenza;
+        
+        /// <summary>
         /// infoOutput control.
         /// </summary>
         /// <remarks>

@@ -15,6 +15,14 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            AsteGateway Asta = new AsteGateway();
+            String[] esito = new String[2];
+            DateTime a = new DateTime();
+            esito = Asta.getDatiAsta();
+            String tmp = esito.GetValue(1).ToString();
+            numeroAsta.InnerHtml = esito.GetValue(0).ToString();
+            tmp = tmp.Substring(0, 10);
+            dataScadenza.InnerHtml = a.ToString(tmp);
             infoOutput.InnerHtml = lodRotationNews();
             LottoRndOutput.InnerHtml = LoadLottiRandom();
 
@@ -82,7 +90,7 @@ namespace Philinternational
                         while (dr.Read())
                         {
                             elencoLotto a = new elencoLotto();
-                            String esitoImmagine = a.loadImmagine(dr["idlotto"]);
+                            String esitoImmagine = loadImmagine(dr["idlotto"]);
                             String esitoOfferta = a.VerificaOfferta(dr["stato"],dr["idlotto"]);
                             tmpLotto  = "<div class=\"bloccoLotto\">\n";
                             tmpLotto += "<h4>"+ dr["idlotto"] + "</h4>\n";
@@ -92,7 +100,7 @@ namespace Philinternational
                             tmpLotto += "<p>Condizione: <span>"+ dr["tipo_lotto"] + "</span></p>\n";
                             tmpLotto += "<p>Prezzo: <span>"+ dr["euro"] + "</span></p>\n";
                             tmpLotto += "<p class=\"lottoOfferta\">"+ esitoOfferta + "</p>\n";
-                            tmpLotto += "</div>";
+                            tmpLotto += "</div>\n";
 
                             esitoLotto += tmpLotto; 
                         }//end while
@@ -108,7 +116,18 @@ namespace Philinternational
                         }
         
         return esitoLotto;
-        }   
+        }
+
+
+     private String loadImmagine(Object idLotto)
+     {
+         LottiGateway a = new LottiGateway();
+         String chiave = idLotto.ToString();
+         String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
+
+         return outputImmagine;
+     }
+
     }
 
 
