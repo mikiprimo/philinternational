@@ -14,7 +14,7 @@
     </fieldset>
         <table style="width:100%">
         <tr>
-            <th>&nbsp;</th>
+            <th align="center">&nbsp;</th>
             <th>Data</th>
             <th>Titolo</th>
             <th>Stato</th>
@@ -25,7 +25,7 @@
                     <td><asp:CheckBox ID="chkErase" runat="server" MyIDNewsToErase='<%#Eval("idnews")%>' /></td>
                     <td><a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%# Eval("data_pubblicazione")%></a></td>
                     <td><%#Eval("titolo")%></td>
-                    <td><asp:CheckBox ID="chkStatus" runat="server" AutoPostBack="true" MyIDNews='<%#Eval("idnews")%>' OnDataBinding="chkStatus_OnDataBinding" OnCheckedChanged="chkStatus_OnCheckedChanged" /></td>
+                    <td style="text-align:left"><asp:CheckBox ID="chkStatus" runat="server" AutoPostBack="true" MyIDNews='<%#Eval("idnews")%>' OnDataBinding="chkStatus_OnDataBinding" OnCheckedChanged="chkStatus_OnCheckedChanged" /></td>
                 </tr>
             </ItemTemplate>
             <AlternatingItemTemplate>
@@ -33,7 +33,7 @@
                     <td><asp:CheckBox ID="chkErase" runat="server" MyIDNewsToErase='<%#Eval("idnews")%>' /></td>
                     <td><a href="newsDetail.aspx?cod=<%#Eval("idnews")%>"><%# Eval("data_pubblicazione")%></a></td>
                     <td><%#Eval("titolo")%></td>
-                    <td><asp:CheckBox ID="chkStatus" runat="server" AutoPostBack="true" MyIDNews='<%#Eval("idnews")%>' OnDataBinding="chkStatus_OnDataBinding" OnCheckedChanged="chkStatus_OnCheckedChanged" /></td>
+                    <td style="text-align:left"><asp:CheckBox ID="chkStatus" runat="server" AutoPostBack="true" MyIDNews='<%#Eval("idnews")%>' OnDataBinding="chkStatus_OnDataBinding" OnCheckedChanged="chkStatus_OnCheckedChanged" /></td>
                 </tr>
             </AlternatingItemTemplate>
         </asp:Repeater>
