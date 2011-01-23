@@ -1,11 +1,11 @@
 ﻿/* DEFAULTS ------------------------------------*/
 html{background-color:transparent;}
 body{background-color:#FFF;width:990px;height:100%;    font-family: Verdana, Geneva, sans-serif;font-size: 10px;clear:both;color:#000000;margin:0px auto;}
-select,input{clear:both;color:#000000;border:1px solid #920000;margin:1px 0px;height:24px;line-height:24px;}
-select:focus,input:focus{background-color:#000;color:#FFF;}
+select,input{clear:both;color:#000000;border:1px solid #920000;margin:1px 0px;height:20px;}
+select:focus,input:focus{color:#920000;border:1px solid #000}
 textarea{clear:both;color:#000000;border:1px solid #eaeaea;}
 select:hover,input:hover,textarea:hover{background-color:#eaeaea;border:1px solid #000;}
-textarea:focus{background-color:#eaeaea;color:#fff}
+textarea:focus{background-color:#eaeaea;color:#920000}
 option{height:25px;line-height:25px;color:#FFF;}
 form,p,h1,h2,h3,h4,h5,h6,ul,li{margin:0px;padding:0px;}
 ul{list-style:none}
@@ -77,7 +77,6 @@ ul{list-style:none}
 
 #rightmenu
 {
-    background-color:Olive;
     float: right;
     width: 20%;
     padding:0px 0px 20px 0px;
@@ -165,10 +164,10 @@ div.accountInfo{width: 42%;}
 .center{text-align:center}
 
 table{margin-right: 0px; width:100%;}
-table tr th{font-weight:bold;line-height:26px;}
+table tr th{font-weight:bold;line-height:26px;background-color:#FFF;border:1px solid #000}
 table tr td{line-height:20px}
-table tr{background-color:#FFF;color:#F00}
-table tr.alternate{background-color:#F00;color:#FFF;}
+table tr{background-color:#eee;color:#000}
+table tr.alternate{background-color:#FFF;color:#000;}
 
 .gridView{width:100%;}
 
@@ -180,16 +179,22 @@ table tr.alternate{background-color:#F00;color:#FFF;}
     border:1px solid #999;
     margin:1px;
 }
+p.descrizioneLotto{padding:5px;}
 .bloccoLotto h4{text-transform:uppercase;padding:2px;color:#000066;height:20px;line-height:20px;text-align:center;background-color:#eaeaea}
 .bloccoLotto img{padding:5px 30%;  border:0px;}
 .bloccoLotto p{padding:3px;margin:2px 0px;}
 .bloccoLotto span{font-weight:bold;}
- p.descrizioneLotto{padding:3px;}
+ 
 .lottoOfferta{text-align:center;font-weight:bold;}
 .lottoOfferta a{display:block;height:20px;text-decoration:none;padding:3px}
 .lottoOfferta a:focus{color:#FF0000}
 .lottoOfferta a:hover{color:#920000;text-decoration:underline;}
 .offerta_fatta{height:20px;color:#000;}
+
+.bloccoOfferta{text-align:center;}
+.bloccoOfferta p{margin:15px 0px}
+.bloccoOfferta img{padding:5px 30%;  border:0px;}
+.bloccoOfferta span{font-weight:bold;}
 
 .evidenziatore{background-color:transparent;margin:2px;padding:2px}
 .evidenziatore:hover,.evidenziatore:focus,.evidenziatore:active{background-color:#eee;}
@@ -293,7 +298,14 @@ ul#ticker li span {color: #06C;font-size:1.4em;margin:3px 0px;font-weight:bold;t
 .numPagina ul li{display:inline;margin:0px 2px;padding:3px;font-size:12px;}
 .numPagina ul li a{text-decoration:none;color:#999}
 .numPagina ul li a:hover{text-decoration:underline;color:#920000}
-
 /**/
-h1.NomeParagrafo  {text-align:left;font-size:1.6em;color:#000}
-.NomeArgomento span{text-align:left;font-size:1.0em;color:#F00}
+.navigazione{width:100%;}
+.navigazione ul li{display:inline;margin:0px 2px;padding:3px;font-size:11px;}
+.navigazione ul li a{text-decoration:none;}
+.navigazione ul li a:hover{text-decoration:underline;}
+
+.navTit1 a{color:#666}
+.navTit2 a{color:#F00}
+.esitoOperazione {text-align:center;font-weight:bold;font-size:1.2em;letter-spacing:2px;margin:20px 0px}
+.ok{color:#006600}
+.ko{color:#F00}

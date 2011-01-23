@@ -54,7 +54,12 @@ namespace Philinternational
         {
             get { return this._IsAuthenticated; }
         }
-        public int idAnagrafica;
+        private int _idAnagrafica;
+        public int idAnagrafica{
+            get { return _idAnagrafica; }
+            set { _idAnagrafica = value; }
+        }
+
         public string nome;
         public string cognome;
         public string codicefiscale;

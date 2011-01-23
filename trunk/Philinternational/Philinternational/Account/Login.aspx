@@ -1,12 +1,9 @@
 ﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs" Inherits="Philinternational.Login" %>
 
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent"></asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-        Log In
-    </h2>
+    <h2>Log In</h2>
     <p>
        Inserisci le credenziali oppure 
         <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false">Registrati</asp:HyperLink> se non possiedi un account.

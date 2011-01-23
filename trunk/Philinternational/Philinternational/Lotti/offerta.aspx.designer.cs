@@ -10,105 +10,96 @@
 namespace Philinternational {
     
     
-    public partial class SiteMaster {
+    public partial class offerta {
         
         /// <summary>
-        /// HeadContent control.
+        /// testoH1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl testoH1;
         
         /// <summary>
-        /// LogoOutput control.
+        /// LoadImmagineOutput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LogoOutput;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LoadImmagineOutput;
         
         /// <summary>
-        /// HeadLoginView control.
+        /// annoLotto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl annoLotto;
         
         /// <summary>
-        /// menuLeftAdministration control.
+        /// descrizioneLotto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu menuLeftAdministration;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl descrizioneLotto;
         
         /// <summary>
-        /// loadMenuccordion control.
+        /// statoLotto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loadMenuccordion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl statoLotto;
         
         /// <summary>
-        /// MainContent control.
+        /// prezzoLotto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl prezzoLotto;
         
         /// <summary>
-        /// shortBasketOutput control.
+        /// txtOfferta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl shortBasketOutput;
+        protected global::System.Web.UI.WebControls.TextBox txtOfferta;
         
         /// <summary>
-        /// condizionivendita control.
+        /// buttonOfferta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink condizionivendita;
+        protected global::System.Web.UI.WebControls.Button buttonOfferta;
         
         /// <summary>
-        /// chisiamo control.
+        /// EsitoOperazione control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink chisiamo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EsitoOperazione;
         
         /// <summary>
-        /// dovesiamo control.
+        /// codiceLotto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink dovesiamo;
-        
-        /// <summary>
-        /// contatti control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink contatti;
+        protected global::System.Web.UI.WebControls.HiddenField codiceLotto;
     }
 }

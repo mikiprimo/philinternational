@@ -89,9 +89,8 @@ namespace Philinternational
                     if (dr.HasRows) {
                         while (dr.Read())
                         {
-                            elencoLotto a = new elencoLotto();
                             String esitoImmagine = loadImmagine(dr["idlotto"]);
-                            String esitoOfferta = a.VerificaOfferta(dr["stato"],dr["idlotto"]);
+                            String esitoOfferta  = VerificaOfferta(dr["stato"],dr["idlotto"]);
                             tmpLotto  = "<div class=\"bloccoLotto\">\n";
                             tmpLotto += "<h4>"+ dr["idlotto"] + "</h4>\n";
                             tmpLotto += "<p>"+ esitoImmagine + "</p>\n";
@@ -101,7 +100,6 @@ namespace Philinternational
                             tmpLotto += "<p>Prezzo: <span>"+ dr["euro"] + "</span></p>\n";
                             tmpLotto += "<p class=\"lottoOfferta\">"+ esitoOfferta + "</p>\n";
                             tmpLotto += "</div>\n";
-
                             esitoLotto += tmpLotto; 
                         }//end while
                     }
@@ -111,13 +109,12 @@ namespace Philinternational
             catch (MySql.Data.MySqlClient.MySqlException){
                             return "Errore ";
            }
-                        finally {
-                            conn.Close();
-                        }
+            finally {
+                    conn.Close();
+            }
         
         return esitoLotto;
         }
-
 
      private String loadImmagine(Object idLotto)
      {
@@ -128,8 +125,39 @@ namespace Philinternational
          return outputImmagine;
      }
 
+     private String VerificaOfferta(Object statoOfferta, Object idLotto)
+     {
+         String stato = statoOfferta.ToString();
+         String chiave = idLotto.ToString();
+         String idArgomento = "";
+         String idSubArgomento = "";
+         LottiGateway Lotti = new LottiGateway();
+         String[] esito = new String[2];
+         esito = Lotti.getArgumentsByLotto(chiave);
+         idArgomento = esito.GetValue(0).ToString();
+         idSubArgomento = esito.GetValue(1).ToString();
+
+         String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/carrello.aspx?cod=" + chiave) + "\">Aggiungi al carrello</a>\n";
+         outputVerifica += "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai l'offerta</a>\n";
+         if (AccountLayer.IsLogged())
+         {
+             Offerte a = new Offerte();
+             String idAnagrafica = "0";
+
+             if (HttpContext.Current.Session["idanagrafica"] != null)
+             {
+                 idAnagrafica = HttpContext.Current.Session["idanagrafica"].ToString();
+             }
+
+             bool checkOfferta = a.checkOffertaGiaPresente(idAnagrafica, chiave);
+             if (checkOfferta == true) { outputVerifica = "Offerta già effettuata"; }
+             switch (stato)
+             {
+                 case "0": outputVerifica = "Lotto non disponibile"; break;
+             }
+
+         }
+         return outputVerifica;
+     }
     }
-
-
-
 }

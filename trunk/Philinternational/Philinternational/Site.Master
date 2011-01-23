@@ -84,15 +84,13 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
         <div id="rightmenu">
-            A cosa sono interessato<br />
-            Che offerte ho fatto<br />
-            Lotti Contesi<br />
+            <div id="shortBasketOutput" runat="server"></div>
         </div>
         <div id="footer">
-            <asp:HyperLink ID="condizionivendita" NavigateUrl="~/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
-            <asp:HyperLink ID="chisiamo" NavigateUrl="~/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
-            <asp:HyperLink ID="dovesiamo" NavigateUrl="~/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
-            <asp:HyperLink id="contatti" NavigateUrl="~/contatti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
+            <asp:HyperLink ID="condizionivendita" NavigateUrl="~/Varie/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
+            <asp:HyperLink ID="chisiamo" NavigateUrl="~/Varie/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
+            <asp:HyperLink ID="dovesiamo" NavigateUrl="~/Varie/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
+            <asp:HyperLink id="contatti" NavigateUrl="~/Varie/contatti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
             <p class="piva">Phil international P.IVA: 12345678901</p>
         </div>
 </div>
