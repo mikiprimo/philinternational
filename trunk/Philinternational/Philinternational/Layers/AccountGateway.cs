@@ -64,5 +64,33 @@ namespace Philinternational.Layers
             //TODO: Da centralizzare la gestione delle sessioni
             HttpContext.Current.Session["log"] = logInfos;
         }
+
+        public string getIdAnagraficaByEmail(String email) {
+            String sql = "SELECT idanagrafica valore FROM anagrafica WHERE email='" + email + "'";
+            String valore = "--";
+            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
+
+            try
+            {
+                if (!(dr == null))
+                {
+                    while (dr.Read())
+                    {
+                        valore = dr["valore"].ToString();
+                    }
+                }
+                else
+                {
+                    valore = "";
+                }
+            }
+            catch (MySqlException)
+            {
+
+                return "--";
+            }
+            return valore;
+        
+        }
     }
 }

@@ -150,7 +150,7 @@ namespace Philinternational.Layers {
             }
             finally
             {
-                dr.Close();
+                //dr.Close();
             }
             return str;
         }
@@ -185,7 +185,7 @@ namespace Philinternational.Layers {
             }
             finally
             {
-                dr.Close();
+                //dr.Close();
             }
             return esito;
         }

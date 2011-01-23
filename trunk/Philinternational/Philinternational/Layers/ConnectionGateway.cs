@@ -65,7 +65,9 @@ namespace Philinternational.Layers
             {
                 while (dr.Read())
                 {
-                    newIndex = Convert.ToInt32(dr["indice"]);
+                    String a = dr["indice"].ToString(); ;
+                    if (a == "") a = "1";
+                    newIndex = Convert.ToInt32(a);
                 }
             }
             else
