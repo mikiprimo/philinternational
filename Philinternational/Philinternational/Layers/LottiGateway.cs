@@ -224,16 +224,23 @@ namespace Philinternational.Layers {
             String nome_file = idLotto + ".jpg";
             String tmpPath = "";
 
-            tmpPath = System.Web.HttpContext.Current.Server.MapPath(".") + "\\images\\asta\\";
+            tmpPath = System.Web.HttpContext.Current.Server.MapPath(".") + "\\..\\images\\asta\\";
             
             //MapPath(".") + "\\images\\asta\\";
             //Response.Write("PATH["+ tmpPath +"]");
             DirectoryInfo MyDir = new DirectoryInfo(tmpPath);
-            foreach (FileInfo file in MyDir.GetFiles())
+            if (MyDir.Exists == true)
             {
-                if (file.Name == nome_file) return true;
+                foreach (FileInfo file in MyDir.GetFiles())
+                {
+                    if (file.Name == nome_file) return true;
+                }
+                return stato;
             }
+            else { 
             return stato;
+            }
+
         }
 
 
@@ -254,5 +261,33 @@ namespace Philinternational.Layers {
             return outputImmagine;
 
         }
+
+        public String getValueByField(String idlotto,String FieldName) { 
+            String sql = "SELECT "+ FieldName +" valore FROM lotto WHERE idlotto="+ idlotto +"";
+            String valore = "--";
+            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
+
+            try
+            {
+                if (!(dr == null))
+                {
+                    while (dr.Read())
+                    {
+                        valore = dr["valore"].ToString();
+                    }
+                }
+                else
+                {
+                    valore ="";
+                }
+            }
+            catch (MySqlException)
+            {
+
+                return "-";
+            }
+            return valore;
+        }
+        
     }
 }

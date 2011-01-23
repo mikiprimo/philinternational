@@ -29,6 +29,7 @@ namespace Philinternational
                 {
                     RefreshUnloggedUser();
                 }
+                shortBasketOutput.InnerHtml = ViewShortBasket();
             }
         }
 
@@ -77,7 +78,7 @@ namespace Philinternational
                                     argomento = "<div class=\"evidenziatore\">\n<ul>\n";
                                     while (drArg.Read())
                                     {
-                                        rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0") + "\" />" + (String)drArg["descrizione"] + "</a></li>\n";
+                                        rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0") + "\" />" + (String)drArg["descrizione"] + "</a></li>\n";
 
 
                                     }
@@ -123,7 +124,39 @@ namespace Philinternational
             return logoOutput;
         
         }
-       
-        
+
+        private String ViewShortBasket() {
+            String idAnagrafica = "0";
+            String showBasket = "";
+            String tmpRow = "";
+            float totale =0;
+            if (HttpContext.Current.Session["idanagrafica"] != null)
+            {
+                idAnagrafica = HttpContext.Current.Session["idanagrafica"].ToString();
+            }
+            String sql = "SELECT idlotto,prezzo_offerto from offerta_per_corrispondenza where idanagrafica=" + idAnagrafica + " order by data_inserimento DESC";
+            MySqlDataReader dr = ConnectionGateway.SelectQuery(sql);
+            if (!(dr == null))
+            {
+                if (dr.HasRows)
+                {
+                    showBasket += "<div><h3>Offerte già effettuate</h3>";
+                    showBasket += "<table>";
+                    while (dr.Read()) {
+
+                        tmpRow = "<tr>";
+                        tmpRow += "<td style=\"width:20%\"><a href=\"#\">"+ dr["idlotto"] +"</a></td>";
+                        tmpRow += "<td style=\"width:80%;text-align:right\">" + dr["prezzo_offerto"] + "</td>";
+                        tmpRow += "<tr>\n";
+                        totale = totale + float.Parse(dr["prezzo_offerto"].ToString());
+                        //ciclo da fare
+                        showBasket += tmpRow;
+                    }
+                    String rowTotalPrice = "<tr><td colspan=\"2\" style=\"text-align:right;font-weight:bold\">" + totale + " euro </td></tr>\n";
+                    showBasket += rowTotalPrice + "</table></div>\n";
+                }
+            }
+            return showBasket;
+        }    
     }
 }
