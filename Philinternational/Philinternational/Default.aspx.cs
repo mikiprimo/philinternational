@@ -139,23 +139,23 @@ namespace Philinternational
 
          String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/carrello.aspx?cod=" + chiave) + "\">Aggiungi al carrello</a>\n";
          outputVerifica += "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai l'offerta</a>\n";
-         if (AccountLayer.IsLogged())
-         {
-             Offerte a = new Offerte();
-             String idAnagrafica = "0";
-
-             if (HttpContext.Current.Session["idanagrafica"] != null)
-             {
-                 idAnagrafica = HttpContext.Current.Session["idanagrafica"].ToString();
-             }
-
-             bool checkOfferta = a.checkOffertaGiaPresente(idAnagrafica, chiave);
-             if (checkOfferta == true) { outputVerifica = "Offerta già effettuata"; }
-             switch (stato)
-             {
-                 case "0": outputVerifica = "Lotto non disponibile"; break;
-             }
-
+         if (AccountLayer.IsLogged()==true){
+              try
+                {
+                    OfferteGateway a = new OfferteGateway();
+                    int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+                    bool checkOfferta = a.checkOffertaGiaPresente(idAnagrafica, chiave);
+                    if (checkOfferta == true) { outputVerifica = "L'Offerta è già stata effettuata"; }
+                    switch (stato)
+                    {
+                        case "0": outputVerifica = "Lotto non disponibile"; break;
+                    }
+                }
+                catch (Exception)
+                {
+                    outputVerifica = "Nessuna offerta possibile";
+                }
+             
          }
          return outputVerifica;
      }

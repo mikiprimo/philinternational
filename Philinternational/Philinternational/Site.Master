@@ -6,7 +6,7 @@
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.4.1.min.js") %>"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-ui-1.8.7.custom.min.js") %>"></script>
-        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>    
+        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
             <title>Offerta filatelica per corrsipondenza</title>
             <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />
@@ -52,7 +52,7 @@
                     <LoggedInTemplate>Benvenuto <span class="bold">
                         <asp:Label ID="LoginName" runat="server" />
                     </span><br />
-                        [<a href="#">Carrello</a> ]<br />
+                        [<a href="<%=Page.ResolveClientUrl("~/Lotti/carrello.aspx") %>">Carrello</a> ]<br />
                         [<a href="#">Profilo</a>]<br />
                         [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
                             OnLoggingOut="HeadLoginStatus_LoggingOut" />
