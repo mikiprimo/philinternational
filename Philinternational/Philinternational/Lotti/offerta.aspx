@@ -10,7 +10,7 @@
         <p>Condizione: <span id="statoLotto" runat="server"></span></p>
         <p>Prezzo: <span id="prezzoLotto" runat="server"></span></p>
         <p>
-           <asp:TextBox runat="server" ID="txtOfferta" ></asp:TextBox>&nbsp;
+           <asp:TextBox runat="server" ID="txtOfferta"  MaxLength="12" Rows="10" Width="100px"></asp:TextBox>&nbsp;
            <asp:Button Text="Effettua l'offerta" runat="server" ID="buttonOfferta" /></p>
         <p class="esitoOperazione" id="EsitoOperazione" runat="server"></p>
         <asp:HiddenField runat="server" id="codiceLotto" />

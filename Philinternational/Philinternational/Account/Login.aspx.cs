@@ -20,10 +20,9 @@ namespace Philinternational
         {
             if (Philinternational.Layers.AccountLayer.Authenticate(LoginUser.UserName, LoginUser.Password))
             {
-                //Session.Clear();
-                AccountGateway a = new AccountGateway();
-                String idanagrafica = a.getIdAnagraficaByEmail(LoginUser.UserName);
-                Session.Add("idanagrafica", idanagrafica);
+                OfferteGateway a = new OfferteGateway();
+                String idAnagrafica = ((logInfos)Session["log"]).idAnagrafica.ToString();
+                Boolean esito = a.UpdateCarrello(Session.SessionID,idAnagrafica);
                 FormsAuthentication.RedirectFromLoginPage(LoginUser.UserName, true);
             }
         }

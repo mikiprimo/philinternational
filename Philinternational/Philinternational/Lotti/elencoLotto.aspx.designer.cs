@@ -40,6 +40,15 @@ namespace Philinternational {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl numPagineOutput;
         
         /// <summary>
+        /// esitoOperazione control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl esitoOperazione;
+        
+        /// <summary>
         /// LottoConnector control.
         /// </summary>
         /// <remarks>
@@ -49,12 +58,12 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.SqlDataSource LottoConnector;
         
         /// <summary>
-        /// elencoLotti control.
+        /// listaLotti control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater elencoLotti;
+        protected global::System.Web.UI.WebControls.Repeater listaLotti;
     }
 }

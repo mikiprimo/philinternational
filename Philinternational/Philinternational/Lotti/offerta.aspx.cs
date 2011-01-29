@@ -57,7 +57,7 @@ namespace Philinternational
             String esito = "";
             
             LottiGateway Lotti = new LottiGateway();
-            Offerte a = new Offerte();
+            OfferteGateway a = new OfferteGateway();
             
             float offertaBase = float.Parse(Lotti.getValueByField(idLotto, "prezzo_base").ToString());
 
@@ -69,14 +69,16 @@ namespace Philinternational
                 return "Offerta troppo bassa";
             }
 
-
-
-            if (HttpContext.Current.Session["idanagrafica"] != null)
+            if (AccountLayer.IsLogged())
             {
-                String idAnagrafica = HttpContext.Current.Session["idanagrafica"].ToString();
+                int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
                 esito = a.InsertOfferta(idAnagrafica, idLotto, offerta);
             }
-            else { return "Login"; }
+            else {
+                return "Login";
+            }
+
+
             
             return esito;
         }
@@ -89,5 +91,6 @@ namespace Philinternational
 
             return outputImmagine;
         }
+
     }
 }

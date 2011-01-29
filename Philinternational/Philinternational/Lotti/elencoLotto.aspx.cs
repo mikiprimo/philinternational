@@ -14,6 +14,15 @@ namespace Philinternational
 {
     public partial class elencoLotto : System.Web.UI.Page
     {
+        protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e)
+        {
+            object idlotto = e.Item.FindControl("idlotto");
+            String chiave = ((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
+            ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
+            ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
+        }    
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
            // string qualePagina = this.Context.Items["fileName"].ToString();
@@ -25,7 +34,7 @@ namespace Philinternational
 
                 String codargomento = Request["arg"];
                 String subargomento = Request["subarg"];
-
+               
                 getTitle(codargomento, subargomento);
                 BindData(codargomento, subargomento, (int)numPage, limitForPage);
             }
@@ -52,7 +61,6 @@ namespace Philinternational
                     descrizione_paragrafo = (string)dr["descrizione_paragrafo"];
                 }
             }
-
 
             titlePage.InnerText = "Lotti presenti per l'argomento:" + descrizione_argomento;
             navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
@@ -97,17 +105,12 @@ namespace Philinternational
             esito = Lotti.getArgumentsByLotto(chiave);
             idArgomento = esito.GetValue(0).ToString();
             idSubArgomento = esito.GetValue(1).ToString();
-
-            String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/carrello.aspx?cod=" + chiave) + "\">Aggiungi al carrello</a>\n";
-                   outputVerifica   += "<a href=\""+ Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod="+ chiave +"&arg=" + idArgomento + "&subarg=" + idSubArgomento )+"\">Fai l'offerta</a>\n";
+            //String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/carrello.aspx?cod=" + chiave) + "\" onclick=\"addToBasket('" + chiave  + "')\">Aggiungi al carrello</a>\n";
+            String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai l'offerta</a>\n";
             if (AccountLayer.IsLogged()) {
-                Offerte a = new Offerte();
-                String idAnagrafica = "0";
+                OfferteGateway a = new OfferteGateway();
+                int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
 
-                if (HttpContext.Current.Session["idanagrafica"] !=null)
-                {
-                    idAnagrafica = HttpContext.Current.Session["idanagrafica"].ToString();
-                }
 
                 bool checkOfferta = a.checkOffertaGiaPresente(idAnagrafica, chiave);
                 if (checkOfferta == true) { outputVerifica = "Offerta già effettuata"; }
@@ -119,6 +122,7 @@ namespace Philinternational
             }
             return outputVerifica;
         }
+
         private String calcLimitForPage(String codargomento, String subargomento, int numPage, int limitForPage)
         {
             String tmpSql = "";
@@ -223,5 +227,33 @@ namespace Philinternational
             return Esito;        
         
         }
+        public Boolean addToBasket(String idLotto) {
+            String chiave = idLotto.ToString();
+
+            String idAnagrafica = Session.SessionID;
+            if (AccountLayer.IsLogged())
+            {
+                idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
+            }
+
+            OfferteGateway carrello = new OfferteGateway();
+            Boolean esito = carrello.insertCarrello(idAnagrafica, chiave);
+            return esito;
+        }
+
+        protected void R_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+            String idLotto = e.CommandArgument.ToString();
+            Boolean a = addToBasket(idLotto);
+            if (a)
+                esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] inserito nel carrello";
+            else
+                esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] <b>non</b> inserito nel carrello";
+           // soncazzo.InnerHtml = a.ToString();
+
+        }
+
+        
     }
 }
