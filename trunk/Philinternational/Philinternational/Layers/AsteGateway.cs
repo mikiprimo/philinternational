@@ -120,7 +120,6 @@ namespace Philinternational.Layers {
             String dataFine = "";
             string[] str = new string[2];
             MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
-
             try
             {
                 if (!(dr == null))
