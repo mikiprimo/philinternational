@@ -126,14 +126,11 @@ namespace Philinternational
         }
 
         private String ViewShortBasket() {
-            String idAnagrafica = "0";
+            int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
             String showBasket = "";
             String tmpRow = "";
             float totale =0;
-            if (HttpContext.Current.Session["idanagrafica"] != null)
-            {
-                idAnagrafica = HttpContext.Current.Session["idanagrafica"].ToString();
-            }
+            
             String sql = "SELECT idlotto,prezzo_offerto from offerta_per_corrispondenza where idanagrafica=" + idAnagrafica + " order by data_inserimento DESC";
             MySqlDataReader dr = ConnectionGateway.SelectQuery(sql);
             if (!(dr == null))
