@@ -3,6 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<h1>Gestione Lotti
+</h1>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:MultiView ID="mvLotti" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewLottiPubblicati" runat="server">
@@ -53,7 +55,7 @@
                 </Columns>
             </asp:GridView><br />
             <asp:TextBox ID="txtStringaRicerca" runat="server" />
-            <asp:ImageButton ID="ibtnCercaLotto" runat="server" OnClick="ibtnCercaLotto_Click" />
+             <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" OnClick="ibtnCercaLotto_Click" />
         </asp:View>
         <asp:View ID="viewLottiTemporanei" runat="server">
             <asp:GridView ID="gvLottiTemporanei" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiTemporanei_PageIndexChanged"
