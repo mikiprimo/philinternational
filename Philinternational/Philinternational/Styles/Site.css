@@ -309,3 +309,16 @@ ul#ticker li span {color: #06C;font-size:1.4em;margin:3px 0px;font-weight:bold;t
 .esitoOperazione {text-align:center;font-weight:bold;font-size:1.2em;letter-spacing:2px;margin:20px 0px}
 .ok{color:#006600}
 .ko{color:#F00}
+
+
+/* div per numero pagina*/
+.basket_id{width:8%;float:left;text-align:center;line-height:110px;border:1px solid:#000;overflow:hidden}
+.basket_img{width:25%;float:left;padding:2px 0px;text-align:center;}
+.basket_p{width:67%;float:left;overflow:hidden}
+.basket_height{line-height:20px;padding:1px 0px;overflow:hidden}
+
+ul.basket{list-style:none;border:0px;margin:2px 0px;display:block;clear:both;height:140px}
+ul.basket:hover, ul.basket:focus{background-color:#eee}
+ul.basket li{display:inline;font-size:12px;}
+ul.basket li a{text-decoration:none;color:#999}
+ul.basket li a:hover{text-decoration:underline;color:#920000}

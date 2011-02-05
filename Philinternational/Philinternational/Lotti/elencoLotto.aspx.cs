@@ -14,15 +14,7 @@ namespace Philinternational
 {
     public partial class elencoLotto : System.Web.UI.Page
     {
-        protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e)
-        {
-            object idlotto = e.Item.FindControl("idlotto");
-            String chiave = ((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
-            ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
-            ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
-        }    
-
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
            // string qualePagina = this.Context.Items["fileName"].ToString();
@@ -67,7 +59,6 @@ namespace Philinternational
 
         
         }
-
         private void BindData(String codargomento, String subargomento, int numPage, int limitForPage)
         {
             String sql="";
@@ -85,7 +76,6 @@ namespace Philinternational
             LottoConnector.SelectCommand = sql;
             LottoConnector.DataBind();
         }
-
         public String loadImmagine(Object idLotto){
             LottiGateway a = new LottiGateway();
             String  chiave = idLotto.ToString();
@@ -93,7 +83,6 @@ namespace Philinternational
             
             return outputImmagine;
         }
-    
         public String VerificaOfferta(Object statoOfferta, Object idLotto)
         {
             String stato = statoOfferta.ToString();
@@ -122,7 +111,6 @@ namespace Philinternational
             }
             return outputVerifica;
         }
-
         private String calcLimitForPage(String codargomento, String subargomento, int numPage, int limitForPage)
         {
             String tmpSql = "";
@@ -240,7 +228,6 @@ namespace Philinternational
             Boolean esito = carrello.insertCarrello(idAnagrafica, chiave);
             return esito;
         }
-
         protected void R_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
 
@@ -253,7 +240,13 @@ namespace Philinternational
            // soncazzo.InnerHtml = a.ToString();
 
         }
-
-        
+        protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e)
+        {
+            object idlotto = e.Item.FindControl("idlotto");
+            String chiave = ((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
+            ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
+            ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
+        }    
     }
+    
 }

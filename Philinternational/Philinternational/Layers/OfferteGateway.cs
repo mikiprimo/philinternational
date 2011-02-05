@@ -9,7 +9,7 @@ namespace Philinternational.Layers
 {
     public class OfferteGateway
     {
-        public  String InsertOfferta(int idAnagrafica,String idLotto,float offerta) {
+        public String InsertOfferta(int idAnagrafica,String idLotto,float offerta) {
             String esito = "";
             Int32 idOfferta = ConnectionGateway.CreateNewIndex("idofferta", "offerta_per_corrispondenza");
 
@@ -32,7 +32,7 @@ namespace Philinternational.Layers
             }
             return esito;
         }
-        public  Boolean checkOffertaGiaPresente(int IdAnagrafica, String idLotto) {
+        public Boolean checkOffertaGiaPresente(int IdAnagrafica, String idLotto) {
 
             String sql = "SELECT idlotto, idanagrafica FROM offerta_per_corrispondenza WHERE idlotto="+ idLotto+" AND idanagrafica="+ IdAnagrafica+"";
             MySqlDataReader dr = ConnectionGateway.SelectQuery(sql);
@@ -60,14 +60,12 @@ namespace Philinternational.Layers
             if (a == 0) return true; else return false;
         
         }
-
         public Boolean DelleteAllOfferte()
         {
             String sql = "DELETE FROM offerta_per_corrispondenza";
             int a = ConnectionGateway.ExecuteQuery(sql, "offerta_per_corrispondenza");
             if (a == 0) return true; else return false;
         }
-
         private Boolean insertMovimento(int idAnagrafica, String idAsta) {
             String sqlCheck = "SELECT idanagrafica,numero_asta from anagrafica_movimenti where idanagrafica= "+ idAnagrafica +" and numero_asta="+ idAsta +"";
             String sqlInsert ="INSERT INTO anagrafica_movimenti(idanagrafica,numero_asta) VALUES("+ idAnagrafica +","+ idAsta+")";
@@ -92,7 +90,6 @@ namespace Philinternational.Layers
                 return false;
             }
         }
-
         public Boolean insertCarrello(String idAnagrafica, string idLotto) {
             Int32 idcarrello = ConnectionGateway.CreateNewIndex("idcarrello", "carrello");
             String data_inserimento = String.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now);
@@ -139,10 +136,25 @@ namespace Philinternational.Layers
 
         public Boolean UpdateCarrello(String idAnagraficaOld,String idanagraficaNew)
         {
-            String sql = "UPDATE carrello set idanagrafica ='"+ idanagraficaNew+"' where idanagrafica ='"+ idAnagraficaOld+"'";
+            String sql = "UPDATE carrello SET idanagrafica ='"+ idanagraficaNew+"' WHERE idanagrafica ='"+ idAnagraficaOld+"'";
             int a = ConnectionGateway.ExecuteQuery(sql, "carrello");
             if (a == 0) return true; else return false;
         }
 
+        public String loadSingleLotto() { return ""; }
+        public Boolean checkLottoOfferte(String idAnagrafica, String idLotto)
+        {
+            Boolean esito = false;
+            String sqlCheck = "SELECT idanagrafica,idlotto from offerta_per_corrispondenza where idanagrafica=" + idAnagrafica + " AND idlotto=" + idLotto + "";
+            MySqlDataReader dr = ConnectionGateway.SelectQuery(sqlCheck);
+            if (!(dr == null))
+            {
+                if (dr.HasRows)
+                {
+                    esito = true;
+                }
+            }
+            return esito;
+        }
     }
 }

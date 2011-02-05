@@ -17,7 +17,7 @@
                 <p id="descrizioneLotto" runat="server"><%# Eval("descrizione")%></p>
                 <p>Condizione: <span id="statoLotto" runat="server"><%# Eval("tipo_lotto")%></span></p>
                 <p>Prezzo: <span id="prezzoLotto" runat="server"><%# Eval("euro")%></span></p>
-                <p><asp:LinkButton ID="linkBasket" runat="server">Carrello</asp:LinkButton></p>
+                <p class="lottoOfferta"><asp:LinkButton ID="linkBasket" runat="server">Carrello</asp:LinkButton></p>
                 <p class="lottoOfferta"><%# VerificaOfferta(DataBinder.Eval(Container.DataItem, "stato"), DataBinder.Eval(Container.DataItem, "idlotto"))%></p>
             </div>  
         </ItemTemplate>    
