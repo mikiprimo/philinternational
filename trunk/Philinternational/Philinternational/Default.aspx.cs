@@ -21,14 +21,26 @@ namespace Philinternational
             esito = Asta.getDatiAsta();
             String tmp = esito.GetValue(1).ToString();
             numeroAsta.InnerHtml = esito.GetValue(0).ToString();
-            tmp = tmp.Substring(0, 10);
+            if (tmp.Length > 10)
+                tmp = tmp.Substring(0, 10);
+            else {
+                tmp = "";
+            }
             dataScadenza.InnerHtml = a.ToString(tmp);
             infoOutput.InnerHtml = lodRotationNews();
-            LottoRndOutput.InnerHtml = LoadLottiRandom();
+            BindData();
 
         }
 
-        private static String lodRotationNews()
+        private void BindData()
+        {
+            String sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto where stato !=0 order by rand() limit 4";
+            LottoConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
+            LottoConnector.SelectCommand = sql;
+            LottoConnector.DataBind();
+        }
+
+     private static String lodRotationNews()
         {
             String elencoNews_head = "<ul id=\"ticker\">\n";
             String elencoNews_body = "";
@@ -71,52 +83,7 @@ namespace Philinternational
 
         }
     
-     private String LoadLottiRandom() {
-
-            String esitoLotto = "";
-            String tmpLotto = "";
-
-            MySqlDataReader dr;
-            MySqlConnection conn = ConnectionGateway.ConnectDB();
-            String sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto where stato !=0 order by rand() limit 4";
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            command.CommandType = System.Data.CommandType.Text;
-            try{
-                conn.Open();
-                dr = command.ExecuteReader();
-                if (dr != null)
-                {
-                    if (dr.HasRows) {
-                        while (dr.Read())
-                        {
-                            String esitoImmagine = loadImmagine(dr["idlotto"]);
-                            String esitoOfferta  = VerificaOfferta(dr["stato"],dr["idlotto"]);
-                            tmpLotto  = "<div class=\"bloccoLotto\">\n";
-                            tmpLotto += "<h4>"+ dr["idlotto"] + "</h4>\n";
-                            tmpLotto += "<p>"+ esitoImmagine + "</p>\n";
-                            tmpLotto += "<p>Anno: <span>"+ dr["anno"] + "</span></p>\n";
-                            tmpLotto += "<p>"+ dr["descrizione"] + "</p>\n";
-                            tmpLotto += "<p>Condizione: <span>"+ dr["tipo_lotto"] + "</span></p>\n";
-                            tmpLotto += "<p>Prezzo: <span>"+ dr["euro"] + "</span></p>\n";
-                            tmpLotto += "<p class=\"lottoOfferta\">"+ esitoOfferta + "</p>\n";
-                            tmpLotto += "</div>\n";
-                            esitoLotto += tmpLotto; 
-                        }//end while
-                    }
-                }//end if
-
-            }//end try
-            catch (MySql.Data.MySqlClient.MySqlException){
-                            return "Errore ";
-           }
-            finally {
-                    conn.Close();
-            }
-        
-        return esitoLotto;
-        }
-
-     private String loadImmagine(Object idLotto)
+     public String loadImmagine(Object idLotto)
      {
          LottiGateway a = new LottiGateway();
          String chiave = idLotto.ToString();
@@ -125,7 +92,7 @@ namespace Philinternational
          return outputImmagine;
      }
 
-     private String VerificaOfferta(Object statoOfferta, Object idLotto)
+     public String VerificaOfferta(Object statoOfferta, Object idLotto)
      {
          String stato = statoOfferta.ToString();
          String chiave = idLotto.ToString();
@@ -137,8 +104,7 @@ namespace Philinternational
          idArgomento = esito.GetValue(0).ToString();
          idSubArgomento = esito.GetValue(1).ToString();
 
-         String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/carrello.aspx?cod=" + chiave) + "\">Aggiungi al carrello</a>\n";
-         outputVerifica += "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai l'offerta</a>\n";
+         String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai l'offerta</a>\n";
          if (AccountLayer.IsLogged()==true){
               try
                 {
@@ -159,5 +125,42 @@ namespace Philinternational
          }
          return outputVerifica;
      }
+
+     public Boolean addToBasket(String idLotto)
+     {
+         String chiave = idLotto.ToString();
+
+         String idAnagrafica = Session.SessionID;
+         if (AccountLayer.IsLogged())
+         {
+             idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
+         }
+
+         OfferteGateway carrello = new OfferteGateway();
+         Boolean esito = carrello.insertCarrello(idAnagrafica, chiave);
+         return esito;
+     }
+
+     protected void R_ItemCommand(object source, RepeaterCommandEventArgs e)
+     {
+
+         String idLotto = e.CommandArgument.ToString();
+         Boolean a = addToBasket(idLotto);
+         if (a)
+             esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] inserito nel carrello";
+         else
+             esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] <b>non</b> inserito nel carrello";
+         // soncazzo.InnerHtml = a.ToString();
+
+     }
+
+     protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e)
+     {
+         object idlotto = e.Item.FindControl("idlotto");
+         String chiave = ((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
+         ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
+         ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
+     }    
+    
     }
 }
