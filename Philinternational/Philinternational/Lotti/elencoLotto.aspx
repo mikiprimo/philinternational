@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="elencoLotto.aspx.cs" Inherits="Philinternational.elencoLotto" %>
+﻿<%@ Page Title="Elenco Lotto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="elencoLotto.aspx.cs" Inherits="Philinternational.elencoLotto" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
-    <title runat="server" id="titlePage">Titolo</title>
+    <title runat="server" id="titlePage"></title>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="MainElenco" ContentPlaceHolderID="MainContent" runat="server">
     <div runat="server" id="navigazioneOutput"></div>
     <hr />
     <div runat="server" id="numPagineOutput"></div>
@@ -22,5 +22,4 @@
             </div>  
         </ItemTemplate>    
     </asp:Repeater>
-    
 </asp:Content>

@@ -323,3 +323,5 @@ ul.basket li{display:inline;font-size:12px;}
 ul.basket li a{text-decoration:none;color:#999}
 ul.basket li a:hover{text-decoration:underline;color:#920000}
 a.remove{text-align:center;line-height:20px;text-decoration:none;padding:5px}
+
+hr{line-height:1px;width:100%;background-color:#006}

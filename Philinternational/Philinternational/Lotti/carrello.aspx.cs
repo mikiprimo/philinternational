@@ -21,7 +21,7 @@ namespace Philinternational
                 BindData();
             }
             else {            
-                Response.Write("ancora da implementare []");
+               // Response.Write("Sono in PostBack");
             }
         }
         private void BindData() {
@@ -43,7 +43,7 @@ namespace Philinternational
             String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
             return outputImmagine;
         }
-        private String _FaiOfferta(String idLotto, float offerta)
+        private String FaiOfferta(String idLotto, float offerta)
         {
             String esito = "";
             LottiGateway Lotti = new LottiGateway();
@@ -63,7 +63,7 @@ namespace Philinternational
             if (AccountLayer.IsLogged())
             {
                 int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
-                esito = a.InsertOfferta(idAnagrafica, idLotto, offerta);
+                esito = a.InsertOfferta(idAnagrafica, idLotto, offerta); 
             }
             else
             {
@@ -78,7 +78,7 @@ namespace Philinternational
             Boolean esito = carrello.DeleteCarrelloByIdCarrello(idCarrello);
             return esito;
         }
-        protected void R_ItemCommand(object source, RepeaterCommandEventArgs e)
+        protected void R_ItemCommand(Object sender, RepeaterCommandEventArgs e)
         {
             String action = e.CommandName;
             Boolean esito = false;
@@ -92,21 +92,18 @@ namespace Philinternational
                         String tmp = ((TextBox)e.Item.FindControl("txt_offerta")).Text;
                         if (tmp == "") tmp = "0";
                         int a = Int32.Parse(tmp);
-                        Response.Write("action pressed[" + action + "] and value [" + a + "]");
-
-                    break;
-
+                        Button btn = ((Button)e.Item.FindControl("btnOfferta"));
+                        String idLotto =btn.Attributes["myIdLotto"].ToString();
+                        int idCarrello = Int32.Parse(btn.Attributes["myIdcarrello"].ToString());
+                        String esitoOfferta = FaiOfferta(idLotto, a);
+                        if (esitoOfferta == ""){
+                            Boolean esitoCarrello = RemoveToBasket(idCarrello);
+                            Response.Redirect("carrello.aspx");
+                        } 
+                        else ((System.Web.UI.HtmlControls.HtmlContainerControl)e.Item.FindControl("esitoOfferta")).InnerHtml = esitoOfferta;
+                        break;
             }
 
-        }
-        protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e)
-        {
-            /*
-            object idlotto = e.Item.FindControl("idlotto");
-            String chiave = ((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
-            ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
-            ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
-             */
         }
         protected void offerta_OnDataBinding(Object sender, EventArgs e) {
             Button btn = ((Button)sender);
@@ -115,32 +112,7 @@ namespace Philinternational
             String idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
             if (off.checkLottoOfferte(idAnagrafica, idLotto)) {
                 btn.Visible=false;
-                //btn.Text = idLotto;
             }
-
-        }
-        protected void offerta_OnClick(Object sender, RepeaterCommandEventArgs e)
-        {
-            String a = e.CommandArgument.ToString();
-            Response.Write("Offerta On Click[" + a +"]");
-            /*
-            Button btn = ((Button)sender);
-            String idLotto = btn.Attributes[""].ToString();
-            CheckBox chk = ((CheckBox)sender);
-            String idNews = chk.Attributes["myIdLotto"].ToString();
-             */ 
-        }
-
-        protected void AssumiValore(Object sender, EventArgs e)
-        {
-            
-            Response.Write("AssumiValore[" + e.ToString() + "]");
-            /*
-            Button btn = ((Button)sender);
-            String idLotto = btn.Attributes[""].ToString();
-            CheckBox chk = ((CheckBox)sender);
-            String idNews = chk.Attributes["myIdLotto"].ToString();
-             */
         }
     }
 }

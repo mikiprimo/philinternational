@@ -133,20 +133,20 @@ namespace Philinternational
             {
                 if (dr.HasRows)
                 {
-                    showBasket += "<div><h3>Offerte già effettuate</h3>";
+                    showBasket += "<div>\n<h3>Offerte già effettuate</h3>\n";
                     showBasket += "<table>";
                     while (dr.Read()) {
 
                         tmpRow = "<tr>";
-                        tmpRow += "<td style=\"width:20%\"><a href=\"#\">"+ dr["idlotto"] +"</a></td>";
-                        tmpRow += "<td style=\"width:80%;text-align:right\">" + dr["prezzo_offerto"] + "</td>";
+                        tmpRow += "<td style=\"width:20%\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + dr["idlotto"] + "") + "\">" + dr["idlotto"] + "</a></td>";
+                        tmpRow += "<td style=\"width:80%;text-align:right\">" + dr["prezzo_offerto"] + " &euro;</td>";
                         tmpRow += "<tr>\n";
                         totale = totale + float.Parse(dr["prezzo_offerto"].ToString());
                         //ciclo da fare
                         showBasket += tmpRow;
                     }
                     String rowTotalPrice = "<tr><td colspan=\"2\" style=\"text-align:right;font-weight:bold\">" + totale + " euro </td></tr>\n";
-                    showBasket += rowTotalPrice + "</table></div>\n";
+                    showBasket += rowTotalPrice + "</table\n></div>\n";
                 }
             }
             return showBasket;
