@@ -4,21 +4,34 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Philinternational.Layers;
+using System.Data;
 
-namespace Philinternational.Management
-{
-    public partial class Lotto : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+namespace Philinternational.Management {
+    public partial class Lotto : System.Web.UI.Page {
+        protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
-                this.BindData();
+                this.BindData(gvLottiPubblicati);
             }
         }
 
-        private void BindData() {
-            gvLottiPubblicati.DataSource = LottiGateway.SelectLotti();
-            gvLottiPubblicati.DataBind();
+        public string gvFilter {
+            get {
+                return ((String)ViewState["gvFilter"]);
+            }
+            set {
+                ViewState["gvFilter"] = value;
+            }
+        }
+
+        private void BindData(GridView gv) {
+            if (String.IsNullOrEmpty(this.gvFilter)) {
+                gv.DataSource = LottiGateway.SelectLotti();
+            } else {
+                DataView dv = LottiGateway.SelectLotti();
+                dv.RowFilter = "descrizione LIKE '%" + this.gvFilter + "%'";
+                gv.DataSource = dv;
+            }
+            gv.DataBind();
         }
 
         //Tab TMP
@@ -26,32 +39,24 @@ namespace Philinternational.Management
             //Muove la riga dalla tabella lotti_tmp alla tabella lotti e mette lo stato (su quest'ultima) in disattivo
         }
 
-        //Entrambe
         protected void ibtnCercaLotto_Click(object sender, ImageClickEventArgs e) {
-            //Filtro sulla dataview e rebind della gridview
-        }
-
-        protected void gvLottiTemporanei_PageIndexChanged(object sender, EventArgs e) {
-            this.BindData();
-        }
-
-        protected void gvLottiTemporanei_PageIndexChanging(object sender, GridViewPageEventArgs e) {
-            this.gvLottiTemporanei.PageIndex = e.NewPageIndex;
-            this.BindData();
+            if (txtStringaRicerca.Text.Trim() == String.Empty) this.gvFilter = "";
+            else this.gvFilter = txtStringaRicerca.Text;
+            BindData(gvLottiPubblicati);
         }
 
         protected void gvLottiPubblicati_PageIndexChanged(object sender, EventArgs e) {
-            this.BindData();
+            this.BindData(gvLottiPubblicati);
         }
 
         protected void gvLottiPubblicati_PageIndexChanging(object sender, GridViewPageEventArgs e) {
             this.gvLottiPubblicati.PageIndex = e.NewPageIndex;
-            this.BindData();
+            this.BindData(gvLottiPubblicati);
         }
 
         protected void gvLottiPubblicati_RowDataBound(object sender, GridViewRowEventArgs e) {
             if (e.Row.RowType == DataControlRowType.DataRow) {
-                
+
                 DropDownList ddlStati = ((DropDownList)e.Row.Cells[7].FindControl("ddlStati"));
                 String StatoID = ((HiddenField)e.Row.Cells[7].FindControl("hiddenIdStato")).Value;
                 String IDLotto = ((HiddenField)e.Row.Cells[7].FindControl("HiddenIdLotto")).Value;
@@ -69,7 +74,16 @@ namespace Philinternational.Management
             DropDownList ddlStati = ((DropDownList)sender);
             Int32 idlotto = Convert.ToInt32(ddlStati.Attributes["CurrentIDLotto"]);
 
-            LottiGateway.UpdateStatoByIDLotto(idlotto,Convert.ToInt32(ddlStati.SelectedValue));
+            LottiGateway.UpdateStatoByIDLotto(idlotto, Convert.ToInt32(ddlStati.SelectedValue));
+        }
+
+        protected void gvLottiTemporanei_PageIndexChanged(object sender, EventArgs e) {
+            this.BindData(gvLottiTemporanei);
+        }
+
+        protected void gvLottiTemporanei_PageIndexChanging(object sender, GridViewPageEventArgs e) {
+            this.gvLottiTemporanei.PageIndex = e.NewPageIndex;
+            this.BindData(gvLottiTemporanei);
         }
     }
 }

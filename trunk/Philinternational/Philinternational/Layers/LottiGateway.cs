@@ -17,7 +17,7 @@ namespace Philinternational.Layers {
         private static String _UPDATE_LOTTI = "UPDATE lotto SET stato = @stato WHERE idlotto = @idlotto";
 
 
-        internal static object SelectLotti() {
+        internal static DataView SelectLotti() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
             using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
