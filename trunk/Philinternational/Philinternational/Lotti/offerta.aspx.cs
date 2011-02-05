@@ -50,10 +50,9 @@ namespace Philinternational
             statoLotto.InnerHtml = a.getValueByField(idlotto, "tipo_lotto");
             if (AccountLayer.IsLogged())
             {
-                String idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
-                Boolean esito = o.checkLottoOfferte(idAnagrafica,idlotto);
+                int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+                Boolean esito = o.checkOffertaGiaPresente(idAnagrafica,idlotto);
                 if (esito) showButton.Visible = false;
-                
             }
 
 
