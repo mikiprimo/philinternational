@@ -32,18 +32,15 @@ namespace Philinternational
                 shortBasketOutput.InnerHtml = ViewShortBasket();
             }
         }
-
         protected void HeadLoginStatus_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             RefreshUnloggedUser();
         }
-
         private void RefreshUnloggedUser()
         {
             FormsAuthentication.SignOut();
             Response.Redirect("~/Default.aspx");
         }
-
         private String LoadMenuAccordion() {
             String paragrafo = "";
             String argomento="";
@@ -124,7 +121,6 @@ namespace Philinternational
             return logoOutput;
         
         }
-
         private String ViewShortBasket() {
             int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
             String showBasket = "";

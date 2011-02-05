@@ -21,9 +21,9 @@
                 </li>
             </ul>
             <div>
-                <asp:TextBox ID="txt_offerta" runat="server" Width="60px" OnTextChanged="AssumiValore" AutoPostBack="true"></asp:TextBox>
+                <asp:TextBox ID="txt_offerta" runat="server" Width="60px"></asp:TextBox>
                 <asp:Button runat="server" ID="btnOfferta" Text="Fai l'offerta" OnDataBinding="offerta_OnDataBinding" CommandName="makeOffert" myIdLotto='<%#Eval("idlotto")%>' OnClick="FaiOfferta"/>
-                <asp:LinkButton runat="server" ID="removeBasket" Text="Rimuovi dal carrello" CommandArgument='<%#Eval("idcarrello")%>' CommandName="removeBasket"></asp:LinkButton>
+                <asp:LinkButton runat="server" ID="removeBasket" CssClass="remove" Text="Rimuovi dal carrello" CommandArgument='<%#Eval("idcarrello")%>' CommandName="removeBasket"></asp:LinkButton>
             </div>
             <div style="height:20px;background-color:green"><span id="esitoOfferta" runat="server">&nbsp;</span></div>
             <hr />

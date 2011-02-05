@@ -43,9 +43,6 @@ namespace Philinternational
             String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
             return outputImmagine;
         }
-        public void FaiOfferta(Object sender, EventArgs e) {
-        
-        }
         private String _FaiOfferta(String idLotto, float offerta)
         {
             String esito = "";
@@ -92,10 +89,11 @@ namespace Philinternational
                         if (esito) Response.Redirect("carrello.aspx");
                         break;
                 case "makeOffert":
-                        String tmp = e.CommandArgument.ToString();
+                        String tmp = ((TextBox)e.Item.FindControl("txt_offerta")).Text;
                         if (tmp == "") tmp = "0";
                         int a = Int32.Parse(tmp);
-                        Response.Write("action pressed["+ action +"] and value ["+ a +"]");
+                        Response.Write("action pressed[" + action + "] and value [" + a + "]");
+
                     break;
 
             }
@@ -133,10 +131,10 @@ namespace Philinternational
              */ 
         }
 
-        protected void AssumiValore(Object sender, RepeaterCommandEventArgs e)
+        protected void AssumiValore(Object sender, EventArgs e)
         {
-            String a = e.CommandArgument.ToString();
-            Response.Write("AssumiValore[" + a + "]");
+            
+            Response.Write("AssumiValore[" + e.ToString() + "]");
             /*
             Button btn = ((Button)sender);
             String idLotto = btn.Attributes[""].ToString();
