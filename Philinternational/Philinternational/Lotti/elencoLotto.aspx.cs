@@ -52,11 +52,12 @@ namespace Philinternational
                     descrizione_argomento = (string)dr["descrizione_argomento"];
                     descrizione_paragrafo = (string)dr["descrizione_paragrafo"];
                 }
+                dr.Close();
             }
 
             titlePage.InnerText = "Lotti presenti per l'argomento:" + descrizione_argomento;
             navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
-
+            
         
         }
         private void BindData(String codargomento, String subargomento, int numPage, int limitForPage)
@@ -94,13 +95,10 @@ namespace Philinternational
             esito = Lotti.getArgumentsByLotto(chiave);
             idArgomento = esito.GetValue(0).ToString();
             idSubArgomento = esito.GetValue(1).ToString();
-            //String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/carrello.aspx?cod=" + chiave) + "\" onclick=\"addToBasket('" + chiave  + "')\">Aggiungi al carrello</a>\n";
             String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai l'offerta</a>\n";
             if (AccountLayer.IsLogged()) {
                 OfferteGateway a = new OfferteGateway();
                 int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
-
-
                 bool checkOfferta = a.checkOffertaGiaPresente(idAnagrafica, chiave);
                 if (checkOfferta == true) { outputVerifica = "Offerta già effettuata"; }
                 switch (stato)
@@ -116,7 +114,7 @@ namespace Philinternational
             String tmpSql = "";
             String Esito;
             String limiteLotto ="";
-            int partenza =0;
+            int partenza = 0;
             /* STEP 2 -  ottengo il numero, il min ed il max per il paragrafo specifico*/
             String sql = "Select count(*) totale_lotti FROM lotto where stato!=0 and ";
             if (subargomento == null || subargomento == "0")
@@ -183,13 +181,13 @@ namespace Philinternational
 
                     limiteLotto = dr["totale_lotti"].ToString();
                 }
+                dr.Close();
             }
             else
             {
                 limiteLotto = "0";
 
             }
-            //dr.Close();
             /* STEP 3 scrittura finale della stringa*/
             Double recordperPagina;
             recordperPagina = Convert.ToInt32(limiteLotto) / limitForPage;
@@ -204,8 +202,6 @@ namespace Philinternational
                 {
                     String iSelected = "";
                     if (i == numPage) iSelected = "class=\"bold\"";
-                   
-
                     tmpSql += "<li " + iSelected  + "><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento + "&p=" + i + "") + "\">" + i + "</a></li>";
                 }
                 tmpSql += "</ul></div>";
@@ -228,16 +224,40 @@ namespace Philinternational
             Boolean esito = carrello.insertCarrello(idAnagrafica, chiave);
             return esito;
         }
-        protected void R_ItemCommand(object source, RepeaterCommandEventArgs e)
+        protected void R_ItemCommand(Object source, RepeaterCommandEventArgs e)
         {
-
             String idLotto = e.CommandArgument.ToString();
-            Boolean a = addToBasket(idLotto);
+            OfferteGateway o = new OfferteGateway();
+            String idAnagrafica = "";
+            if (AccountLayer.IsLogged())
+            {
+                idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
+            }
+            else {
+                idAnagrafica = Session.SessionID;
+            }
+            Boolean esitoCheck = o.CheckLottoCarrello(idAnagrafica, idLotto);
+            if (esitoCheck)
+            {
+                ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
+                ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+            
+            }else{
+                Boolean a = addToBasket(idLotto);
+                if (a) {
+                    ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
+                    ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+                }
+            }
+
+
+            
+            /*
             if (a)
                 esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] inserito nel carrello";
             else
                 esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] <b>non</b> inserito nel carrello";
-           // soncazzo.InnerHtml = a.ToString();
+             */ 
 
         }
         protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e)
@@ -246,6 +266,23 @@ namespace Philinternational
             String chiave = ((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
             ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
             ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
+            OfferteGateway o = new OfferteGateway();
+            String idAnagrafica = "";
+            if (AccountLayer.IsLogged())
+            {
+                idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
+            }
+            else
+            {
+                idAnagrafica = Session.SessionID;
+            }
+            Boolean esitoCheck = o.CheckLottoCarrello(idAnagrafica, chiave);
+            if (esitoCheck)
+            {
+                ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
+                ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+
+            }
         }    
     }
     

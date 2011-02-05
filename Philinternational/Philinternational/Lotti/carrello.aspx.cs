@@ -109,8 +109,8 @@ namespace Philinternational
             Button btn = ((Button)sender);
             String idLotto = btn.Attributes["myIdLotto"].ToString();
             OfferteGateway off = new OfferteGateway();
-            String idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
-            if (off.checkLottoOfferte(idAnagrafica, idLotto)) {
+            int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+            if (off.checkOffertaGiaPresente(idAnagrafica,idLotto) ) {
                 btn.Visible=false;
             }
         }
