@@ -12,16 +12,14 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
+            if (!IsPostBack){
                 String chiave = Request["cod"];
                 String codargomento = Request["arg"];
                 String subargomento = Request["subarg"];
                 codiceLotto.Value = chiave;
                 loadData(chiave);
 
-            }
-            else {
+            }else {
                 String esito = "";
                 String offertaUtente = txtOfferta.Text;
                 if (offertaUtente == "") offertaUtente = "0";
@@ -38,20 +36,28 @@ namespace Philinternational
                     
                     }
                     EsitoOperazione.InnerHtml = outputEsito;
-                }
-            
+                }    
             }
-
-
         }
         private void loadData(String idlotto) {
             LottiGateway a = new LottiGateway();
+            OfferteGateway o = new OfferteGateway();
             LoadImmagineOutput.InnerHtml = loadImmagine(idlotto);
             testoH1.InnerHtml = "Offerta per lotto <span style=\"color:#F00\">[" + idlotto + "]</span>";
             annoLotto.InnerHtml = a.getValueByField(idlotto, "anno");
             descrizioneLotto.InnerHtml = a.getValueByField(idlotto, "descrizione");
             prezzoLotto.InnerHtml = a.getValueByField(idlotto, "euro");
             statoLotto.InnerHtml = a.getValueByField(idlotto, "tipo_lotto");
+            if (AccountLayer.IsLogged())
+            {
+                String idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
+                Boolean esito = o.checkLottoOfferte(idAnagrafica,idlotto);
+                if (esito) showButton.Visible = false;
+                
+            }
+
+
+
         }
         private String FaiOfferta(String idLotto,float offerta) {
             String esito = "";
@@ -82,7 +88,6 @@ namespace Philinternational
             
             return esito;
         }
-
         private String loadImmagine(Object idLotto)
         {
             LottiGateway a = new LottiGateway();

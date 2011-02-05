@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 using System.Text;
 
 namespace Philinternational.Layers
-{
+{ 
     public class OfferteGateway
     {
         public String InsertOfferta(int idAnagrafica,String idLotto,float offerta) {

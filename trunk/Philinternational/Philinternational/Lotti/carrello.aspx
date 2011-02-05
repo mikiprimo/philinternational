@@ -6,8 +6,7 @@
     <hr />
     <asp:SqlDataSource ID="CarrelloConnector" runat="server" ProviderName="MySql.Data.MySqlClient"></asp:SqlDataSource>
     <asp:Repeater runat="server" ID="elencoCarrello" 
-        DataSourceID="CarrelloConnector"  DataMember="DefaultView" 
-        OnItemDataBound="R1_ItemDataBound" OnItemCommand="R_ItemCommand" 
+        DataSourceID="CarrelloConnector"  DataMember="DefaultView"  OnItemCommand="R_ItemCommand" 
         ClientIDMode="AutoID" ViewStateMode="Enabled">
         <ItemTemplate>
             <ul class="basket">
@@ -22,10 +21,10 @@
             </ul>
             <div>
                 <asp:TextBox ID="txt_offerta" runat="server" Width="60px"></asp:TextBox>
-                <asp:Button runat="server" ID="btnOfferta" Text="Fai l'offerta" OnDataBinding="offerta_OnDataBinding" CommandName="makeOffert" myIdLotto='<%#Eval("idlotto")%>' OnClick="FaiOfferta"/>
+                <asp:Button runat="server" ID="btnOfferta" Text="Fai l'offerta" OnDataBinding="offerta_OnDataBinding" CommandName="makeOffert" myIdLotto='<%#Eval("idlotto")%>' myIdcarrello='<%#Eval("idcarrello")%>' />
                 <asp:LinkButton runat="server" ID="removeBasket" CssClass="remove" Text="Rimuovi dal carrello" CommandArgument='<%#Eval("idcarrello")%>' CommandName="removeBasket"></asp:LinkButton>
             </div>
-            <div style="height:20px;background-color:green"><span id="esitoOfferta" runat="server">&nbsp;</span></div>
+            <div style="line-height:20px;background-color:transparent;color:#F00;font-weight:bold"><span id="esitoOfferta" runat="server">&nbsp;</span></div>
             <hr />
         </ItemTemplate>
     </asp:Repeater>
