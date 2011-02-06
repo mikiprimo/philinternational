@@ -4,14 +4,30 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <h1>Gestione Lotti
-</h1>
+</h1><br />
+    <asp:Panel ID="pnlChooseView" runat="server" ClientIDMode="Static" 
+        Direction="LeftToRight" HorizontalAlign="Left" ViewStateMode="Enabled" 
+        Wrap="False">
+        <span style="valign:center;">Seleziona i lotti che vuoi visualizzare:
+        <asp:DropDownList ID="ddlSelectedView" runat="server" AutoPostBack="True">
+            <asp:ListItem Selected="True" Value="0">Lotti</asp:ListItem>
+            <asp:ListItem Value="1">Lotti Temporanei</asp:ListItem>
+            <asp:ListItem Value="2">Lotti scartati</asp:ListItem>
+        </asp:DropDownList></span>
+    </asp:Panel><br />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:MultiView ID="mvLotti" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewLottiPubblicati" runat="server">
+            <asp:TextBox ID="txtStringaRicerca" runat="server" />
+             <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" OnClick="ibtnCercaLotto_Click" />
+             <asp:ImageButton ID="ibtnCancellaLottiSelezionati" runat="server" 
+                AlternateText="Cancella lotti selezionati" 
+                onclick="ibtnCancellaLottiSelezionati_Click" />
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"
                 OnPageIndexChanged="gvLottiPubblicati_PageIndexChanged" OnPageIndexChanging="gvLottiPubblicati_PageIndexChanging"
-                AutoGenerateColumns="False" ShowHeader="False" 
-                OnRowDataBound="gvLottiPubblicati_RowDataBound" GridLines="None">
+                AutoGenerateColumns="False" ShowHeader="False" DataKeyNames="idlotto"
+                OnRowDataBound="gvLottiPubblicati_RowDataBound" GridLines="None" 
+                EmptyDataText="Non é presente alcun lotto." PageSize="15">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
@@ -53,9 +69,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
-            </asp:GridView><br />
-            <asp:TextBox ID="txtStringaRicerca" runat="server" />
-             <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" OnClick="ibtnCercaLotto_Click" />
+            </asp:GridView>
         </asp:View>
         <asp:View ID="viewLottiTemporanei" runat="server">
             <asp:GridView ID="gvLottiTemporanei" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiTemporanei_PageIndexChanged"

@@ -223,7 +223,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Layers\NewsletterGateway.cs" />
-    <Compile Include="Layers\Offerte.cs" />
     <Compile Include="Layers\OfferteGateway.cs" />
     <Compile Include="Layers\ParagrafoGateway.cs" />
     <Compile Include="Layers\NewsGateway.cs" />

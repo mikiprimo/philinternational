@@ -288,6 +288,33 @@ namespace Philinternational.Layers {
             }
             return valore;
         }
-        
+
+        /// <summary>
+        /// Data una lista di ID Lotti ne elimina i relativi records
+        /// </summary>
+        /// <param name="list"></param>
+        internal static Boolean DeleteLotti(List<Int32> LottiIdToBeErased) {
+            String _DELETE_LOTTI = "DELETE FROM lotto WHERE @ComposedConditions";
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            StringBuilder sb = new StringBuilder();
+            foreach (int item in LottiIdToBeErased) {
+                sb.Append("idlotto = " + item.ToString() + " OR ");
+            }
+            sb.Append("1=0");
+
+            _DELETE_LOTTI = _DELETE_LOTTI.Replace("@ComposedConditions", sb.ToString());
+            MySqlCommand command = new MySqlCommand(_DELETE_LOTTI, conn);
+            command.CommandType = CommandType.Text;
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
     }
 }

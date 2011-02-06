@@ -85,5 +85,18 @@ namespace Philinternational.Management {
             this.gvLottiTemporanei.PageIndex = e.NewPageIndex;
             this.BindData(gvLottiTemporanei);
         }
+
+        protected void ibtnCancellaLottiSelezionati_Click(object sender, ImageClickEventArgs e) {
+            List<Int32> list = new List<Int32>();
+
+            foreach (GridViewRow row in gvLottiPubblicati.Rows) {
+                if (row.RowType == DataControlRowType.DataRow) {
+                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
+                    if (chk.Checked) list.Add(Convert.ToInt32(gvLottiPubblicati.DataKeys[row.RowIndex]["idlotto"]));
+                }
+            }
+            if (list.Count > 0) LottiGateway.DeleteLotti(list);
+            this.BindData(gvLottiPubblicati);
+        }
     }
 }

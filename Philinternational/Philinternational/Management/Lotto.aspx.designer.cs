@@ -13,6 +13,24 @@ namespace Philinternational.Management {
     public partial class Lotto {
         
         /// <summary>
+        /// pnlChooseView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlChooseView;
+        
+        /// <summary>
+        /// ddlSelectedView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSelectedView;
+        
+        /// <summary>
         /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
@@ -40,15 +58,6 @@ namespace Philinternational.Management {
         protected global::System.Web.UI.WebControls.View viewLottiPubblicati;
         
         /// <summary>
-        /// gvLottiPubblicati control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvLottiPubblicati;
-        
-        /// <summary>
         /// txtStringaRicerca control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,24 @@ namespace Philinternational.Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ibtnCercaLotto;
+        
+        /// <summary>
+        /// ibtnCancellaLottiSelezionati control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnCancellaLottiSelezionati;
+        
+        /// <summary>
+        /// gvLottiPubblicati control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvLottiPubblicati;
         
         /// <summary>
         /// viewLottiTemporanei control.
