@@ -47,6 +47,7 @@ namespace Philinternational.Layers
             {
                 string sqlOptimize = "OPTIMIZE TABLE" + tableName;
                 MySqlDataReader optomizeSql = SelectQuery(sqlOptimize);
+                dr.Close();
             }
             else
             {
@@ -69,6 +70,7 @@ namespace Philinternational.Layers
                     if (a == "") a = "1";
                     newIndex = Convert.ToInt32(a);
                 }
+                dr.Close();
             }
             else
             {

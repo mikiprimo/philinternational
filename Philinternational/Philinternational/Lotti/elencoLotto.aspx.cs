@@ -41,7 +41,7 @@ namespace Philinternational
                 sql = "Select a.descrizione descrizione_argomento,b.descrizione descrizione_paragrafo from paragrafo_argomento a, paragrafo b  where a.idparagrafo = b.idparagrafo and idargomento=" + codargomento + "";
             }
             else {
-                sql = "";
+                sql = "Select a.descrizione descrizione_argomento,c.descrizione descrizione_paragrafo from paragrafo_subargomento a, paragrafo_argomento b,paragrafo c  where c.idparagrafo = b.idparagrafo and a.idargomento = b.idparagrafo and a.idsub_argomento=" + codargomento + "";
             }
 
             MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);

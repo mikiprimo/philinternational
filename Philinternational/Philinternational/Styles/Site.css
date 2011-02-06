@@ -30,8 +30,9 @@ ul{list-style:none}
     height:120px;
 }
 #header .Logo{float:left;width:200px;height:100px; }
+#header .Logo img{ border:0px}
 #header .BannerDisplay{float:left;height:100px;width:470px;text-align:center;}
-#header .BannerDisplay img{padding:20px 1px;margin:0px}
+#header .BannerDisplay img{padding:20px 1px;margin:0px;border:0px;}
 #header .loginDisplay
 {
     width:280px;
@@ -312,9 +313,9 @@ ul#ticker li span {color: #06C;font-size:1.4em;margin:3px 0px;font-weight:bold;t
 
 
 /* div per numero pagina*/
-.basket_id{width:8%;float:left;text-align:center;line-height:110px;border:1px solid:#000;overflow:hidden}
-.basket_img{width:25%;float:left;padding:2px 0px;text-align:center;}
-.basket_p{width:67%;float:left;overflow:hidden}
+.basket_id{width:7%;float:left;text-align:center;line-height:110px;overflow:hidden}
+.basket_img{width:25%;float:left;padding:4px 0px;text-align:center;}
+.basket_p{width:68%;float:left;overflow:hidden}
 .basket_height{line-height:20px;padding:1px 0px;overflow:hidden}
 
 ul.basket{list-style:none;border:0px;margin:2px 0px;display:block;clear:both;height:140px}
