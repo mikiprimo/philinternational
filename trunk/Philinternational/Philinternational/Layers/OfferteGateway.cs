@@ -46,6 +46,7 @@ namespace Philinternational.Layers
                 {
                     return false;
                 }
+                dr.Close();
             }
             else
             {
@@ -113,6 +114,7 @@ namespace Philinternational.Layers
                     else { return false; }
 
                 }
+                dr.Close();
             }
             else
             {
@@ -142,19 +144,27 @@ namespace Philinternational.Layers
         }
 
         public String loadSingleLotto() { return ""; }
-        public Boolean checkLottoOfferte(String idAnagrafica, String idLotto)
+        public Boolean CheckLottoCarrello(String idAnagrafica, string idLotto)
         {
-            Boolean esito = false;
-            String sqlCheck = "SELECT idanagrafica,idlotto from offerta_per_corrispondenza where idanagrafica=" + idAnagrafica + " AND idlotto=" + idLotto + "";
-            MySqlDataReader dr = ConnectionGateway.SelectQuery(sqlCheck);
+
+            String sql = "SELECT idlotto, idanagrafica FROM carrello WHERE idlotto=" + idLotto + " AND idanagrafica='" + idAnagrafica + "'";
+            MySqlDataReader dr = ConnectionGateway.SelectQuery(sql);
             if (!(dr == null))
             {
                 if (dr.HasRows)
                 {
-                    esito = true;
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
-            return esito;
+            else
+            {
+                return false;
+            }
+        
         }
     }
 }

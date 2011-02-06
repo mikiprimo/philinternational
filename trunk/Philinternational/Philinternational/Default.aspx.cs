@@ -145,12 +145,32 @@ namespace Philinternational
      {
 
          String idLotto = e.CommandArgument.ToString();
-         Boolean a = addToBasket(idLotto);
-         if (a)
-             esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] inserito nel carrello";
+         OfferteGateway o = new OfferteGateway();
+         String idAnagrafica = "";
+         if (AccountLayer.IsLogged())
+         {
+             idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
+         }
          else
-             esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] <b>non</b> inserito nel carrello";
-         // soncazzo.InnerHtml = a.ToString();
+         {
+             idAnagrafica = Session.SessionID;
+         }
+         Boolean esitoCheck = o.CheckLottoCarrello(idAnagrafica, idLotto);
+         if (esitoCheck)
+         {
+             ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
+             ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+
+         }
+         else
+         {
+             Boolean a = addToBasket(idLotto);
+             if (a)
+             {
+                 ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
+                 ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+             }
+         }
 
      }
 
@@ -160,6 +180,24 @@ namespace Philinternational
          String chiave = ((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
          ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
          ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
+        OfferteGateway o = new OfferteGateway();
+            String idAnagrafica = "";
+            if (AccountLayer.IsLogged())
+            {
+                idAnagrafica = (((logInfos)Session["log"]).idAnagrafica).ToString();
+            }
+            else
+            {
+                idAnagrafica = Session.SessionID;
+            }
+            Boolean esitoCheck = o.CheckLottoCarrello(idAnagrafica, chiave);
+            if (esitoCheck)
+            {
+                ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
+                ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+            }
+
+            
      }    
     
     }

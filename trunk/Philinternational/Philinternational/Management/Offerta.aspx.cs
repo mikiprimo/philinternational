@@ -11,5 +11,17 @@ namespace Philinternational.Styles
         protected void Page_Load(object sender, EventArgs e)
         {
         }
+
+        private void BindData()
+        {
+            String sql = "SELECT a.idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento ";
+                   sql +="  FROM offerta_per_corrispondenza a, anagrafica b ";
+                   sql += "WHERE a.idanagrafica = b.idanagrafica ";
+                   sql +=" ORDER BY idlotto, prezzo_offerto DESC , data_inserimento ASC";
+            
+            OfferteConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
+            OfferteConnector.SelectCommand = sql;
+            OfferteConnector.DataBind();
+        }
     }
 }
