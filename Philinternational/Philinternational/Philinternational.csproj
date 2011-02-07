@@ -222,7 +222,6 @@
     <Compile Include="Layers\Entities\paragSubArgomento.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Layers\MailGateway.cs" />
     <Compile Include="Layers\NewsletterGateway.cs" />
     <Compile Include="Layers\OfferteGateway.cs" />
     <Compile Include="Layers\ParagrafoGateway.cs" />
