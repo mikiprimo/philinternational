@@ -7,10 +7,17 @@ using Philinternational.Layers;
 using System.Data;
 
 namespace Philinternational.Management {
+
+    public enum tabellaLotto { 
+        LottiPubblicati,
+        LottiTemporanei,
+        LottiScartati
+    }
+
     public partial class Lotto : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
-                this.BindData(gvLottiPubblicati);
+                this.BindData(gvLottiPubblicati,tabellaLotto.LottiPubblicati);
             }
         }
 
@@ -23,15 +30,24 @@ namespace Philinternational.Management {
             }
         }
 
-        private void BindData(GridView gv) {
+        private void BindData(GridView gv, tabellaLotto tab) {
             if (String.IsNullOrEmpty(this.gvFilter)) {
-                gv.DataSource = LottiGateway.SelectLotti();
+                gv.DataSource = GetSource(tab);
             } else {
-                DataView dv = LottiGateway.SelectLotti();
+                DataView dv = GetSource(tab);
                 dv.RowFilter = "descrizione LIKE '%" + this.gvFilter + "%'";
                 gv.DataSource = dv;
             }
             gv.DataBind();
+        }
+
+        private DataView GetSource(tabellaLotto tab) {
+            switch (tab) {
+                case tabellaLotto.LottiPubblicati: return LottiGateway.SelectLotti();
+                case tabellaLotto.LottiTemporanei: return LottiGateway.SelectLottiTemporanei();
+                case tabellaLotto.LottiScartati: return LottiGateway.SelectLottiScartati();
+                default: return LottiGateway.SelectLotti();
+            }
         }
 
         //Tab TMP
@@ -42,16 +58,16 @@ namespace Philinternational.Management {
         protected void ibtnCercaLotto_Click(object sender, ImageClickEventArgs e) {
             if (txtStringaRicerca.Text.Trim() == String.Empty) this.gvFilter = "";
             else this.gvFilter = txtStringaRicerca.Text;
-            BindData(gvLottiPubblicati);
+            BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
         }
 
         protected void gvLottiPubblicati_PageIndexChanged(object sender, EventArgs e) {
-            this.BindData(gvLottiPubblicati);
+            this.BindData(gvLottiPubblicati,tabellaLotto.LottiPubblicati);
         }
 
         protected void gvLottiPubblicati_PageIndexChanging(object sender, GridViewPageEventArgs e) {
             this.gvLottiPubblicati.PageIndex = e.NewPageIndex;
-            this.BindData(gvLottiPubblicati);
+            this.BindData(gvLottiPubblicati,tabellaLotto.LottiPubblicati);
         }
 
         protected void gvLottiPubblicati_RowDataBound(object sender, GridViewRowEventArgs e) {
@@ -78,12 +94,12 @@ namespace Philinternational.Management {
         }
 
         protected void gvLottiTemporanei_PageIndexChanged(object sender, EventArgs e) {
-            this.BindData(gvLottiTemporanei);
+            this.BindData(gvLottiTemporanei,tabellaLotto.LottiTemporanei);
         }
 
         protected void gvLottiTemporanei_PageIndexChanging(object sender, GridViewPageEventArgs e) {
             this.gvLottiTemporanei.PageIndex = e.NewPageIndex;
-            this.BindData(gvLottiTemporanei);
+            this.BindData(gvLottiTemporanei, tabellaLotto.LottiTemporanei);
         }
 
         protected void ibtnCancellaLottiSelezionati_Click(object sender, ImageClickEventArgs e) {
@@ -96,7 +112,24 @@ namespace Philinternational.Management {
                 }
             }
             if (list.Count > 0) LottiGateway.DeleteLotti(list);
-            this.BindData(gvLottiPubblicati);
+            this.BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
+        }
+
+        protected void ddlSelectedView_SelectedIndexChanged(object sender, EventArgs e) {
+            DropDownList ddlViews = ((DropDownList)sender);
+            switch(ddlViews.SelectedValue)
+            {
+                case "0": mvLotti.SetActiveView(viewLottiPubblicati);
+                    BindData(gvLottiPubblicati,tabellaLotto.LottiPubblicati);
+                    break;
+                case "1": mvLotti.SetActiveView(viewLottiTemporanei);
+                    BindData(gvLottiTemporanei, tabellaLotto.LottiTemporanei);
+                    break;
+                case "2": mvLotti.SetActiveView(viewLottiScartati);
+                    //BindData(gvLottiScartati);
+                    break;
+                default: mvLotti.SetActiveView(viewLottiPubblicati); break;
+            }
         }
     }
 }

@@ -9,7 +9,8 @@
         Direction="LeftToRight" HorizontalAlign="Left" ViewStateMode="Enabled" 
         Wrap="False">
         <span style="valign:center;">Seleziona i lotti che vuoi visualizzare:
-        <asp:DropDownList ID="ddlSelectedView" runat="server" AutoPostBack="True">
+        <asp:DropDownList ID="ddlSelectedView" runat="server" AutoPostBack="True" 
+            onselectedindexchanged="ddlSelectedView_SelectedIndexChanged">
             <asp:ListItem Selected="True" Value="0">Lotti</asp:ListItem>
             <asp:ListItem Value="1">Lotti Temporanei</asp:ListItem>
             <asp:ListItem Value="2">Lotti scartati</asp:ListItem>
@@ -71,7 +72,7 @@
                 </Columns>
             </asp:GridView>
         </asp:View>
-        <asp:View ID="viewLottiTemporanei" runat="server">
+        <asp:View ID="viewLottiTemporanei" runat="server">lottitemp
             <asp:GridView ID="gvLottiTemporanei" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiTemporanei_PageIndexChanged"
                 OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging">
                 <Columns>
@@ -82,6 +83,6 @@
             </asp:GridView>
             <asp:ImageButton ID="ibtnPubblicaLottiSelezionati" runat="server" OnClick="ibtnPubblicaLottiSelezionati_Click" />
         </asp:View>
-        <asp:View ID="viewLottiScartati" runat="server"></asp:View>
+        <asp:View ID="viewLottiScartati" runat="server">lotti scart</asp:View>
     </asp:MultiView>
 </asp:Content>
