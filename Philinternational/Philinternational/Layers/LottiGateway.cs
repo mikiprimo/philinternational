@@ -12,6 +12,8 @@ namespace Philinternational.Layers {
     public class LottiGateway {
 
         private static String _SELECT = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto";
+        private static String _SELECT_TEMPORANEI = "SELECT idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone FROM lotto_tmp";
+        private static String _SELECT_SCARTATI = "SELECT idlotto_scartato, testo FROM lotto_scartato";
         private static String _INSERT_ARGUMENT = "INSERT INTO lotto_tmp (idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone) VALUES (@idcatalogo, @conferente, @anno, @tipo_lotto, @numero_pezzi, @descrizione, @prezzo_base, @euro, @riferimento_sassone)";
         private static String _TRUNCATE_ALL_LOTTO_TABLES = "TRUNCATE TABLE       lotto_tmp; TRUNCATE TABLE       lotto_scartato; TRUNCATE TABLE       lotto;";
         private static String _UPDATE_LOTTI = "UPDATE lotto SET stato = @stato WHERE idlotto = @idlotto";
@@ -21,6 +23,42 @@ namespace Philinternational.Layers {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
             using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv;
+                } catch (MySqlException) {
+                    return dv;
+                }
+            }
+        }
+
+        internal static DataView SelectLottiTemporanei() {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(_SELECT_TEMPORANEI, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv;
+                } catch (MySqlException) {
+                    return dv;
+                }
+            }
+        }
+
+        internal static DataView SelectLottiScartati() {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(_SELECT_SCARTATI, conn))
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
                 try {
                     conn.Open();
