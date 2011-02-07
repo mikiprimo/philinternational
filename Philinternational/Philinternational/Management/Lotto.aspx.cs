@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Philinternational.Management {
 
-    public enum tabellaLotto { 
+    public enum tabellaLotto {
         LottiPubblicati,
         LottiTemporanei,
         LottiScartati
@@ -17,7 +17,7 @@ namespace Philinternational.Management {
     public partial class Lotto : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
-                this.BindData(gvLottiPubblicati,tabellaLotto.LottiPubblicati);
+                this.BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
             }
         }
 
@@ -62,12 +62,12 @@ namespace Philinternational.Management {
         }
 
         protected void gvLottiPubblicati_PageIndexChanged(object sender, EventArgs e) {
-            this.BindData(gvLottiPubblicati,tabellaLotto.LottiPubblicati);
+            this.BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
         }
 
         protected void gvLottiPubblicati_PageIndexChanging(object sender, GridViewPageEventArgs e) {
             this.gvLottiPubblicati.PageIndex = e.NewPageIndex;
-            this.BindData(gvLottiPubblicati,tabellaLotto.LottiPubblicati);
+            this.BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
         }
 
         protected void gvLottiPubblicati_RowDataBound(object sender, GridViewRowEventArgs e) {
@@ -94,7 +94,7 @@ namespace Philinternational.Management {
         }
 
         protected void gvLottiTemporanei_PageIndexChanged(object sender, EventArgs e) {
-            this.BindData(gvLottiTemporanei,tabellaLotto.LottiTemporanei);
+            this.BindData(gvLottiTemporanei, tabellaLotto.LottiTemporanei);
         }
 
         protected void gvLottiTemporanei_PageIndexChanging(object sender, GridViewPageEventArgs e) {
@@ -117,10 +117,9 @@ namespace Philinternational.Management {
 
         protected void ddlSelectedView_SelectedIndexChanged(object sender, EventArgs e) {
             DropDownList ddlViews = ((DropDownList)sender);
-            switch(ddlViews.SelectedValue)
-            {
+            switch (ddlViews.SelectedValue) {
                 case "0": mvLotti.SetActiveView(viewLottiPubblicati);
-                    BindData(gvLottiPubblicati,tabellaLotto.LottiPubblicati);
+                    BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
                     break;
                 case "1": mvLotti.SetActiveView(viewLottiTemporanei);
                     BindData(gvLottiTemporanei, tabellaLotto.LottiTemporanei);
