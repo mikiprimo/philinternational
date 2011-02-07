@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <h1>Gestione Lotti
-</h1><br />
+</h1><hr /><br />
     <asp:Panel ID="pnlChooseView" runat="server" ClientIDMode="Static" 
         Direction="LeftToRight" HorizontalAlign="Left" ViewStateMode="Enabled" 
         Wrap="False">
