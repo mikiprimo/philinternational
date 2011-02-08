@@ -46,7 +46,6 @@ namespace Philinternational.Layers
                 {
                     return false;
                 }
-                dr.Close();
             }
             else
             {
@@ -114,7 +113,6 @@ namespace Philinternational.Layers
                     else { return false; }
 
                 }
-                dr.Close();
             }
             else
             {
