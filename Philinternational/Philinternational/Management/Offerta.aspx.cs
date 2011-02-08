@@ -10,11 +10,14 @@ namespace Philinternational.Styles
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack) {
+                BindData();
+            }
         }
 
         private void BindData()
         {
-            String sql = "SELECT a.idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento ";
+            String sql = "SELECT a.idlotto idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento ";
                    sql +="  FROM offerta_per_corrispondenza a, anagrafica b ";
                    sql += "WHERE a.idanagrafica = b.idanagrafica ";
                    sql +=" ORDER BY idlotto, prezzo_offerto DESC , data_inserimento ASC";
@@ -23,5 +26,8 @@ namespace Philinternational.Styles
             OfferteConnector.SelectCommand = sql;
             OfferteConnector.DataBind();
         }
+
+        protected void R_ItemCommand(object source, RepeaterCommandEventArgs e) { }
+        protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e) { }
     }
 }
