@@ -15,7 +15,7 @@ namespace Philinternational.Styles {
         }
 
         private void BindData() {
-            gvParagrafi.DataSource = ParagrafoGateway.SelectParag();
+            gvParagrafi.DataSource = ParagrafoGateway.SelectParagrafi();
             gvParagrafi.DataBind();
         }
 
@@ -33,7 +33,7 @@ namespace Philinternational.Styles {
             MyParagrafo.idparagrafo = Convert.ToInt32(gvParagrafi.DataKeys[e.RowIndex]["idparagrafo"]);
             MyParagrafo.state = new Stato(((CheckBox)gvParagrafi.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1:0, "");
 
-            ParagrafoGateway.UpdateParag(MyParagrafo);
+            ParagrafoGateway.UpdateParagrafi(MyParagrafo);
 
             gvParagrafi.EditIndex = -1;
             this.BindData();

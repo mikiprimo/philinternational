@@ -2,8 +2,7 @@
     CodeBehind="NewsletterDetail.aspx.cs" Inherits="Philinternational.Management.NewsletterDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Nuova
-    Asta </h1>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Nuova newsletter</h1><hr /><br />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate><p>

@@ -156,7 +156,7 @@ namespace Philinternational.Layers {
         /// <param name="ParList"></param>
         /// <returns></returns>
         internal static Boolean EpurateLottoByParagraphs(List<Int32> ParList) {
-            DataView dv = ParagrafoGateway.SelectArgumentsByParagraphsList(ParList);
+            DataView dv = ParagrafoGateway.SelectArgomentiByListaParagrafi(ParList);
 
             //Fase 3: Metto la collection in una lista e la passo alla funzione che epura gli argomenti/subargomenti
             List<Int32> list = new List<int>();
