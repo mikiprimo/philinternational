@@ -25,7 +25,7 @@ namespace Philinternational.Styles {
         }
 
         private void BindData() {
-            gvArguments.DataSource = ParagrafoGateway.SelectArgs(this.selectedParagrafoID);
+            gvArguments.DataSource = ParagrafoGateway.SelectArgomenti(this.selectedParagrafoID);
             gvArguments.DataBind();
             try {
                 gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgs(this.selectedArgumentID);
@@ -48,7 +48,7 @@ namespace Philinternational.Styles {
             MyArgument.descrizione = (String)newValues["descrizione"];
             MyArgument.state = new Stato(((CheckBox)gvArguments.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1 : 0, "");
 
-            ParagrafoGateway.UpdateParagArgomento(MyArgument);
+            ParagrafoGateway.UpdateParagrafoArgomento(MyArgument);
             gvArguments.EditIndex = -1;
             this.BindData();
         }
@@ -104,7 +104,7 @@ namespace Philinternational.Styles {
                     if (chk.Checked) list.Add((int)gvArguments.DataKeys[row.RowIndex]["idargomento"]);
                 }
             }
-            if (list.Count > 0) ParagrafoGateway.DeleteArguments(list);
+            if (list.Count > 0) ParagrafoGateway.DeleteArgomenti(list);
             this.BindData();
         }
 

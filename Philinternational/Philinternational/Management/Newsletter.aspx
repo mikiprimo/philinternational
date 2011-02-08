@@ -3,13 +3,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Gestione
-    Newsletter</h1>
+    Newsletter</h1><hr /><br />
     <asp:GridView ID="gvNewsletters" runat="server" AllowPaging="True" AutoGenerateColumns="False"
         DataKeyNames="idnewsletter" GridLines="None" ShowHeader="False" 
         onpageindexchanged="gvNewsletters_PageIndexChanged" 
         onpageindexchanging="gvNewsletters_PageIndexChanging" 
         onrowediting="gvNewsletters_RowEditing" 
-        onrowupdating="gvNewsletters_RowUpdating">
+        onrowupdating="gvNewsletters_RowUpdating" 
+        EmptyDataText="Newsletter non presenti.">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />

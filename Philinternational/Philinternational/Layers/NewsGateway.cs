@@ -11,11 +11,33 @@ namespace Philinternational.Layers {
     /// Operational functions About News (News.aspx and NewsDetails.aspx)
     /// </summary>
     public class NewsGateway {
-        private static String _SELECT = ConfigurationManager.AppSettings["SelectNewsById"].ToString();
+        private static String _SELECTNEWS = "SELECT idnews, DATE_FORMAT(data_pubblicazione,'%d.%m.%Y') as data_pubblicazione, titolo, testo, stato FROM news ORDER BY data_pubblicazione DESC";
+        private static String _SELECTNEWSBYID = "SELECT idnews,titolo,testo,DATE_FORMAT(data_pubblicazione,'%d.%m.%Y') as data_pubblicazione,stato from news where idnews=@codice";//ConfigurationManager.AppSettings["SelectNewsById"].ToString();
         private static String _INSERT = "INSERT INTO NEWS (idnews, data_pubblicazione, titolo, testo, stato) VALUES (@idNews, @data_pubblicazione, @titolo, @testo, @valueStato)";
         private static String _UPDATE = "UPDATE NEWS SET titolo = @titolo, testo = @testo, stato = @stato WHERE idnews = @idNews";
         private static String _UPDATE_NEWSSTATE = "UPDATE NEWS SET stato = @stato WHERE idnews = @idNews";
 
+        /// <summary>
+        /// Select all news
+        /// </summary>
+        /// <returns></returns>
+        internal static object SelectNews() {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(_SELECTNEWS, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv;
+                } catch (MySqlException) {
+                    return dv;
+                }
+            }
+        }
         /// <summary>
         /// NEWS (Get News By ID)
         /// </summary>
@@ -25,7 +47,7 @@ namespace Philinternational.Layers {
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_SELECT, conn);
+            MySqlCommand command = new MySqlCommand(_SELECTNEWSBYID, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("codice", codice);
             newsEntity myOnlyNews;
@@ -152,5 +174,7 @@ namespace Philinternational.Layers {
             }
             return true;
         }
+
+       
     }
 }

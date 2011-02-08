@@ -84,6 +84,8 @@
     <Content Include="images\asta\7.jpg" />
     <Content Include="images\asta\8.jpg" />
     <Content Include="images\asta\9.jpg" />
+    <Content Include="images\banner\banner_gilardi_468_60.jpg" />
+    <Content Include="images\banner\banner_test_468_60.png" />
     <Content Include="images\immagine_non_disponibile.jpg" />
     <Content Include="images\masterPage\banner_gilardi_468_60.jpg" />
     <Content Include="images\masterPage\logo_philtinternational.png" />

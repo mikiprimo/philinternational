@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <h1>Dettaglio Argomento 
-</h1>
+</h1><hr />br>
     <p><label runat="server" id="esitoMessaggio"></label>
     </p>
     Descrizione:

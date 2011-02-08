@@ -30,7 +30,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="MyParagrafo"></param>
         /// <returns></returns>
-        internal static Boolean UpdateParag(paragrafoEntity MyParagrafo) {
+        internal static Boolean UpdateParagrafi(paragrafoEntity MyParagrafo) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_UPDATE, conn);
@@ -54,7 +54,7 @@ namespace Philinternational.Layers {
         /// SELECT PARAGRAFI
         /// </summary>
         /// <returns></returns>
-        internal static DataView SelectParag() {
+        internal static DataView SelectParagrafi() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
             using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
@@ -72,13 +72,13 @@ namespace Philinternational.Layers {
             }
         }
 
-        //----------ARGUMENTS-------------//
+        //----------ARGOMENTI-------------//
 
         /// <summary>
         /// SELECT ARGUMENTS
         /// </summary>
         /// <returns></returns>
-        internal static DataView SelectArgs(int idparagrafo) {
+        internal static DataView SelectArgomenti(int idparagrafo) {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
             using (MySqlCommand cmd = new MySqlCommand(_SELECT_ARGUMENTS, conn)) {
@@ -103,7 +103,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="MyArgument"></param>
         /// <returns></returns>
-        internal static Boolean UpdateParagArgomento(paragArgomentoEntity MyArgument) {
+        internal static Boolean UpdateParagrafoArgomento(paragArgomentoEntity MyArgument) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(_UPDATE_ARGUMENTS, conn);
@@ -128,7 +128,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="ArgsIdToBeErased"></param>
         /// <returns></returns>
-        internal static Boolean DeleteArguments(List<Int32> ArgsIdToBeErased) {
+        internal static Boolean DeleteArgomenti(List<Int32> ArgsIdToBeErased) {
             String _DELETE_ARGUMENTS = "DELETE FROM paragrafo_argomento WHERE @ComposedConditions";
             String _DELETE_SUBARGUMENTS = "DELETE FROM paragrafo_subargomento WHERE @ComposedConditions";
 
@@ -164,7 +164,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="ParList"></param>
         /// <returns></returns>
-        public static DataView SelectArgumentsByParagraphsList(List<Int32> ParList) {
+        public static DataView SelectArgomentiByListaParagrafi(List<Int32> ParList) {
             String _EPURATE_LOTTO_PARAGRAPHS = "SELECT DISTINCT idargomento FROM paragrafo_argomento WHERE @ComposedConditions";
 
             //Fase 1: costruisco la query mettendo in ora la lista degli idparagrafo
@@ -215,7 +215,7 @@ namespace Philinternational.Layers {
             return true;
         }
 
-        //-------------SUB ARGUMENTS------------//
+        //-------------SUB ARGOMENTI------------//
 
         /// <summary>
         /// SELECT SUB ARGUMENTS
