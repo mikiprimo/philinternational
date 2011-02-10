@@ -35,24 +35,10 @@ namespace Philinternational.Layers
         public Boolean checkOffertaGiaPresente(int IdAnagrafica, String idLotto) {
 
             String sql = "SELECT idlotto, idanagrafica FROM offerta_per_corrispondenza WHERE idlotto="+ idLotto+" AND idanagrafica="+ IdAnagrafica+"";
-            MySqlDataReader dr = ConnectionGateway.SelectQuery(sql);
-            if (!(dr == null))
-            {
-                if (dr.HasRows)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-
-        
+            DataView dr = ConnectionGateway.SelectQuery(sql);
+            if (dr.Count > 0)
+                return true;
+            else return false;
         }
         public Boolean DeleteOfferta(int idOfferta) {
             String sql = "DELETE FROM offerta_per_corrispondenza where idofferta =" + idOfferta;
@@ -70,24 +56,14 @@ namespace Philinternational.Layers
             String sqlCheck = "SELECT idanagrafica,numero_asta from anagrafica_movimenti where idanagrafica= "+ idAnagrafica +" and numero_asta="+ idAsta +"";
             String sqlInsert ="INSERT INTO anagrafica_movimenti(idanagrafica,numero_asta) VALUES("+ idAnagrafica +","+ idAsta+")";
 
-            MySqlDataReader dr = ConnectionGateway.SelectQuery(sqlCheck);
-            if (!(dr == null))
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sqlCheck);
+            if (dr.Count > 0)
             {
-                if (dr.HasRows)
-                {
-                    return true;
-                }
-                else {
-                    int a = ConnectionGateway.ExecuteQuery(sqlInsert, "anagrafica_movimenti");
-                    if (a == 0)
-                    {
-                        return true;
-                    }
-                    else { return false; }
-
-                }
-            }else{
-                return false;
+                return true;
+            }
+            else {
+                int a = ConnectionGateway.ExecuteQuery(sqlInsert, "anagrafica_movimenti");
+                if (a == 0) return true; else  return false;
             }
         }
         public Boolean insertCarrello(String idAnagrafica, string idLotto) {
@@ -96,28 +72,20 @@ namespace Philinternational.Layers
             String sqlCheck = "SELECT idanagrafica,idlotto from carrello where idanagrafica='" + idAnagrafica + "' AND idlotto=" + idLotto + "";
             String sqlInsert = "INSERT INTO carrello( idcarrello,idanagrafica,idlotto,data_inserimento) VALUES(" + idcarrello + ",'" + idAnagrafica + "'," + idLotto + ",'"+ data_inserimento+"')";
 
-            MySqlDataReader dr = ConnectionGateway.SelectQuery(sqlCheck);
-            if (!(dr == null))
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sqlCheck);
+            if (dr.Count > 0)
             {
-                if (dr.HasRows)
+                return true;
+            }
+            else {
+                int a = ConnectionGateway.ExecuteQuery(sqlInsert, "carrello");
+                if (a == 0)
                 {
                     return true;
                 }
-                else
-                {
-                    int a = ConnectionGateway.ExecuteQuery(sqlInsert, "carrello");
-                    if (a == 0)
-                    {
-                        return true;
-                    }
-                    else { return false; }
+                else { return false; }            
+            }
 
-                }
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public Boolean DeleteCarrelloByIdCarrello(int idcarrello)
@@ -144,24 +112,12 @@ namespace Philinternational.Layers
         public String loadSingleLotto() { return ""; }
         public Boolean CheckLottoCarrello(String idAnagrafica, string idLotto)
         {
-
+            Boolean esito = false;
             String sql = "SELECT idlotto, idanagrafica FROM carrello WHERE idlotto=" + idLotto + " AND idanagrafica='" + idAnagrafica + "'";
-            MySqlDataReader dr = ConnectionGateway.SelectQuery(sql);
-            if (!(dr == null))
-            {
-                if (dr.HasRows)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
+
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            if (dr.Count>0) esito=true;
+            return esito;
         
         }
     }

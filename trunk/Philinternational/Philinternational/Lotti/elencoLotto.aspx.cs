@@ -9,6 +9,9 @@ using System.Web.Services;
 using System.Web;
 using System.Web.UI;
 using System.Collections.Generic;
+using System.Data;
+using System.Text;
+
 
 namespace Philinternational
 {
@@ -44,16 +47,23 @@ namespace Philinternational
                 sql = "Select a.descrizione descrizione_argomento,c.descrizione descrizione_paragrafo from paragrafo_subargomento a, paragrafo_argomento b,paragrafo c  where c.idparagrafo = b.idparagrafo and a.idargomento = b.idparagrafo and a.idsub_argomento=" + codargomento + "";
             }
 
-            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+
+            for(int i=0;i<dr.Count;i++){
+                descrizione_argomento = dr[i]["descrizione_argomento"].ToString();
+                descrizione_paragrafo = dr[i]["descrizione_paragrafo"].ToString();
+            }
+            /*
             if (!(dr == null))
             {
+
                 while (dr.Read())
                 {
                     descrizione_argomento = (string)dr["descrizione_argomento"];
                     descrizione_paragrafo = (string)dr["descrizione_paragrafo"];
                 }
                 dr.Close();
-            }
+            }*/
 
             titlePage.InnerText = "Lotti presenti per l'argomento:" + descrizione_argomento;
             navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
@@ -113,33 +123,20 @@ namespace Philinternational
         {
             String tmpSql = "";
             String Esito;
-            String limiteLotto ="";
+            String limiteLotto = "0";
             int partenza = 0;
             /* STEP 2 -  ottengo il numero, il min ed il max per il paragrafo specifico*/
             String sql = "Select count(*) totale_lotti FROM lotto where stato!=0 and ";
             if (subargomento == null || subargomento == "0")
-            {
                 tmpSql = "id_argomento=" + codargomento;
-            }
             else
-            {
                 tmpSql = "id_subargomento=" + subargomento;
-            }
 
             sql += tmpSql;
-            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
-            if (!(dr == null))
-            {
-                while (dr.Read())
-                {
 
-                    limiteLotto =dr["totale_lotti"].ToString();
-                }
-            }
-            else
-            {
-                limiteLotto = "0";
-
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++) {
+                limiteLotto = dr[i]["totale_lotti"].ToString();
             }
             //dr.Close();
             /* STEP 3 scrittura finale della stringa*/
@@ -160,7 +157,7 @@ namespace Philinternational
 
             String tmpSql = "";
             String Esito="";
-            String limiteLotto = "";
+            String limiteLotto = "0";
             /* STEP 2 -  ottengo il numero, il min ed il max per il paragrafo specifico*/
             String sql = "Select count(*) totale_lotti FROM lotto where stato!=0 and ";
             if (subargomento == null || subargomento == "0")
@@ -173,21 +170,13 @@ namespace Philinternational
             }
 
             sql += tmpSql;
-            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
-            if (!(dr == null))
-            {
-                while (dr.Read())
-                {
 
-                    limiteLotto = dr["totale_lotti"].ToString();
-                }
-                dr.Close();
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++) {
+                limiteLotto = dr[i]["totale_lotti"].ToString();
             }
-            else
-            {
-                limiteLotto = "0";
 
-            }
+
             /* STEP 3 scrittura finale della stringa*/
             Double recordperPagina;
             recordperPagina = Convert.ToInt32(limiteLotto) / limitForPage;

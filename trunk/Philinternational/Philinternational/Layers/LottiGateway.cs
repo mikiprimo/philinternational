@@ -224,34 +224,12 @@ namespace Philinternational.Layers {
         public String[] getArgumentsByLotto(String idLotto) {
             String sql = "SELECT id_argomento, id_subargomento FROM lotto WHERE idlotto=" + idLotto;
             string[] str = new string[2];
-            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
-
-            try
-            {
-                if (!(dr == null))
-                {
-                    while (dr.Read())
-                    {
-                        str[0] = dr["id_argomento"].ToString();
-                        str[1] = dr["id_subargomento"].ToString();
-                    }
-                }
-                else
-                {
-                    str[0] = "";
-                    str[1] = "";
-                }
-            }
-            catch (MySqlException)
-            {
-                str[0] = "";
-                str[1] = "";
-
-                return str;
-            }
-            finally
-            {
-               // dr.Close();
+            str[0] = "";
+            str[1] = "";
+            DataView dr = ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++) {
+                str[0] = dr[i]["id_argomento"].ToString();
+                str[1] = dr[i]["id_subargomento"].ToString();            
             }
             return str;
         }
@@ -303,27 +281,11 @@ namespace Philinternational.Layers {
         public String getValueByField(String idlotto,String FieldName) { 
             String sql = "SELECT "+ FieldName +" valore FROM lotto WHERE idlotto="+ idlotto +"";
             String valore = "--";
-            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
-
-            try
-            {
-                if (!(dr == null))
-                {
-                    while (dr.Read())
-                    {
-                        valore = dr["valore"].ToString();
-                    }
-                }
-                else
-                {
-                    valore ="";
-                }
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++) {
+                valore = dr[i]["valore"].ToString();
             }
-            catch (MySqlException)
-            {
-
-                return "-";
-            }
+                
             return valore;
         }
 
