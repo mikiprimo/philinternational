@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Data;
+using System.Text;
+
 
 namespace Philinternational.Layers
 {
@@ -68,26 +71,9 @@ namespace Philinternational.Layers
         public string getIdAnagraficaByEmail(String email) {
             String sql = "SELECT idanagrafica valore FROM anagrafica WHERE email='" + email + "'";
             String valore = "--";
-            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
-
-            try
-            {
-                if (!(dr == null))
-                {
-                    while (dr.Read())
-                    {
-                        valore = dr["valore"].ToString();
-                    }
-                }
-                else
-                {
-                    valore = "";
-                }
-            }
-            catch (MySqlException)
-            {
-
-                return "--";
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for(int i=0;i< dr.Count;i++){
+                valore = dr[i]["valore"].ToString();
             }
             return valore;
         

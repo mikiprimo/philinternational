@@ -16,8 +16,6 @@ namespace Philinternational.Management {
         }
 
         private void BindData() {
-            //NewsConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
-            //NewsConnector.SelectCommand = ConfigurationManager.AppSettings["SelectNews"].ToString();
             repeaterNews.DataSource = NewsGateway.SelectNews();
             repeaterNews.DataBind();
         }

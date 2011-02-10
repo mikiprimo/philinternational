@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Data;
+using System.Text;
+
 
 namespace Philinternational.Layers
 {
@@ -19,7 +22,7 @@ namespace Philinternational.Layers
             return ConfigurationManager.ConnectionStrings["PhilinternationalConnectionString"].ToString();
         }
 
-        public static MySqlDataReader SelectQuery(String sql)
+        public static MySqlDataReader SelectQueryOld(String sql)
         {
             MySql.Data.MySqlClient.MySqlConnection conn = ConnectDB();
             MySqlDataReader dr;
@@ -40,43 +43,61 @@ namespace Philinternational.Layers
             return dr;
         }
 
+        public static DataView SelectQuery(String sql)
+        {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+            {
+                try
+                {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv;
+                }
+                catch (MySqlException)
+                {
+                    return dv;
+                }
+                finally { conn.Close(); }
+            }            
+        }
+
         public static int ExecuteQuery(String sql, String tableName)
         {
-            MySqlDataReader dr = SelectQuery(sql);
-            if (!(dr == null))
-            {
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            if(dr.Count>0){
                 string sqlOptimize = "OPTIMIZE TABLE" + tableName;
-                MySqlDataReader optomizeSql = SelectQuery(sqlOptimize);
-                dr.Close();
+                DataView optomizeSql = SelectQuery(sqlOptimize);
             }
             else
             {
                 return -1;
             }
+
             return 0;
         }
 
         public static int CreateNewIndex(String idKey, String tableName)
         {
-            int newIndex = 0;
+            int newIndex = -1;
             String sql = "SELECT MAX( " + idKey + " +1 ) indice FROM " + tableName + "";
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++) {
+                String a = dr[0]["indice"].ToString(); ;
+                if (a == "") a = "1";
+                newIndex = Convert.ToInt32(a);
+            }
 
-            MySqlDataReader dr = SelectQuery(sql);
-            if (!(dr == null))
-            {
-                while (dr.Read())
-                {
-                    String a = dr["indice"].ToString(); ;
-                    if (a == "") a = "1";
-                    newIndex = Convert.ToInt32(a);
-                }
-                dr.Close();
-            }
-            else
-            {
-                return -1;
-            }
             return newIndex;
+        }
+        public static void closeConnection(MySql.Data.MySqlClient.MySqlConnection conn)
+        {
+            conn.Close();
         }
     }
 }

@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="OfferteElenco" ContentPlaceHolderID="MainContent" runat="server">
     <fieldset>
-        <asp:LinkButton runat="server" id="estraiLotto">Estrai Lotti</asp:LinkButton>
+        <asp:LinkButton runat="server" id="estraiLotto" OnClick="estraiDati">Estrai Lotti</asp:LinkButton>
     </fieldset>
     <asp:SqlDataSource ID="OfferteConnector" runat="server" ProviderName="MySql.Data.MySqlClient"></asp:SqlDataSource>
     <asp:Repeater runat="server" ID="listaLotti" DataSourceID="OfferteConnector" OnItemDataBound="R1_ItemDataBound" OnItemCommand="R_ItemCommand">

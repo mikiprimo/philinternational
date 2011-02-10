@@ -119,38 +119,17 @@ namespace Philinternational.Layers {
             String idAsta = "";
             String dataFine = "";
             string[] str = new string[2];
-            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
-            try
-            {
-                if (!(dr == null))
-                {
-                    while (dr.Read())
-                    {
-                        idAsta = dr["valore"].ToString();
-                        dataFine = dr["data_fine"].ToString();
-                        if (idAsta == null) idAsta = "--";
-                        str[0] = idAsta;
-                        str[1] = dataFine;
+            str[0] = "--";
+            str[1] = "";
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++) {
+                idAsta = dr[i]["valore"].ToString();                
+                dataFine = dr[i]["data_fine"].ToString();
+                if (idAsta == null) idAsta = "--";
+                str[0] = idAsta;
+                str[1] = dataFine;
+            }
 
-                    }
-                }
-                else
-                {
-                    str[0] = "--";
-                    str[1] = "--";
-                }
-            }
-            catch (MySqlException)
-            {
-                str[0] = "--";
-                str[1] = "--";
-
-                return str;
-            }
-            finally
-            {
-                //dr.Close();
-            }
             return str;
         }
 
@@ -159,32 +138,10 @@ namespace Philinternational.Layers {
             String sql = "SELECT max(idasta) valore, stato FROM asta_elenco";;
             String stato = "";
             Boolean esito = false;
-            MySqlDataReader dr = Layers.ConnectionGateway.SelectQuery(sql);
-
-            try
-            {
-                if (!(dr == null))
-                {
-                    while (dr.Read())
-                    {
-
-                        stato = dr["data_fine"].ToString();
-                        if (stato == "0") esito = false; else esito = true;
-                    }
-                }
-                else
-                {
-                    esito = false;
-                }
-            }
-            catch (MySqlException)
-            {
-
-                return false;
-            }
-            finally
-            {
-                //dr.Close();
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++) {
+                stato = dr[i]["data_fine"].ToString();
+                if (stato == "0") esito = false; else esito = true;
             }
             return esito;
         }

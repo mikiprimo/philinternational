@@ -8,6 +8,8 @@ using System.Web.Services;
 using System.Web;
 using System.Web.UI;
 using System.Collections.Generic;
+using System.Data;
+using System.Text;
 
 namespace Philinternational
 {
@@ -126,28 +128,28 @@ namespace Philinternational
             String showBasket = "";
             String tmpRow = "";
             float totale =0;
-            
-            String sql = "SELECT idlotto,prezzo_offerto from offerta_per_corrispondenza where idanagrafica=" + idAnagrafica + " order by data_inserimento DESC";
-            MySqlDataReader dr = ConnectionGateway.SelectQuery(sql);
-            if (!(dr == null))
+            try
             {
-                if (dr.HasRows)
-                {
+                String sql = "  ";
+                DataView dr = ConnectionGateway.SelectQuery(sql);
+                if (dr.Count > 0) {
                     showBasket += "<div>\n<h3>Offerte già effettuate</h3>\n";
                     showBasket += "<table>";
-                    while (dr.Read()) {
-
+                    for (int i = 0; i < dr.Count; i++)
+                    {
                         tmpRow = "<tr>";
-                        tmpRow += "<td style=\"width:20%\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + dr["idlotto"] + "") + "\">" + dr["idlotto"] + "</a></td>";
-                        tmpRow += "<td style=\"width:80%;text-align:right\">" + dr["prezzo_offerto"] + " &euro;</td>";
-                        tmpRow += "<tr>\n";
-                        totale = totale + float.Parse(dr["prezzo_offerto"].ToString());
-                        //ciclo da fare
+                        tmpRow += "<td style=\"width:20%\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + dr[i]["idlotto"] + "") + "\">" + dr[i]["idlotto"] + "</a></td>";
+                        tmpRow += "<td style=\"width:80%;text-align:right\">" + dr[i]["prezzo_offerto"] + " &euro;</td>";
+                        tmpRow += "</tr>\n";
+                        totale = totale + float.Parse(dr[i]["prezzo_offerto"].ToString());
                         showBasket += tmpRow;
                     }
-                    String rowTotalPrice = "<tr><td colspan=\"2\" style=\"text-align:right;font-weight:bold\">" + totale + " euro </td></tr>\n";
+                    String rowTotalPrice = "<tr><td colspan=\"2\" style=\"text-align:right;font-weight:bold\">" + totale + " &euro;</td></tr>\n";
                     showBasket += rowTotalPrice + "</table\n></div>\n";
                 }
+            }
+            catch {
+                showBasket = "";
             }
             return showBasket;
         }    
