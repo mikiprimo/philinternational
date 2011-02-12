@@ -31,6 +31,15 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.ValidationSummary RegisterUserValidationSummary;
         
         /// <summary>
+        /// divRegPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRegPanel;
+        
+        /// <summary>
         /// lblEmail control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace Philinternational.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailRegEx;
+        
+        /// <summary>
+        /// lblExistMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExistMail;
         
         /// <summary>
         /// lblPassword control.
@@ -328,6 +346,24 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.TextBox txtCitta;
         
         /// <summary>
+        /// lblNazione control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNazione;
+        
+        /// <summary>
+        /// txtNazione control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNazione;
+        
+        /// <summary>
         /// updPanel control.
         /// </summary>
         /// <remarks>
@@ -472,6 +508,24 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.TextBox txtCittaDom;
         
         /// <summary>
+        /// lblNazioneDom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNazioneDom;
+        
+        /// <summary>
+        /// txtNazioneDom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNazioneDom;
+        
+        /// <summary>
         /// CreateUserButton control.
         /// </summary>
         /// <remarks>
@@ -479,5 +533,14 @@ namespace Philinternational.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button CreateUserButton;
+        
+        /// <summary>
+        /// divSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
     }
 }

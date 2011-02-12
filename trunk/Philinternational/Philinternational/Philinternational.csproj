@@ -193,6 +193,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Layers\AnagraficaGateway.cs" />
     <Compile Include="Layers\Entities\anagrafica.Entity.cs" />
     <Compile Include="Layers\Entities\asta.Entity.cs" />
     <Compile Include="Layers\Entities\carrello.Entity.cs" />
