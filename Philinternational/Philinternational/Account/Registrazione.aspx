@@ -4,10 +4,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
-    <h2>Registrati per poter fare le tue offerte. </h2>
-    <hr />
-    <p>Ti ricordiamo che la password deve avere almeno <%= Membership.MinRequiredPasswordLength %>caratteri.
-    </p>
+    <div id="divTitolo" runat="server">
+        <h2>Registrati per poter fare le tue offerte. </h2>
+        <hr />
+        <p>Ti ricordiamo che la password deve avere almeno <%= Membership.MinRequiredPasswordLength %>caratteri.
+        </p>
+    </div>
     <span class="failureNotification">
         <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>
     </span><asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification"
@@ -142,7 +144,8 @@
                 </p></fieldset>
     </div>
     <div id="divSuccess" runat="server">
-        <p>REGISTRAZIONE EFFETTUATA CON SUCCESSO!</p>
+        <h1>REGISTRAZIONE EFFETTUATA CON SUCCESSO!</h1>
+        <hr />
         <br />
         <p>Nelle prossime ore la tua posizione verrà verificata e attivata.</p>
         <br />
