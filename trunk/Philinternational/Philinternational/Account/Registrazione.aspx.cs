@@ -17,9 +17,11 @@ namespace Philinternational.Account {
                 }
                 if (R == "success") {
                     divRegPanel.Visible = false;
+                    divTitolo.Visible = false;
                     divSuccess.Visible = true;
                 } else {
                     divRegPanel.Visible = true;
+                    divTitolo.Visible = true;
                     divSuccess.Visible = false;
                 }
                 divDomicilio.Visible = false;
