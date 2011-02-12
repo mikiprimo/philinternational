@@ -67,6 +67,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registrazione.aspx" />
+    <Content Include="Advertise.xml" />
     <Content Include="Documentation\esempio_dati_tabella_lotto.sql" />
     <Content Include="Documentation\Gestione Lotti.txt" />
     <Content Include="Documentation\GridView\GridViewCustom_EsempioCompleto.txt" />
@@ -74,6 +75,7 @@
     <Content Include="Documentation\philinternational.sql" />
     <Content Include="Documentation\table_carrello.sql" />
     <Content Include="Documentation\table_lotto_tmp.sql" />
+    <Content Include="Error.aspx" />
     <Content Include="images\accept.png" />
     <Content Include="images\add.png" />
     <Content Include="images\asta\16.jpg" />
@@ -170,6 +172,13 @@
     <Compile Include="Account\Registrazione.aspx.designer.cs">
       <DependentUpon>Registrazione.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Layers\AccountLayer.cs" />
     <Compile Include="Layers\AsteGateway.cs" />
     <Compile Include="Layers\ConnectionGateway.cs" />
@@ -211,6 +220,7 @@
     <Compile Include="Layers\Entities\paragSubArgomento.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Layers\MailGateway.cs" />
     <Compile Include="Layers\NewsletterGateway.cs" />
     <Compile Include="Layers\OfferteGateway.cs" />
     <Compile Include="Layers\ParagrafoGateway.cs" />
@@ -363,6 +373,7 @@
     <Compile Include="uploadFiles.aspx.designer.cs">
       <DependentUpon>uploadFiles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="urlRewriting.cs" />
     <Compile Include="Varie\chi-siamo.aspx.cs">
       <DependentUpon>chi-siamo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
