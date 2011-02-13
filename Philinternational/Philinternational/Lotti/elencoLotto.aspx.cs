@@ -53,20 +53,8 @@ namespace Philinternational
                 descrizione_argomento = dr[i]["descrizione_argomento"].ToString();
                 descrizione_paragrafo = dr[i]["descrizione_paragrafo"].ToString();
             }
-            /*
-            if (!(dr == null))
-            {
-
-                while (dr.Read())
-                {
-                    descrizione_argomento = (string)dr["descrizione_argomento"];
-                    descrizione_paragrafo = (string)dr["descrizione_paragrafo"];
-                }
-                dr.Close();
-            }*/
-
             titlePage.InnerText = "Lotti presenti per l'argomento:" + descrizione_argomento;
-            navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
+            navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>--><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
             
         
         }
@@ -105,7 +93,7 @@ namespace Philinternational
             esito = Lotti.getArgumentsByLotto(chiave);
             idArgomento = esito.GetValue(0).ToString();
             idSubArgomento = esito.GetValue(1).ToString();
-            String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai l'offerta</a>\n";
+            String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai immediatamente l'offerta</a>\n";
             if (AccountLayer.IsLogged()) {
                 OfferteGateway a = new OfferteGateway();
                 int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
@@ -238,16 +226,6 @@ namespace Philinternational
                     ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
                 }
             }
-
-
-            
-            /*
-            if (a)
-                esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] inserito nel carrello";
-            else
-                esitoOperazione.InnerHtml = "Articolo [" + idLotto + "] <b>non</b> inserito nel carrello";
-             */ 
-
         }
         protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e)
         {
