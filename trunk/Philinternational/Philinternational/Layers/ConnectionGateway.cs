@@ -69,17 +69,27 @@ namespace Philinternational.Layers
 
         public static int ExecuteQuery(String sql, String tableName)
         {
-            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
-            if(dr.Count>0){
-                string sqlOptimize = "OPTIMIZE TABLE" + tableName;
-                DataView optomizeSql = SelectQuery(sqlOptimize);
+
+            string sqlOptimize = "OPTIMIZE TABLE " + tableName; 
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlCommand commandOptmize = new MySqlCommand(sqlOptimize, conn);
+            try
+            {
+                conn.Open();
+                command.ExecuteNonQuery();
+                commandOptmize.ExecuteNonQuery();
             }
-            else
+            catch (MySql.Data.MySqlClient.MySqlException)
             {
                 return -1;
             }
-
+            finally
+            {
+                conn.Close();
+            }
             return 0;
+           
         }
 
         public static int CreateNewIndex(String idKey, String tableName)

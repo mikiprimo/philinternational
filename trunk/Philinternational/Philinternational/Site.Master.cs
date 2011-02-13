@@ -130,7 +130,7 @@ namespace Philinternational
             float totale =0;
             try
             {
-                String sql = "  ";
+                String sql = "SELECT idlotto, prezzo_offerto FROM offerta_per_corrispondenza WHERE idanagrafica ="+ idAnagrafica +"";
                 DataView dr = ConnectionGateway.SelectQuery(sql);
                 if (dr.Count > 0) {
                     showBasket += "<div>\n<h3>Offerte già effettuate</h3>\n";
@@ -152,6 +152,7 @@ namespace Philinternational
                 showBasket = "";
             }
             return showBasket;
-        }    
+        }
+        private String viewOfferteFilatelia() { return ""; }
     }
 }

@@ -25,10 +25,10 @@ namespace Philinternational.Layers
                 String[] esitoAsta = new String[2];
                 esitoAsta = Asta.getDatiAsta();
                 Boolean esitoMovimento = insertMovimento(idAnagrafica, esitoAsta.GetValue(0).ToString());
-                if (esitoMovimento == false) esito = "KO";
+                if (esitoMovimento == false) esito = "Offerta non effettuata";
             }
             else {
-                esito = "KO";
+                esito = "Offerta non effettuata";
             }
             return esito;
         }
