@@ -200,18 +200,18 @@ p.descrizioneLotto{padding:5px;}
 .evidenziatore{background-color:transparent;margin:2px;padding:2px}
 .evidenziatore:hover,.evidenziatore:focus,.evidenziatore:active{background-color:transparent;}
 h3.paragrafo{overflow:hidden;}
-h3.paragrafo a{display:block; font-family: "AR CHRISTY";color:#000;text-decoration:none;letter-spacing:1px; font-size:12px;text-transform:uppercase}
+h3.paragrafo a{display:block; font-family: "Arial";color:#000;text-decoration:none;letter-spacing:1px; font-size:12px;text-transform:uppercase}
 h3.paragrafo a:hover,.paragrafo a:active{color:#920000;border:none;}
 ul li.argomento a
 {
-    line-height:15px;
+    height:15px;
     background:url(../images/styles/ul_argomento.png) no-repeat 0px 0px;
-    overflow:hidden;
+
     display:block;
     color: #000;
     text-decoration:none;
     margin:1px 0px;
-    padding:0px 0px 0px 22px;
+    padding:0px 0px 0px 20px;
 }
 ul li.argomento a:hover
 {
