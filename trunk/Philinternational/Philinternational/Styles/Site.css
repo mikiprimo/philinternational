@@ -206,7 +206,6 @@ ul li.argomento a
 {
     height:15px;
     background:url(../images/styles/ul_argomento.png) no-repeat 0px 0px;
-
     display:block;
     color: #000;
     text-decoration:none;
@@ -319,8 +318,8 @@ ul#ticker li span {color: #06C;font-size:1.4em;margin:3px 0px;font-weight:bold;t
 .navigazione ul li a{text-decoration:none;}
 .navigazione ul li a:hover{text-decoration:underline;}
 
-.navTit1 a{color:#666}
-.navTit2 a{color:#F00}
+.navTit1 a{font-family: "Arial";font-size:12px;color:#000}
+.navTit2 a{font-family: "Arial";font-size:12px;color:#920000}
 .esitoOperazione {text-align:center;font-weight:bold;font-size:1.2em;letter-spacing:2px;margin:20px 0px}
 .ok{color:#006600}
 .ko{color:#F00}
