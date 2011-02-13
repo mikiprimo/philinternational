@@ -68,7 +68,7 @@ namespace Philinternational.Layers
             HttpContext.Current.Session["log"] = logInfos;
         }
 
-        public string getIdAnagraficaByEmail(String email) {
+        public static string GetIdAnagraficaByEmail(String email) {
             String sql = "SELECT idanagrafica valore FROM anagrafica WHERE email='" + email + "'";
             String valore = "--";
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
@@ -76,7 +76,28 @@ namespace Philinternational.Layers
                 valore = dr[i]["valore"].ToString();
             }
             return valore;
-        
+        }
+
+        public static string GetEmailByIdAnagrafica(int idanagrafica)
+        {
+            String sql = "SELECT email valore FROM anagrafica WHERE idanagrafica= " + idanagrafica + "";
+            String valore = "";
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++)
+            {
+                valore = dr[i]["valore"].ToString();
+            }
+            return valore;
+
+        }
+
+
+        public static DataView ListEmailAdministration() {
+
+            String sql = "SELECT b.email email from profilo a, anagrafica b where a.idprofilo = b.idprofilo and amministrazione =1";
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+
+            return dr;
         }
     }
 }
