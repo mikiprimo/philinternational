@@ -70,5 +70,10 @@ namespace Philinternational.Account {
             result = AnagraficaGateway.InsertAnagrafica(newUser);
             if (result) Response.Redirect("~/Account/Registrazione.aspx?R=success");
         }
+
+        protected void chkAccettaCondizioni_CheckedChanged(object sender, EventArgs e) {
+            CheckBox chk = ((CheckBox)sender);
+            if (chk.Checked) CreateUserButton.Visible = true;
+        }
     }
 }

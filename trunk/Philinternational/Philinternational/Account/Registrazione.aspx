@@ -188,7 +188,8 @@
                     <table>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="chkAccettaCondizioni" runat="server" />Accetto le <a href="#" onclick="javascript:window.open('CondizioniDiUtilizzo.htm');">
+                                <asp:CheckBox ID="chkAccettaCondizioni" runat="server" AutoPostBack="True" 
+                                    oncheckedchanged="chkAccettaCondizioni_CheckedChanged" />Accetto le <a href="#" onclick="javascript:window.open('CondizioniDiUtilizzo.htm');">
                                     condizioni di utilizzo</a>
                             </td>
                         </tr>
