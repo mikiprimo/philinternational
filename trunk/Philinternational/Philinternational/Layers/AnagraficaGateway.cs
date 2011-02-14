@@ -14,6 +14,7 @@ namespace Philinternational.Layers {
         private static string SELECT_MAIL_ESISTENTE = "SELECT Count(*) FROM anagrafica WHERE email = @email";
         private static string SELECT_ANAGRAFICA = "SELECT idanagrafica, nome, cognome, codice_fiscale, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo FROM anagrafica";
         private static String UPDATE_ANAGRAFICA_STATO = "UPDATE anagrafica SET stato = @stato WHERE email = @email";
+        private static String IS_SUBSCRIBED_TO_NEWSLETTER = "SELECT Count(*) FROM anagrafica_dettaglio WHERE idanagrafica = @idanagrafica AND newsletter = 1";
 
 
         internal static Boolean InsertAnagrafica(anagraficaEntity newUser) {
@@ -69,7 +70,7 @@ namespace Philinternational.Layers {
                     adapter.Fill(dt);
 
                     return dt.Rows.Count > 0 ? true : false;
-                } catch (MySqlException ex) {
+                } catch (MySqlException) {
                     return true;
                 }
             }
@@ -128,12 +129,35 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
-            } catch (MySqlException ex) {
+            } catch (MySqlException) {
                 return false;
             } finally {
                 conn.Close();
             }
             return true;
+        }
+
+        internal static Boolean IsSubscribedToNewsletters(string idAnagrafica) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(IS_SUBSCRIBED_TO_NEWSLETTER, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idanagrafica", idAnagrafica);
+            Boolean res = false;
+
+            try {
+                conn.Open();
+                object obj = command.ExecuteScalar();
+
+                if (obj != System.DBNull.Value) {
+                    res = Convert.ToInt32(obj) == 1 ? true : false;
+                }
+            } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return res;
         }
     }
 }

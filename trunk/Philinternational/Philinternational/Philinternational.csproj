@@ -92,6 +92,8 @@
     <Content Include="images\masterPage\banner_gilardi_468_60.jpg" />
     <Content Include="images\masterPage\logo_philtinternational.png" />
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
+    <Content Include="images\newsletters\email.png" />
+    <Content Include="images\newsletters\email_delete.png" />
     <Content Include="images\select.png" />
     <Content Include="images\selectfull.png" />
     <Content Include="images\shadowbox\close.png" />
@@ -222,6 +224,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Layers\MailGateway.cs" />
+    <Compile Include="Layers\MailList.cs" />
     <Compile Include="Layers\NewsletterGateway.cs" />
     <Compile Include="Layers\OfferteGateway.cs" />
     <Compile Include="Layers\ParagrafoGateway.cs" />
