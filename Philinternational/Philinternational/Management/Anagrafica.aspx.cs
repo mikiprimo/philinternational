@@ -55,9 +55,9 @@ namespace Philinternational.Styles
         protected void gvAnagrafica_RowDataBound(object sender, GridViewRowEventArgs e) {
             if (e.Row.RowType == DataControlRowType.DataRow) {
 
-                DropDownList ddlStati = ((DropDownList)e.Row.Cells[5].FindControl("ddlStati"));
-                String StatoID = ((HiddenField)e.Row.Cells[5].FindControl("hiddenIdStato")).Value;
-                String mailAnagrafica = ((HiddenField)e.Row.Cells[5].FindControl("HiddenEmail")).Value;
+                DropDownList ddlStati = ((DropDownList)e.Row.Cells[6].FindControl("ddlStati"));
+                String StatoID = ((HiddenField)e.Row.Cells[6].FindControl("hiddenIdStato")).Value;
+                String mailAnagrafica = ((HiddenField)e.Row.Cells[6].FindControl("HiddenEmail")).Value;
 
                 ddlStati.Attributes.Add("CurrentMailAnagrafica", mailAnagrafica);
                 ddlStati.DataTextField = "descrizione";
@@ -66,8 +66,10 @@ namespace Philinternational.Styles
                 ddlStati.SelectedValue = StatoID;
                 ddlStati.DataBind();
 
-                String mailForEdit = ((HiddenField)e.Row.Cells[1].FindControl("HiddenEmail")).Value;
-
+                Image img = ((Image)e.Row.Cells[1].FindControl("imgNewsletterStatus"));
+                String idAnagrafica = ((HiddenField)e.Row.Cells[1].FindControl("HiddenIdAnagrafica")).Value;
+                Boolean isSubcribedToNewsletters = AnagraficaGateway.IsSubscribedToNewsletters(idAnagrafica);
+                if (isSubcribedToNewsletters) img.ImageUrl = "~/images/newsletters/email.png";
             }
         }
 

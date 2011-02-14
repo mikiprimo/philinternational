@@ -22,11 +22,18 @@
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
+                    <asp:HiddenField ID="HiddenIdAnagrafica" runat="server" Value='<%# Eval("idanagrafica") %>' />
+                    <asp:Image ID="imgNewsletterStatus" runat="server" ImageUrl="~/images/newsletters/email_delete.png" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField>
+                <ItemTemplate>
                     <asp:HyperLink ID="hlEditAnagrafica" runat="server" NavigateUrl='<%# "~/Management/AnagraficaDetail.aspx?email=" + DataBinder.Eval (Container.DataItem,"email")%>'>Modifica</asp:HyperLink>
                 </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField><itemtemplate>
-                    <asp:Label ID="lblNome" runat="server" Text='<%# Bind("nome") %>'></asp:Label></itemtemplate>
+            </asp:TemplateField>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Label ID="lblNome" runat="server" Text='<%# Bind("nome") %>'></asp:Label></ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
