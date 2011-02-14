@@ -12,6 +12,8 @@ namespace Philinternational.Layers {
     public class AnagraficaGateway {
         private static string INSERT_ANAGRAFICA = "INSERT INTO anagrafica (idanagrafica, nome, cognome, codice_fiscale, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo) VALUES (@idanagrafica, @nome, @cognome, @codice_fiscale, @res_via, @res_indirizzo, @res_num_civico, @res_cap, @res_comune, @res_provincia, @res_nazione, @dom_via, @dom_indirizzo, @dom_num_civico, @dom_cap, @dom_comune, @email, @dom_provincia, @dom_nazione, @password, @stato, @data_inserimento, @idprofilo)";
         private static string SELECT_MAIL_ESISTENTE = "SELECT Count(*) FROM anagrafica WHERE email = @email";
+        private static string SELECT_ANAGRAFICA = "SELECT idanagrafica, nome, cognome, codice_fiscale, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo FROM anagrafica";
+        private static String UPDATE_ANAGRAFICA_STATO = "UPDATE anagrafica SET stato = @stato WHERE email = @email";
 
 
         internal static Boolean InsertAnagrafica(anagraficaEntity newUser) {
@@ -71,6 +73,67 @@ namespace Philinternational.Layers {
                     return true;
                 }
             }
+        }
+
+        internal static DataView SelectAnagrafica() {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_ANAGRAFICA, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv;
+                } catch (MySqlException) {
+                    return dv;
+                }
+            }
+        }
+
+        internal static Boolean UpdateStatoByMailAnagrafica(string mailAnagrafica, int stato) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(UPDATE_ANAGRAFICA_STATO, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("email", mailAnagrafica);
+            command.Parameters.AddWithValue("stato", stato);
+
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
+
+        internal static Boolean DeleteAnagrafiche(List<String> AnagraficheMailsToBeErased) {
+            String DELETE_ANAGRAFICA = "DELETE FROM anagrafica WHERE @ComposedConditions";
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            StringBuilder sb = new StringBuilder();
+            foreach (String item in AnagraficheMailsToBeErased) {
+                sb.Append("email = '" + item.ToString() + "' OR ");
+            }
+            sb.Append("1=0");
+
+            DELETE_ANAGRAFICA = DELETE_ANAGRAFICA.Replace("@ComposedConditions", sb.ToString());
+            MySqlCommand command = new MySqlCommand(DELETE_ANAGRAFICA, conn);
+            command.CommandType = CommandType.Text;
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException ex) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
         }
     }
 }
