@@ -10,6 +10,7 @@ using System.Text;
 
 namespace Philinternational.Layers {
     public class AnagraficaGateway {
+        //TODO: Aggiungere Partita Iva
         private static string INSERT_ANAGRAFICA = "INSERT INTO anagrafica (idanagrafica, nome, cognome, codice_fiscale, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo) VALUES (@idanagrafica, @nome, @cognome, @codice_fiscale, @res_via, @res_indirizzo, @res_num_civico, @res_cap, @res_comune, @res_provincia, @res_nazione, @dom_via, @dom_indirizzo, @dom_num_civico, @dom_cap, @dom_comune, @email, @dom_provincia, @dom_nazione, @password, @stato, @data_inserimento, @idprofilo)";
         private static string SELECT_MAIL_ESISTENTE = "SELECT Count(*) FROM anagrafica WHERE email = @email";
         private static string SELECT_ANAGRAFICA = "SELECT idanagrafica, nome, cognome, codice_fiscale, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo FROM anagrafica";
@@ -26,6 +27,7 @@ namespace Philinternational.Layers {
             command.Parameters.AddWithValue("nome", newUser.nome);
             command.Parameters.AddWithValue("cognome", newUser.cognome);
             command.Parameters.AddWithValue("codice_fiscale", newUser.codice_fiscale);
+            //command.Parameters.AddWithValue("partita_iva", newUser.partita_iva);
             command.Parameters.AddWithValue("email", newUser.email);
             command.Parameters.AddWithValue("password", newUser.password);
             command.Parameters.AddWithValue("res_via", newUser.res_via);

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Account\CondizioniDiUtilizzo.htm" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registrazione.aspx" />
     <Content Include="Advertise.xml" />
