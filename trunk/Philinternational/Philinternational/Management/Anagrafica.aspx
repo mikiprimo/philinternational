@@ -7,10 +7,12 @@
     <h1>Gestione Anagrafica </h1>
     <hr />
     <br />
-    <asp:TextBox ID="txtStringaRicerca" runat="server" />
+    <asp:TextBox ID="txtStringaRicercaCognome" runat="server" />
+    <asp:TextBox ID="txtStringaRicercaMail" runat="server" />
     <asp:ImageButton ID="ibtnCercaAnagrafica" runat="server" AlternateText="Cerca" OnClick="ibtnCercaAnagrafica_Click" />
     <asp:ImageButton ID="ibtnCancellaAnagraficheSelezionate" runat="server" AlternateText="Cancella lotti selezionati"
         OnClick="ibtnCancellaAnagraficheSelezionate_Click" />
+    <br />
     <br />
     <asp:GridView ID="gvAnagrafica" runat="server" AllowPaging="True" EnableTheming="True"
         OnPageIndexChanged="gvAnagrafica_PageIndexChanged" OnPageIndexChanging="gvAnagrafica_PageIndexChanging"

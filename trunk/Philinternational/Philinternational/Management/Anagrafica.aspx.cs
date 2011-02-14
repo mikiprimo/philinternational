@@ -6,33 +6,44 @@ using System.Web.UI.WebControls;
 using Philinternational.Layers;
 using System.Data;
 
-namespace Philinternational.Styles
-{
-    public partial class Anagrafica : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+namespace Philinternational.Styles {
+    public partial class Anagrafica : System.Web.UI.Page {
+        protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
                 this.BindData(gvAnagrafica);
             }
         }
-        public string gvFilter {
+
+        public string gvFilterCognome {
             get {
-                return ((String)ViewState["gvFilter"]);
+                return ((String)ViewState["gvFilterCognome"]);
             }
             set {
-                ViewState["gvFilter"] = value;
+                ViewState["gvFilterCognome"] = value;
+            }
+        }
+
+        public string gvFilterMail {
+            get {
+                return ((String)ViewState["gvFilterMail"]);
+            }
+            set {
+                ViewState["gvFilterMail"] = value;
             }
         }
 
         private void BindData(GridView gv) {
-            if (String.IsNullOrEmpty(this.gvFilter)) {
-                gv.DataSource = AnagraficaGateway.SelectAnagrafica();
-            } else {
-                DataView dv = AnagraficaGateway.SelectAnagrafica();
-                dv.RowFilter = "cognome LIKE '%" + this.gvFilter + "%'";
-                gv.DataSource = dv;
+            DataView dv = AnagraficaGateway.SelectAnagrafica();
+            String filterQuery = "";
+            if (!String.IsNullOrEmpty(this.gvFilterCognome)) {
+                filterQuery += "cognome LIKE '%" + this.gvFilterCognome + "%' Or ";
             }
+            if (!String.IsNullOrEmpty(this.gvFilterMail)) {
+                filterQuery += "email LIKE '%" + this.gvFilterMail + "%' Or ";
+            }
+            if (!String.IsNullOrEmpty(filterQuery)) filterQuery = filterQuery.Substring(0, filterQuery.Length - 3);
+            dv.RowFilter = filterQuery;
+            gv.DataSource = dv;
             gv.DataBind();
         }
 
@@ -88,7 +99,9 @@ namespace Philinternational.Styles
 
 
         protected void ibtnCercaAnagrafica_Click(object sender, ImageClickEventArgs e) {
-
+            this.gvFilterCognome = txtStringaRicercaCognome.Text;
+            this.gvFilterMail = txtStringaRicercaMail.Text;
+            this.BindData(gvAnagrafica);
         }
     }
 }
