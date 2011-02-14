@@ -22,13 +22,22 @@ namespace Philinternational.Styles {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// txtStringaRicerca control.
+        /// txtStringaRicercaCognome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStringaRicerca;
+        protected global::System.Web.UI.WebControls.TextBox txtStringaRicercaCognome;
+        
+        /// <summary>
+        /// txtStringaRicercaMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtStringaRicercaMail;
         
         /// <summary>
         /// ibtnCercaAnagrafica control.
