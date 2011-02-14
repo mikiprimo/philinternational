@@ -7,17 +7,13 @@ using System.Data;
 using System.Text;
 
 
-namespace Philinternational.Layers
-{
-    public class AccountGateway
-    {
-        public static logInfos GetUserInfos(string eMail, string password)
-        {
+namespace Philinternational.Layers {
+    public class AccountGateway {
+        public static logInfos GetUserInfos(string eMail, string password) {
             logInfos myLogInfos = new logInfos();
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            try
-            {
+            try {
                 conn.Open();
 
                 MySqlCommand command = new MySqlCommand(ConfigurationManager.AppSettings["UserInfos"].ToString(), conn);
@@ -25,8 +21,7 @@ namespace Philinternational.Layers
                 command.Parameters.AddWithValue("email", eMail);
                 command.Parameters.AddWithValue("password", password);
                 MySqlDataReader dr = command.ExecuteReader();
-                while (dr.Read())
-                {
+                while (dr.Read()) {
                     myLogInfos.eMail = (String)dr["email"];
                     myLogInfos.Password = (String)dr["password"];
 
@@ -37,24 +32,20 @@ namespace Philinternational.Layers
                     myLogInfos.nome = (String)dr["nome"];
                     myLogInfos.cognome = (String)dr["cognome"];
                     myLogInfos.codicefiscale = dr["codice_fiscale"] != null ? dr["codice_fiscale"].ToString() : "";
-                    myLogInfos.dom_via = (String)dr["dom_via"];
-                    myLogInfos.dom_indirizzo = (String)dr["dom_indirizzo"];
-                    myLogInfos.dom_numcivico = (String)dr["dom_num_civico"];
-                    myLogInfos.dom_cap = (String)dr["dom_cap"];
-                    myLogInfos.dom_comune = (String)dr["dom_comune"];
-                    myLogInfos.dom_provincia = (String)dr["dom_provincia"];
-                    myLogInfos.dom_nazione = (String)dr["dom_nazione"];
+                    myLogInfos.dom_via = dr["dom_via"] == System.DBNull.Value ? "" : (String)dr["dom_via"];
+                    myLogInfos.dom_indirizzo = dr["dom_indirizzo"] == System.DBNull.Value ? "" : (String)dr["dom_indirizzo"];
+                    myLogInfos.dom_numcivico = dr["dom_num_civico"] == System.DBNull.Value ? "" : (String)dr["dom_num_civico"];
+                    myLogInfos.dom_cap = dr["dom_cap"] == System.DBNull.Value ? "" : (String)dr["dom_cap"];
+                    myLogInfos.dom_comune = dr["dom_comune"] == System.DBNull.Value ? "" : (String)dr["dom_comune"];
+                    myLogInfos.dom_provincia = dr["dom_provincia"] == System.DBNull.Value ? "" : (String)dr["dom_provincia"];
+                    myLogInfos.dom_nazione = dr["dom_nazione"] == System.DBNull.Value ? "" : (String)dr["dom_nazione"];
                     myLogInfos.stato = (int)dr["stato"];
                     myLogInfos.idprofilo = (int)dr["idprofilo"];
                     myLogInfos.datainserimento = (DateTime)dr["data_inserimento"];
                 }
-            }
-            catch (MySql.Data.MySqlClient.MySqlException)
-            {
+            } catch (MySql.Data.MySqlClient.MySqlException) {
                 return new logInfos();
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
 
@@ -62,8 +53,7 @@ namespace Philinternational.Layers
             return myLogInfos;
         }
 
-        internal static void SetLogInfos(logInfos logInfos)
-        {
+        internal static void SetLogInfos(logInfos logInfos) {
             //TODO: Da centralizzare la gestione delle sessioni
             HttpContext.Current.Session["log"] = logInfos;
         }
@@ -72,19 +62,17 @@ namespace Philinternational.Layers
             String sql = "SELECT idanagrafica valore FROM anagrafica WHERE email='" + email + "'";
             String valore = "--";
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
-            for(int i=0;i< dr.Count;i++){
+            for (int i = 0; i < dr.Count; i++) {
                 valore = dr[i]["valore"].ToString();
             }
             return valore;
         }
 
-        public static string GetEmailByIdAnagrafica(int idanagrafica)
-        {
+        public static string GetEmailByIdAnagrafica(int idanagrafica) {
             String sql = "SELECT email valore FROM anagrafica WHERE idanagrafica= " + idanagrafica + "";
             String valore = "";
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
-            for (int i = 0; i < dr.Count; i++)
-            {
+            for (int i = 0; i < dr.Count; i++) {
                 valore = dr[i]["valore"].ToString();
             }
             return valore;
