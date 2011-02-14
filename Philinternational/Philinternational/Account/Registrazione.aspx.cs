@@ -46,6 +46,7 @@ namespace Philinternational.Account {
             newUser.nome = txtNome.Text;
             newUser.cognome = txtCognome.Text;
             newUser.codice_fiscale = txtCodiceFiscale.Text;
+            newUser.partita_iva = txtPiva.Text;
             //Dati residenza
             newUser.res_via = txtVia.Text;
             newUser.res_indirizzo = txtIndirizzo.Text;

@@ -9,6 +9,7 @@ namespace Philinternational {
         public String nome;
         public String cognome;
         public String codice_fiscale;
+        public String partita_iva;
         public String res_via;
         public String res_indirizzo;
         public String res_num_civico;

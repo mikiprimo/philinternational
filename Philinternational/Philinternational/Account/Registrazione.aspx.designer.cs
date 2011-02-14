@@ -247,6 +247,33 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator CodiceFiscaleRegEx;
         
         /// <summary>
+        /// lblPiva control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPiva;
+        
+        /// <summary>
+        /// txtPiva control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPiva;
+        
+        /// <summary>
+        /// PivaRegEx control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PivaRegEx;
+        
+        /// <summary>
         /// lblVia control.
         /// </summary>
         /// <remarks>
@@ -283,6 +310,15 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.TextBox txtIndirizzo;
         
         /// <summary>
+        /// IndirizzoRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator IndirizzoRequiredFieldValidator;
+        
+        /// <summary>
         /// lblNumCivico control.
         /// </summary>
         /// <remarks>
@@ -299,6 +335,15 @@ namespace Philinternational.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNumCivico;
+        
+        /// <summary>
+        /// NumCivicoRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NumCivicoRequiredFieldValidator;
         
         /// <summary>
         /// lblCap control.
@@ -319,6 +364,15 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.TextBox txtCap;
         
         /// <summary>
+        /// CapRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CapRequiredFieldValidator;
+        
+        /// <summary>
         /// lblProvincia control.
         /// </summary>
         /// <remarks>
@@ -335,6 +389,15 @@ namespace Philinternational.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProvincia;
+        
+        /// <summary>
+        /// ProvinciaRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ProvinciaRequiredFieldValidator;
         
         /// <summary>
         /// lblCitta control.
@@ -355,6 +418,15 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.TextBox txtCitta;
         
         /// <summary>
+        /// CittaRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CittaRequiredFieldValidator;
+        
+        /// <summary>
         /// lblNazione control.
         /// </summary>
         /// <remarks>
@@ -371,6 +443,15 @@ namespace Philinternational.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNazione;
+        
+        /// <summary>
+        /// NazioneRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NazioneRequiredFieldValidator;
         
         /// <summary>
         /// updPanel control.
@@ -427,6 +508,15 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.TextBox txtViaDom;
         
         /// <summary>
+        /// ViaDomRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ViaDomRequiredFieldValidator;
+        
+        /// <summary>
         /// lblIndirizzoDom control.
         /// </summary>
         /// <remarks>
@@ -443,6 +533,15 @@ namespace Philinternational.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIndirizzoDom;
+        
+        /// <summary>
+        /// IndirizzoDomRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator IndirizzoDomRequiredFieldValidator;
         
         /// <summary>
         /// lblNumCivicoDom control.
@@ -463,6 +562,15 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.TextBox txtNumCivicoDom;
         
         /// <summary>
+        /// NumCivicoDomRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NumCivicoDomRequiredFieldValidator;
+        
+        /// <summary>
         /// lblCapDom control.
         /// </summary>
         /// <remarks>
@@ -479,6 +587,15 @@ namespace Philinternational.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCapDom;
+        
+        /// <summary>
+        /// CapDomRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CapDomRequiredFieldValidator;
         
         /// <summary>
         /// lblProvinciaDom control.
@@ -499,6 +616,15 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.TextBox txtProvinciaDom;
         
         /// <summary>
+        /// ProvinciaDomRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ProvinciaDomRequiredFieldValidator;
+        
+        /// <summary>
         /// lblCittaDom control.
         /// </summary>
         /// <remarks>
@@ -517,6 +643,15 @@ namespace Philinternational.Account {
         protected global::System.Web.UI.WebControls.TextBox txtCittaDom;
         
         /// <summary>
+        /// CittaDomRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CittaDomRequiredFieldValidator;
+        
+        /// <summary>
         /// lblNazioneDom control.
         /// </summary>
         /// <remarks>
@@ -533,6 +668,24 @@ namespace Philinternational.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNazioneDom;
+        
+        /// <summary>
+        /// NazioneDomRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NazioneDomRequiredFieldValidator;
+        
+        /// <summary>
+        /// chkAccettaCondizioni control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkAccettaCondizioni;
         
         /// <summary>
         /// CreateUserButton control.
