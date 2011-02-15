@@ -49,6 +49,15 @@ namespace Philinternational.Management {
         protected global::System.Web.UI.WebControls.Calendar calDataCreazione;
         
         /// <summary>
+        /// lblTitolo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTitolo;
+        
+        /// <summary>
         /// txtTitolo control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace Philinternational.Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTitolo;
+        
+        /// <summary>
+        /// lblTesto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTesto;
         
         /// <summary>
         /// txtTesto control.
