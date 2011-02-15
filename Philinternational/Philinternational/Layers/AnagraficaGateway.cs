@@ -16,6 +16,7 @@ namespace Philinternational.Layers {
         private static string SELECT_ANAGRAFICA = "SELECT idanagrafica, nome, cognome, codice_fiscale, partita_iva, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo FROM anagrafica";
         private static String UPDATE_ANAGRAFICA_STATO = "UPDATE anagrafica SET stato = @stato WHERE email = @email";
         private static String IS_SUBSCRIBED_TO_NEWSLETTER = "SELECT Count(*) FROM anagrafica_dettaglio WHERE idanagrafica = @idanagrafica AND newsletter = 1";
+        private static string SELECT_NEWSLETTER_ENABLED_USERS = "SELECT nome, cognome, email FROM anagrafica aa, anagrafica_dettaglio ad WHERE aa.idanagrafica = ad.idanagrafica AND ad.newsletter = 1";
 
 
         internal static Boolean InsertAnagrafica(anagraficaEntity newUser) {
@@ -160,6 +161,24 @@ namespace Philinternational.Layers {
                 conn.Close();
             }
             return res;
+        }
+
+        internal static DataView SelectNewsletterEnabledUsers() {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_NEWSLETTER_ENABLED_USERS, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv;
+                } catch (MySqlException) {
+                    return dv;
+                }
+            }
         }
     }
 }

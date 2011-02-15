@@ -100,7 +100,7 @@ namespace Philinternational.Layers {
 
             MySqlCommand command = new MySqlCommand(_INSERT_NEWSLETTER, conn);
             command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("idasta", MyNewsletter.id);
+            command.Parameters.AddWithValue("idnewsletter", MyNewsletter.id);
             command.Parameters.AddWithValue("data_creazione", MyNewsletter.data_creazione);
             command.Parameters.AddWithValue("titolo", MyNewsletter.titolo);
             command.Parameters.AddWithValue("testo", MyNewsletter.testo);

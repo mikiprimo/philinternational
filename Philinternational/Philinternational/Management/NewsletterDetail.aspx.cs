@@ -22,6 +22,7 @@ namespace Philinternational.Management {
             MyNewsletter.testo = txtTesto.Text;
 
             esito = NewsletterGateway.InsertNewsletter(MyNewsletter);
+            pulisci();
         }
 
         protected void calDataCreazione_SelectionChanged(object sender, EventArgs e) {
@@ -30,6 +31,10 @@ namespace Philinternational.Management {
         }
 
         protected void pulisci(object sender, EventArgs e) {
+            pulisci();
+        }
+
+        private void pulisci() {
             txtDataCreazione.Text = "";
             txtTitolo.Text = "";
             txtTesto.Text = "";
