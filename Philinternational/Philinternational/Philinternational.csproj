@@ -122,6 +122,7 @@
     <Content Include="Management\Offerta.aspx" />
     <Content Include="Management\Paragrafo.aspx" />
     <Content Include="Management\UploadLotti.aspx" />
+    <Content Include="UserControls\UserProfileMask.ascx" />
     <Content Include="Scripts\external\jquery.bgiframe-2.1.2.js" />
     <Content Include="Scripts\external\jquery.cookie.js" />
     <Content Include="Scripts\external\jquery.metadata.js" />
@@ -306,6 +307,13 @@
     </Compile>
     <Compile Include="Management\UploadLotti.aspx.designer.cs">
       <DependentUpon>UploadLotti.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserProfileMask.ascx.cs">
+      <DependentUpon>UserProfileMask.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserProfileMask.ascx.designer.cs">
+      <DependentUpon>UserProfileMask.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
