@@ -119,6 +119,7 @@ namespace Philinternational.Styles {
         }
 
         protected void ibtnSendMails_Click(object sender, ImageClickEventArgs e) {
+            //Questa chiamata sarebbe da fare in un thread parallelo
             MailGateway.SendNewsletters(cblDistribution.Items, this.selectedNewsletters);
         }
     }
