@@ -35,7 +35,7 @@
                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
             </p>
             <p>
-                <asp:Label ID="lblConfermaPassword" runat="server" AssociatedControlID="txtConfermaPassword">Confirm Password:</asp:Label>
+                <asp:Label ID="lblConfermaPassword" runat="server" AssociatedControlID="txtConfermaPassword">Conferma Password:</asp:Label>
                 <asp:TextBox ID="txtConfermaPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
                 <asp:RequiredFieldValidator ControlToValidate="txtConfermaPassword" CssClass="failureNotification"
                     Display="Dynamic" ErrorMessage="La conferma password é richiesta" ID="ConfirmPasswordRequired"
@@ -64,19 +64,20 @@
                 <asp:RequiredFieldValidator ID="CodiceFiscaleRequired" runat="server" ControlToValidate="txtCodiceFiscale"
                     CssClass="failureNotification" ErrorMessage="Il codice fiscale richiesto." ToolTip="Il codice fiscale é obbligatorio"
                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="CodiceFiscaleRegEx" runat="server" ControlToValidate="txtCodiceFiscale"
+                <asp:RegularExpressionValidator ID="CodiceFiscaleRegEx" runat="server" ControlToValidate="txtCodiceFiscale" CssClass="failureNotification"
                     ValidationExpression="^[A-Z,a-z]{6}[\d]{2}[A-Z,a-z][\d]{2}[A-Z,a-z][\d]{3}[A-Z,a-z]$"
                     ValidationGroup="RegisterUserValidationGroup" ErrorMessage="Codice fiscale formalmente errato">*</asp:RegularExpressionValidator>
             </p>
             <p>
-                <asp:Label ID="lblPiva" runat="server" AssociatedControlID="txtPiva">Codice fiscale:</asp:Label>
+                <asp:Label ID="lblPiva" runat="server" AssociatedControlID="txtPiva">Partita iva:</asp:Label>
                 <asp:TextBox ID="txtPiva" runat="server" CssClass="textEntry" MaxLength="11"></asp:TextBox>
-                <asp:RegularExpressionValidator ID="PivaRegEx" runat="server" ControlToValidate="txtPiva"
+                <asp:RegularExpressionValidator ID="PivaRegEx" runat="server" ControlToValidate="txtPiva" CssClass="failureNotification"
                     ValidationExpression="^\\d{11}$" ValidationGroup="RegisterUserValidationGroup"
                     ErrorMessage="Partita Iva formalmente errata">*</asp:RegularExpressionValidator>
             </p>
             <!--DATI FACOLTATIVI-->
-            <legend>Indirizzo di Residenza><p>
+            <legend>Indirizzo di Residenza</legend>
+            <p>
                 <asp:Label ID="lblVia" runat="server" AssociatedControlID="txtVia">Via:</asp:Label>
                 <asp:TextBox ID="txtVia" runat="server" MaxLength="100" CssClass="textEntry"></asp:TextBox>
             </p>
