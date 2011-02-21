@@ -112,6 +112,7 @@
     <Content Include="Management\ArgomentoDetail.aspx" />
     <Content Include="Management\AstaDetail.aspx" />
     <Content Include="Management\NewsletterDetail.aspx" />
+    <Content Include="Account\Profile.aspx" />
     <Content Include="Management\SubArgomentoDetail.aspx" />
     <Content Include="Management\Lotto.aspx" />
     <Content Include="Management\Anagrafica.aspx" />
@@ -144,6 +145,7 @@
     <Content Include="Varie\condizioniVendita.aspx" />
     <Content Include="Varie\contatti.aspx" />
     <Content Include="Varie\dovesiamo.aspx" />
+    <Content Include="Varie\dovesiamoTestPage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -224,6 +226,7 @@
     <Compile Include="Layers\OfferteGateway.cs" />
     <Compile Include="Layers\ParagrafoGateway.cs" />
     <Compile Include="Layers\NewsGateway.cs" />
+    <Compile Include="Layers\Utilities\GeneralUtilities.cs" />
     <Compile Include="Lotti\carrello.aspx.cs">
       <DependentUpon>carrello.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -272,6 +275,13 @@
     </Compile>
     <Compile Include="Management\NewsletterDetail.aspx.designer.cs">
       <DependentUpon>NewsletterDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\SubArgomentoDetail.aspx.cs">
       <DependentUpon>SubArgomentoDetail.aspx</DependentUpon>
@@ -407,6 +417,13 @@
     </Compile>
     <Compile Include="Varie\dovesiamo.aspx.designer.cs">
       <DependentUpon>dovesiamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Varie\dovesiamoTestPage.aspx.cs">
+      <DependentUpon>dovesiamoTestPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Varie\dovesiamoTestPage.aspx.designer.cs">
+      <DependentUpon>dovesiamoTestPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
