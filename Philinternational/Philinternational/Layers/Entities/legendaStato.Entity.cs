@@ -40,11 +40,12 @@ namespace Philinternational
         public void PopulateAvailableLegendaStato()
         {
             MySql.Data.MySqlClient.MySqlConnection conn = Layers.ConnectionGateway.ConnectDB();
-            conn.Open();
-            MySqlCommand command = new MySqlCommand(ConfigurationManager.AppSettings["LegendaStato"].ToString(), conn);
-            command.CommandType = System.Data.CommandType.Text;
             try
             {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(ConfigurationManager.AppSettings["LegendaStato"].ToString(), conn);
+                command.CommandType = System.Data.CommandType.Text;
+
                 MySqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
