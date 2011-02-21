@@ -10,7 +10,7 @@
 namespace Philinternational.Management {
     
     
-    public partial class AnagraficaDetail {
+    public partial class Profile {
         
         /// <summary>
         /// userProfileMask control.

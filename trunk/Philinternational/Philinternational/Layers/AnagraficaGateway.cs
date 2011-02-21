@@ -10,14 +10,14 @@ using System.Text;
 
 namespace Philinternational.Layers {
     public class AnagraficaGateway {
-        //TODO: Aggiungere Partita Iva
-        private static string INSERT_ANAGRAFICA = "INSERT INTO anagrafica (idanagrafica, nome, cognome, codice_fiscale, partita_iva, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo) VALUES (@idanagrafica, @nome, @cognome, @codice_fiscale, @partita_iva, @res_via, @res_indirizzo, @res_num_civico, @res_cap, @res_comune, @res_provincia, @res_nazione, @dom_via, @dom_indirizzo, @dom_num_civico, @dom_cap, @dom_comune, @email, @dom_provincia, @dom_nazione, @password, @stato, @data_inserimento, @idprofilo)";
-        private static string SELECT_MAIL_ESISTENTE = "SELECT Count(*) FROM anagrafica WHERE email = @email";
-        private static string SELECT_ANAGRAFICA = "SELECT idanagrafica, nome, cognome, codice_fiscale, partita_iva, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo FROM anagrafica";
-        private static String UPDATE_ANAGRAFICA_STATO = "UPDATE anagrafica SET stato = @stato WHERE email = @email";
+        private static String INSERT_ANAGRAFICA = "INSERT INTO anagrafica (idanagrafica, nome, cognome, codice_fiscale, partita_iva, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo) VALUES (@idanagrafica, @nome, @cognome, @codice_fiscale, @partita_iva, @res_via, @res_indirizzo, @res_num_civico, @res_cap, @res_comune, @res_provincia, @res_nazione, @dom_via, @dom_indirizzo, @dom_num_civico, @dom_cap, @dom_comune, @email, @dom_provincia, @dom_nazione, @password, @stato, @data_inserimento, @idprofilo)";
+        private static String SELECT_MAIL_ESISTENTE = "SELECT Count(*) FROM anagrafica WHERE email = @email";
+        private static String SELECT_ANAGRAFICA = "SELECT idanagrafica, nome, cognome, codice_fiscale, partita_iva, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo FROM anagrafica";
+        private static String SELECT_ANAGRAFICA_BYMAIL = "SELECT idanagrafica, nome, cognome, codice_fiscale, partita_iva, res_via, res_indirizzo, res_num_civico, res_cap, res_comune, res_provincia, res_nazione, dom_via, dom_indirizzo, dom_num_civico, dom_cap, dom_comune, email, dom_provincia, dom_nazione, password, stato, data_inserimento, idprofilo FROM anagrafica WHERE email = @email";
+        private static String SELECT_NEWSLETTER_ENABLED_USERS = "SELECT nome, cognome, email FROM anagrafica aa, anagrafica_dettaglio ad WHERE aa.idanagrafica = ad.idanagrafica AND ad.newsletter = 1";
         private static String IS_SUBSCRIBED_TO_NEWSLETTER = "SELECT Count(*) FROM anagrafica_dettaglio WHERE idanagrafica = @idanagrafica AND newsletter = 1";
-        private static string SELECT_NEWSLETTER_ENABLED_USERS = "SELECT nome, cognome, email FROM anagrafica aa, anagrafica_dettaglio ad WHERE aa.idanagrafica = ad.idanagrafica AND ad.newsletter = 1";
-
+        private static String UPDATE_ANAGRAFICA = "UPDATE anagrafica  SET nome = @nome, cognome = @cognome, codice_fiscale = @codice_fiscale, partita_iva = @partita_iva, res_via = @res_via, res_indirizzo = @res_indirizzo, res_num_civico = @res_num_civico, res_cap = @res_cap, res_comune = @res_comune, res_provincia = @res_provincia, res_nazione = @res_nazione, dom_via = @dom_via, dom_indirizzo = @dom_indirizzo, dom_num_civico = @dom_num_civico, dom_cap = @dom_cap, dom_comune = @dom_comune, email = @email, dom_provincia = @dom_provincia, dom_nazione = @dom_nazione, password = @password, stato = @stato, WHERE email = @oldmail";
+        private static String UPDATE_ANAGRAFICA_STATO = "UPDATE anagrafica SET stato = @stato WHERE email = @email";
 
         internal static Boolean InsertAnagrafica(anagraficaEntity newUser) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
@@ -97,6 +97,25 @@ namespace Philinternational.Layers {
             }
         }
 
+        internal static DataRowView SelectAnagraficaByMail(String mail) {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_ANAGRAFICA_BYMAIL, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("email", mail);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv[0];
+                } catch (MySqlException ex) {
+                    return dv[0];
+                }
+            }
+        }
+
         internal static Boolean UpdateStatoByMailAnagrafica(string mailAnagrafica, int stato) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
@@ -109,6 +128,47 @@ namespace Philinternational.Layers {
                 conn.Open();
                 command.ExecuteNonQuery();
             } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
+
+        internal static Boolean UpdateAnagrafica(String oldMail, anagraficaEntity newAnagrafica) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(UPDATE_ANAGRAFICA, conn);
+            command.CommandType = CommandType.Text;
+
+            command.Parameters.AddWithValue("nome", newAnagrafica.nome);
+            command.Parameters.AddWithValue("cognome", newAnagrafica.cognome);
+            command.Parameters.AddWithValue("codice_fiscale", newAnagrafica.codice_fiscale);
+            command.Parameters.AddWithValue("partita_iva", newAnagrafica.partita_iva);
+            command.Parameters.AddWithValue("res_via", newAnagrafica.res_via);
+            command.Parameters.AddWithValue("res_indirizzo", newAnagrafica.res_indirizzo);
+            command.Parameters.AddWithValue("res_num_civico", newAnagrafica.res_num_civico);
+            command.Parameters.AddWithValue("res_cap", newAnagrafica.res_cap);
+            command.Parameters.AddWithValue("res_comune", newAnagrafica.res_comune);
+            command.Parameters.AddWithValue("res_provincia", newAnagrafica.res_provincia);
+            command.Parameters.AddWithValue("res_nazione", newAnagrafica.res_nazione);
+            command.Parameters.AddWithValue("dom_via", newAnagrafica.dom_via);
+            command.Parameters.AddWithValue("dom_indirizzo", newAnagrafica.dom_indirizzo);
+            command.Parameters.AddWithValue("dom_num_civico", newAnagrafica.dom_num_civico);
+            command.Parameters.AddWithValue("dom_cap", newAnagrafica.dom_cap);
+            command.Parameters.AddWithValue("dom_comune", newAnagrafica.dom_comune);
+            command.Parameters.AddWithValue("email", newAnagrafica.email); //Nuova Email
+            command.Parameters.AddWithValue("dom_provincia", newAnagrafica.dom_provincia);
+            command.Parameters.AddWithValue("dom_nazione", newAnagrafica.dom_nazione);
+            command.Parameters.AddWithValue("password", newAnagrafica.password);
+            command.Parameters.AddWithValue("stato", newAnagrafica.stato);
+
+            command.Parameters.AddWithValue("oldmail", oldMail);
+
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException ex) {
                 return false;
             } finally {
                 conn.Close();
