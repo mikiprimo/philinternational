@@ -26,7 +26,7 @@ namespace Philinternational.Layers {
 
                 mailMsg.From = new MailAddress(mailtoReply, mailAlias);
                 mailMsg.To.Add(mailDestination);
-                mailMsg.IsBodyHtml = false;
+                mailMsg.IsBodyHtml = true;
                 mailMsg.Body = mailBody;
                 mailMsg.Subject = mailSubject;
                 client.Send(mailMsg);

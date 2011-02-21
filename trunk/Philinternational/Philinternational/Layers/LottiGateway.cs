@@ -241,9 +241,6 @@ namespace Philinternational.Layers {
             String tmpPath = "";
 
             tmpPath = System.Web.HttpContext.Current.Server.MapPath(".") + "\\..\\images\\asta\\";
-            
-            //MapPath(".") + "\\images\\asta\\";
-            //Response.Write("PATH["+ tmpPath +"]");
             DirectoryInfo MyDir = new DirectoryInfo(tmpPath);
             if (MyDir.Exists == true)
             {

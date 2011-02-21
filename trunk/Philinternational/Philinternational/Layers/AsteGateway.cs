@@ -145,5 +145,19 @@ namespace Philinternational.Layers {
             }
             return esito;
         }
+
+        public static String getNumAstaAttiva() {
+            String sql = "SELECT max(idasta) valore FROM asta_elenco"; ;
+            String valore = "";
+
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++)
+            {
+                valore = dr[i]["valore"].ToString();
+            }
+            return valore;
+        
+        
+        }
     }
 }

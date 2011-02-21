@@ -17,8 +17,11 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            adBanner.Height = 60;
+            adBanner.Width = 468;
             loadMenuccordion.InnerHtml = LoadMenuAccordion();
             LogoOutput.InnerHtml = loadLogo();
+            areaGilardi.InnerHtml = viewOfferteFilatelia();
             //Verifica della visualizzazione Menu left
             if (AccountLayer.IsLogged())
             {
@@ -133,7 +136,7 @@ namespace Philinternational
                 String sql = "SELECT idlotto, prezzo_offerto FROM offerta_per_corrispondenza WHERE idanagrafica ="+ idAnagrafica +"";
                 DataView dr = ConnectionGateway.SelectQuery(sql);
                 if (dr.Count > 0) {
-                    showBasket += "<div>\n<h3>Offerte già effettuate</h3>\n";
+                    showBasket += "\n<a href=\"#\" id=\"openOfferte\">Offerte già effettuate</a><div class=\"testo\">\n";
                     showBasket += "<table>";
                     for (int i = 0; i < dr.Count; i++)
                     {
@@ -145,7 +148,8 @@ namespace Philinternational
                         showBasket += tmpRow;
                     }
                     String rowTotalPrice = "<tr><td colspan=\"2\" style=\"text-align:right;font-weight:bold\">" + totale + " &euro;</td></tr>\n";
-                    showBasket += rowTotalPrice + "</table\n></div>\n";
+                    showBasket += rowTotalPrice;
+                    showBasket += "<tr><td colspan=\"2\" style=\"text-align:right;font-weight:bold\"><a href=\"#\" id=\"closeOfferte\" >Chiudi</a></td></tr></table\n></div>\n";
                 }
             }
             catch {
@@ -153,6 +157,36 @@ namespace Philinternational
             }
             return showBasket;
         }
-        private String viewOfferteFilatelia() { return ""; }
+        private String viewOfferteFilatelia() {
+            String showOfferte = "";
+            try
+            {
+                String sql = "SELECT idlotto,anno,descrizione,prezzo FROM offerta_gilardifilatelia where stato=1 order by rand() LIMIT 4";
+                DataView dr = ConnectionGateway.SelectQuery(sql);
+                if (dr.Count > 0) {
+                    showOfferte += "<h3>Gilardi Filatelia</h3>\n";
+                    for (int i = 0; i < dr.Count; i++) {
+                        /* fase temporanea in attesa di ottimizzare il codice*/
+                        String imgName = Page.ResolveClientUrl("~/images/gilardifilatelia/") + dr[i]["idlotto"] + ".jpg";
+                        showOfferte += "<div class=\"gilardiFilatelia\">";
+                        showOfferte += "<h4>"+dr[i]["idlotto"] +"</h4>";
+                        showOfferte += "<img src=\"" + imgName + "\" width=\"100\" height=\"100\" alt=\"Lotto " + dr[i]["idlotto"]  + "\"/>";
+                        showOfferte += "<p>" + dr[i]["anno"] + "</p>\n";
+                        showOfferte += "<p>" + dr[i]["descrizione"] + "</p>";
+                        showOfferte += "<p>" + dr[i]["prezzo"] + "</p>\n";
+                        showOfferte += "<a href=\"" + Page.ResolveClientUrl("~/images/gilardifilatelia/")  + "\">Ordinala</a>\n";
+                        showOfferte += "</div>";
+                    
+                    
+                    }
+                }
+            }
+            catch {
+
+                return showOfferte;
+            }
+
+            return showOfferte;
+        }
     }
 }

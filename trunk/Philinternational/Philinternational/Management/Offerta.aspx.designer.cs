@@ -22,6 +22,33 @@ namespace Philinternational.Styles {
         protected global::System.Web.UI.WebControls.LinkButton estraiLotto;
         
         /// <summary>
+        /// elencoCompleto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton elencoCompleto;
+        
+        /// <summary>
+        /// fldMessaggi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fldMessaggi;
+        
+        /// <summary>
+        /// esitoEstrazione control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl esitoEstrazione;
+        
+        /// <summary>
         /// OfferteConnector control.
         /// </summary>
         /// <remarks>

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
-using System.Data;
 using MySql.Data.MySqlClient;
+using System.Data;
 using System.Text;
+
 
 namespace Philinternational.Layers
 { 
@@ -87,28 +88,24 @@ namespace Philinternational.Layers
             }
 
         }
-
         public Boolean DeleteCarrelloByIdCarrello(int idcarrello)
         {
             String sql = "DELETE FROM carrello where idcarrello =" + idcarrello;
             int a = ConnectionGateway.ExecuteQuery(sql, "carrello");
             if (a == 0) return true; else return false;
         }
-
         public Boolean DeleteCarrelloByIdAnagrafica(String idAnagrafica)
         {
             String sql = "DELETE FROM carrello where idanagrafica ='" + idAnagrafica + "'";
             int a = ConnectionGateway.ExecuteQuery(sql, "carrello");
             if (a == 0) return true; else return false;
         }
-
         public Boolean UpdateCarrello(String idAnagraficaOld,String idanagraficaNew)
         {
             String sql = "UPDATE carrello SET idanagrafica ='"+ idanagraficaNew+"' WHERE idanagrafica ='"+ idAnagraficaOld+"'";
             int a = ConnectionGateway.ExecuteQuery(sql, "carrello");
             if (a == 0) return true; else return false;
         }
-
         public String loadSingleLotto() { return ""; }
         public Boolean CheckLottoCarrello(String idAnagrafica, string idLotto)
         {
