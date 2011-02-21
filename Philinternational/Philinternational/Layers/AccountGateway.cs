@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Web;
 using MySql.Data.MySqlClient;
-using System.Configuration;
 using System.Data;
 using System.Text;
-
+using System.Configuration;
 
 namespace Philinternational.Layers {
     public class AccountGateway {
@@ -68,8 +67,8 @@ namespace Philinternational.Layers {
             return valore;
         }
 
-        public static string GetEmailByIdAnagrafica(int idanagrafica) {
-            String sql = "SELECT email valore FROM anagrafica WHERE idanagrafica= " + idanagrafica + "";
+        public static string GetEmailByIdAnagrafica(int idAnagrafica) {
+            String sql = "SELECT email valore FROM anagrafica WHERE idanagrafica= " + idAnagrafica + "";
             String valore = "";
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
             for (int i = 0; i < dr.Count; i++) {
@@ -79,7 +78,16 @@ namespace Philinternational.Layers {
 
         }
 
-
+        public static String GetPersonaFromIdAnagrafica(int idAnagrafica) {
+            String sql = "SELECT CONCAT(nome,' ' , cognome)  valore FROM anagrafica WHERE idanagrafica= " + idAnagrafica + "";
+            String valore = "";
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            for (int i = 0; i < dr.Count; i++)
+            {
+                valore = dr[i]["valore"].ToString();
+            }
+            return valore;
+        }
         public static DataView ListEmailAdministration() {
 
             String sql = "SELECT b.email email from profilo a, anagrafica b where a.idprofilo = b.idprofilo and amministrazione =1";

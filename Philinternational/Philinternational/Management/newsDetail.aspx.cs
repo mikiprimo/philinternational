@@ -53,7 +53,7 @@ namespace Philinternational.Management
             }
             else
             {
-                MyNews.dataPubblicazione = DateTime.Now; // Da sostituire con la data immessa da utente
+                MyNews.dataPubblicazione =   DateTime.Now; // Da sostituire con la data immessa da utente
                 MyNews.id = Convert.ToInt32(this.Codice);
                 MyNews.titolo = txtTitolo.Text;
                 MyNews.testo = txtTesto.Text;

@@ -177,9 +177,9 @@ namespace Philinternational
      protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e)
      {
          object idlotto = e.Item.FindControl("idlotto");
-         String chiave = ((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
-         ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
-         ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
+         String chiave = "0"; //((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
+//         ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
+//         ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
         OfferteGateway o = new OfferteGateway();
             String idAnagrafica = "";
             if (AccountLayer.IsLogged())
@@ -193,8 +193,8 @@ namespace Philinternational
             Boolean esitoCheck = o.CheckLottoCarrello(idAnagrafica, chiave);
             if (esitoCheck)
             {
-                ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
-                ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+//                ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
+                //((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
             }
 
             

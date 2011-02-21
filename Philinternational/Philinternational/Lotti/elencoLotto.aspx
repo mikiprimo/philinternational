@@ -20,7 +20,8 @@
                 </div>
             </div>
             <div style="width:100%;clear:both;float:left;line-height:25px">
-                <asp:LinkButton ID="linkBasket" runat="server">Aggiungi al carrello</asp:LinkButton><asp:Label runat="server" ID="linkBasketAdded" Visible="false">Lotto aggiunto al carrello</asp:Label>
+                <asp:LinkButton ID="linkBasket" runat="server" CssClass="bottone">Aggiungi al carrello</asp:LinkButton>
+                <asp:Label runat="server" ID="linkBasketAdded" Visible="false">Lotto aggiunto al carrello</asp:Label>
                 <%# VerificaOfferta(DataBinder.Eval(Container.DataItem, "stato"), DataBinder.Eval(Container.DataItem, "idlotto"))%>
             </div>
         </ItemTemplate>

@@ -1,21 +1,25 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Philinternational.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Philinternational.SiteMaster" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head runat="server">
-        <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.4.1.min.js") %>"></script>
+<head runat="server" >
+
+        <script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-ui-1.8.7.custom.min.js") %>"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
+        <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
             <title>Offerta filatelica per corrsipondenza</title>
             <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />
-            <meta name="DESCRIPTION" content="PhilInternarional � un sito di offerta filatelica per corrispondenza." />
+            <meta name="DESCRIPTION" content="PhilInternarional è un sito di offerta filatelica per corrispondenza." />
             <meta name="ROBOTS" content="INDEX,FOLLOW" />
             <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
             <meta name="rating" content="General" />
             <meta name="revisit-after" content="7 days" />		
             <meta http-equiv="Cache-Control" content="no-cache" />
         </asp:ContentPlaceHolder>
+        <style type="text/css">
+          .testo {display:none}
+        </style>
     <script type="text/javascript" language="javascript">
         
         Shadowbox.init({handleOversize: "drag",modal: true});
@@ -32,16 +36,23 @@
             };
             ticker();
         });
+        $("#openOfferte").click(function () {
+            $(".testo").show();
+        });
+        $("#closeOfferte").click(function () {
+            $(".testo").hide(2000);
+        });
+        
 
     </script>
 </head>
 <body>
-    <form runat="server">
+    <form runat="server" enctype="multipart/form-data">
     <div id="page">
         <div id="header">
             <div runat="server" id="LogoOutput"></div>
             <div class="BannerDisplay">
-                <asp:AdRotator runat="server" AdvertisementFile="~/Advertise.xml" Target="_blank"  Width="468" Height="60" />
+                <asp:AdRotator runat="server" AdvertisementFile="~/Advertise.xml" Target="_blank"  Width="468" Height="60" ID="adBanner" />
             </div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
@@ -64,17 +75,17 @@
                 IncludeStyleBlock="false" Orientation="Vertical" Visible="false" Width="244px">
                 <Items>
                     <asp:MenuItem Text="Amministrazione" Value="Amministrazione"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo">
+                        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo">
                     </asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
                     <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" />
                     <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
                     <asp:MenuItem Text="Gestione Asta" Value="Gestione Asta"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" Value="Nuova Asta">
+                        <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" Value="Nuova Asta">
                     </asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Offerte" Value="Offerte">
-                    </asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Elenco Offerte" Value="Offerte"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it" Value="Offerte"></asp:MenuItem>
                 </Items>
             </asp:Menu>
             <div runat="server" id="loadMenuccordion"></div>
@@ -84,13 +95,14 @@
         </div>
         <div id="rightmenu">
             <div id="shortBasketOutput" runat="server"></div>
+            <div id="areaGilardi" runat="server"></div>
         </div>
         <div id="footer">
             <asp:HyperLink ID="condizionivendita" NavigateUrl="~/Varie/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
             <asp:HyperLink ID="chisiamo" NavigateUrl="~/Varie/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
             <asp:HyperLink ID="dovesiamo" NavigateUrl="~/Varie/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
             <asp:HyperLink id="contatti" NavigateUrl="~/Varie/contatti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
-            <p class="piva">Phil international P.IVA: 12345678901</p>
+            <p class="piva">Phil International srl di Gilardi Gian Antonio – socio unico P.IVA: 06137730963</p>
         </div>
 </div>
     </form>
