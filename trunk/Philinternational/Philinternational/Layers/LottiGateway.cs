@@ -313,5 +313,29 @@ namespace Philinternational.Layers {
             }
             return true;
         }
+
+        internal static Boolean DeleteLottiTemporanei(List<Int32> LottiIdToBeErased) {
+            String DELETE_LOTTI_TEMPORANEI = "DELETE FROM lotto_tmp WHERE @ComposedConditions";
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            StringBuilder sb = new StringBuilder();
+            foreach (int item in LottiIdToBeErased) {
+                sb.Append("idlotto = " + item.ToString() + " OR ");
+            }
+            sb.Append("1=0");
+
+            DELETE_LOTTI_TEMPORANEI = DELETE_LOTTI_TEMPORANEI.Replace("@ComposedConditions", sb.ToString());
+            MySqlCommand command = new MySqlCommand(DELETE_LOTTI_TEMPORANEI, conn);
+            command.CommandType = CommandType.Text;
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
     }
 }

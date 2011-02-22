@@ -110,7 +110,7 @@ namespace Philinternational.Layers {
                     dv = dt.DefaultView;
 
                     return dv[0];
-                } catch (MySqlException ex) {
+                } catch (MySqlException) {
                     return dv[0];
                 }
             }
@@ -168,7 +168,7 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
-            } catch (MySqlException ex) {
+            } catch (MySqlException) {
                 return false;
             } finally {
                 conn.Close();
