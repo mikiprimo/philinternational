@@ -191,6 +191,7 @@
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layers\AccountLayer.cs" />
+    <Compile Include="Layers\AssignLotto.cs" />
     <Compile Include="Layers\AsteGateway.cs" />
     <Compile Include="Layers\ConnectionGateway.cs" />
     <Compile Include="Layers\AccountGateway.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Layers\Entities\lotto.Entity.cs" />
     <Compile Include="Layers\Entities\newsletter.Entity.cs" />
     <Compile Include="Layers\Entities\offerta.Entity.cs" />
+    <Compile Include="Layers\GilardiFilateliaGateway.cs" />
     <Compile Include="Layers\LottiGateway.cs" />
     <Compile Include="Layers\Entities\news.Entity.cs">
       <SubType>Code</SubType>
