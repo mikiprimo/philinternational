@@ -74,6 +74,7 @@
     <Content Include="Documentation\GridView\GridViewCustom_EsempioCompleto.txt" />
     <Content Include="Documentation\load_paragrafi.sql" />
     <Content Include="Documentation\philinternational.sql" />
+    <Content Include="Documentation\philinternational_20110222.sql" />
     <Content Include="Documentation\table_carrello.sql" />
     <Content Include="Documentation\table_lotto_tmp.sql" />
     <Content Include="Error.aspx" />
@@ -126,6 +127,7 @@
     <Content Include="Management\Offerta.aspx" />
     <Content Include="Management\Paragrafo.aspx" />
     <Content Include="Management\UploadLotti.aspx" />
+    <Content Include="Scripts\google_analytics_tracks.js" />
     <Content Include="Styles\default.css" />
     <Content Include="UserControls\UserProfileMask.ascx" />
     <Content Include="Scripts\external\jquery.bgiframe-2.1.2.js" />
