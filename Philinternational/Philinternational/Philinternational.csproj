@@ -111,8 +111,11 @@
     <Content Include="Management\AnagraficaDetail.aspx" />
     <Content Include="Management\ArgomentoDetail.aspx" />
     <Content Include="Management\AstaDetail.aspx" />
+    <Content Include="Management\LottoDetail.aspx" />
     <Content Include="Management\NewsletterDetail.aspx" />
-    <Content Include="Account\Profile.aspx" />
+    <Content Include="Management\offertaGilardiFilatelia.aspx" />
+    <Content Include="Management\offertaGilardiFilateliaDetail.aspx" />
+    <Content Include="Management\Profile.aspx" />
     <Content Include="Management\SubArgomentoDetail.aspx" />
     <Content Include="Management\Lotto.aspx" />
     <Content Include="Management\Anagrafica.aspx" />
@@ -123,6 +126,7 @@
     <Content Include="Management\Offerta.aspx" />
     <Content Include="Management\Paragrafo.aspx" />
     <Content Include="Management\UploadLotti.aspx" />
+    <Content Include="Styles\default.css" />
     <Content Include="UserControls\UserProfileMask.ascx" />
     <Content Include="Scripts\external\jquery.bgiframe-2.1.2.js" />
     <Content Include="Scripts\external\jquery.cookie.js" />
@@ -145,7 +149,6 @@
     <Content Include="Varie\condizioniVendita.aspx" />
     <Content Include="Varie\contatti.aspx" />
     <Content Include="Varie\dovesiamo.aspx" />
-    <Content Include="Varie\dovesiamoTestPage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -196,6 +199,7 @@
     <Compile Include="Layers\Entities\anagrafica.Entity.cs" />
     <Compile Include="Layers\Entities\asta.Entity.cs" />
     <Compile Include="Layers\Entities\carrello.Entity.cs" />
+    <Compile Include="Layers\Entities\GilardiFilatelia.Entity.cs" />
     <Compile Include="Layers\Entities\lottoScartato.Entity.cs" />
     <Compile Include="Layers\Entities\lottoTemporaneo.Entity.cs" />
     <Compile Include="Layers\Entities\legendaStato.Entity.cs">
@@ -269,6 +273,13 @@
     <Compile Include="Management\AstaDetail.aspx.designer.cs">
       <DependentUpon>AstaDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Management\LottoDetail.aspx.cs">
+      <DependentUpon>LottoDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\LottoDetail.aspx.designer.cs">
+      <DependentUpon>LottoDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Management\NewsletterDetail.aspx.cs">
       <DependentUpon>NewsletterDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -276,11 +287,25 @@
     <Compile Include="Management\NewsletterDetail.aspx.designer.cs">
       <DependentUpon>NewsletterDetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Profile.aspx.cs">
+    <Compile Include="Management\offertaGilardiFilatelia.aspx.cs">
+      <DependentUpon>offertaGilardiFilatelia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\offertaGilardiFilatelia.aspx.designer.cs">
+      <DependentUpon>offertaGilardiFilatelia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\offertaGilardiFilateliaDetail.aspx.cs">
+      <DependentUpon>offertaGilardiFilateliaDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\offertaGilardiFilateliaDetail.aspx.designer.cs">
+      <DependentUpon>offertaGilardiFilateliaDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Profile.aspx.designer.cs">
+    <Compile Include="Management\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\SubArgomentoDetail.aspx.cs">
@@ -389,7 +414,6 @@
     <Compile Include="uploadFiles.aspx.designer.cs">
       <DependentUpon>uploadFiles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="urlRewriting.cs" />
     <Compile Include="Varie\chi-siamo.aspx.cs">
       <DependentUpon>chi-siamo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -417,13 +441,6 @@
     </Compile>
     <Compile Include="Varie\dovesiamo.aspx.designer.cs">
       <DependentUpon>dovesiamo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Varie\dovesiamoTestPage.aspx.cs">
-      <DependentUpon>dovesiamoTestPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Varie\dovesiamoTestPage.aspx.designer.cs">
-      <DependentUpon>dovesiamoTestPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
