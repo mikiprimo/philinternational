@@ -23,9 +23,10 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:TextBox ID="txtStringaRicerca" runat="server" />
     <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" OnClick="ibtnCercaLotto_Click" />
+    <br />
     <asp:MultiView ID="mvLotti" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewLottiPubblicati" runat="server"><asp:ImageButton ID="ibtnCancellaLottiSelezionati"
-            runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiSelezionati_Click" />
+            runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiSelezionati_Click" /><br />
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"
                 OnPageIndexChanged="gvLottiPubblicati_PageIndexChanged" OnPageIndexChanging="gvLottiPubblicati_PageIndexChanging"
                 AutoGenerateColumns="False" ShowHeader="False" DataKeyNames="idlotto" OnRowDataBound="gvLottiPubblicati_RowDataBound"
@@ -36,7 +37,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="hlEditLotto" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?email=pub&id=" + DataBinder.Eval (Container.DataItem,"idlotto")%>'>Modifica</asp:HyperLink>
+                            <asp:HyperLink ID="hlEditLotto" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=pub&id=" + DataBinder.Eval (Container.DataItem,"idlotto")%>'>Modifica</asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
@@ -89,7 +90,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="hlEditLottoTemp" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?email=tmp&id=" + DataBinder.Eval (Container.DataItem,"idlotto")%>'>Modifica</asp:HyperLink>
+                            <asp:HyperLink ID="hlEditLottoTemp" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=tmp&id=" + DataBinder.Eval (Container.DataItem,"idcatalogo")%>'>Modifica</asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
