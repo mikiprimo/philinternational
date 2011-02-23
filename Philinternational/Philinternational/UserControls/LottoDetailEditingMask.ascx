@@ -2,6 +2,7 @@
     Inherits="Philinternational.UserControls.LottoDetailEditingMask" %>
 <div id="divRegPanel" runat="server">
     <fieldset class="register"><legend>Modifica lotto</legend><br />
+    <asp:HiddenField ID="hiddenIdLotto" runat="server" />
         <p>
             <asp:Label ID="lblConferente" runat="server" AssociatedControlID="txtConferente">Conferente: </asp:Label>
             <asp:TextBox ID="txtConferente" runat="server" CssClass="textEntry"></asp:TextBox>
@@ -49,7 +50,7 @@
                 ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
         </p>
         <p>
-            <asp:Label ID="lblRiferimentoSassone" runat="server" AssociatedControlID="txtRiferimentoSassone">Euro: </asp:Label>
+            <asp:Label ID="lblRiferimentoSassone" runat="server" AssociatedControlID="txtRiferimentoSassone">Riferimento Sassone: </asp:Label>
             <asp:TextBox ID="txtRiferimentoSassone" runat="server" CssClass="textEntry"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RiferimentoSassoneRequired" runat="server" ControlToValidate="txtPrezzoBase"
                 CssClass="failureNotification" ErrorMessage="Campo obbligatorio" ToolTip="Campo obbligatorio"

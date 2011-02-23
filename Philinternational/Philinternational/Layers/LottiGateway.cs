@@ -11,20 +11,42 @@ using System.Text;
 namespace Philinternational.Layers {
     public class LottiGateway {
 
-        private static String _SELECT = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto";
-        private static String _SELECT_TEMPORANEI = "SELECT idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone FROM lotto_tmp";
-        private static String _SELECT_SCARTATI = "SELECT idlotto_scartato, testo FROM lotto_scartato";
-        private static String _INSERT_ARGUMENT = "INSERT INTO lotto_tmp (idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone) VALUES (@idcatalogo, @conferente, @anno, @tipo_lotto, @numero_pezzi, @descrizione, @prezzo_base, @euro, @riferimento_sassone)";
-        private static String _TRUNCATE_ALL_LOTTO_TABLES = "TRUNCATE TABLE       lotto_tmp; TRUNCATE TABLE       lotto_scartato; TRUNCATE TABLE       lotto;";
-        private static String _UPDATE_LOTTI = "UPDATE lotto SET stato = @stato WHERE idlotto = @idlotto";
+        private static String SELECT_LOTTI = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto";
+        private static String SELECT_LOTTI_BY_ID = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE idlotto = @idlotto";
+        private static String SELECT_LOTTI_TEMPORANEI = "SELECT idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone FROM lotto_tmp WHERE idcatalogo = @idcatalogo";
+        private static String SELECT_LOTTI_TEMPORANEI_BY_ID = "SELECT idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone FROM lotto_tmp";
+        private static String SELECT_LOTTI_SCARTATI = "SELECT idlotto_scartato, testo FROM lotto_scartato";
+        private static String INSERT_ARGUMENT = "INSERT INTO lotto_tmp (idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone) VALUES (@idcatalogo, @conferente, @anno, @tipo_lotto, @numero_pezzi, @descrizione, @prezzo_base, @euro, @riferimento_sassone)";
+        private static String TRUNCATE_ALL_LOTTO_TABLES = "TRUNCATE TABLE       lotto_tmp; TRUNCATE TABLE       lotto_scartato; TRUNCATE TABLE       lotto;";
+        private static String UPDATE_STATO_BY_ID_LOTTO = "UPDATE lotto SET stato = @stato WHERE idlotto = @idlotto";
+
 
 
         internal static DataView SelectLotti() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_LOTTI, conn))
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
                 try {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv;
+                } catch (MySqlException) {
+                    return dv;
+                }
+            }
+        }
+
+        internal static DataView SelectLottiById(Int32 id) {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_LOTTI_BY_ID, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    cmd.Parameters.AddWithValue("idlotto", id);
                     conn.Open();
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -40,9 +62,29 @@ namespace Philinternational.Layers {
         internal static DataView SelectLottiTemporanei() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECT_TEMPORANEI, conn))
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_LOTTI_TEMPORANEI, conn))
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
                 try {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv;
+                } catch (MySqlException) {
+                    return dv;
+                }
+            }
+        }
+
+        //
+        internal static DataView SelectLottiTemporaneiById(Int32 id) {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_LOTTI_TEMPORANEI_BY_ID, conn))
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
+                try {
+                    cmd.Parameters.AddWithValue("idcatalogo", id);
                     conn.Open();
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -58,7 +100,7 @@ namespace Philinternational.Layers {
         internal static DataView SelectLottiScartati() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECT_SCARTATI, conn))
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_LOTTI_SCARTATI, conn))
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
                 try {
                     conn.Open();
@@ -81,7 +123,7 @@ namespace Philinternational.Layers {
         internal static Boolean InsertLotto(List<String> list) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_INSERT_ARGUMENT, conn);
+            MySqlCommand command = new MySqlCommand(INSERT_ARGUMENT, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idcatalogo", list[0]);
             command.Parameters.AddWithValue("conferente", list[1]);
@@ -112,7 +154,7 @@ namespace Philinternational.Layers {
         internal static Boolean UpdateStatoByIDLotto(int idlotto, int stato) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_UPDATE_LOTTI, conn);
+            MySqlCommand command = new MySqlCommand(UPDATE_STATO_BY_ID_LOTTO, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idlotto", idlotto);
             command.Parameters.AddWithValue("stato", stato);
@@ -135,7 +177,7 @@ namespace Philinternational.Layers {
         internal static Boolean TruncateAll() {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand commandTruncate = new MySqlCommand(_TRUNCATE_ALL_LOTTO_TABLES, conn);
+            MySqlCommand commandTruncate = new MySqlCommand(TRUNCATE_ALL_LOTTO_TABLES, conn);
             commandTruncate.CommandType = CommandType.Text;
 
             try {
@@ -165,14 +207,14 @@ namespace Philinternational.Layers {
             }
             Boolean esito = EpurateLottoByArguments(list);
             return esito;
-        } 
+        }
 
         /// <summary>
         /// Epura idarg e idsubarg della lotto dati una lista di argomenti
         /// </summary>
         /// <param name="ArgList"></param>
         /// <returns></returns>
-        internal static Boolean EpurateLottoByArguments(List<Int32> ArgList) { 
+        internal static Boolean EpurateLottoByArguments(List<Int32> ArgList) {
             String _EPURATE_LOTTO_ARGS = "UPDATE lotto SET id_argomento = NULL, id_subargomento = NULL WHERE @ComposedConditions";
             MySqlConnection conn = ConnectionGateway.ConnectDB();
             StringBuilder sb = new StringBuilder();
@@ -229,60 +271,52 @@ namespace Philinternational.Layers {
             DataView dr = ConnectionGateway.SelectQuery(sql);
             for (int i = 0; i < dr.Count; i++) {
                 str[0] = dr[i]["id_argomento"].ToString();
-                str[1] = dr[i]["id_subargomento"].ToString();            
+                str[1] = dr[i]["id_subargomento"].ToString();
             }
             return str;
         }
 
-        private bool searchImageFromDisk(String idLotto)
-        {
+        private bool searchImageFromDisk(String idLotto) {
             Boolean stato = false;
             String nome_file = idLotto + ".jpg";
             String tmpPath = "";
 
             tmpPath = System.Web.HttpContext.Current.Server.MapPath(".") + "\\..\\images\\asta\\";
             DirectoryInfo MyDir = new DirectoryInfo(tmpPath);
-            if (MyDir.Exists == true)
-            {
-                foreach (FileInfo file in MyDir.GetFiles())
-                {
+            if (MyDir.Exists == true) {
+                foreach (FileInfo file in MyDir.GetFiles()) {
                     if (file.Name == nome_file) return true;
                 }
                 return stato;
-            }
-            else { 
-            return stato;
+            } else {
+                return stato;
             }
 
         }
 
 
-        public String LoadImageByLotto(String NamePageYes, String NamePageNo, String idLotto)
-        {
+        public String LoadImageByLotto(String NamePageYes, String NamePageNo, String idLotto) {
 
             String outputImmagine = "";
             bool esito = searchImageFromDisk(idLotto);
-            if (esito)
-            {
+            if (esito) {
                 String path = NamePageYes + idLotto + ".jpg";
                 outputImmagine = "<a href=\"" + path + "\" rel=\"shadowbox;handleOversize:resize\" title=\"Lotto " + idLotto + "\" id=\"shadowimages\"><img src=\"" + path + "\" width=\"100\" height=\"100\" alt=\"Lotto " + idLotto + "\"/></a>\n";
-            }
-            else
-            {
+            } else {
                 outputImmagine = "<img src=\"" + NamePageNo + "\" width=\"100\" height=\"100\" alt=\"Lotto " + idLotto + "\"/>";
             }
             return outputImmagine;
 
         }
 
-        public String getValueByField(String idlotto,String FieldName) { 
-            String sql = "SELECT "+ FieldName +" valore FROM lotto WHERE idlotto="+ idlotto +"";
+        public String getValueByField(String idlotto, String FieldName) {
+            String sql = "SELECT " + FieldName + " valore FROM lotto WHERE idlotto=" + idlotto + "";
             String valore = "--";
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
             for (int i = 0; i < dr.Count; i++) {
                 valore = dr[i]["valore"].ToString();
             }
-                
+
             return valore;
         }
 
@@ -338,13 +372,9 @@ namespace Philinternational.Layers {
             return true;
         }
 
-        internal static lottoEntity SelectLotti(int p) {
-            throw new NotImplementedException();
-        }
 
-        internal static lottoEntity SelectLottiTemporanei(int p) {
-            throw new NotImplementedException();
-        }
+
+
 
         internal static void UpdateLotti(lottoEntity newLotto) {
             throw new NotImplementedException();
