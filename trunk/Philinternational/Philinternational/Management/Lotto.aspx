@@ -25,8 +25,8 @@
     <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" OnClick="ibtnCercaLotto_Click" />
     <br />
     <asp:MultiView ID="mvLotti" runat="server" ActiveViewIndex="0">
-        <asp:View ID="viewLottiPubblicati" runat="server"><asp:ImageButton ID="ibtnCancellaLottiSelezionati"
-            runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiSelezionati_Click" /><br />
+        <asp:View ID="viewLottiPubblicati" runat="server">
+        <asp:ImageButton ID="ibtnCancellaLottiSelezionati" runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiSelezionati_Click" /><br /><br />
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"
                 OnPageIndexChanged="gvLottiPubblicati_PageIndexChanged" OnPageIndexChanging="gvLottiPubblicati_PageIndexChanging"
                 AutoGenerateColumns="False" ShowHeader="False" DataKeyNames="idlotto" OnRowDataBound="gvLottiPubblicati_RowDataBound"
