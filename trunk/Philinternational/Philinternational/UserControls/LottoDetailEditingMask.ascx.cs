@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Philinternational.Layers;
+using System.Data;
 
 namespace Philinternational.UserControls {
     public partial class LottoDetailEditingMask : System.Web.UI.UserControl {
@@ -20,11 +21,24 @@ namespace Philinternational.UserControls {
         }
 
         private void LoadFormData(String idlotto) {
-            lottoEntity lotto = new lottoEntity();
+            DataView lotto = new DataView();
             switch (this.currentType) {
-                case "pub": lotto = LottiGateway.SelectLotti(Convert.ToInt32(idlotto)); break;
-                case "tmp": lotto = LottiGateway.SelectLottiTemporanei(Convert.ToInt32(idlotto)); break;
+                case "pub": lotto = LottiGateway.SelectLottiById(Convert.ToInt32(idlotto));
+                    hiddenIdLotto.Value = lotto[0]["idlotto"].ToString();
+                    break;
+                case "tmp": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(idlotto));
+                    hiddenIdLotto.Value = lotto[0]["idcatalogo"].ToString();
+                    break;
             }
+
+            txtConferente.Text = lotto[0]["conferente"].ToString();
+            txtConferente.Text = lotto[0]["anno"].ToString();
+            txtConferente.Text = lotto[0]["tipo_lotto"].ToString();
+            txtConferente.Text = lotto[0]["numero_pezzi"].ToString();
+            txtConferente.Text = lotto[0]["descrizione"].ToString();
+            txtConferente.Text = lotto[0]["prezzo_base"].ToString();
+            txtConferente.Text = lotto[0]["euro"].ToString();
+            txtConferente.Text = lotto[0]["riferimento_sassone"].ToString();
         }
 
         protected void ibtnUpdateLotto_Click(object sender, ImageClickEventArgs e) {
