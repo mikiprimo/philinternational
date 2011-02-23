@@ -377,14 +377,14 @@ namespace Philinternational.Layers {
             MySqlCommand command = new MySqlCommand(UPDATE_LOTTO_DETAIL, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idlotto", newLotto.id);
-            command.Parameters.AddWithValue("conferente", newLotto.id);
-            command.Parameters.AddWithValue("anno", newLotto.id);
-            command.Parameters.AddWithValue("tipo_lotto", newLotto.id);
-            command.Parameters.AddWithValue("numero_pezzi", newLotto.id);
-            command.Parameters.AddWithValue("descrizione", newLotto.id);
-            command.Parameters.AddWithValue("prezzo_base", newLotto.id);
-            command.Parameters.AddWithValue("euro", newLotto.id);
-            command.Parameters.AddWithValue("riferimento_sassone", newLotto.id);
+            command.Parameters.AddWithValue("conferente", newLotto.conferente);
+            command.Parameters.AddWithValue("anno", newLotto.anno);
+            command.Parameters.AddWithValue("tipo_lotto", newLotto.tipo_lotto);
+            command.Parameters.AddWithValue("numero_pezzi", newLotto.numero_pezzi);
+            command.Parameters.AddWithValue("descrizione", newLotto.descrizione);
+            command.Parameters.AddWithValue("prezzo_base", newLotto.prezzo_base);
+            command.Parameters.AddWithValue("euro", newLotto.euro);
+            command.Parameters.AddWithValue("riferimento_sassone", newLotto.riferimento_sassone);
 
             try {
                 conn.Open();
@@ -403,14 +403,14 @@ namespace Philinternational.Layers {
             MySqlCommand command = new MySqlCommand(UPDATE_LOTTO_TEMPORANEO_DETAIL, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idcatalogo", newLotto.id);
-            command.Parameters.AddWithValue("conferente", newLotto.id);
-            command.Parameters.AddWithValue("anno", newLotto.id);
-            command.Parameters.AddWithValue("tipo_lotto", newLotto.id);
-            command.Parameters.AddWithValue("numero_pezzi", newLotto.id);
-            command.Parameters.AddWithValue("descrizione", newLotto.id);
-            command.Parameters.AddWithValue("prezzo_base", newLotto.id);
-            command.Parameters.AddWithValue("euro", newLotto.id);
-            command.Parameters.AddWithValue("riferimento_sassone", newLotto.id);
+            command.Parameters.AddWithValue("conferente", newLotto.conferente);
+            command.Parameters.AddWithValue("anno", newLotto.anno);
+            command.Parameters.AddWithValue("tipo_lotto", newLotto.tipo_lotto);
+            command.Parameters.AddWithValue("numero_pezzi", newLotto.numero_pezzi);
+            command.Parameters.AddWithValue("descrizione", newLotto.descrizione);
+            command.Parameters.AddWithValue("prezzo_base", newLotto.prezzo_base);
+            command.Parameters.AddWithValue("euro", newLotto.euro);
+            command.Parameters.AddWithValue("riferimento_sassone", newLotto.riferimento_sassone);
 
             try {
                 conn.Open();
