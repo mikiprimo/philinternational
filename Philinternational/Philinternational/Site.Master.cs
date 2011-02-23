@@ -164,20 +164,18 @@ namespace Philinternational
                 String sql = "SELECT idlotto,anno,descrizione,prezzo FROM offerta_gilardifilatelia where stato=1 order by rand() LIMIT 4";
                 DataView dr = ConnectionGateway.SelectQuery(sql);
                 if (dr.Count > 0) {
-                    showOfferte += "<h3>Gilardi Filatelia</h3>\n";
+                    showOfferte += "<h3>Offerte da www.gilardifilatelia.it</h3>\n";
                     for (int i = 0; i < dr.Count; i++) {
                         /* fase temporanea in attesa di ottimizzare il codice*/
                         String imgName = Page.ResolveClientUrl("~/images/gilardifilatelia/") + dr[i]["idlotto"] + ".jpg";
-                        showOfferte += "<div class=\"gilardiFilatelia\">";
+                        showOfferte += "<div class=\"gilardiFilatelia center\">";
                         showOfferte += "<h4>"+dr[i]["idlotto"] +"</h4>";
                         showOfferte += "<img src=\"" + imgName + "\" width=\"100\" height=\"100\" alt=\"Lotto " + dr[i]["idlotto"]  + "\"/>";
                         showOfferte += "<p>" + dr[i]["anno"] + "</p>\n";
                         showOfferte += "<p>" + dr[i]["descrizione"] + "</p>";
                         showOfferte += "<p>" + dr[i]["prezzo"] + "</p>\n";
-                        showOfferte += "<a href=\"" + Page.ResolveClientUrl("~/images/gilardifilatelia/")  + "\">Ordinala</a>\n";
-                        showOfferte += "</div>";
-                    
-                    
+                        showOfferte += "<a href=\"" + Page.ResolveClientUrl("~/Varie/ordineGilardiFilatelia.aspx?cod=" + dr[i]["idlotto"]) + "\">Ordina subito</a>\n";
+                        showOfferte += "</div>\n";
                     }
                 }
             }
