@@ -34,9 +34,8 @@
 	            <asp:SqlDataSource ID="LottoConnector" runat="server" ProviderName="MySql.Data.MySqlClient"></asp:SqlDataSource>
 	            <asp:Repeater runat="server" ID="listaLotti" DataSourceID="LottoConnector" OnItemDataBound="R1_ItemDataBound" OnItemCommand="R_ItemCommand">
                     <ItemTemplate>
-                    <div><p><img src="images/immagine_non_disponibile.jpg" height="100" width="100" alt="immagine non disponibile" /></p></div>
+                        <div><p><img src="images/immagine_non_disponibile.jpg" height="100" width="100" alt="immagine non disponibile" /></p></div>
                     </ItemTemplate>
-                    
 	            </asp:Repeater>
             </div>
         </div>         
