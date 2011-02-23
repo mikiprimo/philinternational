@@ -2,7 +2,6 @@
     Inherits="Philinternational.UserControls.LottoDetailEditingMask" %>
 <div id="divRegPanel" runat="server">
     <fieldset class="register"><legend>Modifica lotto</legend><br />
-    <asp:HiddenField ID="hiddenIdLotto" runat="server" />
         <p>
             <asp:Label ID="lblConferente" runat="server" AssociatedControlID="txtConferente">Conferente: </asp:Label>
             <asp:TextBox ID="txtConferente" runat="server" CssClass="textEntry"></asp:TextBox>

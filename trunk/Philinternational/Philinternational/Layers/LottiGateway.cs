@@ -19,8 +19,8 @@ namespace Philinternational.Layers {
         private static String INSERT_ARGUMENT = "INSERT INTO lotto_tmp (idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone) VALUES (@idcatalogo, @conferente, @anno, @tipo_lotto, @numero_pezzi, @descrizione, @prezzo_base, @euro, @riferimento_sassone)";
         private static String TRUNCATE_ALL_LOTTO_TABLES = "TRUNCATE TABLE       lotto_tmp; TRUNCATE TABLE       lotto_scartato; TRUNCATE TABLE       lotto;";
         private static String UPDATE_STATO_BY_ID_LOTTO = "UPDATE lotto SET stato = @stato WHERE idlotto = @idlotto";
-
-
+        private static String UPDATE_LOTTO_DETAIL = "UPDATE lotto SET conferente = @conferente, anno = @anno, tipo_lotto = @tipo_lotto, numero_pezzi = @numero_pezzi, descrizione = @descrizione, prezzo_base = @prezzo_base, euro = @euro, riferimento_sassone = @riferimento_sassone WHERE idlotto = @idlotto";
+        private static String UPDATE_LOTTO_TEMPORANEO_DETAIL = "UPDATE lotto_tmp SET conferente = @conferente, anno = @anno, tipo_lotto = @tipo_lotto, numero_pezzi = @numero_pezzi, descrizione = @descrizione, prezzo_base = @prezzo_base, euro = @euro, riferimento_sassone = @riferimento_sassone WHERE idcatalogo = @idcatalogo";
 
         internal static DataView SelectLotti() {
             DataView dv = new DataView();
@@ -77,7 +77,6 @@ namespace Philinternational.Layers {
             }
         }
 
-        //
         internal static DataView SelectLottiTemporaneiById(Int32 id) {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
@@ -276,7 +275,7 @@ namespace Philinternational.Layers {
             return str;
         }
 
-        private bool searchImageFromDisk(String idLotto) {
+        private Boolean searchImageFromDisk(String idLotto) {
             Boolean stato = false;
             String nome_file = idLotto + ".jpg";
             String tmpPath = "";
@@ -372,16 +371,56 @@ namespace Philinternational.Layers {
             return true;
         }
 
+        internal static Boolean UpdateLotti(lottoEntity newLotto) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
 
+            MySqlCommand command = new MySqlCommand(UPDATE_LOTTO_DETAIL, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idlotto", newLotto.id);
+            command.Parameters.AddWithValue("conferente", newLotto.id);
+            command.Parameters.AddWithValue("anno", newLotto.id);
+            command.Parameters.AddWithValue("tipo_lotto", newLotto.id);
+            command.Parameters.AddWithValue("numero_pezzi", newLotto.id);
+            command.Parameters.AddWithValue("descrizione", newLotto.id);
+            command.Parameters.AddWithValue("prezzo_base", newLotto.id);
+            command.Parameters.AddWithValue("euro", newLotto.id);
+            command.Parameters.AddWithValue("riferimento_sassone", newLotto.id);
 
-
-
-        internal static void UpdateLotti(lottoEntity newLotto) {
-            throw new NotImplementedException();
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
         }
 
-        internal static void UpdateLottiTemporanei(lottoEntity newLotto) {
-            throw new NotImplementedException();
+        internal static Boolean UpdateLottiTemporanei(lottoEntity newLotto) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(UPDATE_LOTTO_TEMPORANEO_DETAIL, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idcatalogo", newLotto.id);
+            command.Parameters.AddWithValue("conferente", newLotto.id);
+            command.Parameters.AddWithValue("anno", newLotto.id);
+            command.Parameters.AddWithValue("tipo_lotto", newLotto.id);
+            command.Parameters.AddWithValue("numero_pezzi", newLotto.id);
+            command.Parameters.AddWithValue("descrizione", newLotto.id);
+            command.Parameters.AddWithValue("prezzo_base", newLotto.id);
+            command.Parameters.AddWithValue("euro", newLotto.id);
+            command.Parameters.AddWithValue("riferimento_sassone", newLotto.id);
+
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
         }
     }
 }
