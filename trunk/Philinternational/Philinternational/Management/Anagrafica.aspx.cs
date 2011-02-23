@@ -79,7 +79,7 @@ namespace Philinternational.Styles {
 
                 Image img = ((Image)e.Row.Cells[1].FindControl("imgNewsletterStatus"));
                 String idAnagrafica = ((HiddenField)e.Row.Cells[1].FindControl("HiddenIdAnagrafica")).Value;
-                Boolean isSubcribedToNewsletters = AnagraficaGateway.IsSubscribedToNewsletters(idAnagrafica);
+                Boolean isSubcribedToNewsletters = AnagraficaGateway.IsSubscribedToNewsletters(Convert.ToInt32(idAnagrafica));
                 if (isSubcribedToNewsletters) img.ImageUrl = "~/images/newsletters/email.png";
             }
         }

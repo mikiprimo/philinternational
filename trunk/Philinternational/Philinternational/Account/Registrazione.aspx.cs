@@ -68,6 +68,7 @@ namespace Philinternational.Account {
             Boolean result = false;
 
             result = AnagraficaGateway.InsertAnagrafica(newUser);
+            result = AnagraficaGateway.ManageNewsletterStateByIDAnagrafica(newUser.idanagrafica, chkNewsLetters.Checked);
             if (result) Response.Redirect("~/Account/Registrazione.aspx?R=success");
         }
 

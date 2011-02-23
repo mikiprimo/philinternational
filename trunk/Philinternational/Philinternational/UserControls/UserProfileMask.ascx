@@ -7,6 +7,7 @@
 <div id="divRegPanel" runat="server">
     <fieldset class="register"><legend>Modifica le informazioni di registrazione</legend>
         <!--DATI OBBLIGATORI-->
+        <asp:HiddenField ID="hiddenIDAnagrafica" runat="server" />
         <p>
             <asp:Label ID="lblEmail" runat="server" AssociatedControlID="txtEmail">E-mail:</asp:Label>
             <asp:TextBox ID="txtEmail" runat="server" CssClass="textEntry"></asp:TextBox>
@@ -162,7 +163,17 @@
                 ControlToValidate="txtNazioneDom" CssClass="failureNotification" ErrorMessage="Nazione di domicilio é richiesto"
                 ToolTip="Nazione di domicilio é obbligatorio" ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
         </p>
+        <table>
+            <tr>
+                <td>
+                    <asp:CheckBox ID="chkNewsLetters" runat="server" Text="Iscriviti alle Newsletters" />
+                </td>
+            </tr>
+        </table>
         <br />
-        <asp:Button ID="btnUpdateAnagrafica" runat="server" Text="Salva i dati" 
-            onclick="btnUpdateAnagrafica_Click" />
+        
+
+        <asp:ImageButton ID="ibtnUpdateAnagrafica" runat="server" 
+            AlternateText="Aggiorna" onclick="ibtnUpdateAnagrafica_Click"/>
+    </fieldset>
 </div>

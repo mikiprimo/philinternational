@@ -337,5 +337,21 @@ namespace Philinternational.Layers {
             }
             return true;
         }
+
+        internal static lottoEntity SelectLotti(int p) {
+            throw new NotImplementedException();
+        }
+
+        internal static lottoEntity SelectLottiTemporanei(int p) {
+            throw new NotImplementedException();
+        }
+
+        internal static void UpdateLotti(lottoEntity newLotto) {
+            throw new NotImplementedException();
+        }
+
+        internal static void UpdateLottiTemporanei(lottoEntity newLotto) {
+            throw new NotImplementedException();
+        }
     }
 }
