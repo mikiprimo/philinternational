@@ -24,10 +24,8 @@ namespace Philinternational.UserControls {
             DataView lotto = new DataView();
             switch (this.currentType) {
                 case "pub": lotto = LottiGateway.SelectLottiById(Convert.ToInt32(idlotto));
-                    hiddenIdLotto.Value = lotto[0]["idlotto"].ToString();
                     break;
                 case "tmp": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(idlotto));
-                    hiddenIdLotto.Value = lotto[0]["idcatalogo"].ToString();
                     break;
             }
 
@@ -42,13 +40,21 @@ namespace Philinternational.UserControls {
         }
 
         protected void ibtnUpdateLotto_Click(object sender, ImageClickEventArgs e) {
-            lottoEntity newLotto = new lottoEntity();
+            lottoEntity updateLotto = new lottoEntity();
 
-            //... Populate lotto
+            updateLotto.conferente = txtConferente.Text;
+            updateLotto.anno = txtAnno.Text;
+            updateLotto.tipo_lotto = txtTipoLotto.Text;
+            updateLotto.numero_pezzi = Convert.ToInt32(txtNumeroPezzi.Text);
+            updateLotto.descrizione = txtDescrizione.Text;
+            updateLotto.prezzo_base = Convert.ToInt32(txtPrezzoBase.Text);
+            updateLotto.euro = txtEuro.Text;
+            updateLotto.riferimento_sassone = txtRiferimentoSassone.Text;
+            updateLotto.id = Convert.ToInt32(currentIdLotto);
 
             switch (this.currentType) {
-                case "pub": LottiGateway.UpdateLotti(newLotto); break;
-                case "tmp": LottiGateway.UpdateLottiTemporanei(newLotto); break;
+                case "pub": LottiGateway.UpdateLotti(updateLotto); break;
+                case "tmp": LottiGateway.UpdateLottiTemporanei(updateLotto); break;
             }
         }
     }

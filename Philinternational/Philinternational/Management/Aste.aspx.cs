@@ -67,7 +67,5 @@ namespace Philinternational.Styles
             this.gvAste.PageIndex = e.NewPageIndex;
             this.BindData();
         }
-
-        //TODO: Manca la gestione della paginazione
     }
 }
