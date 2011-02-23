@@ -14,8 +14,33 @@ namespace Philinternational.Management.UserControls {
 
         public String oldEmail { get { return (String)ViewState["oldEmail"]; } set { ViewState["oldEmail"] = value; } }
 
+        public void LoadFormData() {
+            DataRowView dv = AnagraficaGateway.SelectAnagraficaByMail(this.oldEmail);
 
-        protected void btnUpdateAnagrafica_Click(object sender, EventArgs e) {
+            hiddenIDAnagrafica.Value = dv["idanagrafica"].ToString();
+            txtEmail.Text = dv["email"].ToString();
+            txtPassword.Text = dv["password"].ToString();
+            txtNome.Text = dv["nome"].ToString();
+            txtCognome.Text = dv["cognome"].ToString();
+            txtCodiceFiscale.Text = dv["codice_fiscale"].ToString();
+            txtPiva.Text = dv["partita_iva"].ToString();
+            txtVia.Text = dv["res_via"].ToString();
+            txtIndirizzo.Text = dv["res_indirizzo"].ToString();
+            txtNumCivico.Text = dv["res_num_civico"].ToString();
+            txtCap.Text = dv["res_cap"].ToString();
+            txtCitta.Text = dv["res_comune"].ToString();
+            txtProvincia.Text = dv["res_provincia"].ToString();
+            txtNazione.Text = dv["res_nazione"].ToString();
+            txtViaDom.Text = dv["dom_via"].ToString();
+            txtIndirizzoDom.Text = dv["dom_indirizzo"].ToString();
+            txtNumCivicoDom.Text = dv["dom_num_civico"].ToString();
+            txtCapDom.Text = dv["dom_cap"].ToString();
+            txtCittaDom.Text = dv["dom_comune"].ToString();
+            txtProvinciaDom.Text = dv["dom_provincia"].ToString();
+            txtNazioneDom.Text = dv["dom_nazione"].ToString();
+        }
+
+        protected void ibtnUpdateAnagrafica_Click(object sender, ImageClickEventArgs e) {
             anagraficaEntity newAnagrafica = new anagraficaEntity();
 
             newAnagrafica.email = this.txtEmail.Text;
@@ -40,33 +65,7 @@ namespace Philinternational.Management.UserControls {
             newAnagrafica.dom_nazione = this.txtNazioneDom.Text;
 
             AnagraficaGateway.UpdateAnagrafica(this.oldEmail, newAnagrafica);
-        }
-
-        public void LoadFormData() {
-            DataRowView dv = AnagraficaGateway.SelectAnagraficaByMail(this.oldEmail);
-
-            //stato, data_inserimento, idprofilo
-
-            txtEmail.Text = dv["email"].ToString();
-            txtPassword.Text = dv["password"].ToString();
-            txtNome.Text = dv["nome"].ToString();
-            txtCognome.Text = dv["cognome"].ToString();
-            txtCodiceFiscale.Text = dv["codice_fiscale"].ToString();
-            txtPiva.Text = dv["partita_iva"].ToString();
-            txtVia.Text = dv["res_via"].ToString();
-            txtIndirizzo.Text = dv["res_indirizzo"].ToString();
-            txtNumCivico.Text = dv["res_num_civico"].ToString();
-            txtCap.Text = dv["res_cap"].ToString();
-            txtCitta.Text = dv["res_comune"].ToString();
-            txtProvincia.Text = dv["res_provincia"].ToString();
-            txtNazione.Text = dv["res_nazione"].ToString();
-            txtViaDom.Text = dv["dom_via"].ToString();
-            txtIndirizzoDom.Text = dv["dom_indirizzo"].ToString();
-            txtNumCivicoDom.Text = dv["dom_num_civico"].ToString();
-            txtCapDom.Text = dv["dom_cap"].ToString();
-            txtCittaDom.Text = dv["dom_comune"].ToString();
-            txtProvinciaDom.Text = dv["dom_provincia"].ToString();
-            txtNazioneDom.Text = dv["dom_nazione"].ToString();
+            AnagraficaGateway.ManageNewsletterStateByIDAnagrafica(Convert.ToInt32(hiddenIDAnagrafica.Value), chkNewsLetters.Checked);
         }
     }
 }

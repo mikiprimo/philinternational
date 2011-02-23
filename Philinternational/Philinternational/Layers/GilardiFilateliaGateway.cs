@@ -13,8 +13,8 @@ namespace Philinternational.Layers
         /// <summary>
         /// Operational functions About OffertaGilardiFilaelia (OffertaGilardiFilaelia.aspx and OffertaGilardiFilaeliaDetail.aspx)
         /// </summary>
-        private static String _SELECT= "SELECT idofferta, idlotto,anno,descrizione,prezzo,stato, DATE_FORMAT(data_inserimento,'%d.%m.%Y') as data_pubblicazione FROM offerta_gilardifilatelia ORDER BY data_inserimento DESC";
-        private static String _SELECTBYID = "SELECT idofferta, idlotto,anno,descrizione,prezzo,stato, DATE_FORMAT(data_inserimento,'%d.%m.%Y') as data_pubblicazione FROM offerta_gilardifilatelia where idofferta=@codice ORDER BY data_inserimento DESC";
+        private static String SELECT= "SELECT idofferta, idlotto,anno,descrizione,prezzo,stato, DATE_FORMAT(data_inserimento,'%d.%m.%Y') as data_pubblicazione FROM offerta_gilardifilatelia ORDER BY data_inserimento DESC";
+        private static String SELECTBYID = "SELECT idofferta, idlotto,anno,descrizione,prezzo,stato, DATE_FORMAT(data_inserimento,'%d.%m.%Y') as data_pubblicazione FROM offerta_gilardifilatelia where idofferta=@codice ORDER BY data_inserimento DESC";
         private static String _INSERT = "INSERT INTO offerta_gilardifilatelia (idofferta,idlotto, anno, descrizione, prezzo, stato, data_inserimento) VALUES (@idofferta,@idlotto, @anno, @descrizione, @prezzo, @valueStato, @data_inserimento)";
         private static String _UPDATE = "UPDATE offerta_gilardifilatelia SET idlotto = @idlotto,descrizione = @descrizione,anno = @anno,prezzo = @prezzo,stato = @valueStato,data_inserimento = @data_inserimento WHERE idofferta = @idofferta";
         private static String _UPDATE_STATE = "UPDATE NEWS SET stato = @stato WHERE idnews = @idNews";
@@ -22,7 +22,7 @@ namespace Philinternational.Layers
         {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
+            using (MySqlCommand cmd = new MySqlCommand(SELECT, conn))
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
             {
                 try
@@ -47,7 +47,7 @@ namespace Philinternational.Layers
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_SELECTBYID, conn);
+            MySqlCommand command = new MySqlCommand(SELECTBYID, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("codice", codice);
             GilardiFilateliaEntity myOnlyNews;
