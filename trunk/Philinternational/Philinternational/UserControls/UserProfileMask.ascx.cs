@@ -9,10 +9,15 @@ using System.Data;
 
 namespace Philinternational.Management.UserControls {
     public partial class UserProfileMask : System.Web.UI.UserControl {
-        protected void Page_Load(object sender, EventArgs e) {
-        }
 
+        public String oldPassword { get { return (String)ViewState["oldPassowrd"]; } set { ViewState["oldPassowrd"] = value; } }
         public String oldEmail { get { return (String)ViewState["oldEmail"]; } set { ViewState["oldEmail"] = value; } }
+
+        protected void Page_Load(object sender, EventArgs e) {
+            if (!IsPostBack) {
+                this.oldEmail = GeneralUtilities.GetQueryString(Request.QueryString, "email");
+            }
+        }
 
         public void LoadFormData() {
             DataRowView dv = AnagraficaGateway.SelectAnagraficaByMail(this.oldEmail);
@@ -20,6 +25,8 @@ namespace Philinternational.Management.UserControls {
             hiddenIDAnagrafica.Value = dv["idanagrafica"].ToString();
             txtEmail.Text = dv["email"].ToString();
             txtPassword.Text = dv["password"].ToString();
+            this.oldPassword = dv["password"].ToString();
+
             txtNome.Text = dv["nome"].ToString();
             txtCognome.Text = dv["cognome"].ToString();
             txtCodiceFiscale.Text = dv["codice_fiscale"].ToString();
@@ -66,6 +73,8 @@ namespace Philinternational.Management.UserControls {
 
             AnagraficaGateway.UpdateAnagrafica(this.oldEmail, newAnagrafica);
             AnagraficaGateway.ManageNewsletterStateByIDAnagrafica(Convert.ToInt32(hiddenIDAnagrafica.Value), chkNewsLetters.Checked);
+            if (txtPassword.Text != this.oldPassword) MailList.CambioPassword(txtNome.Text + txtCognome.Text, txtEmail.Text, txtPassword.Text);
         }
+
     }
 }
