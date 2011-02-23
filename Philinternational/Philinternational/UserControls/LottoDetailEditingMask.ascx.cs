@@ -58,6 +58,8 @@ namespace Philinternational.UserControls {
                 case "pub": LottiGateway.UpdateLotti(updateLotto); break;
                 case "tmp": LottiGateway.UpdateLottiTemporanei(updateLotto); break;
             }
+
+            Response.Redirect("~/Management/Lotto.aspx");
         }
     }
 }

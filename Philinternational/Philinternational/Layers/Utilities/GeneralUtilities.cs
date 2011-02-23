@@ -11,4 +11,9 @@ public class GeneralUtilities {
             else return queries[varname];
         } catch (Exception) { return null; }
     }
+
+    public static String SubString(String stringa, Int32 length) {
+        if (stringa.Length > length) return stringa.Substring(0, length);
+        else return stringa;
+    }
 }
