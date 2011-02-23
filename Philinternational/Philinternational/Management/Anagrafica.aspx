@@ -30,17 +30,17 @@
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:HyperLink ID="hlEditAnagrafica" runat="server" NavigateUrl='<%# "~/Management/AnagraficaDetail.aspx?email=" + DataBinder.Eval (Container.DataItem,"email")%>'>Modifica</asp:HyperLink>
+                    <asp:HyperLink ID="hlEditAnagrafica" runat="server" NavigateUrl='<%# "~/Management/AnagraficaDetail.aspx?email=" + DataBinder.Eval (Container.DataItem,"email")%>'><%# DataBinder.Eval(Container.DataItem, "cognome") + " " + DataBinder.Eval(Container.DataItem, "nome")%></asp:HyperLink>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField>
+<%--            <asp:TemplateField>
                 <ItemTemplate>
                     <asp:Label ID="lblNome" runat="server" Text='<%# Bind("nome") %>'></asp:Label></ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:Label ID="lblCognome" runat="server" Text='<%# Bind("cognome") %>'></asp:Label></ItemTemplate>
-            </asp:TemplateField>
+            </asp:TemplateField>--%>
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:Label ID="lblEmail" runat="server" Text='<%# Bind("email") %>'></asp:Label></ItemTemplate>

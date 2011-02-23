@@ -66,9 +66,9 @@ namespace Philinternational.Styles {
         protected void gvAnagrafica_RowDataBound(object sender, GridViewRowEventArgs e) {
             if (e.Row.RowType == DataControlRowType.DataRow) {
 
-                DropDownList ddlStati = ((DropDownList)e.Row.Cells[6].FindControl("ddlStati"));
-                String StatoID = ((HiddenField)e.Row.Cells[6].FindControl("hiddenIdStato")).Value;
-                String mailAnagrafica = ((HiddenField)e.Row.Cells[6].FindControl("HiddenEmail")).Value;
+                DropDownList ddlStati = ((DropDownList)e.Row.Cells[4].FindControl("ddlStati"));
+                String StatoID = ((HiddenField)e.Row.Cells[4].FindControl("hiddenIdStato")).Value;
+                String mailAnagrafica = ((HiddenField)e.Row.Cells[4].FindControl("HiddenEmail")).Value;
 
                 ddlStati.Attributes.Add("CurrentMailAnagrafica", mailAnagrafica);
                 ddlStati.DataTextField = "descrizione";
