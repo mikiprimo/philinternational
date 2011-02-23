@@ -69,7 +69,12 @@ namespace Philinternational.Account {
 
             result = AnagraficaGateway.InsertAnagrafica(newUser);
             result = AnagraficaGateway.ManageNewsletterStateByIDAnagrafica(newUser.idanagrafica, chkNewsLetters.Checked);
-            if (result) Response.Redirect("~/Account/Registrazione.aspx?R=success");
+
+            if (result) {
+                MailList.RegistrazioneUtente(newUser.nome + " " + newUser.cognome, newUser.email, newUser.password);
+                Response.Redirect("~/Account/Registrazione.aspx?R=success");
+            }
+
         }
 
         protected void chkAccettaCondizioni_CheckedChanged(object sender, EventArgs e) {
