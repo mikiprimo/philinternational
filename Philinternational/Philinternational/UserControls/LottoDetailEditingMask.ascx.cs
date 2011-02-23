@@ -12,31 +12,33 @@ namespace Philinternational.UserControls {
 
         public String currentIdLotto { get { return ((String)ViewState["currentIdLotto"]); } set { ViewState["currentIdLotto"] = value; } }
 
-        public String currentType { get { return ((String)ViewState["currentType"]); } set { ViewState["currentEmail"] = value; } }
+        public String currentType { get { return ((String)ViewState["currentType"]); } set { ViewState["currentType"] = value; } }
 
         protected void Page_Load(object sender, EventArgs e) {
-            this.currentIdLotto = GeneralUtilities.GetQueryString(Request.QueryString, "id");
-            this.currentType = GeneralUtilities.GetQueryString(Request.QueryString, "type");
-            LoadFormData(this.currentIdLotto);
+            if (!IsPostBack) {
+                this.currentIdLotto = GeneralUtilities.GetQueryString(Request.QueryString, "id");
+                this.currentType = GeneralUtilities.GetQueryString(Request.QueryString, "type");
+                LoadFormData();
+            }
         }
 
-        private void LoadFormData(String idlotto) {
+        private void LoadFormData() {
             DataView lotto = new DataView();
             switch (this.currentType) {
-                case "pub": lotto = LottiGateway.SelectLottiById(Convert.ToInt32(idlotto));
+                case "pub": lotto = LottiGateway.SelectLottiById(Convert.ToInt32(this.currentIdLotto));
                     break;
-                case "tmp": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(idlotto));
+                case "tmp": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(this.currentIdLotto));
                     break;
             }
 
             txtConferente.Text = lotto[0]["conferente"].ToString();
-            txtConferente.Text = lotto[0]["anno"].ToString();
-            txtConferente.Text = lotto[0]["tipo_lotto"].ToString();
-            txtConferente.Text = lotto[0]["numero_pezzi"].ToString();
-            txtConferente.Text = lotto[0]["descrizione"].ToString();
-            txtConferente.Text = lotto[0]["prezzo_base"].ToString();
-            txtConferente.Text = lotto[0]["euro"].ToString();
-            txtConferente.Text = lotto[0]["riferimento_sassone"].ToString();
+            txtAnno.Text = lotto[0]["anno"].ToString();
+            txtTipoLotto.Text = lotto[0]["tipo_lotto"].ToString();
+            txtNumeroPezzi.Text = lotto[0]["numero_pezzi"].ToString();
+            txtDescrizione.Text = lotto[0]["descrizione"].ToString();
+            txtPrezzoBase.Text = lotto[0]["prezzo_base"].ToString();
+            txtEuro.Text = lotto[0]["euro"].ToString();
+            txtRiferimentoSassone.Text = lotto[0]["riferimento_sassone"].ToString();
         }
 
         protected void ibtnUpdateLotto_Click(object sender, ImageClickEventArgs e) {
