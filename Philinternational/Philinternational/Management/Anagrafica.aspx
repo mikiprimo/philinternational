@@ -14,11 +14,20 @@
         OnClick="ibtnCancellaAnagraficheSelezionate_Click" />
     <br />
     <br />
-    <asp:GridView ID="gvAnagrafica" runat="server" AllowPaging="True" EnableTheming="True"
+    <asp:GridView ID="gvAnagrafica" runat="server" AllowPaging="True" EnableTheming="True" 
         OnPageIndexChanged="gvAnagrafica_PageIndexChanged" OnPageIndexChanging="gvAnagrafica_PageIndexChanging"
         AutoGenerateColumns="False" DataKeyNames="email" OnRowDataBound="gvAnagrafica_RowDataBound"
         GridLines="None" EmptyDataText="Non é presente alcuna anagrafica." 
         PageSize="15">
+
+        <rowstyle backcolor="LightCyan"  
+           forecolor="DarkBlue"
+           font-italic="true"/>
+
+        <alternatingrowstyle backcolor="PaleTurquoise"  
+          forecolor="DarkBlue"
+          font-italic="true"/>
+
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
