@@ -20,14 +20,6 @@
         GridLines="None" EmptyDataText="Non é presente alcuna anagrafica." 
         PageSize="15">
 
-        <rowstyle backcolor="LightCyan"  
-           forecolor="DarkBlue"
-           font-italic="true"/>
-
-        <alternatingrowstyle backcolor="PaleTurquoise"  
-          forecolor="DarkBlue"
-          font-italic="true"/>
-
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
