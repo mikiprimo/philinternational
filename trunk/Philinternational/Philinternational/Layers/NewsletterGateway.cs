@@ -9,9 +9,9 @@ using System.Text;
 namespace Philinternational.Layers {
     public class NewsletterGateway {
 
-        private static String _SELECT = "SELECT idnewsletter, data_creazione, titolo, testo FROM newsletter";
-        private static String _INSERT_NEWSLETTER = "INSERT INTO newsletter (idnewsletter, data_creazione, titolo, testo) VALUES (@idnewsletter, @data_creazione, @titolo, @testo)";
-        private static String _UPDATE_NEWSLETTER = "UPDATE newsletter  SET data_creazione = @data_creazione , titolo = @titolo, testo = @testo WHERE idnewsletter = @idnewsletter";
+        private static String SELECT_NEWSLETTERS = "SELECT idnewsletter, data_creazione, titolo, testo FROM newsletter";
+        private static String INSERT_NEWSLETTER = "INSERT INTO newsletter (idnewsletter, data_creazione, titolo, testo) VALUES (@idnewsletter, @data_creazione, @titolo, @testo)";
+        private static String UPDATE_NEWSLETTER = "UPDATE newsletter  SET data_creazione = @data_creazione , titolo = @titolo, testo = @testo WHERE idnewsletter = @idnewsletter";
 
         /// <summary>
         /// SELECT NEWSLETTERS
@@ -20,7 +20,7 @@ namespace Philinternational.Layers {
         internal static DataView SelectNewsletter() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_NEWSLETTERS, conn))
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
                 try {
                     conn.Open();
@@ -72,7 +72,7 @@ namespace Philinternational.Layers {
         internal static Boolean UpdateNewsletter(newsletterEntity MyNewsletter) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_UPDATE_NEWSLETTER, conn);
+            MySqlCommand command = new MySqlCommand(UPDATE_NEWSLETTER, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idnewsletter", MyNewsletter.id);
             command.Parameters.AddWithValue("data_creazione", MyNewsletter.data_creazione);
@@ -98,7 +98,7 @@ namespace Philinternational.Layers {
         internal static Boolean InsertNewsletter(newsletterEntity MyNewsletter) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_INSERT_NEWSLETTER, conn);
+            MySqlCommand command = new MySqlCommand(INSERT_NEWSLETTER, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idnewsletter", MyNewsletter.id);
             command.Parameters.AddWithValue("data_creazione", MyNewsletter.data_creazione);

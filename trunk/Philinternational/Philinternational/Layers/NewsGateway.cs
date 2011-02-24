@@ -11,20 +11,20 @@ namespace Philinternational.Layers {
     /// Operational functions About News (News.aspx and NewsDetails.aspx)
     /// </summary>
     public class NewsGateway {
-        private static String _SELECTNEWS = "SELECT idnews, DATE_FORMAT(data_pubblicazione,'%d.%m.%Y') as data_pubblicazione, titolo, testo, stato FROM news ORDER BY data_pubblicazione DESC";
-        private static String _SELECTNEWSBYID = "SELECT idnews,titolo,testo,DATE_FORMAT(data_pubblicazione,'%d.%m.%Y') as data_pubblicazione,stato from news where idnews=@codice";//ConfigurationManager.AppSettings["SelectNewsById"].ToString();
-        private static String _INSERT = "INSERT INTO NEWS (idnews, data_pubblicazione, titolo, testo, stato) VALUES (@idNews, @data_pubblicazione, @titolo, @testo, @valueStato)";
-        private static String _UPDATE = "UPDATE NEWS SET titolo = @titolo, testo = @testo, stato = @stato WHERE idnews = @idNews";
-        private static String _UPDATE_NEWSSTATE = "UPDATE NEWS SET stato = @stato WHERE idnews = @idNews";
+        private static String SELECT_NEWS = "SELECT idnews, DATE_FORMAT(data_pubblicazione,'%d.%m.%Y') as data_pubblicazione, titolo, testo, stato FROM news ORDER BY data_pubblicazione DESC";
+        private static String SELECT_NEWS_BY_ID = "SELECT idnews,titolo,testo,DATE_FORMAT(data_pubblicazione,'%d.%m.%Y') as data_pubblicazione,stato from news where idnews=@codice";//ConfigurationManager.AppSettings["SelectNewsById"].ToString();
+        private static String INSERT_NEWS = "INSERT INTO NEWS (idnews, data_pubblicazione, titolo, testo, stato) VALUES (@idNews, @data_pubblicazione, @titolo, @testo, @valueStato)";
+        private static String UPDATE_NEWS = "UPDATE NEWS SET titolo = @titolo, testo = @testo, stato = @stato WHERE idnews = @idNews";
+        private static String UPDATE_NEWS_STATE = "UPDATE NEWS SET stato = @stato WHERE idnews = @idNews";
 
         /// <summary>
         /// Select all news
         /// </summary>
         /// <returns></returns>
-        internal static object SelectNews() {
+        internal static DataView SelectNews() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECTNEWS, conn))
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_NEWS, conn))
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
                 try {
                     conn.Open();
@@ -43,11 +43,11 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="codice"></param>
         /// <returns></returns>
-        internal static newsEntity GetNewsById(string codice) {
+        internal static newsEntity GetNewsById(String codice) {
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_SELECTNEWSBYID, conn);
+            MySqlCommand command = new MySqlCommand(SELECT_NEWS_BY_ID, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("codice", codice);
             newsEntity myOnlyNews;
@@ -79,7 +79,7 @@ namespace Philinternational.Layers {
         internal static Boolean InsertNews(newsEntity MyNews) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_INSERT, conn);
+            MySqlCommand command = new MySqlCommand(INSERT_NEWS, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idnews", MyNews.id);
             command.Parameters.AddWithValue("data_pubblicazione", MyNews.dataPubblicazione);
@@ -104,7 +104,7 @@ namespace Philinternational.Layers {
         internal static Boolean UpdateNews(newsEntity MyNews) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_UPDATE, conn);
+            MySqlCommand command = new MySqlCommand(UPDATE_NEWS, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idNews", MyNews.id);
             command.Parameters.AddWithValue("titolo", MyNews.titolo);
@@ -127,10 +127,10 @@ namespace Philinternational.Layers {
         /// <param name="idNews"></param>
         /// <param name="newState"></param>
         /// <returns></returns>
-        internal static Boolean UpdateNewsStateById(string idNews, int newState) {
+        internal static Boolean UpdateNewsStateById(String idNews, Int32 newState) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_UPDATE_NEWSSTATE, conn);
+            MySqlCommand command = new MySqlCommand(UPDATE_NEWS_STATE, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idNews", idNews);
             command.Parameters.AddWithValue("stato", newState);
@@ -175,6 +175,6 @@ namespace Philinternational.Layers {
             return true;
         }
 
-       
+
     }
 }

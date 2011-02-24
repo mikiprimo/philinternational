@@ -18,7 +18,7 @@ namespace Philinternational
             AsteGateway Asta = new AsteGateway();
             String[] esito = new String[2];
             DateTime a = new DateTime();
-            esito = Asta.getDatiAsta();
+            esito = Asta.GetDatiAsta();
             String tmp = esito.GetValue(1).ToString();
             numeroAsta.InnerHtml = esito.GetValue(0).ToString();
             if (tmp.Length > 10)

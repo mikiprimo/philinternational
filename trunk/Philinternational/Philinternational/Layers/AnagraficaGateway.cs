@@ -18,8 +18,8 @@ namespace Philinternational.Layers {
         private static String IS_SUBSCRIBED_TO_NEWSLETTER = "SELECT Count(*) FROM anagrafica_dettaglio WHERE idanagrafica = @idanagrafica AND newsletter = 1";
         private static String UPDATE_ANAGRAFICA = "UPDATE anagrafica  SET nome = @nome, cognome = @cognome, codice_fiscale = @codice_fiscale, partita_iva = @partita_iva, res_via = @res_via, res_indirizzo = @res_indirizzo, res_num_civico = @res_num_civico, res_cap = @res_cap, res_comune = @res_comune, res_provincia = @res_provincia, res_nazione = @res_nazione, dom_via = @dom_via, dom_indirizzo = @dom_indirizzo, dom_num_civico = @dom_num_civico, dom_cap = @dom_cap, dom_comune = @dom_comune, email = @email, dom_provincia = @dom_provincia, dom_nazione = @dom_nazione, password = @password, stato = @stato, WHERE email = @oldmail";
         private static String UPDATE_ANAGRAFICA_STATO = "UPDATE anagrafica SET stato = @stato WHERE email = @email";
-        private static string UPDATE_NEWSLETTER_SUBSCRIPTION = "UPDATE anagrafica_dettaglio SET newsletter = @newsletter";
-        private static string INSERT_NEWSLETTER_SUBSCRIPTION = "INSERT INTO anagrafica_dettaglio (idanagrafica, newsletter) VALUES (@idanagrafica, @newsletter)";
+        private static String UPDATE_NEWSLETTER_SUBSCRIPTION = "UPDATE anagrafica_dettaglio SET newsletter = @newsletter";
+        private static String INSERT_NEWSLETTER_SUBSCRIPTION = "INSERT INTO anagrafica_dettaglio (idanagrafica, newsletter) VALUES (@idanagrafica, @newsletter)";
 
         internal static Boolean InsertAnagrafica(anagraficaEntity newUser) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();

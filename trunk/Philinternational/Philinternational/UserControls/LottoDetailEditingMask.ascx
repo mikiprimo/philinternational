@@ -1,7 +1,32 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LottoDetailEditingMask.ascx.cs"
     Inherits="Philinternational.UserControls.LottoDetailEditingMask" %>
 <div id="divRegPanel" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <fieldset class="register"><legend>Modifica lotto</legend><br />
+        <div id="divArgumentsPanel" runat="server">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <table>
+                        <tr>
+                            <td>
+                                Scegli argomento:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlArgomenti" runat="server" OnSelectedIndexChanged="ddlArgomenti_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                Scegli sub argomento:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlSubArgomenti" runat="server"></asp:DropDownList>
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <br />
         <p>
             <asp:Label ID="lblConferente" runat="server" AssociatedControlID="txtConferente">Conferente: </asp:Label>
             <asp:TextBox ID="txtConferente" runat="server" CssClass="textEntry"></asp:TextBox>
@@ -56,7 +81,12 @@
                 ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
         </p>
         <br />
-        <asp:ImageButton ID="ibtnUpdateLotto" runat="server" AlternateText="Aggiorna" 
-            onclick="ibtnUpdateLotto_Click" />
+        <div id="divUpdatePanel" runat="server">
+            <asp:ImageButton ID="ibtnUpdateLotto" runat="server" AlternateText="Aggiorna" OnClick="ibtnUpdateLotto_Click" />
+        </div>
+        <div id="divTransferPanel" runat="server">
+            <asp:ImageButton ID="ibtnTransferLotto" runat="server" AlternateText="Trasferisci Lotto temporaneo sulla tabella Lotti"
+                OnClick="ibtnTransferLotto_Click" Style="width: 14px" />
+        </div>
     </fieldset>
 </div>

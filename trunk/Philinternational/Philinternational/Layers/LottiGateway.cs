@@ -16,7 +16,8 @@ namespace Philinternational.Layers {
         private static String SELECT_LOTTI_TEMPORANEI = "SELECT idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone FROM lotto_tmp WHERE idcatalogo = @idcatalogo";
         private static String SELECT_LOTTI_TEMPORANEI_BY_ID = "SELECT idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone FROM lotto_tmp";
         private static String SELECT_LOTTI_SCARTATI = "SELECT idlotto_scartato, testo FROM lotto_scartato";
-        private static String INSERT_ARGUMENT = "INSERT INTO lotto_tmp (idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone) VALUES (@idcatalogo, @conferente, @anno, @tipo_lotto, @numero_pezzi, @descrizione, @prezzo_base, @euro, @riferimento_sassone)";
+        private static String INSERT_LOTTO_TEMPORANEO = "INSERT INTO lotto_tmp (idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone) VALUES (@idcatalogo, @conferente, @anno, @tipo_lotto, @numero_pezzi, @descrizione, @prezzo_base, @euro, @riferimento_sassone)";
+        private static String INSERT_LOTTO = "INSERT INTO lotto (idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato) VALUES (@idlotto, @id_argomento, @id_subargomento, @conferente, @anno, @tipo_lotto, @numero_pezzi, @descrizione, @prezzo_base, @euro, @riferimento_sassone, @stato)";
         private static String TRUNCATE_ALL_LOTTO_TABLES = "TRUNCATE TABLE       lotto_tmp; TRUNCATE TABLE       lotto_scartato; TRUNCATE TABLE       lotto;";
         private static String UPDATE_STATO_BY_ID_LOTTO = "UPDATE lotto SET stato = @stato WHERE idlotto = @idlotto";
         private static String UPDATE_LOTTO_DETAIL = "UPDATE lotto SET conferente = @conferente, anno = @anno, tipo_lotto = @tipo_lotto, numero_pezzi = @numero_pezzi, descrizione = @descrizione, prezzo_base = @prezzo_base, euro = @euro, riferimento_sassone = @riferimento_sassone WHERE idlotto = @idlotto";
@@ -122,7 +123,7 @@ namespace Philinternational.Layers {
         internal static Boolean InsertLotto(List<String> list) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(INSERT_ARGUMENT, conn);
+            MySqlCommand command = new MySqlCommand(INSERT_LOTTO_TEMPORANEO, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idcatalogo", list[0]);
             command.Parameters.AddWithValue("conferente", list[1]);
@@ -134,6 +135,36 @@ namespace Philinternational.Layers {
             command.Parameters.AddWithValue("prezzo_base", nuovoPrezzo);
             command.Parameters.AddWithValue("euro", list[7]);
             command.Parameters.AddWithValue("riferimento_sassone", list[8]);
+
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false; //TODO: sbattere nella scartati quelli che non é riuscita a piazzare nella tmp
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
+
+
+        internal static bool InsertLotto(lottoEntity newLotto) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(INSERT_LOTTO_TEMPORANEO, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idcatalogo", newLotto.id);
+            command.Parameters.AddWithValue("id_argomento", newLotto.id_argomento);
+            command.Parameters.AddWithValue("id_subargomento", newLotto.id_subargomento);
+            command.Parameters.AddWithValue("conferente", newLotto.conferente);
+            command.Parameters.AddWithValue("anno", newLotto.anno);
+            command.Parameters.AddWithValue("tipo_lotto", newLotto.tipo_lotto);
+            command.Parameters.AddWithValue("numero_pezzi", newLotto.numero_pezzi);
+            command.Parameters.AddWithValue("descrizione", newLotto.descrizione);
+            command.Parameters.AddWithValue("prezzo_base", newLotto.prezzo_base);
+            command.Parameters.AddWithValue("euro", newLotto.euro);
+            command.Parameters.AddWithValue("riferimento_sassone", newLotto.riferimento_sassone);
+            command.Parameters.AddWithValue("stato", new Stato(99, "da attivare").id);
 
             try {
                 conn.Open();
@@ -422,5 +453,6 @@ namespace Philinternational.Layers {
             }
             return true;
         }
+
     }
 }

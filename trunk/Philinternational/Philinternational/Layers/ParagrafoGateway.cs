@@ -15,6 +15,7 @@ namespace Philinternational.Layers {
         private static String _SELECT = "SELECT idparagrafo, descrizione, stato FROM paragrafo";
         private static String _UPDATE = "UPDATE paragrafo SET descrizione = @descrizione, stato =@stato WHERE idparagrafo = @idparagrafo";
         //ARGOMENTI
+        private static String SELECT_ALL_ARGUMENTS = "SELECT idargomento, idparagrafo, descrizione, stato FROM paragrafo_argomento";
         private static String _SELECT_ARGUMENTS = "SELECT idargomento, idparagrafo, descrizione, stato FROM paragrafo_argomento WHERE idparagrafo = @idparagrafo";
         private static String _UPDATE_ARGUMENTS = "UPDATE paragrafo_argomento SET descrizione = @descrizione, stato = @stato WHERE idargomento = @idargomento";
         private static String _INSERT_ARGUMENT = "INSERT INTO paragrafo_argomento (idargomento, idparagrafo, descrizione, stato) VALUES (@idargomento, @idparagrafo, @descrizione, @stato)";
@@ -84,6 +85,29 @@ namespace Philinternational.Layers {
             using (MySqlCommand cmd = new MySqlCommand(_SELECT_ARGUMENTS, conn)) {
                 try {
                     cmd.Parameters.AddWithValue("idparagrafo", idparagrafo);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dv = dt.DefaultView;
+
+                    return dv;
+                } catch (MySqlException) {
+                    return dv;
+                }
+            }
+        }
+
+        /// <summary>
+        /// SELECT ALL ARGUMENTS (For population pourpose in LottoDetail transfer lotto from tmp to published)
+        /// </summary>
+        /// <returns></returns>
+        internal static DataView SelectAllArgomenti() {
+            DataView dv = new DataView();
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_ALL_ARGUMENTS, conn)) {
+                try {
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
 
                     conn.Open();

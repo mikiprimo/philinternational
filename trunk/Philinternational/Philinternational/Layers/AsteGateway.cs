@@ -9,9 +9,9 @@ using System.Text;
 namespace Philinternational.Layers {
     public class AsteGateway {
 
-        private static String _SELECT = "SELECT idasta, data_fine, stato FROM asta_elenco";
-        private static String _INSERT_ASTA = "INSERT INTO asta_elenco (idasta, data_fine, stato) VALUES (@idasta, @data_fine, @stato)";
-        private static String _UPDATE_ASTA = "UPDATE asta_elenco  SET idasta = @idasta, data_fine = @data_fine , stato = @stato WHERE idasta = @idasta";
+        private static String SELECT_ASTE = "SELECT idasta, data_fine, stato FROM asta_elenco";
+        private static String INSERT_ASTA = "INSERT INTO asta_elenco (idasta, data_fine, stato) VALUES (@idasta, @data_fine, @stato)";
+        private static String UPDATE_ASTA = "UPDATE asta_elenco  SET idasta = @idasta, data_fine = @data_fine , stato = @stato WHERE idasta = @idasta";
 
         /// <summary>
         /// SELECT ASTE
@@ -20,7 +20,7 @@ namespace Philinternational.Layers {
         internal static DataView SelectAste() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_ASTE, conn))
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
                 try {
                     conn.Open();
@@ -41,7 +41,7 @@ namespace Philinternational.Layers {
         /// <param name="AsteIdToBeErased"></param>
         /// <returns></returns>
         internal static Boolean DeleteAste(List<Int32> AsteIdToBeErased) {
-            String _DELETE_ASTE = "DELETE FROM asta_elenco WHERE @ComposedConditions";
+            String DELETE_ASTE = "DELETE FROM asta_elenco WHERE @ComposedConditions";
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             StringBuilder sb = new StringBuilder();
@@ -50,8 +50,8 @@ namespace Philinternational.Layers {
             }
             sb.Append("1=0");
 
-            _DELETE_ASTE = _DELETE_ASTE.Replace("@ComposedConditions", sb.ToString());
-            MySqlCommand command = new MySqlCommand(_DELETE_ASTE, conn);
+            DELETE_ASTE = DELETE_ASTE.Replace("@ComposedConditions", sb.ToString());
+            MySqlCommand command = new MySqlCommand(DELETE_ASTE, conn);
             command.CommandType = CommandType.Text;
             try {
                 conn.Open();
@@ -67,16 +67,16 @@ namespace Philinternational.Layers {
         /// <summary>
         /// INSERT ASTA
         /// </summary>
-        /// <param name="MyAsta"></param>
+        /// <param name="newAsta"></param>
         /// <returns></returns>
-        internal static bool InsertAsta(astaEntity MyAsta) {
+        internal static Boolean InsertAsta(astaEntity newAsta) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_INSERT_ASTA, conn);
+            MySqlCommand command = new MySqlCommand(INSERT_ASTA, conn);
             command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("idasta", MyAsta.id);
-            command.Parameters.AddWithValue("data_fine", MyAsta.data_fine);
-            command.Parameters.AddWithValue("stato", MyAsta.state.id);
+            command.Parameters.AddWithValue("idasta", newAsta.id);
+            command.Parameters.AddWithValue("data_fine", newAsta.data_fine);
+            command.Parameters.AddWithValue("stato", newAsta.state.id);
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
@@ -91,16 +91,16 @@ namespace Philinternational.Layers {
         /// <summary>
         /// UPDATE ASTA
         /// </summary>
-        /// <param name="MyAsta"></param>
+        /// <param name="newAsta"></param>
         /// <returns></returns>
-        internal static Boolean UpdateAsta(astaEntity MyAsta) {
+        internal static Boolean UpdateAsta(astaEntity newAsta) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_UPDATE_ASTA, conn);
+            MySqlCommand command = new MySqlCommand(UPDATE_ASTA, conn);
             command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("idasta", MyAsta.id);
-            command.Parameters.AddWithValue("data_fine", MyAsta.data_fine);
-            command.Parameters.AddWithValue("stato", MyAsta.state.id);
+            command.Parameters.AddWithValue("idasta", newAsta.id);
+            command.Parameters.AddWithValue("data_fine", newAsta.data_fine);
+            command.Parameters.AddWithValue("stato", newAsta.state.id);
 
             try {
                 conn.Open();
@@ -113,7 +113,7 @@ namespace Philinternational.Layers {
             return true;
         }
 
-        public String[] getDatiAsta()
+        public String[] GetDatiAsta()
         {
             String sql = "SELECT max(idasta) valore, data_fine FROM asta_elenco WHERE stato=1";
             String idAsta = "";
@@ -133,7 +133,7 @@ namespace Philinternational.Layers {
             return str;
         }
 
-        public Boolean getAstaAttiva()
+        public Boolean GetAstaAttiva()
         {
             String sql = "SELECT max(idasta) valore, stato FROM asta_elenco";;
             String stato = "";
@@ -146,7 +146,7 @@ namespace Philinternational.Layers {
             return esito;
         }
 
-        public static String getNumAstaAttiva() {
+        public static String GetNumAstaAttiva() {
             String sql = "SELECT max(idasta) valore FROM asta_elenco"; ;
             String valore = "";
 

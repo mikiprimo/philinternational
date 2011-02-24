@@ -18,7 +18,7 @@ namespace Philinternational.Layers
             if (esito == 0) {
                 //spedisci mail al vincitore
                 String persona = AccountGateway.GetPersonaFromIdAnagrafica(idAnagrafica);
-                String idAsta = AsteGateway.getNumAstaAttiva();
+                String idAsta = AsteGateway.GetNumAstaAttiva();
                 String email = Layers.AccountGateway.GetEmailByIdAnagrafica(idAnagrafica);
                 String a = Layers.MailList.lottoAggiudicato(persona,email, idLotto,idAsta);
                 //annulla tutte le altre offerta
