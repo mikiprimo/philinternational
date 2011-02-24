@@ -159,7 +159,7 @@ namespace Philinternational.Management {
         #endregion
 
         #region LOTTI TEMPORANEI
-        
+
         protected void ibtnCancellaLottiTemporaneiSelezionati_Click(object sender, ImageClickEventArgs e) {
             List<Int32> list = new List<Int32>();
 
@@ -182,7 +182,7 @@ namespace Philinternational.Management {
             this.BindData(gvLottiTemporanei, tabellaLotto.LottiTemporanei);
         }
 
-        
+
 
         #endregion
 
@@ -198,5 +198,20 @@ namespace Philinternational.Management {
         }
 
         #endregion
+
+        protected void ibtnTransferLotto_Click(object sender, ImageClickEventArgs e) {
+            String idcatalogo = "";
+
+            foreach (GridViewRow row in gvLottiTemporanei.Rows) {
+                if (row.RowType == DataControlRowType.DataRow) {
+                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
+                    if (chk.Checked) {
+                        idcatalogo = gvLottiTemporanei.DataKeys[row.RowIndex]["idcatalogo"].ToString();
+                        break;
+                    }
+                }
+            }
+            if (idcatalogo != "") Response.Redirect("~/Management/LottiDetail.aspx?type=trf&id=" + idcatalogo);
+        }
     }
 }

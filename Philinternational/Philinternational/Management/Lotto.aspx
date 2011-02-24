@@ -80,6 +80,9 @@
         </asp:View>
         <asp:View ID="viewLottiTemporanei" runat="server"><asp:ImageButton ID="ibtnCancellaLottiTemporaneiSelezionati"
             runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiTemporaneiSelezionati_Click" />
+            <asp:ImageButton ID="ibtnTransferLotto" runat="server" 
+                AlternateText="Trasferisci lotto nella tabella lotti" 
+                onclick="ibtnTransferLotto_Click" />
             <asp:GridView ID="gvLottiTemporanei" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiTemporanei_PageIndexChanged"
                 OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging" AutoGenerateColumns="false"
                 ShowHeader="false" DataKeyNames="idcatalogo" GridLines="None" EmptyDataText="Non é presente alcun lotto temporaneo."

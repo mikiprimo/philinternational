@@ -29,7 +29,7 @@ namespace Philinternational
                     String emailUtente = Layers.AccountGateway.GetEmailByIdAnagrafica(idAnagrafica);
                     AsteGateway Asta = new AsteGateway();
                     String[] esitoAsta = new String[2];
-                    esitoAsta = Asta.getDatiAsta();
+                    esitoAsta = Asta.GetDatiAsta();
                     buttonOfferta.Visible = false;
                     String esitoMail = Layers.MailList.SendOffertaToUser(emailUtente, emailUtente, codiceLotto.Value, offertaUtente, esitoAsta.GetValue(0).ToString());
                     EsitoOperazione.InnerHtml = "<span class=\"ok\">Offerta Effettuata con successo<br/>" + esitoMail  + "<br/></span>\n";

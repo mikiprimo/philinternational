@@ -24,7 +24,7 @@ namespace Philinternational.Layers
             {
                 AsteGateway Asta = new AsteGateway();
                 String[] esitoAsta = new String[2];
-                esitoAsta = Asta.getDatiAsta();
+                esitoAsta = Asta.GetDatiAsta();
                 Boolean esitoMovimento = insertMovimento(idAnagrafica, esitoAsta.GetValue(0).ToString());
                 if (esitoMovimento == false) esito = "Offerta non effettuata";
             }

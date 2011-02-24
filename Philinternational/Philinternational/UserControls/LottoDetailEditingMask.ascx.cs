@@ -26,8 +26,13 @@ namespace Philinternational.UserControls {
             DataView lotto = new DataView();
             switch (this.currentType) {
                 case "pub": lotto = LottiGateway.SelectLottiById(Convert.ToInt32(this.currentIdLotto));
+                    ActivateTransferPanel(false);
                     break;
                 case "tmp": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(this.currentIdLotto));
+                    ActivateTransferPanel(false);
+                    break;
+                case "trf": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(this.currentIdLotto));
+                    ActivateTransferPanel(true);
                     break;
             }
 
@@ -39,6 +44,33 @@ namespace Philinternational.UserControls {
             txtPrezzoBase.Text = lotto[0]["prezzo_base"].ToString();
             txtEuro.Text = lotto[0]["euro"].ToString();
             txtRiferimentoSassone.Text = lotto[0]["riferimento_sassone"].ToString();
+        }
+
+        private void ActivateTransferPanel(Boolean active) {
+            divArgumentsPanel.Visible = active;
+            divTransferPanel.Visible = active;
+            divUpdatePanel.Visible = !active;
+
+            if (active) PopulateArgsAndSubArgsDDLs();
+        }
+
+        private void PopulateArgsAndSubArgsDDLs() {
+            ddlArgomenti.DataValueField = "idargomento";
+            ddlArgomenti.DataTextField = "descrizione";
+            ddlArgomenti.DataSource = ParagrafoGateway.SelectAllArgomenti();
+            ddlArgomenti.DataBind();
+        }
+
+        //Popolare la ddlSubArgs in base all'argomento scelto
+        protected void ddlArgomenti_SelectedIndexChanged(object sender, EventArgs e) {
+            DropDownList ddlArgs = ((DropDownList)sender);
+            String MyArgId = ddlArgs.SelectedValue;
+
+            ddlSubArgomenti.DataValueField = "idsub_argomento";
+            ddlSubArgomenti.DataTextField = "descrizione";
+            ddlSubArgomenti.DataSource = ParagrafoGateway.SelectSubArgs(Convert.ToInt32(MyArgId));
+            ddlSubArgomenti.DataBind();
+
         }
 
         protected void ibtnUpdateLotto_Click(object sender, ImageClickEventArgs e) {
@@ -60,6 +92,26 @@ namespace Philinternational.UserControls {
             }
 
             Response.Redirect("~/Management/Lotto.aspx");
+        }
+
+        protected void ibtnTransferLotto_Click(object sender, ImageClickEventArgs e) {
+            lottoEntity updateLotto = new lottoEntity();
+
+            updateLotto.id_argomento = Convert.ToInt32(ddlArgomenti.SelectedValue);
+            updateLotto.id_subargomento = Convert.ToInt32(ddlSubArgomenti.SelectedValue); ;
+
+            updateLotto.conferente = txtConferente.Text;
+            updateLotto.anno = txtAnno.Text;
+            updateLotto.tipo_lotto = txtTipoLotto.Text;
+            updateLotto.numero_pezzi = Convert.ToInt32(txtNumeroPezzi.Text);
+            updateLotto.descrizione = txtDescrizione.Text;
+            updateLotto.prezzo_base = Convert.ToInt32(txtPrezzoBase.Text);
+            updateLotto.euro = txtEuro.Text;
+            updateLotto.riferimento_sassone = txtRiferimentoSassone.Text;
+            updateLotto.id = Convert.ToInt32(currentIdLotto);
+
+            Boolean result = LottiGateway.InsertLotto(updateLotto);
+            if (result) Response.Redirect("~/Management/Lotto.aspx");
         }
     }
 }
