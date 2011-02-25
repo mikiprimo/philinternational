@@ -1,13 +1,16 @@
 ﻿/* DEFAULTS ------------------------------------*/
 html{background-color:transparent;}
 body{background-color:#FFF;width:990px;height:100%;font-family: Verdana, Geneva, sans-serif;font-size: 10px;clear:both;color:#000000;margin:0px auto;}
-select,input,textarea{clear:both;color:#000000;background-color:#FFC;border:1px solid #eaeaea;}
+select,input,textarea{clear:both;color:#000000;background-color:#FFC;border:1px solid #000;}
 select:hover,input:hover,textarea:hover{background-color:#eaeaea;border:1px solid #000;}
 select:focus,input:focus,textarea:focus{color:#920000;border:1px solid #000}
 option:hover{line-height:25px;overflow:hidden}
 h1,h2,h3,h4,h5,h6{margin:0px;padding:0px;font-family: "Arial";}
 form,p,ul,li{margin:0px;padding:0px;}
 ul{list-style:none}
+img{border:0px;}
+a{text-decoration:none;color:#920000;font-weight:bold}
+a:hover{text-decoration:underline;}
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
 #page
@@ -46,7 +49,7 @@ ul{list-style:none}
 #header .loginDisplay a:hover{color: #920000;}
 
 #main  {float: left;width:55%;  }
-#main  h1{text-align:center;font-weight:bold;font-size:1.4em;color:#F00;padding:3px}
+#main  h1{text-align:center;font-weight:bold;font-size:1.4em;color:#000;padding:3px}
 #main  h2,h3{line-height:20px;font-weight:bold;font-size:1.2em;color:#000}
 #main  h4{line-height:18px;font-weight:bold;font-size:1.0em;color:#000}
 #main  h5{line-height:16px;font-weight:bold;font-size:0.9em;color:#000}
@@ -68,65 +71,18 @@ ul{list-style:none}
 #leftmenu {float:left;width:25%;padding:0px 0px 20px 0px;min-height:400px;}
 #rightmenu{float:right;width:20%;padding:0px 0px 20px 0px;min-height:400px;}
 
-#presentazione h1{font-size:1.4em;color:#F00;text-transform:uppercase}
-#presentazione p{margin:1px 0px;font-size:1.2em;padding:4px 0px;}
-#presentazione span{color:#F00;font-weight:bold;}
+#presentazione h1{color:#000;text-transform:uppercase;padding:10px 5px;font-size:2.0em;letter-spacing:3px;}
+#presentazione span{font-size:2.0em;font-weight:bold;display:block;padding:5px 0px;color:#F00;}
 #presentazione a{text-decoration:none;}
 #presentazione a:hover{text-decoration:underline}
-/* TAB MENU   
-----------------------------------------------------------*/
-/*
-div.hideSkiplink{background-color: #3a4f63;width: 100%;}
-div.menu{padding: 0px 3px}
-div.menu ul{list-style: none;margin: 0px 0px 5px 0px;padding: 0px;width: auto;}
-div.menu ul li a, div.menu ul li a:visited{
-    display: block;
-    line-height: 1.35em;
-    text-decoration: none;
-    white-space: nowrap;
-    font-size:12px;
-    margin:2px 0px;
-    color:#000;
-}
+ .lato1 {float:left;width:48%;padding:5px;font-size:1.5em;height:80px;text-align:center;}
+ .lato2{float:right;width:48%;padding:5px;font-size:1.5em;height:80px;text-align:center;}
 
-div.menu ul li a:hover
-{
-    background-color: #bfcbd6;
-    color: #465c71;
-    text-decoration: none;
-}
 
-div.menu ul li a:active
-{
-    background-color: #465c71;
-    color: #cfdbe6;
-    text-decoration: none;
-}
-*/
-/* FORM ELEMENTS   
-----------------------------------------------------------*/
-
-fieldset
-{
-    margin: 1em 0px;
-    padding: 1em;
-    border: 1px solid #ccc;
-}
-
-fieldset p
-{
-    margin: 2px 12px 10px 10px;
-}
-
-fieldset.login label, fieldset.register label, fieldset.changePassword label
-{
-    display: block;
-}
-
-fieldset label.inline
-{
-    display: inline;
-}
+fieldset{margin: 1em 0px;padding: 1em;border: 1px solid #ccc;}
+fieldset p{margin: 2px 12px 10px 10px;}
+fieldset.login label, fieldset.register label, fieldset.changePassword label{display: block;}
+fieldset label.inline{display: inline;}
 
 legend{font-size: 1.1em;font-weight: 600;padding: 2px 4px 8px 4px;}
 
@@ -159,16 +115,21 @@ p.descrizioneLotto{padding:5px;}
 .bloccoLotto p{padding:3px;margin:2px 0px;}
 .bloccoLotto span{font-weight:bold;}
  
-.lottoOfferta{text-align:center;font-weight:bold;}
-.lottoOfferta a{display:block;height:20px;text-decoration:none;padding:3px}
+.lottoOfferta{font-weight:bold;}
+.lottoOfferta a{display:inline;text-decoration:none;padding:5px}
 .lottoOfferta a:focus{color:#FF0000}
 .lottoOfferta a:hover{color:#920000;text-decoration:underline;}
+p.lottoOffertadescrizione{height:60px;padding:3px;text-align:justify;overflow:hidden;display:block}
 .offerta_fatta{height:20px;color:#000;}
 
-.bloccoOfferta{text-align:center;}
+.bloccoOfferta{text-align:left}
 .bloccoOfferta p{margin:15px 0px}
 .bloccoOfferta img{padding:5px 30%;  border:0px;}
 .bloccoOfferta span{font-weight:bold;}
+
+.gilardiFilatelia{float:left;width:100%;overflow:hidden;border:1px dashed #707070;margin:1px 0px 4px 0px}
+.gilardiFilatelia:hover{background-color:#eee}
+.gilardiFilatelia p{text-align:left;padding:3px}
 
 .evidenziatore{background-color:transparent;margin:2px;padding:2px}
 .evidenziatore:hover,.evidenziatore:focus,.evidenziatore:active{background-color:transparent;}
@@ -193,47 +154,6 @@ ul li.argomento a:hover
 ul li.subargomento a{display:block;text-decoration:none;margin:1px 0px;color:#060}
 ul li.subargomento a:hover{text-decoration:underline;color:#920000;}
 
-/* jquery */
-/*
-.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
-
-.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
-.ui-dialog .ui-dialog-titlebar { padding: .5em 1em .3em; position: relative;  }
-.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .2em 0; } 
-.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
-.ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
-.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
-.ui-dialog .ui-dialog-content { position: relative; border: 0; padding: .5em 1em; background: none; overflow: auto; zoom: 1; }
-.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
-.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
-.ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
-.ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
-  
-.ui-draggable .ui-dialog-titlebar { cursor: move; }
-
-
-.ui-corner-tl { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; }
-.ui-corner-tr { -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; }
-.ui-corner-bl { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
-.ui-corner-br { -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
-.ui-corner-top { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; }
-.ui-corner-bottom { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
-.ui-corner-right {  -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
-.ui-corner-left { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
-.ui-corner-all { -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
-
-
-.ui-accordion { width: 100%; }
-.ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
-.ui-accordion .ui-accordion-li-fix { display: inline; }
-.ui-accordion .ui-accordion-header-active { border-bottom: 0 !important; }
-.ui-accordion .ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em .7em; }
-.ui-accordion-icons .ui-accordion-header a { padding-left: 2.2em; }
-.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
-.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; zoom: 1; }
-.ui-accordion .ui-accordion-content-active { display: block; }
-
-*/
 /*shadowbox */
 #sb-title-inner,#sb-info-inner,#sb-loading-inner,div.sb-message{font-family:"HelveticaNeue-Light","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:200;color:#fff;}
 #sb-container{position:fixed;margin:0;padding:0;top:0;left:0;z-index:999;text-align:left;visibility:hidden;display:none;}
@@ -266,7 +186,7 @@ ul li.subargomento a:hover{text-decoration:underline;color:#920000;}
 div.sb-message{font-size:12px;padding:10px;text-align:center;}
 div.sb-message a:link,div.sb-message a:visited{color:#fff;text-decoration:underline;}
 /* news ticker*/
-div#info {float:left;width:100%;}
+div#info {float:left;width:100%;background-color:#eaeaea}
 div#info.ok {border-left-color: #ACD083;}
 div#info.otravez {border-left-color: #DC7873}
 div#info ul {margin-top: 10px;}
@@ -277,21 +197,21 @@ div#info ul li img {border: 1px solid #ccc;}
 ul#ticker {height:130px;overflow: hidden;}
 ul#ticker li {width:100%;height:130px;overflow:hidden }
 ul#ticker li p{padding:5px;overflow:hidden;height:90px; text-align:justify}
-ul#ticker li a {color: #666;}
-ul#ticker li span {color: #06C;font-size:1.4em;margin:3px 0px;font-weight:bold;text-transform:uppercase;display:block;}
+/*ul#ticker li a {color: #666;}*/
+ul#ticker li span {color:#000;font-size:1.4em;margin:3px 0px;font-weight:bold;text-transform:uppercase;display:block;}
 
 /* div per numero pagina*/
-.numPagina{width:100%;height:20px;line-height:20px;}
+.numPagina{width:100%;height:30px;line-height:30px;}
 .numPagina ul li{display:inline;margin:0px 2px;padding:3px;font-size:12px;}
-.numPagina ul li a{text-decoration:none;color:#999}
-.numPagina ul li a:hover{text-decoration:underline;color:#920000}
+.numPagina ul li a{}
+.numPagina ul li a:hover{}
 /**/
 .navigazione{width:100%;}
-.navigazione ul li{display:inline;margin:0px 2px;padding:3px;font-size:11px;}
+.navigazione ul li{display:inline;margin:0px 2px;padding:3px;font-family: "Arial";font-size:13px;color:#000;font-weight:bold}
 .navigazione ul li a{text-decoration:none;}
 .navigazione ul li a:hover{text-decoration:underline;}
 
-.navTit1 a{font-family: "Arial";font-size:12px;color:#000}
+.navTit1 a{font-family: "Arial";font-size:13px;color:#000;font-weight:bold}
 .navTit2 a{font-family: "Arial";font-size:12px;color:#920000}
 /* messaggistica errore*/
 .failureNotification{font-size: 1.2em;color: #F00;}
@@ -314,7 +234,36 @@ a.remove{text-align:center;line-height:20px;text-decoration:none;padding:5px}
 
 hr{line-height:1px;width:100%;background-color:#006}
 
-
-
 a.bottone{ border:1px solid #920000; color:#920000;font-weight:bold;text-decoration:none;line-height:25px;height:25px;background-color:#fff;padding:5px}
 a.bottone:hover{ border:1px solid #060;color:#060;cursor:auto}
+/* default*/
+.scrollable {position:relative;overflow:hidden;width: 450px;height:200px;float:left;}
+.scrollable .items {width:20000em;position:absolute;clear:both;}
+.items div {float:left;width:480px;}
+
+.scrollable img {
+	float:left;
+    margin:5px;
+	background-color:#fff;
+	padding:2px;
+	border:1px solid #ccc;
+	width:100px;
+	height:100px;	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+
+.scrollable .active {border:2px solid #000;position:relative;cursor:default;}
+a.browse {background:url(../images/styles/hori_large.png) no-repeat;display:block;width:30px;height:30px;float:left;margin:40px 10px;cursor:pointer;font-size:1px;}
+a.right 				{ background-position: 0 -30px; clear:right; margin-right: 0px;}
+a.right:hover 		{ background-position:-30px -30px; }
+a.right:active 	{ background-position:-60px -30px; } 
+a.left				{ margin-left: 0px; } 
+a.left:hover  		{ background-position:-30px 0; }
+a.left:active  	{ background-position:-60px 0; }
+a.disabled {visibility:hidden !important;} 	
+.navi {margin-left:200px;width:200px;height:20px;}
+.navi a {background:url(../images/styles/navigator.png) 0 0 no-repeat;width:8px;height:8px;float:left;margin:3px;display:block;font-size:1px;}
+
+.navi a:hover {background-position:0 -8px;}
+.navi a.active {	background-position:0 -16px;}

@@ -170,7 +170,8 @@ namespace Philinternational
             recordperPagina = Convert.ToInt32(limiteLotto) / limitForPage;
             if (recordperPagina <= 1)
             {
-                Esito = "<div class=\"numPagina\">&nbsp;</div>";
+                //Esito = "<div class=\"numPagina\">&nbsp;</div>";
+                Esito = "";
             }
             else
             {
