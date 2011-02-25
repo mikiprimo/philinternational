@@ -37,7 +37,7 @@ namespace Philinternational.Management
         {
             CheckBox chk = ((CheckBox)sender);
             String idNews = chk.Attributes["MyIDNews"].ToString();
-            NewsGateway.UpdateNewsStateById(idNews, chk.Checked ? 1 : 0);
+            GilardiFilateliaGateway.UpdateRowStateById(idNews, chk.Checked ? 1 : 0);
             chk.Text = Commons.GetStatoDescription(chk.Checked ? 1 : 0);
         }
         //CANCELLAZIONE NEWS

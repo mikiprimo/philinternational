@@ -78,6 +78,7 @@
     <Content Include="Documentation\table_carrello.sql" />
     <Content Include="Documentation\table_lotto_tmp.sql" />
     <Content Include="Error.aspx" />
+    <Content Include="googlea3e06cc1203156e3.html" />
     <Content Include="images\accept.png" />
     <Content Include="images\add.png" />
     <Content Include="images\asta\16.jpg" />
@@ -110,6 +111,7 @@
     <Content Include="images\shadowbox\previous.png" />
     <Content Include="images\styles\bottone.png" />
     <Content Include="images\styles\hori_large.png" />
+    <Content Include="images\styles\navigator.png" />
     <Content Include="images\styles\ul_argomento.png" />
     <Content Include="images\webControls\gridview_update.png" />
     <Content Include="images\webControls\select_gridview.png" />
@@ -134,8 +136,11 @@
     <Content Include="Management\Offerta.aspx" />
     <Content Include="Management\Paragrafo.aspx" />
     <Content Include="Management\UploadLotti.aspx" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\google_analytics_tracks.js" />
-    <Content Include="Styles\default.css" />
+    <Content Include="Scripts\jquery-1.5.min.js" />
+    <Content Include="Scripts\jquery.tools.min.js" />
+    <Content Include="sitemap.xml" />
     <Content Include="UserControls\LottoDetailEditingMask.ascx" />
     <Content Include="UserControls\UserProfileMask.ascx" />
     <Content Include="Scripts\external\jquery.bgiframe-2.1.2.js" />
@@ -158,6 +163,7 @@
     <Content Include="Varie\condizioniVendita.aspx" />
     <Content Include="Varie\contatti.aspx" />
     <Content Include="Varie\dovesiamo.aspx" />
+    <Content Include="Varie\ordineGilardiFilatelia.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -459,6 +465,13 @@
     </Compile>
     <Compile Include="Varie\dovesiamo.aspx.designer.cs">
       <DependentUpon>dovesiamo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Varie\ordineGilardiFilatelia.aspx.cs">
+      <DependentUpon>ordineGilardiFilatelia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Varie\ordineGilardiFilatelia.aspx.designer.cs">
+      <DependentUpon>ordineGilardiFilatelia.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

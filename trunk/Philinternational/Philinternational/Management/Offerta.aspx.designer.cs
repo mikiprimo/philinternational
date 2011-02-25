@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Philinternational.Styles {
+namespace Philinternational {
     
     
-    public partial class Offerta {
+    public partial class OffertaFinale {
         
         /// <summary>
         /// estraiLotto control.
@@ -29,6 +29,15 @@ namespace Philinternational.Styles {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton elencoCompleto;
+        
+        /// <summary>
+        /// elencoAssegnati control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton elencoAssegnati;
         
         /// <summary>
         /// fldMessaggi control.

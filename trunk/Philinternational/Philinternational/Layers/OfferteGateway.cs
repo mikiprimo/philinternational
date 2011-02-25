@@ -41,6 +41,17 @@ namespace Philinternational.Layers
                 return true;
             else return false;
         }
+        public String checkOffertaGiaAssegnata(String idOfferta)
+        {
+            String a = "";
+            String sql = "SELECT assegnazione FROM offerta_per_corrispondenza WHERE idofferta=" + idOfferta + "";
+            DataView dr = ConnectionGateway.SelectQuery(sql);
+            if (dr.Count > 0){
+                a = dr[0]["assegnazione"].ToString();
+            }
+            return a;
+            
+        }
         public Boolean DeleteOfferta(int idOfferta) {
             String sql = "DELETE FROM offerta_per_corrispondenza where idofferta =" + idOfferta;
             int a = ConnectionGateway.ExecuteQuery(sql, "offerta_per_corrispondenza");
