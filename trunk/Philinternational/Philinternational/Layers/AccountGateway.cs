@@ -38,7 +38,7 @@ namespace Philinternational.Layers {
                     myLogInfos.dom_comune = dr["dom_comune"] == System.DBNull.Value ? "" : (String)dr["dom_comune"];
                     myLogInfos.dom_provincia = dr["dom_provincia"] == System.DBNull.Value ? "" : (String)dr["dom_provincia"];
                     myLogInfos.dom_nazione = dr["dom_nazione"] == System.DBNull.Value ? "" : (String)dr["dom_nazione"];
-                    myLogInfos.stato = (int)dr["stato"];
+                    myLogInfos.Stato = (int)dr["stato"];
                     myLogInfos.idprofilo = (int)dr["idprofilo"];
                     myLogInfos.datainserimento = (DateTime)dr["data_inserimento"];
                 }

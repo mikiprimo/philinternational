@@ -2,60 +2,50 @@
 using System.Collections.Generic;
 using System.Web;
 
-namespace Philinternational
-{
-    public class logInfos
-    {
+namespace Philinternational {
+    public class logInfos {
         private String _eMail;
-        public String eMail
-        {
+        public String eMail {
             get { return _eMail; }
             set { _eMail = value; }
         }
 
         private String _Password;
-        public String Password
-        {
+        public String Password {
             get { return _Password; }
             set { _Password = value; }
         }
 
         private String _RoleDescription;
-        public String RoleDescription
-        {
+        public String RoleDescription {
             get { return _RoleDescription; }
-            set
-            {
+            set {
                 _RoleDescription = value;
-                if (value == "Amministratore" || value == "webmaster")
-                {
+                if (value == "Amministratore" || value == "webmaster") {
                     this._IsAdmin = true;
-                }
-                else this._IsAdmin = false;
+                } else this._IsAdmin = false;
+
                 this._IsAuthenticated = true;
             }
         }
 
         private int _Role;
-        public int Role
-        {
+        public int Role {
             get { return _Role; }
             set { _Role = value; }
         }
 
         private Boolean _IsAdmin = false;
-        public Boolean IsAdmin
-        {
+        public Boolean IsAdmin {
             get { return this._IsAdmin; }
         }
 
         private Boolean _IsAuthenticated = false;
-        public bool IsAuthenticated
-        {
+        public bool IsAuthenticated {
             get { return this._IsAuthenticated; }
         }
         private int _idAnagrafica;
-        public int idAnagrafica{
+        public int idAnagrafica {
             get { return _idAnagrafica; }
             set { _idAnagrafica = value; }
         }
@@ -77,18 +67,23 @@ namespace Philinternational
         public string dom_comune;
         public string dom_provincia;
         public string dom_nazione;
-        public int stato;
+        private int stato;
+
+        public int Stato {
+            get { return stato; }
+            set {
+                stato = value;
+            }
+        }
         public int idprofilo;
         public DateTime datainserimento;
 
-        public logInfos(String newUser, String newPassword)
-        {
+        public logInfos(String newUser, String newPassword) {
             this._eMail = newUser;
             this._Password = newPassword;
         }
 
-        public logInfos()
-        {
+        public logInfos() {
             this._IsAdmin = false;
             this._IsAuthenticated = false;
         }
