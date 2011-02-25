@@ -51,6 +51,15 @@
                     $tb.val(this.title); $tb.addClass("water");
                 }
             });
+
+            $("#mostrabox").click(function () {
+                var box = $('#box');
+                if (box.is(':visible')) {
+                    box.hide('explode');
+                } else {
+                    box.show('blind');
+                }
+            });
         });
         
 
@@ -103,7 +112,7 @@
         <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
-        <div id="rightmenu" style="background-color:#eaeaea">
+        <div id="rightmenu">
             <div id="shortBasketOutput" runat="server"></div>
             <div id="areaGilardi" runat="server"></div>
         </div>

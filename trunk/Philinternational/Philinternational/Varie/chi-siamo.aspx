@@ -3,5 +3,6 @@
             <title>PhilInternational: Chi siamo</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-chi siamo
+<h1>Chi Siamo</h1>
+<p>A breve, vi diremo chi siamo e qual'è la nostra storia. Una storia di generazione che tramandato la passione per questa attività</p>
 </asp:Content>
