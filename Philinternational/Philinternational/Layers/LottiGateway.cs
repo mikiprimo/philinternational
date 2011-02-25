@@ -151,9 +151,9 @@ namespace Philinternational.Layers {
         internal static bool InsertLotto(lottoEntity newLotto) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(INSERT_LOTTO_TEMPORANEO, conn);
+            MySqlCommand command = new MySqlCommand(INSERT_LOTTO, conn);
             command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("idcatalogo", newLotto.id);
+            command.Parameters.AddWithValue("idlotto", newLotto.id);
             command.Parameters.AddWithValue("id_argomento", newLotto.id_argomento);
             command.Parameters.AddWithValue("id_subargomento", newLotto.id_subargomento);
             command.Parameters.AddWithValue("conferente", newLotto.conferente);
