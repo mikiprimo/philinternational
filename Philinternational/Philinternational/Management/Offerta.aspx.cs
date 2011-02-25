@@ -1,20 +1,24 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
+using System.Web.Security;
 using System.Web.UI.WebControls;
+using System.Web.Services;
 using Philinternational.Layers;
 using MySql.Data.MySqlClient;
+using System.Configuration;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
 
-namespace Philinternational.Styles
+namespace Philinternational
 {   
-    public partial class Offerta : System.Web.UI.Page
+    public partial class OffertaFinale : System.Web.UI.Page
     {
-        String sqlOfferta = "SELECT a.idofferta idofferta,a.idanagrafica idanagrafica,a.idlotto idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento,a.assegnazione assegnazione FROM offerta_per_corrispondenza a, anagrafica b WHERE a.idanagrafica = b.idanagrafica AND assegnazione='' ORDER BY idlotto ASC, prezzo_offerto DESC , data_inserimento ASC";
+        String sqlOfferta = "SELECT a.idofferta idofferta,a.idanagrafica idanagrafica,a.idlotto idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento,a.assegnazione assegnazione FROM offerta_per_corrispondenza a, anagrafica b WHERE a.idanagrafica = b.idanagrafica AND assegnazione ='' ORDER BY idlotto ASC, prezzo_offerto DESC , data_inserimento ASC";
+        String sqlShowAssegnati = "SELECT a.idofferta idofferta,a.idanagrafica idanagrafica,a.idlotto idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento,a.assegnazione assegnazione FROM offerta_per_corrispondenza a, anagrafica b WHERE a.idanagrafica = b.idanagrafica AND assegnazione !='' ORDER BY idlotto ASC, prezzo_offerto DESC , data_inserimento ASC";
         String sqlSwhowAll = "SELECT a.idofferta idofferta,a.idanagrafica idanagrafica,a.idlotto idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento,a.assegnazione assegnazione FROM offerta_per_corrispondenza a, anagrafica b WHERE a.idanagrafica = b.idanagrafica ORDER BY idlotto ASC, prezzo_offerto DESC , data_inserimento ASC";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +29,7 @@ namespace Philinternational.Styles
         }
 
         private void BindData(String sqlToLoad)
-        {    
+        {
             OfferteConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
             OfferteConnector.SelectCommand = sqlToLoad;
             OfferteConnector.DataBind();
@@ -53,17 +57,19 @@ namespace Philinternational.Styles
                          esitoEstrazione.InnerHtml = "Processo di annullamento offerte non vincenti non avvenuto correttamente";
                         break;
             }
-
-
         }
-        protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e) { 
-        
-        
-        }
+
         public void showElencoCompleto(object sender, EventArgs e) {
             BindData(sqlSwhowAll);
         
         }
+
+        public void showElencoAssegnati(object sender, EventArgs e)
+        {
+            BindData(sqlShowAssegnati);
+        }
+
+        
         public void estraiDati(object sender, EventArgs e) {
             esitoEstrazione.InnerHtml = "Estrazione in corso";
             MySqlConnection conn = ConnectionGateway.ConnectDB();
@@ -104,5 +110,24 @@ namespace Philinternational.Styles
             finally{
             }
         }
+
+        protected void R1_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {            
+
+
+            LinkButton btn = ((LinkButton)e.Item.FindControl("assegnaLotto"));
+            String idOfferta = btn.Attributes["myIdOfferta"].ToString();
+            OfferteGateway o  = new OfferteGateway();
+            String esito = o.checkOffertaGiaAssegnata(idOfferta);
+            if (esito.Trim() != "")
+            {
+                ((Label)e.Item.FindControl("lottoAssegnato")).Visible = true;
+                ((Label)e.Item.FindControl("lottoAssegnato")).Text = esito;
+                ((LinkButton)e.Item.FindControl("assegnaLotto")).Visible = false;
+            }
+
+
+        }
+
     }
 }

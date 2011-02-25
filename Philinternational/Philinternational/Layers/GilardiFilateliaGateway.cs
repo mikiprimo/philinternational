@@ -17,7 +17,7 @@ namespace Philinternational.Layers
         private static String SELECTBYID = "SELECT idofferta, idlotto,anno,descrizione,prezzo,stato, DATE_FORMAT(data_inserimento,'%d.%m.%Y') as data_pubblicazione FROM offerta_gilardifilatelia where idofferta=@codice ORDER BY data_inserimento DESC";
         private static String _INSERT = "INSERT INTO offerta_gilardifilatelia (idofferta,idlotto, anno, descrizione, prezzo, stato, data_inserimento) VALUES (@idofferta,@idlotto, @anno, @descrizione, @prezzo, @valueStato, @data_inserimento)";
         private static String _UPDATE = "UPDATE offerta_gilardifilatelia SET idlotto = @idlotto,descrizione = @descrizione,anno = @anno,prezzo = @prezzo,stato = @valueStato,data_inserimento = @data_inserimento WHERE idofferta = @idofferta";
-        private static String _UPDATE_STATE = "UPDATE NEWS SET stato = @stato WHERE idnews = @idNews";
+        private static String _UPDATE_STATE = "UPDATE offerta_gilardifilatelia SET stato = @valueStato WHERE idofferta = @idofferta";
         internal static object SelectRows()
         {
             DataView dv = new DataView();
@@ -168,5 +168,30 @@ namespace Philinternational.Layers
             }
             return true;
         }
+
+        internal static Boolean UpdateRowStateById(string idRow, int newState)
+        {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(_UPDATE_STATE, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idOfferta", idRow);
+            command.Parameters.AddWithValue("valueStato", newState);
+            try
+            {
+                conn.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException)
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+    
     }
 }

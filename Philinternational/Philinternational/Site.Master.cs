@@ -81,15 +81,11 @@ namespace Philinternational
                                     while (drArg.Read())
                                     {
                                         rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0") + "\" />" + (String)drArg["descrizione"] + "</a></li>\n";
-
-
                                     }
                                     argomento += rowArg + "</ul>\n</div>\n";
                                     paragrafo += argomento;
                                 }//fine if
                             }
-                            
-
                         }
                         catch (MySql.Data.MySqlClient.MySqlException)
                         {
@@ -155,7 +151,8 @@ namespace Philinternational
             catch {
                 showBasket = "";
             }
-            return showBasket;
+
+            return "";// showBasket;
         }
         private String viewOfferteFilatelia() {
             String showOfferte = "";
