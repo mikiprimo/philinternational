@@ -184,27 +184,30 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <br />
-            <p>
-                <table>
-                    <tr>
-                        <td>
-                            <asp:CheckBox ID="chkAccettaCondizioni" runat="server" AutoPostBack="True" OnCheckedChanged="chkAccettaCondizioni_CheckedChanged" />
-                            Accetto le <a href="#" onclick="javascript:window.open('CondizioniDiUtilizzo.htm');">
-                                condizioni di utilizzo</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:CheckBox ID="chkNewsLetters" runat="server" Text="Iscriviti alle Newsletters" />
-                        </td>
-                    </tr>
-                </table>
-            </p>
-            <p class="submitButton">
-                <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="Registrati"
-                    ValidationGroup="RegisterUserValidationGroup" OnClick="CreateUserButton_Click"
-                    Visible="False" />
-            </p>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate><p>
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="chkAccettaCondizioni" runat="server" AutoPostBack="True" OnCheckedChanged="chkAccettaCondizioni_CheckedChanged" />
+                                Accetto le <a href="#" onclick="javascript:window.open('CondizioniDiUtilizzo.htm');">
+                                    condizioni di utilizzo</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="chkNewsLetters" runat="server" Text="Iscriviti alle Newsletters" />
+                            </td>
+                        </tr>
+                    </table>
+                </p>
+                    <p class="submitButton">
+                        <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="Registrati"
+                            ValidationGroup="RegisterUserValidationGroup" OnClick="CreateUserButton_Click"
+                            Visible="False" />
+                    </p>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </fieldset>
     </div>
     <div id="divSuccess" runat="server">

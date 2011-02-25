@@ -7,7 +7,7 @@ namespace Philinternational.Layers
 {
     public class AccountLayer
     {
-        internal static bool Authenticate(string eMail, string password)
+        internal static Boolean Authenticate(string eMail, string password)
         {
             logInfos userInfos = AccountGateway.GetUserInfos(eMail, password);
             return userInfos.IsAuthenticated;

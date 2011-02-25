@@ -56,7 +56,7 @@ namespace Philinternational.Layers {
                 conn.Open();
                 command.ExecuteNonQuery();
 
-            } catch (MySqlException) {
+            } catch (MySqlException ex) {
                 return false;
             } finally {
                 conn.Close();
@@ -65,17 +65,14 @@ namespace Philinternational.Layers {
         }
 
         internal static Boolean ExistMail(String mail) {
-            DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(SELECT_MAIL_ESISTENTE, conn)) {
+            using (MySqlCommand command = new MySqlCommand(SELECT_MAIL_ESISTENTE, conn)) {
                 try {
-                    cmd.Parameters.AddWithValue("email", mail);
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     conn.Open();
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                    command.Parameters.AddWithValue("email", mail);
+                    Int32 result = Convert.ToInt32(command.ExecuteScalar());
 
-                    return dt.Rows.Count > 0 ? true : false;
+                    return result > 0 ? true : false;
                 } catch (MySqlException) {
                     return true;
                 }
