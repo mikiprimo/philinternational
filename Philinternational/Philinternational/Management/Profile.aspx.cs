@@ -11,9 +11,12 @@ namespace Philinternational.Management {
             if (!IsPostBack) {
                 if (GeneralUtilities.GetQueryString(Request.QueryString, "email") != null) {
                     this.userProfileMask.oldEmail = GeneralUtilities.GetQueryString(Request.QueryString, "email");
+                } else {
+                    this.userProfileMask.oldEmail = ((logInfos)HttpContext.Current.Session["log"]).eMail;
+                    this.userProfileMask.LoadFormData();
                 }
-                if (this.userProfileMask.oldEmail != null) this.userProfileMask.LoadFormData();
-                else Response.Redirect("~/Management/Default.aspx");
+                //if (this.userProfileMask.oldEmail != null) this.userProfileMask.LoadFormData();
+                //Response.Redirect("~/Default.aspx");
             }
         }
     }

@@ -18,6 +18,7 @@ namespace Philinternational.Styles {
         }
 
         protected void Page_Load(object sender, EventArgs e) {
+            if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
             if (!IsPostBack) {
                 this.selectedParagrafoID = Convert.ToInt32(Request.QueryString["Query"]);
                 BindData();

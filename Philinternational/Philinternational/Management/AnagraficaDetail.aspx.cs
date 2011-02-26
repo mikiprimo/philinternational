@@ -9,7 +9,7 @@ using Philinternational.Layers;
 namespace Philinternational.Management {
     public partial class AnagraficaDetail : System.Web.UI.Page {
         protected void Page_PreInit(object sender, EventArgs e) {
-            //if (!User.Identity.IsAuthenticated) Server.Transfer("~/Default.aspx");
+            if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
         }
 
         protected void Page_Load(object sender, EventArgs e) {

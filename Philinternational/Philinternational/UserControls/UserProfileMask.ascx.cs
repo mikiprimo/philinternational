@@ -10,12 +10,12 @@ using System.Data;
 namespace Philinternational.Management.UserControls {
     public partial class UserProfileMask : System.Web.UI.UserControl {
 
-        public String oldPassword { get { return (String)ViewState["oldPassowrd"]; } set { ViewState["oldPassowrd"] = value; } }
+        public String oldPassword { get { return (String)ViewState["oldPassword"]; } set { ViewState["oldPassword"] = value; } }
         public String oldEmail { get { return (String)ViewState["oldEmail"]; } set { ViewState["oldEmail"] = value; } }
 
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
-                this.oldEmail = GeneralUtilities.GetQueryString(Request.QueryString, "email");
+                if (String.IsNullOrEmpty(this.oldEmail)) this.oldEmail = GeneralUtilities.GetQueryString(Request.QueryString, "email");
             }
         }
 
