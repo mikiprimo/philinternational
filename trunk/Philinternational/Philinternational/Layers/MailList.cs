@@ -103,5 +103,49 @@ namespace Philinternational.Layers {
             esito = SendGenericMail(email, soggetto, BodyMail);
             return esito == "" ? true : false;
         }
+
+        internal static Boolean ContattiToAdministrator(String riferimento, String subject, String mailMittente,String oggetto,String dataComunicazione) {
+            
+            String esitoMail = "";
+            Boolean esito = false;
+            String soggetto = "";
+            String BodyMail = "";
+            soggetto = "[philinternational.it] " + subject;
+            BodyMail = "Il/la signor/signora " + riferimento + ",<br/>";
+            BodyMail += "ha scritto quanto segue:<br/>";
+            BodyMail += "<p>" + oggetto + "</p>";
+            BodyMail += "<p>Alle ore: <b>" + dataComunicazione + "</b></p>";
+            BodyMail += "<p>riferimento Mail: <b>" + mailMittente + "</b></p>";
+            BodyMail += "Cordiali Saluti<br/>O' webmaster<br/>";
+
+            DataView mailAmministratori = Layers.AccountGateway.ListEmailAdministration();
+            if (mailAmministratori.Count > 0)
+            {
+                for (int i = 0; i < mailAmministratori.Count; i++)
+                {
+                    esitoMail = SendGenericMail(mailAmministratori[i]["email"].ToString(), soggetto, BodyMail);
+                }
+            }
+            if (esitoMail != "") esito = true;
+            return esito;
+        }
+        internal static Boolean ContattiToGuest(String riferimento, String subject, String mailMittente, String oggetto) {
+            String esitoMail = "";
+            Boolean esito = false;
+            String soggetto = "";
+            String BodyMail = "";
+            soggetto = "[philinternational.it] COPIA " + subject;
+            BodyMail = "<p>Il/la signor/signora " + riferimento + ",<br/>";
+            BodyMail += "ha scritto quanto segue:</p>";
+            BodyMail += "<p>" + oggetto + "</p>";
+            BodyMail += "<p>riferimento Mail: " + mailMittente + "</p>";
+            BodyMail += "Cordiali Saluti<br/>Lo Staff<br/>";
+            esitoMail = SendGenericMail(mailMittente, soggetto, BodyMail);
+            if (esitoMail != "") esito = true;
+            return esito;
+        }
+
+        internal static Boolean OffertaGilardiFilatelia(){return false;}
+        internal static Boolean OffertaGilardiFilateliaToGuest() { return false; }
     }
 }

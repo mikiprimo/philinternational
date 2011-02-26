@@ -33,7 +33,7 @@ namespace Philinternational.Layers {
 
             } catch (SmtpException ex) {
                 Exception inner = ex.GetBaseException();
-                esito = "Impossibile inviare messaggio: " + inner.Message;
+                esito = "Impossibile inviare il messaggio [ " + inner.Message + "]";
                 return esito;
             }
             return esito;
