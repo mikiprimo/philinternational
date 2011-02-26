@@ -13,8 +13,7 @@
         </label>
     </p>
     <p>
-        <label>
-            Data Pubblicazione:</label><label style="font-weight: bold" runat="server" id="labelDataPubblicazione"></label>
+        <label>Data Pubblicazione:</label><label style="font-weight: bold" runat="server" id="labelDataPubblicazione"></label>
         <asp:Label ID="lblDataPubblicazione" runat="server"></asp:Label>
     </p>
     <p>

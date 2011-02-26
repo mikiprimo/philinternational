@@ -37,7 +37,7 @@ namespace Philinternational.Management {
                 gv.DataSource = GetGatewaySourceFromTabellaLotti(tab);
             } else {
                 DataView dv = GetGatewaySourceFromTabellaLotti(tab);
-                dv.RowFilter = "descrizione LIKE '%" + this.gvFilter + "%'";
+                dv.RowFilter = " descrizione LIKE '%" + this.gvFilter + "%'";
                 gv.DataSource = dv;
             }
             gv.DataBind();
