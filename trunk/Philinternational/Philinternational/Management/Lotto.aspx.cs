@@ -212,7 +212,7 @@ namespace Philinternational.Management {
                     }
                 }
             }
-            if (idcatalogo != "") Response.Redirect("~/Management/LottiDetail.aspx?type=trf&id=" + idcatalogo);
+            if (idcatalogo != "") Response.Redirect("~/Management/LottoDetail.aspx?type=trf&id=" + idcatalogo);
         }
     }
 }
