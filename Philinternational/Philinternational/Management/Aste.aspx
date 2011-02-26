@@ -3,8 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<h1>Gestione Aste
-</h1><hr /><br />
+<h3>Gestione Aste</h3>
+<br />
     <asp:GridView ID="gvAste" runat="server" AllowPaging="True" AutoGenerateColumns="False"
         DataKeyNames="idasta" EmptyDataText="Nessuna asta attualmente presente." GridLines="None"
         ShowHeader="False" onpageindexchanged="gvAste_PageIndexChanged" 

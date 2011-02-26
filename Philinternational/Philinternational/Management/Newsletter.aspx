@@ -2,9 +2,8 @@
     CodeBehind="Newsletter.aspx.cs" Inherits="Philinternational.Styles.Newsletter" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Gestione
-    Newsletter</h1>
-    <hr />
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h3>Gestione Newsletter</h3>
     <br />
     <asp:MultiView ID="mvNewsletterManager" runat="server">
         <asp:View ID="viewGrid" runat="server">

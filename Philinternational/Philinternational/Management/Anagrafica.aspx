@@ -4,8 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <h1>Gestione Anagrafica </h1>
-    <hr />
+    <h3>Gestione Anagrafica </h3>
     <br />
     <asp:TextBox ID="txtStringaRicercaCognome" runat="server" class="water" ToolTip ="Cognome" Text="Cognome" />
     <asp:TextBox ID="txtStringaRicercaMail" runat="server" class="water" ToolTip ="E-Mail" Text="E-Mail" />
