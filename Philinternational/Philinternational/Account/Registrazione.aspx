@@ -214,7 +214,9 @@
         <h1>REGISTRAZIONE EFFETTUATA CON SUCCESSO!</h1>
         <hr />
         <br />
-        <p>Nelle prossime ore la tua posizione verrà verificata e attivata.</p>
+        <h1>Nelle prossime ore la tua posizione verrà verificata e attivata.</h1>
+        <br />
+        <asp:HyperLink ID="hlHomePage" runat="server" NavigateUrl="~/Default.aspx">VAI ALL'HOME PAGE</asp:HyperLink>
         <br />
     </div>
     <br />
