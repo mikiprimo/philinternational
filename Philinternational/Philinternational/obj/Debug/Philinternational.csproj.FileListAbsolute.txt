@@ -3,3 +3,13 @@ D:\PROGETTI\DOTNET\Philinternational\Philinternational\bin\Philinternational.pdb
 D:\PROGETTI\DOTNET\Philinternational\Philinternational\obj\Debug\ResolveAssemblyReference.cache
 D:\PROGETTI\DOTNET\Philinternational\Philinternational\obj\Debug\Philinternational.dll
 D:\PROGETTI\DOTNET\Philinternational\Philinternational\obj\Debug\Philinternational.pdb
+G:\project\Philinternational\Philinternational\bin\Philinternational.dll
+G:\project\Philinternational\Philinternational\bin\Philinternational.pdb
+G:\project\Philinternational\Philinternational\bin\Philinternational.dll.CodeAnalysisLog.xml
+G:\project\Philinternational\Philinternational\bin\Philinternational.dll.lastcodeanalysissucceeded
+G:\project\Philinternational\Philinternational\bin\MySql.Data.dll
+G:\project\Philinternational\Philinternational\bin\MySql.Data.Entity.dll
+G:\project\Philinternational\Philinternational\bin\MySql.Web.dll
+G:\project\Philinternational\Philinternational\obj\Debug\ResolveAssemblyReference.cache
+G:\project\Philinternational\Philinternational\obj\Debug\Philinternational.dll
+G:\project\Philinternational\Philinternational\obj\Debug\Philinternational.pdb
