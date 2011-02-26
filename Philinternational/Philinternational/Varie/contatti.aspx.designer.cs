@@ -10,43 +10,79 @@
 namespace Philinternational {
     
     
-    public partial class conttti {
+    public partial class contatti {
         
         /// <summary>
-        /// lblnomeCognome control.
+        /// fldMessaggio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblnomeCognome;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fldMessaggio;
         
         /// <summary>
-        /// nomeCognome control.
+        /// esitoMessaggio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nomeCognome;
+        protected global::System.Web.UI.WebControls.Label esitoMessaggio;
         
         /// <summary>
-        /// lblEmail control.
+        /// SendMailValidationSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
+        protected global::System.Web.UI.WebControls.ValidationSummary SendMailValidationSummary;
         
         /// <summary>
-        /// txtEmail control.
+        /// lblNomeCognome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.Label lblNomeCognome;
+        
+        /// <summary>
+        /// txtNomeCognome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNomeCognome;
+        
+        /// <summary>
+        /// NomeCognomeRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NomeCognomeRequired;
+        
+        /// <summary>
+        /// LblMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblMail;
+        
+        /// <summary>
+        /// txtEMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEMail;
         
         /// <summary>
         /// EmailRequired control.
@@ -67,22 +103,67 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailRegEx;
         
         /// <summary>
-        /// lblExistMail control.
+        /// lblSubject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblExistMail;
+        protected global::System.Web.UI.WebControls.Label lblSubject;
         
         /// <summary>
-        /// telefono control.
+        /// ListaOggetto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox telefono;
+        protected global::System.Web.UI.WebControls.DropDownList ListaOggetto;
+        
+        /// <summary>
+        /// SubjectRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SubjectRequired;
+        
+        /// <summary>
+        /// lblTesto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTesto;
+        
+        /// <summary>
+        /// txtTesto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTesto;
+        
+        /// <summary>
+        /// TestoRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator TestoRequired;
+        
+        /// <summary>
+        /// chksendCopia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chksendCopia;
         
         /// <summary>
         /// sendMail control.
