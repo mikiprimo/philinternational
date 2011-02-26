@@ -10,6 +10,7 @@ using System.Collections.Generic;
 namespace Philinternational.Management {
     public partial class News : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
+            if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
             if (!IsPostBack) {
                 BindData();
             }

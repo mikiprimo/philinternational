@@ -19,6 +19,7 @@ namespace Philinternational.Management
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
             if (!IsPostBack)
             {
                 String codice = Request["cod"];

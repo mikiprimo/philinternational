@@ -9,7 +9,7 @@ using Philinternational.Layers;
 namespace Philinternational.Management {
     public partial class AstaDetail : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-
+            if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
         }
 
         protected void btnConferma_Click(object sender, EventArgs e) {

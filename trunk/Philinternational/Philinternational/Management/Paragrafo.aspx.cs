@@ -11,6 +11,7 @@ using Philinternational.Layers;
 namespace Philinternational.Styles {
     public partial class Paragrafo : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
+            if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
             if(!IsPostBack) BindData();
         }
 
