@@ -3,13 +3,12 @@
 
 <%@ Import Namespace="System" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Gestione
-    Lotti
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Gestione Lotti
     <asp:Label ID="lblLottiSection" runat="server" Text="Pubblicati"></asp:Label></h1>
     <hr />
     <br />
     <asp:Panel ID="pnlChooseView" runat="server" ClientIDMode="Static" Direction="LeftToRight"
-        HorizontalAlign="Left" ViewStateMode="Enabled" Wrap="False"><span style="valign: center;">
+        HorizontalAlign="Left" ViewStateMode="Enabled" Wrap="False"><span style="text-align: center;">
             Seleziona i lotti che vuoi visualizzare:
             <asp:DropDownList ID="ddlSelectedView" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlSelectedView_SelectedIndexChanged">
                 <asp:ListItem Selected="True" Value="0">Lotti</asp:ListItem>
