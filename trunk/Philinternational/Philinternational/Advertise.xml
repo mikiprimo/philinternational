@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Advertisements>
   <Ad>
-    <ImageUrl>~/images/banner/banner_gilardi_468_60.jpg</ImageUrl>
+    <ImageUrl>~/images/banner/banner_gilardifilatelia_468_60.png</ImageUrl>
     <Height>60</Height>
     <Width>468</Width>
     <NavigateUrl>http://www.gilardifilatelia.it</NavigateUrl>
@@ -10,12 +10,12 @@
     <Keyword>francobolli</Keyword>
   </Ad>
   <Ad>
-    <ImageUrl>~/images/banner/banner_test_468_60.png</ImageUrl>
+    <ImageUrl>~/images/banner/banner_segretibacco.png</ImageUrl>
     <Height>60</Height>
     <Width>468</Width>
-    <NavigateUrl>http://www.gilardifilatelia.it</NavigateUrl>
-    <AlternateText>Prova tecnicaGilardi Filatelia</AlternateText>
+    <NavigateUrl>http://www.isegretidibacco.it</NavigateUrl>
+    <AlternateText>Enoteca i segreti di bacco</AlternateText>
     <Impressions>10000</Impressions>
-    <Keyword>francobolli</Keyword>
+    <Keyword>enoteca</Keyword>
   </Ad>
 </Advertisements>
