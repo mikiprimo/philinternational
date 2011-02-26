@@ -107,13 +107,13 @@
                     <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" />
                     <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
                     <asp:MenuItem Text="Gestione Asta" Value="Gestione Asta" Selectable="False"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" Value="Nuova Asta">
-                    </asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" Value="Nuova Asta"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Management/UploadLotti.aspx" Text="Carica Asta" Value="Carica Asta"></asp:MenuItem>
+
                     <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Elenco Offerte" Value="Offerte"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it" Value="Offerte"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/uploadFiles.aspx" Text="Carica Asta" 
-                        Value="Carica Asta"></asp:MenuItem>
+                    
                 </Items>
                 <StaticHoverStyle BackColor="#666666" ForeColor="White" />
                 <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
