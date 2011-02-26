@@ -15,6 +15,8 @@
                                 <asp:DropDownList ID="ddlArgomenti" runat="server" OnSelectedIndexChanged="ddlArgomenti_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </td>
+                            </tr>
+                            <tr>
                             <td>
                                 Scegli sub argomento:
                             </td>
@@ -57,7 +59,7 @@
         </p>
         <p>
             <asp:Label ID="lblDescrizione" runat="server" AssociatedControlID="txtDescrizione">Descrizione: </asp:Label>
-            <asp:TextBox ID="txtDescrizione" runat="server" CssClass="textEntry"></asp:TextBox>
+            <asp:TextBox ID="txtDescrizione" runat="server" CssClass="textEntry" TextMode="MultiLine" Rows="4" Columns="10"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblPrezzoBase" runat="server" AssociatedControlID="txtPrezzoBase">Prezzo base: </asp:Label>

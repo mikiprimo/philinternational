@@ -96,9 +96,10 @@ namespace Philinternational.UserControls {
 
         protected void ibtnTransferLotto_Click(object sender, ImageClickEventArgs e) {
             lottoEntity updateLotto = new lottoEntity();
-
+            String SubargomentoValue = "0";
             updateLotto.id_argomento = Convert.ToInt32(ddlArgomenti.SelectedValue);
-            updateLotto.id_subargomento = Convert.ToInt32(ddlSubArgomenti.SelectedValue); ;
+            if (ddlSubArgomenti.SelectedValue != "") SubargomentoValue = ddlSubArgomenti.SelectedValue;
+            updateLotto.id_subargomento = Convert.ToInt32(SubargomentoValue);
 
             updateLotto.conferente = txtConferente.Text;
             updateLotto.anno = txtAnno.Text;
