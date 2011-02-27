@@ -134,8 +134,8 @@ p.lottoOffertadescrizione{height:60px;padding:3px;text-align:justify;overflow:hi
 .evidenziatore{background-color:transparent;margin:2px;padding:2px}
 .evidenziatore:hover,.evidenziatore:focus,.evidenziatore:active{background-color:transparent;}
 h3.paragrafo{overflow:hidden;}
-h3.paragrafo a{display:block; font-family: "Arial";color:#000;text-decoration:none;letter-spacing:1px; font-size:12px;text-transform:uppercase}
-h3.paragrafo a:hover,.paragrafo a:active{color:#920000;border:none;}
+h3.paragrafo a{display:block; font-family: "Arial";color:#000;text-decoration:none;font-size:12px;text-transform:uppercase}
+h3.paragrafo a:hover,.paragrafo a:active{color:#920000;border:none;overflow:hidden}
 ul li.argomento a
 {
     height:15px;
@@ -153,6 +153,10 @@ ul li.argomento a:hover
     }
 ul li.subargomento a{display:block;text-decoration:none;margin:1px 0px;color:#060}
 ul li.subargomento a:hover{text-decoration:underline;color:#920000;}
+
+.RowStyle   {   font-weight:normal;   color:#000000;   background-color:#FFFFFF;   }   
+.AlternatingRowStyle   {      font-weight:normal;   color:#000000;   background-color:#EEEEEE;   }   
+.RowStyle:hover, .AlternatingRowStyle:hover   {   font-weight:bold;   color:#FFFFFF;   background-color:#000066;   cursor:hand;   }   >>>>>>> .r338
 
 /*shadowbox */
 #sb-title-inner,#sb-info-inner,#sb-loading-inner,div.sb-message{font-family:"HelveticaNeue-Light","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:200;color:#fff;}
@@ -261,14 +265,23 @@ a.left				{ margin-left: 0px; }
 a.left:hover  		{ background-position:-30px 0; }
 a.left:active  	{ background-position:-60px 0; }
 a.disabled {visibility:hidden !important;} 	
+
 .navi {margin-left:200px;width:200px;height:20px;}
 .navi a {background:url(../images/styles/navigator.png) 0 0 no-repeat;width:8px;height:8px;float:left;margin:3px;display:block;font-size:1px;}
-
 .navi a:hover {background-position:0 -8px;}
 .navi a.active {	background-position:0 -16px;}
+.navi a.active {	background-position:0 -16px;}
 
-/*Gridview Alternating row styles*/
-
-.RowStyle   {   font-weight:normal;   color:#000000;   background-color:#FFFFFF;   }   
-.AlternatingRowStyle   {      font-weight:normal;   color:#000000;   background-color:#EEEEEE;   }   
-.RowStyle:hover, .AlternatingRowStyle:hover   {   font-weight:bold;   color:#FFFFFF;   background-color:#000066;   cursor:hand;   }   
+.linkOpen a{
+    background:url(../images/styles/openClose.png) no-repeat 0px -12px;
+    text-decoration:none;
+    border:0px;
+    margin:0px;
+    height:12px;
+    display:inline;
+}
+.linkOpen a:hover{background:url(../images/styles/openClose.png) no-repeat 0px -12px;}
+ul.listAdmin li{color:#000;}
+ul.listAdmin li a{ display:block;color:#090} 
+.AdminMenu{margin:0px 0px 5px 0px;}
+.AdminMenu h3{border-bottom:1px solid #eee}
