@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server" >
-        <script language="javascript" type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
-        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-ui-1.8.7.custom.min.js") %>"></script>
+        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jqueryCollection.js") %>"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
+        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/commonFunction.js") %>"></script>
         <link rel="icon" href="~/images/favicon.ico" type="image/gif"  />
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
@@ -17,47 +17,9 @@
             <meta name="revisit-after" content="15 days" />
             <meta http-equiv="Cache-Control" content="no-cache" />
         </asp:ContentPlaceHolder>
-    <script type="text/javascript" language="javascript">    
-        Shadowbox.init({handleOversize: "drag",modal: true});
-        $(function () {
-            $("#accordion").accordion({ autoHeight: false, navigation: true });
-            var ticker = function () {
-                setTimeout(function () {
-                    $('#ticker li:first').animate({ marginTop: '-120px' }, 800, function () {
-                        $(this).detach().appendTo('ul#ticker').removeAttr('style');
-                    });
-                    ticker();
-                }, 4000);
-            };
-            ticker();
-            $(".water").each(function () {
-                $tb = $(this);
-                if ($tb.val() != this.title) { $tb.removeClass("water"); }
-            });
-
-            $(".water").focus(function () {
-                $tb = $(this);
-                if ($tb.val() == this.title) { $tb.val(""); $tb.removeClass("water"); }
-            });
-
-            $(".water").blur(function () {
-                $tb = $(this);
-                if ($.trim($tb.val()) == "") {
-                    $tb.val(this.title); $tb.addClass("water");
-                }
-            });
-
-            $("#mostrabox").click(function () {
-                var box = $('#box');
-                if (box.is(':visible')) {
-                    box.hide('explode');
-                } else {
-                    box.show('blind');
-                }
-            });
-        });        
-
-    </script>
+            <style type="text/css">
+            
+            </style>
 </head>
 <body>
     <form runat="server" enctype="multipart/form-data">
@@ -83,6 +45,30 @@
             </div>
         </div>
         <div id="leftmenu">
+            <asp:Panel runat="server" Visible="false" ID="PanelAdmin">
+            <div class="AdminMenu">
+                <h3>Amministrazione&nbsp;<a href="#"  id="admin1" class="linkOpen"></a></h3>
+               <ul class="listAdmin">                    
+                    <li><asp:HyperLink runat="server" ID="linkNews" NavigateUrl="~/Management/news.aspx" Text="News"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ID="linkAnagrafica" NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" ></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ID="linkNewsletter" NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter"></asp:HyperLink></li>
+                </ul> 
+                <h3>Gestione aste <a href="#"  id="admin2" class="linkOpen"></a></h3>
+                <ul class="listAdmin">
+                    <li><asp:HyperLink runat="server" ID="linkLotto" NavigateUrl="~/Management/Lotto.aspx" Text="Lotto"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ID="linkAsta" NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ID="linkUploadFlusso" NavigateUrl="~/Management/UploadLotti.aspx" Text="Carica Asta"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ID="linkOfferte" NavigateUrl="~/Management/Offerta.aspx" Text="Elenco Offerte" Value="Offerte"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ID="linkGilardiFilatelia" NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it"></asp:HyperLink></li>
+                 </ul>
+            <script type="text/javascript" language="javascript">
+
+                $("#admin1").click(function () { $(".listAdmin").slideToggle("slow"); });
+                $("#admin2").click(function () { $(".listAdmin").slideToggle("slow"); });
+                
+            </script>   
+            </div>
+            </asp:Panel>
             <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" EnableViewState="False"
                 IncludeStyleBlock="False" Visible="False" BackColor="#E3EAEB" DynamicHorizontalOffset="2" Font-Names="Verdana" 
                 Font-Size="0.8em" ForeColor="#666666" StaticSubMenuIndent="10px">
@@ -94,8 +80,8 @@
                     <%# Eval("Text") %>
                 </DynamicItemTemplate>
                 <Items>
-                    <asp:MenuItem Text="Amministrazione" Value="Amministrazione" Selectable="False"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo">
+                    <asp:MenuItem Text="Amministrazione" Value="Amministrazione" Selectable="False" Enabled="false"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo" SeparatorImageUrl="~/images/barra.gif">
                     </asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
                     <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" />
@@ -104,7 +90,6 @@
                     <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" Value="Nuova Asta"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Management/UploadLotti.aspx" Text="Carica Asta" Value="Carica Asta"></asp:MenuItem>
-
                     <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Elenco Offerte" Value="Offerte"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it" Value="Offerte"></asp:MenuItem>
                     
