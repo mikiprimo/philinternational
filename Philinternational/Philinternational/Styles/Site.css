@@ -95,7 +95,7 @@ div.accountInfo{width: 75%;}
 
 .clear{clear: both;}
 .title{display: block;float: left;text-align: left;width: auto;}
-
+.testo {display:none}
 .bold{font-weight: bold;}
 .submitButton{text-align: right;padding-right: 10px;}
 .center{text-align:center}
