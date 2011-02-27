@@ -480,7 +480,9 @@
   <ItemGroup>
     <Content Include="Management\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Management\uploadLotto\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Documentation\catalogo 52.rar" />
     <None Include="Documentation\mappatura_campi_upload_lotto.ods" />
