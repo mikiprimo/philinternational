@@ -138,9 +138,9 @@ namespace Philinternational.Management {
         protected void gvLottiPubblicati_RowDataBound(object sender, GridViewRowEventArgs e) {
             if (e.Row.RowType == DataControlRowType.DataRow) {
 
-                DropDownList ddlStati = ((DropDownList)e.Row.Cells[7].FindControl("ddlStati"));
-                String StatoID = ((HiddenField)e.Row.Cells[7].FindControl("hiddenIdStato")).Value;
-                String IDLotto = ((HiddenField)e.Row.Cells[7].FindControl("HiddenIdLotto")).Value;
+                DropDownList ddlStati = ((DropDownList)e.Row.Cells[6].FindControl("ddlStati"));
+                String StatoID = ((HiddenField)e.Row.Cells[6].FindControl("hiddenIdStato")).Value;
+                String IDLotto = ((HiddenField)e.Row.Cells[6].FindControl("HiddenIdLotto")).Value;
 
                 ddlStati.Attributes.Add("CurrentIDLotto", IDLotto);
                 ddlStati.DataTextField = "descrizione";
