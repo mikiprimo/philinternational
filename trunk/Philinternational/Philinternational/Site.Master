@@ -50,6 +50,7 @@
                 <h3>Amministrazione&nbsp;<a href="#"  id="admin1" class="linkOpen"></a></h3>
                <ul class="listAdmin">                    
                     <li><asp:HyperLink runat="server" ID="linkNews" NavigateUrl="~/Management/news.aspx" Text="News"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ID="HyperParagrafo" NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkAnagrafica" NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" ></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkNewsletter" NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter"></asp:HyperLink></li>
                 </ul> 
@@ -81,7 +82,7 @@
                 </DynamicItemTemplate>
                 <Items>
                     <asp:MenuItem Text="Amministrazione" Value="Amministrazione" Selectable="False" Enabled="false"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo" SeparatorImageUrl="~/images/barra.gif">
+                        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo">
                     </asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
                     <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" />

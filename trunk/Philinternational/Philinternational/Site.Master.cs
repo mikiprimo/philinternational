@@ -24,7 +24,7 @@ namespace Philinternational
             if (AccountLayer.IsLogged())
             {
                 this.PanelAdmin.Visible = AccountLayer.IsAdministrator();
-                this.menuLeftAdministration.Visible = AccountLayer.IsAdministrator();
+                this.menuLeftAdministration.Visible = false;//AccountLayer.IsAdministrator();
                 try
                 {
                     ((Label)this.HeadLoginView.FindControl("LoginName")).Text = ((logInfos)Session["log"]).nome;
