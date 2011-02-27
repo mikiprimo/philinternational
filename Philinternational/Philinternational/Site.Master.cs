@@ -17,14 +17,13 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            adBanner.Height = 60;
-            adBanner.Width = 468;
             loadMenuccordion.InnerHtml = LoadMenuAccordion();
             LogoOutput.InnerHtml = loadLogo();
             areaGilardi.InnerHtml = viewOfferteFilatelia();
             //Verifica della visualizzazione Menu left
             if (AccountLayer.IsLogged())
             {
+                this.PanelAdmin.Visible = AccountLayer.IsAdministrator();
                 this.menuLeftAdministration.Visible = AccountLayer.IsAdministrator();
                 try
                 {
