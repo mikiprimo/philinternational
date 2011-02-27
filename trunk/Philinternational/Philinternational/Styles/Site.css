@@ -266,3 +266,9 @@ a.disabled {visibility:hidden !important;}
 
 .navi a:hover {background-position:0 -8px;}
 .navi a.active {	background-position:0 -16px;}
+
+/*Gridview Alternating row styles*/
+
+.RowStyle   {   font-weight:normal;   color:#000000;   background-color:#FFFFFF;   }   
+.AlternatingRowStyle   {      font-weight:normal;   color:#000000;   background-color:#EEEEEE;   }   
+.RowStyle:hover, .AlternatingRowStyle:hover   {   font-weight:bold;   color:#FFFFFF;   background-color:#000066;   cursor:hand;   }   

@@ -11,6 +11,8 @@
         OnRowEditing="gvParagrafi_RowEditing" EmptyDataText="Nessun paragrafo presente"
         OnPageIndexChanging="gvParagrafi_PageIndexChanging" OnRowDataBound="gvParagrafi_RowDataBound"
         GridLines="None" ShowHeader="False" PageSize="15">
+        <RowStyle CssClass="RowStyle" />
+        <AlternatingRowStyle CssClass="AlternatingRowStyle" />
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>

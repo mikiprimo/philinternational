@@ -6,26 +6,27 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <h3>Gestione Anagrafica </h3>
     <br />
-    <asp:TextBox ID="txtStringaRicercaCognome" runat="server" class="water" ToolTip ="Cognome" Text="Cognome" />
-    <asp:TextBox ID="txtStringaRicercaMail" runat="server" class="water" ToolTip ="E-Mail" Text="E-Mail" />
+    <asp:TextBox ID="txtStringaRicercaCognome" runat="server" class="water" ToolTip="Cognome"
+        Text="Cognome" />
+    <asp:TextBox ID="txtStringaRicercaMail" runat="server" class="water" ToolTip="E-Mail"
+        Text="E-Mail" />
     <asp:ImageButton ID="ibtnCercaAnagrafica" runat="server" AlternateText="Cerca" OnClick="ibtnCercaAnagrafica_Click" />
     <asp:ImageButton ID="ibtnCancellaAnagraficheSelezionate" runat="server" AlternateText="Cancella lotti selezionati"
         OnClick="ibtnCancellaAnagraficheSelezionate_Click" />
     <br />
     <br />
-    <asp:GridView ID="gvAnagrafica" runat="server" AllowPaging="True" EnableTheming="True" 
+    <asp:GridView ID="gvAnagrafica" runat="server" AllowPaging="True" EnableTheming="True"
         OnPageIndexChanged="gvAnagrafica_PageIndexChanged" OnPageIndexChanging="gvAnagrafica_PageIndexChanging"
         AutoGenerateColumns="False" DataKeyNames="email" OnRowDataBound="gvAnagrafica_RowDataBound"
-        GridLines="None" EmptyDataText="Non é presente alcuna anagrafica." 
-        PageSize="15">
-
+        GridLines="None" EmptyDataText="Non é presente alcuna anagrafica." PageSize="15">
+        <RowStyle CssClass="RowStyle" />
+        <AlternatingRowStyle CssClass="AlternatingRowStyle" />
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:HiddenField ID="HiddenIdAnagrafica" runat="server" Value='<%# Eval("idanagrafica") %>' />
+                <ItemTemplate><asp:HiddenField ID="HiddenIdAnagrafica" runat="server" Value='<%# Eval("idanagrafica") %>' />
                     <asp:Image ID="imgNewsletterStatus" runat="server" ImageUrl="~/images/newsletters/email_delete.png" />
                 </ItemTemplate>
             </asp:TemplateField>
@@ -34,14 +35,6 @@
                     <asp:HyperLink ID="hlEditAnagrafica" runat="server" NavigateUrl='<%# "~/Management/AnagraficaDetail.aspx?email=" + DataBinder.Eval (Container.DataItem,"email")%>'><%# DataBinder.Eval(Container.DataItem, "cognome") + " " + DataBinder.Eval(Container.DataItem, "nome")%></asp:HyperLink>
                 </ItemTemplate>
             </asp:TemplateField>
-<%--            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:Label ID="lblNome" runat="server" Text='<%# Bind("nome") %>'></asp:Label></ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:Label ID="lblCognome" runat="server" Text='<%# Bind("cognome") %>'></asp:Label></ItemTemplate>
-            </asp:TemplateField>--%>
             <asp:TemplateField HeaderText="mail">
                 <ItemTemplate>
                     <asp:Label ID="lblEmail" runat="server" Text='<%# Bind("email") %>'></asp:Label></ItemTemplate>

@@ -3,11 +3,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"><style
     type="text/css">
-        .style1
-        {
-            width: 300px;
-        }
-    </style>
+                                                                                 .style1
+                                                                                 {
+                                                                                     width: 300px;
+                                                                                 }
+                                                                             </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width: 100%;">
@@ -23,10 +23,10 @@
                 <asp:GridView ID="gvArguments" runat="server" AutoGenerateColumns="False" DataKeyNames="idargomento"
                     EmptyDataText="Nessun argomento associato al paragrafo" EnableModelValidation="True"
                     GridLines="None" OnRowEditing="gvArguments_RowEditing" OnRowUpdating="gvArguments_RowUpdating"
-                    OnSelectedIndexChanging="gvArguments_SelectedIndexChanging" 
-                    ShowHeader="False" AllowPaging="True" 
-                    onpageindexchanged="gvArguments_PageIndexChanged" 
-                    onpageindexchanging="gvArguments_PageIndexChanging">
+                    OnSelectedIndexChanging="gvArguments_SelectedIndexChanging" ShowHeader="False"
+                    AllowPaging="True" OnPageIndexChanged="gvArguments_PageIndexChanged" OnPageIndexChanging="gvArguments_PageIndexChanging">
+                    <RowStyle CssClass="RowStyle" />
+                    <AlternatingRowStyle CssClass="AlternatingRowStyle" />
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
@@ -65,11 +65,11 @@
             <td>
                 <asp:GridView ID="gvSubArguments" runat="server" AutoGenerateColumns="False" DataKeyNames="idsub_argomento"
                     EnableModelValidation="True" OnRowEditing="gvSubArguments_RowEditing" OnRowUpdating="gvSubArguments_RowUpdating"
-                    ShowHeader="False" 
-                    EmptyDataText="Nessun sub argomento associato all'argomento selezionato" 
-                    GridLines="None" AllowPaging="True" 
-                    onpageindexchanged="gvSubArguments_PageIndexChanged" 
-                    onpageindexchanging="gvSubArguments_PageIndexChanging">
+                    ShowHeader="False" EmptyDataText="Nessun sub argomento associato all'argomento selezionato"
+                    GridLines="None" AllowPaging="True" OnPageIndexChanged="gvSubArguments_PageIndexChanged"
+                    OnPageIndexChanging="gvSubArguments_PageIndexChanging">
+                    <RowStyle CssClass="RowStyle" />
+                    <AlternatingRowStyle CssClass="AlternatingRowStyle" />
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
@@ -104,17 +104,15 @@
         <tr>
             <td class="style1">
                 <asp:ImageButton ID="ibtnDeleteSelectedArgs" runat="server" AlternateText="Cancella selezionati"
-                    ToolTip="Argomenti selezionati" onclick="ibtnDeleteSelectedArgs_Click" /><br />
-                <asp:ImageButton ID="ibtnCreateNewArgument" runat="server" 
-                    AlternateText="Crea un nuovo argomento" onclick="ibtnCreateNewArgument_Click" />
+                    ToolTip="Argomenti selezionati" OnClick="ibtnDeleteSelectedArgs_Click" /><br />
+                <asp:ImageButton ID="ibtnCreateNewArgument" runat="server" AlternateText="Crea un nuovo argomento"
+                    OnClick="ibtnCreateNewArgument_Click" />
             </td>
             <td>
                 <asp:ImageButton ID="ibtnDeleteSelectedSubArgs" runat="server" AlternateText="Cancella selezionati"
-                    ToolTip="Sub argomenti selezionati" 
-                    onclick="ibtnDeleteSelectedSubArgs_Click" /><br />
-                <asp:ImageButton ID="ibtnCreateNewSubArgument" runat="server" 
-                    AlternateText="Crea un nuovo sub argomento" 
-                    onclick="ibtnCreateNewSubArgument_Click" />
+                    ToolTip="Sub argomenti selezionati" OnClick="ibtnDeleteSelectedSubArgs_Click" /><br />
+                <asp:ImageButton ID="ibtnCreateNewSubArgument" runat="server" AlternateText="Crea un nuovo sub argomento"
+                    OnClick="ibtnCreateNewSubArgument_Click" />
             </td>
         </tr>
     </table>
