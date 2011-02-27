@@ -2,8 +2,8 @@
     CodeBehind="Newsletter.aspx.cs" Inherits="Philinternational.Styles.Newsletter" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Gestione Newsletter</h3>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h3>Gestione
+    Newsletter</h3>
     <br />
     <asp:MultiView ID="mvNewsletterManager" runat="server">
         <asp:View ID="viewGrid" runat="server">
@@ -11,6 +11,8 @@
                 DataKeyNames="idnewsletter" GridLines="None" ShowHeader="False" OnPageIndexChanged="gvNewsletters_PageIndexChanged"
                 OnPageIndexChanging="gvNewsletters_PageIndexChanging" OnRowEditing="gvNewsletters_RowEditing"
                 OnRowUpdating="gvNewsletters_RowUpdating" EmptyDataText="Newsletter non presenti.">
+                <RowStyle CssClass="RowStyle" />
+                <AlternatingRowStyle CssClass="AlternatingRowStyle" />
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />

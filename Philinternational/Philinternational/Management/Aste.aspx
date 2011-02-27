@@ -2,14 +2,15 @@
     CodeBehind="Aste.aspx.cs" Inherits="Philinternational.Styles.Aste" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<h3>Gestione Aste</h3>
-<br />
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h3>Gestione
+    Aste</h3>
+    <br />
     <asp:GridView ID="gvAste" runat="server" AllowPaging="True" AutoGenerateColumns="False"
         DataKeyNames="idasta" EmptyDataText="Nessuna asta attualmente presente." GridLines="None"
-        ShowHeader="False" onpageindexchanged="gvAste_PageIndexChanged" 
-        onpageindexchanging="gvAste_PageIndexChanging" onrowediting="gvAste_RowEditing" 
-        onrowupdating="gvAste_RowUpdating">
+        ShowHeader="False" OnPageIndexChanged="gvAste_PageIndexChanged" OnPageIndexChanging="gvAste_PageIndexChanging"
+        OnRowEditing="gvAste_RowEditing" OnRowUpdating="gvAste_RowUpdating">
+        <RowStyle CssClass="RowStyle" />
+        <AlternatingRowStyle CssClass="AlternatingRowStyle" />
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />

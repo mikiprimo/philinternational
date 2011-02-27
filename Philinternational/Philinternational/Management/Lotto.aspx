@@ -33,6 +33,8 @@
                 OnPageIndexChanged="gvLottiPubblicati_PageIndexChanged" OnPageIndexChanging="gvLottiPubblicati_PageIndexChanging"
                 AutoGenerateColumns="False" ShowHeader="False" DataKeyNames="idlotto" OnRowDataBound="gvLottiPubblicati_RowDataBound"
                 GridLines="None" EmptyDataText="Non é presente alcun lotto." PageSize="50">
+                <RowStyle CssClass="RowStyle" />
+                <AlternatingRowStyle CssClass="AlternatingRowStyle" />
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
@@ -137,6 +139,8 @@
                 OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging" AutoGenerateColumns="false"
                 ShowHeader="false" DataKeyNames="idcatalogo" GridLines="None" EmptyDataText="Non é presente alcun lotto temporaneo."
                 PageSize="50">
+                <RowStyle CssClass="RowStyle" />
+                <AlternatingRowStyle CssClass="AlternatingRowStyle" />
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
@@ -173,6 +177,8 @@
                 OnPageIndexChanging="gvLottiScartati_PageIndexChanging" AutoGenerateColumns="false"
                 ShowHeader="false" DataKeyNames="idlotto_scartato" GridLines="None" EmptyDataText="Non é presente alcun lotto scartato."
                 PageSize="50">
+                <RowStyle CssClass="RowStyle" />
+                <AlternatingRowStyle CssClass="AlternatingRowStyle" />
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
