@@ -214,7 +214,7 @@ namespace Philinternational.Management {
 
         #endregion
 
-        //TODO: Da disabilitare
+        //TODO: Transfer Obsoleto (da togliere)
         protected void ibtnTransferLotto_Click(object sender, ImageClickEventArgs e) {
             String idcatalogo = "";
 
