@@ -214,5 +214,18 @@ namespace Philinternational.Management {
             }
             if (idcatalogo != "") Response.Redirect("~/Management/LottoDetail.aspx?type=trf&id=" + idcatalogo);
         }
+
+        protected void ibtnAttivaLottiSelezionati_Click(object sender, ImageClickEventArgs e) {
+            List<Int32> list = new List<Int32>();
+
+            foreach (GridViewRow row in gvLottiPubblicati.Rows) {
+                if (row.RowType == DataControlRowType.DataRow) {
+                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
+                    if (chk.Checked) list.Add(Convert.ToInt32(gvLottiPubblicati.DataKeys[row.RowIndex]["idlotto"]));
+                }
+            }
+            if (list.Count > 0) LottiGateway.AttivaLottiSelezionati(list);
+            this.BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
+        }
     }
 }

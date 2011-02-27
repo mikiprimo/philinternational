@@ -356,7 +356,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="list"></param>
         internal static Boolean DeleteLotti(List<Int32> LottiIdToBeErased) {
-            String _DELETE_LOTTI = "DELETE FROM lotto WHERE @ComposedConditions";
+            String DELETE_LOTTI = "DELETE FROM lotto WHERE @ComposedConditions";
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             StringBuilder sb = new StringBuilder();
@@ -365,8 +365,8 @@ namespace Philinternational.Layers {
             }
             sb.Append("1=0");
 
-            _DELETE_LOTTI = _DELETE_LOTTI.Replace("@ComposedConditions", sb.ToString());
-            MySqlCommand command = new MySqlCommand(_DELETE_LOTTI, conn);
+            DELETE_LOTTI = DELETE_LOTTI.Replace("@ComposedConditions", sb.ToString());
+            MySqlCommand command = new MySqlCommand(DELETE_LOTTI, conn);
             command.CommandType = CommandType.Text;
             try {
                 conn.Open();
@@ -455,5 +455,28 @@ namespace Philinternational.Layers {
             return true;
         }
 
+        internal static Boolean AttivaLottiSelezionati(List<int> lottiToBeActivated) {
+            String ACTIVATE_SELECTED_LOTTI = "UPDATE lotto SET stato = 1 WHERE @ComposedConditions";
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            StringBuilder sb = new StringBuilder();
+            foreach (int item in lottiToBeActivated) {
+                sb.Append("idlotto = " + item.ToString() + " OR ");
+            }
+            sb.Append("1=0");
+
+            ACTIVATE_SELECTED_LOTTI = ACTIVATE_SELECTED_LOTTI.Replace("@ComposedConditions", sb.ToString());
+            MySqlCommand command = new MySqlCommand(ACTIVATE_SELECTED_LOTTI, conn);
+            command.CommandType = CommandType.Text;
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
     }
 }
