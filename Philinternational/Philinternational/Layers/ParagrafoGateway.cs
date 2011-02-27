@@ -79,7 +79,7 @@ namespace Philinternational.Layers {
         /// SELECT ARGUMENTS
         /// </summary>
         /// <returns></returns>
-        internal static DataView SelectArgomenti(int idparagrafo) {
+        internal static DataView SelectArgomenti(Int32 idparagrafo) {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
             using (MySqlCommand cmd = new MySqlCommand(_SELECT_ARGUMENTS, conn)) {

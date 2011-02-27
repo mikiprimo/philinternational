@@ -21,6 +21,7 @@ namespace Philinternational.Management {
                 this.BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
             }
             if (txtStringaRicerca.Text.Trim() == "") this.gvFilter = String.Empty;
+            divTransferOptionsPanel.Visible = false;
         }
 
         public String gvFilter {
@@ -157,6 +158,19 @@ namespace Philinternational.Management {
             LottiGateway.UpdateStatoByIDLotto(idlotto, Convert.ToInt32(ddlStati.SelectedValue));
         }
 
+        protected void ibtnAttivaLottiSelezionati_Click(object sender, ImageClickEventArgs e) {
+            List<Int32> list = new List<Int32>();
+
+            foreach (GridViewRow row in gvLottiPubblicati.Rows) {
+                if (row.RowType == DataControlRowType.DataRow) {
+                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
+                    if (chk.Checked) list.Add(Convert.ToInt32(gvLottiPubblicati.DataKeys[row.RowIndex]["idlotto"]));
+                }
+            }
+            if (list.Count > 0) LottiGateway.AttivaLottiSelezionati(list);
+            this.BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
+        }
+
         #endregion
 
         #region LOTTI TEMPORANEI
@@ -200,6 +214,7 @@ namespace Philinternational.Management {
 
         #endregion
 
+        //TODO: Da disabilitare
         protected void ibtnTransferLotto_Click(object sender, ImageClickEventArgs e) {
             String idcatalogo = "";
 
@@ -215,17 +230,70 @@ namespace Philinternational.Management {
             if (idcatalogo != "") Response.Redirect("~/Management/LottoDetail.aspx?type=trf&id=" + idcatalogo);
         }
 
-        protected void ibtnAttivaLottiSelezionati_Click(object sender, ImageClickEventArgs e) {
+
+        protected void ibtnOpenTransferPanel_Click(object sender, ImageClickEventArgs e) {
+            PopulateTransferPanel();
+        }
+
+        private void PopulateTransferPanel() {
+            divTransferOptionsPanel.Visible = true;
+            ddlPar.DataSource = ParagrafoGateway.SelectParagrafi();
+            ddlPar.DataBind();
+            if (ddlPar.Items.Count == 1) PopulateDdlArgs(ddlPar.SelectedValue);
+        }
+
+
+        protected void ddlPar_SelectedIndexChanged(object sender, EventArgs e) {
+            DropDownList ddlParagSelected = ((DropDownList)sender);
+            lblNotPresentSubArg.Visible = false;
+            divSubArgPanel.Visible = false;
+            divAttivaFinalPanel.Visible = false;
+            PopulateDdlArgs(ddlParagSelected.SelectedValue);
+        }
+
+        private void PopulateDdlArgs(String selectedParagraph) {
+            divArgPanel.Visible = true;
+            ddlArg.DataSource = ParagrafoGateway.SelectArgomenti(Convert.ToInt32(selectedParagraph));
+            ddlArg.DataBind();
+            if (ddlArg.Items.Count == 1) PopulateDdlSubArgs(ddlArg.SelectedValue);
+        }
+
+        protected void ddlArg_SelectedIndexChanged(object sender, EventArgs e) {
+            DropDownList ddlArgSelected = ((DropDownList)sender);
+            PopulateDdlSubArgs(ddlArgSelected.SelectedValue);
+        }
+
+        private void PopulateDdlSubArgs(String selectedArgument) {
+            divSubArgPanel.Visible = true;
+            ddlSubArg.DataSource = ParagrafoGateway.SelectSubArgs(Convert.ToInt32(selectedArgument));
+            ddlSubArg.DataBind();
+            if (ddlSubArg.Items.Count == 0) {
+                ddlSubArg.Visible = false;
+                lblNotPresentSubArg.Visible = true;
+                divAttivaFinalPanel.Visible = true;
+            }
+        }
+
+        protected void ibtnTranferMultipleLottiAction_Click(object sender, ImageClickEventArgs e) {
             List<Int32> list = new List<Int32>();
 
-            foreach (GridViewRow row in gvLottiPubblicati.Rows) {
+            foreach (GridViewRow row in gvLottiTemporanei.Rows) {
                 if (row.RowType == DataControlRowType.DataRow) {
                     CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
-                    if (chk.Checked) list.Add(Convert.ToInt32(gvLottiPubblicati.DataKeys[row.RowIndex]["idlotto"]));
+                    if (chk.Checked) {
+                        list.Add(Convert.ToInt32(gvLottiTemporanei.DataKeys[row.RowIndex]["idcatalogo"]));
+                    }
                 }
             }
-            if (list.Count > 0) LottiGateway.AttivaLottiSelezionati(list);
-            this.BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
+            String subArgId = "";
+            if (!lblNotPresentSubArg.Visible) subArgId = ddlSubArg.SelectedValue;
+            LottiGateway.TransferLotti(list, ddlArg.SelectedValue, subArgId, chkAtt.Checked);
+
+            divTransferOptionsPanel.Visible = false;
+        }
+
+        protected void ddlPar_DataBound(object sender, EventArgs e) {
+            PopulateDdlArgs(((DropDownList)sender).SelectedValue);
         }
     }
 }
