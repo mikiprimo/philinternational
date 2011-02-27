@@ -33,7 +33,7 @@
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"
                 OnPageIndexChanged="gvLottiPubblicati_PageIndexChanged" OnPageIndexChanging="gvLottiPubblicati_PageIndexChanging"
                 AutoGenerateColumns="False" ShowHeader="False" DataKeyNames="idlotto" OnRowDataBound="gvLottiPubblicati_RowDataBound"
-                GridLines="None" EmptyDataText="Non é presente alcun lotto." PageSize="15">
+                GridLines="None" EmptyDataText="Non é presente alcun lotto." PageSize="50">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
@@ -89,7 +89,7 @@
             <asp:GridView ID="gvLottiTemporanei" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiTemporanei_PageIndexChanged"
                 OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging" AutoGenerateColumns="false"
                 ShowHeader="false" DataKeyNames="idcatalogo" GridLines="None" EmptyDataText="Non é presente alcun lotto temporaneo."
-                PageSize="15">
+                PageSize="50">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
@@ -130,7 +130,7 @@
             <asp:GridView ID="gvLottiScartati" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiScartati_PageIndexChanged"
                 OnPageIndexChanging="gvLottiScartati_PageIndexChanging" AutoGenerateColumns="false"
                 ShowHeader="false" DataKeyNames="idlotto_scartato" GridLines="None" EmptyDataText="Non é presente alcun lotto scartato."
-                PageSize="15">
+                PageSize="50">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
