@@ -31,13 +31,13 @@ namespace Philinternational.UserControls {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// divArgumentsPanel control.
+        /// divParagrafiPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divArgumentsPanel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divParagrafiPanel;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -47,6 +47,15 @@ namespace Philinternational.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// ddlParagrafo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlParagrafo;
         
         /// <summary>
         /// ddlArgomenti control.
@@ -308,5 +317,23 @@ namespace Philinternational.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ibtnTransferLotto;
+        
+        /// <summary>
+        /// divInsertPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divInsertPanel;
+        
+        /// <summary>
+        /// ibtnInsertNewLotto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnInsertNewLotto;
     }
 }

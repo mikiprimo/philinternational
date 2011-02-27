@@ -3,25 +3,37 @@
 <div id="divRegPanel" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <fieldset class="register"><legend>Modifica lotto</legend><br />
-        <div id="divArgumentsPanel" runat="server">
+        <div id="divParagrafiPanel" runat="server">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <table>
                         <tr>
                             <td>
+                                Scegli paragrafo:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlParagrafo" runat="server" DataValueField="idparagrafo" DataTextField="descrizione"
+                                    AutoPostBack="true" 
+                                    onselectedindexchanged="ddlParagrafo_SelectedIndexChanged"></asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Scegli argomento:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlArgomenti" runat="server" OnSelectedIndexChanged="ddlArgomenti_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlArgomenti" runat="server" DataValueField="idargomento" DataTextField="descrizione"
+                                    AutoPostBack="true" OnSelectedIndexChanged="ddlArgomenti_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </td>
-                            </tr>
-                            <tr>
+                        </tr>
+                        <tr>
                             <td>
                                 Scegli sub argomento:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlSubArgomenti" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlSubArgomenti" runat="server" DataValueField="idsub_argomento"
+                                    DataTextField="descrizione" AutoPostBack="true"></asp:DropDownList>
                             </td>
                         </tr>
                     </table>
@@ -59,7 +71,8 @@
         </p>
         <p>
             <asp:Label ID="lblDescrizione" runat="server" AssociatedControlID="txtDescrizione">Descrizione: </asp:Label>
-            <asp:TextBox ID="txtDescrizione" runat="server" CssClass="textEntry" TextMode="MultiLine" Rows="4" Columns="10"></asp:TextBox>
+            <asp:TextBox ID="txtDescrizione" runat="server" CssClass="textEntry" TextMode="MultiLine"
+                Rows="4" Columns="10"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblPrezzoBase" runat="server" AssociatedControlID="txtPrezzoBase">Prezzo base: </asp:Label>
@@ -89,6 +102,10 @@
         <div id="divTransferPanel" runat="server">
             <asp:ImageButton ID="ibtnTransferLotto" runat="server" AlternateText="Trasferisci Lotto temporaneo sulla tabella Lotti"
                 OnClick="ibtnTransferLotto_Click" Style="width: 14px" />
+        </div>
+        <div id="divInsertPanel" runat="server">
+            <asp:ImageButton ID="ibtnInsertNewLotto" runat="server" 
+                AlternateText="Aggiorna" onclick="ibtnInsertNewLotto_Click" />
         </div>
     </fieldset>
 </div>

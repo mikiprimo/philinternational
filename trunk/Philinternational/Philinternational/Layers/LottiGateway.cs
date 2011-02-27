@@ -199,7 +199,7 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
-            } catch (MySqlException ex) {
+            } catch (MySqlException) {
                 return false;
             } finally {
                 conn.Close();

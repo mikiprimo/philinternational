@@ -142,7 +142,6 @@
     <Content Include="Scripts\jquery.tools.min.js" />
     <Content Include="sitemap.xml" />
     <Content Include="UserControls\LottoDetailEditingMask.ascx" />
-    <Content Include="UserControls\NewLottoMask.ascx" />
     <Content Include="UserControls\UserProfileMask.ascx" />
     <Content Include="Scripts\external\jquery.bgiframe-2.1.2.js" />
     <Content Include="Scripts\external\jquery.cookie.js" />
@@ -367,13 +366,6 @@
     </Compile>
     <Compile Include="UserControls\LottoDetailEditingMask.ascx.designer.cs">
       <DependentUpon>LottoDetailEditingMask.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\NewLottoMask.ascx.cs">
-      <DependentUpon>NewLottoMask.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControls\NewLottoMask.ascx.designer.cs">
-      <DependentUpon>NewLottoMask.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserProfileMask.ascx.cs">
       <DependentUpon>UserProfileMask.ascx</DependentUpon>
