@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="Lotto.aspx.cs" Inherits="Philinternational.Management.Lotto" %>
+    CodeBehind="Lotto.aspx.cs" Inherits="Philinternational.Management.Lotto" EnableEventValidation="false" %>
 
 <%@ Import Namespace="System" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Gestione Lotti
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Gestione
+    Lotti
     <asp:Label ID="lblLottiSection" runat="server" Text="Pubblicati"></asp:Label></h1>
     <hr />
     <br />
@@ -24,12 +25,12 @@
     <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" OnClick="ibtnCercaLotto_Click" />
     <br />
     <asp:MultiView ID="mvLotti" runat="server" ActiveViewIndex="0">
-        <asp:View ID="viewLottiPubblicati" runat="server">
-        <asp:ImageButton ID="ibtnCancellaLottiSelezionati" runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiSelezionati_Click" />
-            <asp:ImageButton ID="ibtnAttivaLottiSelezionati" runat="server" 
-                AlternateText="Attiva lotti selezionati" 
-                onclick="ibtnAttivaLottiSelezionati_Click" />
-            <br /><br />
+        <asp:View ID="viewLottiPubblicati" runat="server"><asp:ImageButton ID="ibtnCancellaLottiSelezionati"
+            runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiSelezionati_Click" />
+            <asp:ImageButton ID="ibtnAttivaLottiSelezionati" runat="server" AlternateText="Attiva lotti selezionati"
+                OnClick="ibtnAttivaLottiSelezionati_Click" />
+            <br />
+            <br />
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"
                 OnPageIndexChanged="gvLottiPubblicati_PageIndexChanged" OnPageIndexChanging="gvLottiPubblicati_PageIndexChanging"
                 AutoGenerateColumns="False" ShowHeader="False" DataKeyNames="idlotto" OnRowDataBound="gvLottiPubblicati_RowDataBound"
@@ -40,7 +41,14 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="hlEditLotto" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=pub&id=" + DataBinder.Eval (Container.DataItem,"idlotto")%>'>Modifica</asp:HyperLink>
+                            <asp:Label ID="lblIdLotto" runat="server" Text='<%# Bind("idlotto") %>'></asp:Label></ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:HyperLink ID="hlEditLotto" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=pub&id=" + DataBinder.Eval (Container.DataItem,"idlotto")%>'>
+                            <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
+                                Text='<%# " [ " + GeneralUtilities.SubString(((String)Eval("descrizione")), 15) + "... ] " %>'></asp:Label>
+                            </asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
@@ -57,15 +65,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>' Text='<%# " [ " + GeneralUtilities.SubString(((String)Eval("descrizione")), 15) + "... ] " %>'></asp:Label></ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
                             <asp:Label ID="lblPrezzoBase" runat="server" Text='<%# Bind("prezzo_base") %>'></asp:Label></ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label ID="lblRiferimentoSassone" runat="server" Text='<%# Bind("riferimento_sassone") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -83,9 +83,62 @@
         </asp:View>
         <asp:View ID="viewLottiTemporanei" runat="server"><asp:ImageButton ID="ibtnCancellaLottiTemporaneiSelezionati"
             runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiTemporaneiSelezionati_Click" />
-            <asp:ImageButton ID="ibtnTransferLotto" runat="server" 
-                AlternateText="Trasferisci lotto nella tabella lotti" 
-                onclick="ibtnTransferLotto_Click" />
+            <asp:ImageButton ID="ibtnTransferLotto" runat="server" AlternateText="Trasferisci lotto nella tabella lotti"
+                OnClick="ibtnTransferLotto_Click" Visible="false" />
+            <asp:ImageButton ID="ibtnOpenTransferPanel" runat="server" AlternateText="Trasferisci lotti..."
+                OnClick="ibtnOpenTransferPanel_Click" />
+            <div id="divTransferOptionsPanel" runat="server" visible="false">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <table>
+                            <tr>
+                                <td>
+                                    Paragrafo:
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="ddlPar" runat="server" DataValueField="idparagrafo" DataTextField="descrizione"
+                                        AutoPostBack="true" OnSelectedIndexChanged="ddlPar_SelectedIndexChanged" OnDataBound="ddlPar_DataBound">
+                                    </asp:DropDownList>
+                                </td>
+                            </tr>
+                            <div id="divArgPanel" runat="server" visible="false">
+                                <tr>
+                                    <td>
+                                        Argomento
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="ddlArg" runat="server" DataValueField="idargomento" DataTextField="descrizione"
+                                            AutoPostBack="true" OnSelectedIndexChanged="ddlArg_SelectedIndexChanged"></asp:DropDownList>
+                                    </td>
+                                </tr>
+                            </div>
+                            <div id="divSubArgPanel" runat="server" visible="false">
+                                <tr>
+                                    <td>
+                                        SubArgomento
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="ddlSubArg" runat="server" DataValueField="idsub_argomento"
+                                            DataTextField="descrizione" AutoPostBack="true"></asp:DropDownList>
+                                        <asp:Label ID="lblNotPresentSubArg" runat="server" Visible="false">Nessun sub argomento presente</asp:Label>
+                                    </td>
+                                </tr>
+                            </div>
+                            <div id="divAttivaFinalPanel" runat="server" visible="false">
+                                <tr>
+                                    <td>
+                                        <asp:CheckBox ID="chkAtt" runat="server" Text="Attiva i trasferiti" AutoPostBack="true" />
+                                    </td>
+                                    <td>
+                                        <asp:ImageButton ID="ibtnTranferMultipleLottiAction" runat="server" AlternateText="Trasferisci"
+                                            OnClick="ibtnTranferMultipleLottiAction_Click" Width="16px" />
+                                    </td>
+                                </tr>
+                            </div>
+                        </table>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
             <asp:GridView ID="gvLottiTemporanei" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiTemporanei_PageIndexChanged"
                 OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging" AutoGenerateColumns="false"
                 ShowHeader="false" DataKeyNames="idcatalogo" GridLines="None" EmptyDataText="Non é presente alcun lotto temporaneo."
@@ -113,7 +166,8 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>' Text='<%# " [ " + GeneralUtilities.SubString(((String)Eval("descrizione")), 15) + "... ] " %>'></asp:Label></ItemTemplate>
+                            <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
+                                Text='<%# " [ " + GeneralUtilities.SubString(((String)Eval("descrizione")), 15) + "... ] " %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -137,7 +191,8 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>' Text='<%# " [ " + ((String)Eval("descrizione")).Substring(0, 15) + "... ] " %>'></asp:Label></ItemTemplate>
+                            <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
+                                Text='<%# " [ " + ((String)Eval("descrizione")).Substring(0, 15) + "... ] " %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
