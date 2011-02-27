@@ -67,6 +67,15 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.HyperLink linkNews;
         
         /// <summary>
+        /// HyperParagrafo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperParagrafo;
+        
+        /// <summary>
         /// linkAnagrafica control.
         /// </summary>
         /// <remarks>
