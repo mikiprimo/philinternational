@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Offerta filatelica per corrsipondenza. PhilInternational" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
 	CodeBehind="Default.aspx.cs" Inherits="Philinternational._Default" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent"></asp:Content>
