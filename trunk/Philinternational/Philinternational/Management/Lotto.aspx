@@ -27,6 +27,8 @@
             runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiSelezionati_Click" />
             <asp:ImageButton ID="ibtnAttivaLottiSelezionati" runat="server" AlternateText="Attiva lotti selezionati"
                 OnClick="ibtnAttivaLottiSelezionati_Click" />
+            <asp:ImageButton ID="ibtnInsertNewLotto" runat="server" AlternateText="Inserisci lotto"
+                OnClick="ibtnInsertNewLotto_Click" />
             <br />
             <br />
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"

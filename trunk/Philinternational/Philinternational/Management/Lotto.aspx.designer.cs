@@ -103,6 +103,15 @@ namespace Philinternational.Management {
         protected global::System.Web.UI.WebControls.ImageButton ibtnAttivaLottiSelezionati;
         
         /// <summary>
+        /// ibtnInsertNewLotto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnInsertNewLotto;
+        
+        /// <summary>
         /// gvLottiPubblicati control.
         /// </summary>
         /// <remarks>

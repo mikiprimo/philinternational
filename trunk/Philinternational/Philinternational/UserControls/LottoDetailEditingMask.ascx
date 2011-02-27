@@ -13,8 +13,8 @@
                             </td>
                             <td>
                                 <asp:DropDownList ID="ddlParagrafo" runat="server" DataValueField="idparagrafo" DataTextField="descrizione"
-                                    AutoPostBack="true" 
-                                    onselectedindexchanged="ddlParagrafo_SelectedIndexChanged"></asp:DropDownList>
+                                    AutoPostBack="true" OnSelectedIndexChanged="ddlParagrafo_SelectedIndexChanged">
+                                </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>
@@ -34,6 +34,9 @@
                             <td>
                                 <asp:DropDownList ID="ddlSubArgomenti" runat="server" DataValueField="idsub_argomento"
                                     DataTextField="descrizione" AutoPostBack="true"></asp:DropDownList>
+                                <div id="divNoSubArguments" runat="server" visible="false">
+                                    <asp:Label ID="lblnoSubArgs" runat="server">Nessun subargomento presente</asp:Label>
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -72,7 +75,7 @@
         <p>
             <asp:Label ID="lblDescrizione" runat="server" AssociatedControlID="txtDescrizione">Descrizione: </asp:Label>
             <asp:TextBox ID="txtDescrizione" runat="server" CssClass="textEntry" TextMode="MultiLine"
-                Rows="4" Columns="10"></asp:TextBox>
+                Rows="4" Columns="50"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblPrezzoBase" runat="server" AssociatedControlID="txtPrezzoBase">Prezzo base: </asp:Label>
@@ -104,8 +107,8 @@
                 OnClick="ibtnTransferLotto_Click" Style="width: 14px" />
         </div>
         <div id="divInsertPanel" runat="server">
-            <asp:ImageButton ID="ibtnInsertNewLotto" runat="server" 
-                AlternateText="Aggiorna" onclick="ibtnInsertNewLotto_Click" />
+            <asp:ImageButton ID="ibtnInsertNewLotto" runat="server" AlternateText="Inserisci"
+                OnClick="ibtnInsertNewLotto_Click" />
         </div>
     </fieldset>
 </div>

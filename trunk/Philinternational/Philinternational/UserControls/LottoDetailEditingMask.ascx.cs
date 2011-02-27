@@ -42,8 +42,7 @@ namespace Philinternational.UserControls {
                     ActivateTransferPanel(true);
                     break;
                 //Voglio inserire un lotto nuovo
-                case "ins": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(this.currentIdLotto));
-                    ActivateInsertPanel();
+                case "ins": ActivateInsertPanel();
                     break;
             }
 
@@ -60,10 +59,12 @@ namespace Philinternational.UserControls {
         }
 
         private void ActivateInsertPanel() {
-            divParagrafiPanel.Visible = false;
+            divParagrafiPanel.Visible = true;
             divTransferPanel.Visible = false;
             divUpdatePanel.Visible = false;
             divInsertPanel.Visible = true;
+
+            PopulateParagrafi();
         }
 
         private void ActivateTransferPanel(Boolean active) {
@@ -76,8 +77,10 @@ namespace Philinternational.UserControls {
         }
 
         private void PopulateParagrafi() {
+            divNoSubArguments.Visible = false;
             ddlParagrafo.DataSource = ParagrafoGateway.SelectParagrafi();
             ddlParagrafo.DataBind();
+            PopulateArgomenti(Convert.ToInt32(ddlParagrafo.SelectedValue));
         }
 
         protected void ddlParagrafo_SelectedIndexChanged(object sender, EventArgs e) {
@@ -88,18 +91,32 @@ namespace Philinternational.UserControls {
         private void PopulateArgomenti(Int32 idparagrafo) {
             ddlArgomenti.DataSource = ParagrafoGateway.SelectArgomenti(idparagrafo);
             ddlArgomenti.DataBind();
+            PopulateSubArgomenti(Convert.ToInt32(ddlArgomenti.SelectedValue));
         }
 
         protected void ddlArgomenti_SelectedIndexChanged(object sender, EventArgs e) {
             DropDownList ddlArgs = ((DropDownList)sender);
-            String MyArgId = ddlArgs.SelectedValue;
-
-            ddlSubArgomenti.DataSource = ParagrafoGateway.SelectSubArgs(Convert.ToInt32(MyArgId));
-            ddlSubArgomenti.DataBind();
+            PopulateSubArgomenti(Convert.ToInt32(ddlArgs.SelectedValue));
         }
+
+        private void PopulateSubArgomenti(Int32 idSubArgomento) {
+            ddlSubArgomenti.DataSource = ParagrafoGateway.SelectSubArgs(idSubArgomento);
+            ddlSubArgomenti.DataBind();
+            if (ddlSubArgomenti.Items.Count == 0) {
+                ddlSubArgomenti.Visible = false;
+                divNoSubArguments.Visible = true;
+            }
+        }
+
+
 
         //TASTI FUNZIONE
 
+        /// <summary>
+        /// Update specified lotto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ibtnUpdateLotto_Click(object sender, ImageClickEventArgs e) {
             lottoEntity updateLotto = new lottoEntity();
 
@@ -144,11 +161,19 @@ namespace Philinternational.UserControls {
             if (result) Response.Redirect("~/Management/Lotto.aspx");
         }
 
+        /// <summary>
+        /// Inserimento nuovo lotto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ibtnInsertNewLotto_Click(object sender, ImageClickEventArgs e) {
             lottoEntity insertLotto = new lottoEntity();
 
             insertLotto.id_argomento = Convert.ToInt32(ddlArgomenti.SelectedValue);
-            insertLotto.id_subargomento = Convert.ToInt32(ddlSubArgomenti.SelectedValue);
+            try {
+                insertLotto.id_subargomento = Convert.ToInt32(ddlSubArgomenti.SelectedValue);
+            } catch (Exception) {
+            }
 
             insertLotto.conferente = txtConferente.Text;
             insertLotto.anno = txtAnno.Text;
@@ -159,11 +184,11 @@ namespace Philinternational.UserControls {
             insertLotto.euro = txtEuro.Text;
             insertLotto.riferimento_sassone = txtRiferimentoSassone.Text;
             insertLotto.id = ConnectionGateway.CreateNewIndex("idlotto", "lotto");
+            insertLotto.state = new Stato(99, "da attivare");
 
             switch (this.currentType) {
                 case "ins": LottiGateway.InsertNewLotto(insertLotto); break;
             }
-
             Response.Redirect("~/Management/Lotto.aspx");
         }
 
