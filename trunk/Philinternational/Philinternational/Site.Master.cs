@@ -161,7 +161,7 @@ namespace Philinternational
                 String sql = "SELECT idlotto,anno,descrizione,prezzo FROM offerta_gilardifilatelia where stato=1 order by rand() LIMIT 4";
                 DataView dr = ConnectionGateway.SelectQuery(sql);
                 if (dr.Count > 0) {
-                    showOfferte += "<h3 style=\"text-transform:uppercase;font-size:10px\">Offerte da www.gilardifilatelia.it</h3>\n";
+                    showOfferte += "<h3 style=\"text-transform:uppercase;text-align:center\">Offerte www.gilardifilatelia.it</h3>\n";
                     for (int i = 0; i < dr.Count; i++) {
                         /* fase temporanea in attesa di ottimizzare il codice*/
                         String imgName = Page.ResolveClientUrl("~/images/gilardifilatelia/") + dr[i]["idlotto"] + ".jpg";
@@ -171,7 +171,8 @@ namespace Philinternational
                         showOfferte += "<p style=\"line-height:20px\"><span style=\"text-decoration:underline\">Anno</span>: <span>" + dr[i]["anno"] + "</span></p>\n";
                         showOfferte += "<p style=\"line-height:20px\"><span style=\"text-decoration:underline\">Prezzo</span>: <span>" + dr[i]["prezzo"] + "</span></p>\n";
                         showOfferte += "<p>" + dr[i]["descrizione"] + "</p>";
-                        showOfferte += "<a href=\"" + Page.ResolveClientUrl("~/Varie/ordineGilardiFilatelia.aspx?cod=" + dr[i]["idlotto"]) + "\">Ordina subito</a><br/><br/>\n";
+                        //showOfferte += "<a href=\"" + Page.ResolveClientUrl("~/Varie/ordineGilardiFilatelia.aspx?cod=" + dr[i]["idlotto"]) + "\">Ordina subito</a><br/><br/>\n";
+                        showOfferte += "<a href=\"" + Page.ResolveClientUrl("~/Varie/ordineGilardiFilatelia.aspx") +"\">Ordina subito</a><br/><br/>\n";
                         showOfferte += "</div>\n";
                     }
                 }

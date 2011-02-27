@@ -2,10 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server" >
-
         <script language="javascript" type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-ui-1.8.7.custom.min.js") %>"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
+        <link rel="icon" href="~/images/favicon.ico" type="image/gif"  />
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
             <title>Offerta filatelica per corrsipondenza</title>
@@ -14,16 +14,11 @@
             <meta name="ROBOTS" content="INDEX,FOLLOW" />
             <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
             <meta name="rating" content="General" />
-            <meta name="revisit-after" content="7 days" />		
+            <meta name="revisit-after" content="15 days" />
             <meta http-equiv="Cache-Control" content="no-cache" />
         </asp:ContentPlaceHolder>
-        <style type="text/css">
-          .testo {display:none}
-        </style>
-    <script type="text/javascript" language="javascript">
-        
+    <script type="text/javascript" language="javascript">    
         Shadowbox.init({handleOversize: "drag",modal: true});
-
         $(function () {
             $("#accordion").accordion({ autoHeight: false, navigation: true });
             var ticker = function () {
@@ -60,8 +55,7 @@
                     box.show('blind');
                 }
             });
-        });
-        
+        });        
 
     </script>
 </head>
