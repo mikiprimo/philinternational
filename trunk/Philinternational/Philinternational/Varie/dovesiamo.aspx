@@ -22,7 +22,7 @@ map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Dove
     siamo</h1>
-    <hr />
+    <br />
     <br />
     via Domenico Cimarosa 11 <br />
     20144 Milano<br />
