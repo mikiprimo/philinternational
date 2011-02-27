@@ -16,62 +16,89 @@ namespace Philinternational.UserControls {
 
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
+                //currentIdLotto non viene usato in caso di nuovo inserimento
                 this.currentIdLotto = GeneralUtilities.GetQueryString(Request.QueryString, "id");
                 this.currentType = GeneralUtilities.GetQueryString(Request.QueryString, "type");
                 LoadFormData();
             }
         }
 
+        /// <summary>
+        /// A seconda della funzionalità scelta nella querystring type definisco e svolgo determinate operazioni sulla form
+        /// </summary>
         private void LoadFormData() {
             DataView lotto = new DataView();
             switch (this.currentType) {
+                //Voglio agire su un oggetto di lotti pubblicati
                 case "pub": lotto = LottiGateway.SelectLottiById(Convert.ToInt32(this.currentIdLotto));
                     ActivateTransferPanel(false);
                     break;
+                //Voglio agire su un oggetto di lotti temporanei
                 case "tmp": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(this.currentIdLotto));
                     ActivateTransferPanel(false);
                     break;
+                //Voglio effettuare un trasferimento del lotto da tmp a lotti pubblicati, verificandone anche i dati (non richiesta ma presente)
                 case "trf": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(this.currentIdLotto));
                     ActivateTransferPanel(true);
                     break;
+                //Voglio inserire un lotto nuovo
+                case "ins": lotto = LottiGateway.SelectLottiTemporaneiById(Convert.ToInt32(this.currentIdLotto));
+                    ActivateInsertPanel();
+                    break;
             }
 
-            txtConferente.Text = lotto[0]["conferente"].ToString();
-            txtAnno.Text = lotto[0]["anno"].ToString();
-            txtTipoLotto.Text = lotto[0]["tipo_lotto"].ToString();
-            txtNumeroPezzi.Text = lotto[0]["numero_pezzi"].ToString();
-            txtDescrizione.Text = lotto[0]["descrizione"].ToString();
-            txtPrezzoBase.Text = lotto[0]["prezzo_base"].ToString();
-            txtEuro.Text = lotto[0]["euro"].ToString();
-            txtRiferimentoSassone.Text = lotto[0]["riferimento_sassone"].ToString();
+            if (this.currentType != "ins") {
+                txtConferente.Text = lotto[0]["conferente"].ToString();
+                txtAnno.Text = lotto[0]["anno"].ToString();
+                txtTipoLotto.Text = lotto[0]["tipo_lotto"].ToString();
+                txtNumeroPezzi.Text = lotto[0]["numero_pezzi"].ToString();
+                txtDescrizione.Text = lotto[0]["descrizione"].ToString();
+                txtPrezzoBase.Text = lotto[0]["prezzo_base"].ToString();
+                txtEuro.Text = lotto[0]["euro"].ToString();
+                txtRiferimentoSassone.Text = lotto[0]["riferimento_sassone"].ToString();
+            }
+        }
+
+        private void ActivateInsertPanel() {
+            divParagrafiPanel.Visible = false;
+            divTransferPanel.Visible = false;
+            divUpdatePanel.Visible = false;
+            divInsertPanel.Visible = true;
         }
 
         private void ActivateTransferPanel(Boolean active) {
-            divArgumentsPanel.Visible = active;
+            divParagrafiPanel.Visible = active;
             divTransferPanel.Visible = active;
             divUpdatePanel.Visible = !active;
+            divInsertPanel.Visible = false;
 
-            if (active) PopulateArgsAndSubArgsDDLs();
+            if (active) PopulateParagrafi();
         }
 
-        private void PopulateArgsAndSubArgsDDLs() {
-            ddlArgomenti.DataValueField = "idargomento";
-            ddlArgomenti.DataTextField = "descrizione";
-            ddlArgomenti.DataSource = ParagrafoGateway.SelectAllArgomenti();
+        private void PopulateParagrafi() {
+            ddlParagrafo.DataSource = ParagrafoGateway.SelectParagrafi();
+            ddlParagrafo.DataBind();
+        }
+
+        protected void ddlParagrafo_SelectedIndexChanged(object sender, EventArgs e) {
+            DropDownList ddlParagrafo = ((DropDownList)sender);
+            PopulateArgomenti(Convert.ToInt32(ddlParagrafo.SelectedValue));
+        }
+
+        private void PopulateArgomenti(Int32 idparagrafo) {
+            ddlArgomenti.DataSource = ParagrafoGateway.SelectArgomenti(idparagrafo);
             ddlArgomenti.DataBind();
         }
 
-        //Popolare la ddlSubArgs in base all'argomento scelto
         protected void ddlArgomenti_SelectedIndexChanged(object sender, EventArgs e) {
             DropDownList ddlArgs = ((DropDownList)sender);
             String MyArgId = ddlArgs.SelectedValue;
 
-            ddlSubArgomenti.DataValueField = "idsub_argomento";
-            ddlSubArgomenti.DataTextField = "descrizione";
             ddlSubArgomenti.DataSource = ParagrafoGateway.SelectSubArgs(Convert.ToInt32(MyArgId));
             ddlSubArgomenti.DataBind();
-
         }
+
+        //TASTI FUNZIONE
 
         protected void ibtnUpdateLotto_Click(object sender, ImageClickEventArgs e) {
             lottoEntity updateLotto = new lottoEntity();
@@ -94,6 +121,8 @@ namespace Philinternational.UserControls {
             Response.Redirect("~/Management/Lotto.aspx");
         }
 
+
+        //TODO: Obsoleta non più utilizzata (Transfer Lotti)
         protected void ibtnTransferLotto_Click(object sender, ImageClickEventArgs e) {
             lottoEntity updateLotto = new lottoEntity();
             String SubargomentoValue = "0";
@@ -114,5 +143,30 @@ namespace Philinternational.UserControls {
             Boolean result = LottiGateway.InsertLotto(updateLotto);
             if (result) Response.Redirect("~/Management/Lotto.aspx");
         }
+
+        protected void ibtnInsertNewLotto_Click(object sender, ImageClickEventArgs e) {
+            lottoEntity insertLotto = new lottoEntity();
+
+            insertLotto.id_argomento = Convert.ToInt32(ddlArgomenti.SelectedValue);
+            insertLotto.id_subargomento = Convert.ToInt32(ddlSubArgomenti.SelectedValue);
+
+            insertLotto.conferente = txtConferente.Text;
+            insertLotto.anno = txtAnno.Text;
+            insertLotto.tipo_lotto = txtTipoLotto.Text;
+            insertLotto.numero_pezzi = Convert.ToInt32(txtNumeroPezzi.Text);
+            insertLotto.descrizione = txtDescrizione.Text;
+            insertLotto.prezzo_base = Convert.ToInt32(txtPrezzoBase.Text);
+            insertLotto.euro = txtEuro.Text;
+            insertLotto.riferimento_sassone = txtRiferimentoSassone.Text;
+            insertLotto.id = ConnectionGateway.CreateNewIndex("idlotto", "lotto");
+
+            switch (this.currentType) {
+                case "ins": LottiGateway.InsertNewLotto(insertLotto); break;
+            }
+
+            Response.Redirect("~/Management/Lotto.aspx");
+        }
+
+
     }
 }
