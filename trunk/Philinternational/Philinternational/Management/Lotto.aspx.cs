@@ -230,7 +230,7 @@ namespace Philinternational.Management {
             if (idcatalogo != "") Response.Redirect("~/Management/LottoDetail.aspx?type=trf&id=" + idcatalogo);
         }
 
-        #region TRANSFER OPERAIONS
+        #region TRANSFER OPERATIONS
 
         protected void ibtnOpenTransferPanel_Click(object sender, ImageClickEventArgs e) {
             PopulateTransferPanel();
