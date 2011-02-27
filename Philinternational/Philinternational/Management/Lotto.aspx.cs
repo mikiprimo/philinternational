@@ -298,5 +298,9 @@ namespace Philinternational.Management {
         }
 
         #endregion
+
+        protected void ibtnInsertNewLotto_Click(object sender, ImageClickEventArgs e) {
+            Response.Redirect("~/Management/LottoDetail.aspx?type=ins");
+        }
     }
 }
