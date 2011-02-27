@@ -46,8 +46,8 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:HyperLink ID="hlEditLotto" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=pub&id=" + DataBinder.Eval (Container.DataItem,"idlotto")%>'>
-                            <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
-                                Text='<%# " [ " + GeneralUtilities.SubString(((String)Eval("descrizione")), 15) + "... ] " %>'></asp:Label>
+                                <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
+                                    Text='<%# " [ " + GeneralUtilities.SubString(((String)Eval("descrizione")), 15) + "... ] " %>'></asp:Label>
                             </asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -57,15 +57,11 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Label ID="lblTipoLotto" runat="server" Text='<%# Bind("tipo_lotto") %>'></asp:Label></ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label ID="lblNumeroPezzi" runat="server" Text='<%# Bind("numero_pezzi") %>'></asp:Label></ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
                             <asp:Label ID="lblPrezzoBase" runat="server" Text='<%# Bind("prezzo_base") %>'></asp:Label></ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label ID="lblEuro" runat="server" Text='<%# Bind("euro") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -149,7 +145,14 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="hlEditLottoTemp" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=tmp&id=" + DataBinder.Eval (Container.DataItem,"idcatalogo")%>'>Modifica</asp:HyperLink>
+                            <asp:Label ID="lblIdCatalogo" runat="server" Text='<%# Bind("idcatalogo") %>'></asp:Label></ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:HyperLink ID="hlEditLottoTemp" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=tmp&id=" + DataBinder.Eval (Container.DataItem,"idcatalogo")%>'>
+                                <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
+                                    Text='<%# " [ " + GeneralUtilities.SubString(((String)Eval("descrizione")), 15) + "... ] " %>'></asp:Label>
+                            </asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
@@ -158,24 +161,11 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Label ID="lblTipoLotto" runat="server" Text='<%# Bind("tipo_lotto") %>'></asp:Label></ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label ID="lblNumeroPezzi" runat="server" Text='<%# Bind("numero_pezzi") %>'></asp:Label></ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
-                                Text='<%# " [ " + GeneralUtilities.SubString(((String)Eval("descrizione")), 15) + "... ] " %>'></asp:Label></ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
                             <asp:Label ID="lblPrezzoBase" runat="server" Text='<%# Bind("prezzo_base") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Label ID="lblRiferimentoSassone" runat="server" Text='<%# Bind("riferimento_sassone") %>'></asp:Label></ItemTemplate>
+                            <asp:Label ID="lblEuro" runat="server" Text='<%# Bind("euro") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
