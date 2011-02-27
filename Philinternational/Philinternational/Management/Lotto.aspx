@@ -6,7 +6,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Gestione
     Lotti
     <asp:Label ID="lblLottiSection" runat="server" Text="Pubblicati"></asp:Label></h1>
-    <hr />
     <br />
     <asp:Panel ID="pnlChooseView" runat="server" ClientIDMode="Static" Direction="LeftToRight"
         HorizontalAlign="Left" ViewStateMode="Enabled" Wrap="False"><span style="text-align: center;">
@@ -18,7 +17,6 @@
             </asp:DropDownList>
         </span></asp:Panel>
     <br />
-    <hr />
     <br />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:TextBox ID="txtStringaRicerca" runat="server" />

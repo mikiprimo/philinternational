@@ -6,7 +6,7 @@
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <div id="divTitolo" runat="server">
         <h2>Registrati per poter fare le tue offerte. </h2>
-        <hr />
+        <br />
         <p>Ti ricordiamo che la password deve avere almeno <%= Membership.MinRequiredPasswordLength %>caratteri.
         </p>
     </div>
@@ -212,7 +212,7 @@
     </div>
     <div id="divSuccess" runat="server">
         <h1>REGISTRAZIONE EFFETTUATA CON SUCCESSO!</h1>
-        <hr />
+        <br />
         <br />
         <h1>Nelle prossime ore la tua posizione verrà verificata e attivata.</h1>
         <br />

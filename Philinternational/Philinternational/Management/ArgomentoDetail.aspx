@@ -2,9 +2,9 @@
     CodeBehind="ArgomentoDetail.aspx.cs" Inherits="Philinternational.Management.ArgomentoDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<h1>Dettaglio Argomento 
-</h1><hr />br>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Dettaglio
+    Argomento </h1>
+    <br />
     <p><label runat="server" id="esitoMessaggio"></label>
     </p>
     Descrizione:
