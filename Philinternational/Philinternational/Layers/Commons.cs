@@ -8,12 +8,10 @@ using System.Web.UI.WebControls;
 using System.Collections;
 using System.Web.UI;
 
-namespace Philinternational.Layers
-{
-    public class Commons
-    {
+namespace Philinternational.Layers {
+    public class Commons {
         public static String GetStato(int id_stato) {
-           return ((legendaStato)HttpContext.Current.Session["legendaStato"]).GetStatoById(id_stato).descrizione;
+            return ((legendaStato)HttpContext.Current.Session["legendaStato"]).GetStatoById(id_stato).descrizione;
         }
 
         //Alias of GetStato
@@ -25,14 +23,12 @@ namespace Philinternational.Layers
             return GetStato(id_stato) == "attivo" ? true : false;
         }
 
-        public static Boolean GetCheckedState(int value)
-        {
+        public static Boolean GetCheckedState(int value) {
             if (value == 1) return true;
             else return false;
         }
 
-        public static Int32 GetCheckedState(Boolean MyBool)
-        {
+        public static Int32 GetCheckedState(Boolean MyBool) {
             if (MyBool) return 1;
             else return 0;
         }
@@ -67,8 +63,23 @@ namespace Philinternational.Layers
                 if (convertedPw < 126) nuovoPrezzo = nuovoPrezzo + prezzo[counter];
                 counter++;
             }
-            nuovoPrezzo = nuovoPrezzo.Replace(",", "").Trim();
+            nuovoPrezzo = nuovoPrezzo.Replace(",",".").Trim();
             return nuovoPrezzo;
+        }
+
+        internal static String EpurateInvalidCharacters(String p) {
+            String aux = "";
+
+            CharEnumerator charEnum = p.GetEnumerator();
+            Int32 counter = 0;
+            Int32 convertedPw;
+            while (charEnum.MoveNext()) {
+                convertedPw = Convert.ToInt32(p[counter]);
+                if (convertedPw < 126) aux = aux + p[counter];
+                counter++;
+            }
+
+            return aux;
         }
     }
 }

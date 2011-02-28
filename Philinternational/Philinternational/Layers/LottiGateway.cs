@@ -131,7 +131,8 @@ namespace Philinternational.Layers {
             command.Parameters.AddWithValue("anno", list[2]);
             command.Parameters.AddWithValue("tipo_lotto", list[3]);
             command.Parameters.AddWithValue("numero_pezzi", list[4]);
-            command.Parameters.AddWithValue("descrizione", list[5]);
+            String newstring = Commons.EpurateInvalidCharacters(list[5]);
+            command.Parameters.AddWithValue("descrizione", newstring);
             String nuovoPrezzo = Commons.EpuratePriceForDBFloat(list[6]);
             command.Parameters.AddWithValue("prezzo_base", nuovoPrezzo);
             command.Parameters.AddWithValue("euro", list[7]);

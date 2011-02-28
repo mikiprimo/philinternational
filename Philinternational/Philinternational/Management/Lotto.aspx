@@ -20,7 +20,7 @@
     <br />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:TextBox ID="txtStringaRicerca" runat="server" />
-    <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" OnClick="ibtnCercaLotto_Click" />
+    <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca"  OnClick="ibtnCercaLotto_Click" />
     <br />
     <asp:MultiView ID="mvLotti" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewLottiPubblicati" runat="server"><asp:ImageButton ID="ibtnCancellaLottiSelezionati"

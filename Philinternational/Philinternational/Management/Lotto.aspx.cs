@@ -291,6 +291,7 @@ namespace Philinternational.Management {
             LottiGateway.TransferLotti(list, ddlArg.SelectedValue, subArgId, chkAtt.Checked);
 
             divTransferOptionsPanel.Visible = false;
+            Response.Redirect("~/Management/Lotto.aspx");
         }
 
         protected void ddlPar_DataBound(object sender, EventArgs e) {
