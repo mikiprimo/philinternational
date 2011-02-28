@@ -141,7 +141,7 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
-            } catch (MySqlException) {
+            } catch (MySqlException ex) {
                 return false; //TODO: sbattere nella scartati quelli che non é riuscita a piazzare nella tmp
             } finally {
                 conn.Close();

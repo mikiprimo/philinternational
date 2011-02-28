@@ -64,6 +64,7 @@ namespace Philinternational.Layers {
                 counter++;
             }
             nuovoPrezzo = nuovoPrezzo.Replace(",", ".").Trim();
+            if (nuovoPrezzo == "") nuovoPrezzo = "0";
             return nuovoPrezzo;
         }
 
