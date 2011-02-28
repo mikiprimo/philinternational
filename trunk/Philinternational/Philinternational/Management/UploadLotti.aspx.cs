@@ -30,9 +30,9 @@ namespace Philinternational.Management {
             //    List<String> list = new List<string>();
             //    String[] line = rd.ReadLine().Split(';');
             String[] lines = File.ReadAllLines(SaveLocation, System.Text.Encoding.Default);
-            List<String> list = new List<String>();
             foreach (String unsplitted in lines) {
                 String[] line = unsplitted.Split(';');
+                List<String> list = new List<String>();
 
                 list.Add(line[1]);
                 list.Add(line[2]);
