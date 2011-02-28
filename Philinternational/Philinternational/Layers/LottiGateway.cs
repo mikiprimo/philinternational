@@ -11,9 +11,9 @@ using System.Text;
 namespace Philinternational.Layers {
     public class LottiGateway {
 
-        private static String SELECT_LOTTI = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto";
-        private static String SELECT_LOTTI_TEMPORANEI = "SELECT idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone FROM lotto_tmp";
-        private static String SELECT_LOTTI_SCARTATI = "SELECT idlotto_scartato, testo FROM lotto_scartato";
+        private static String SELECT_LOTTI = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto ORDER BY idlotto ASC";
+        private static String SELECT_LOTTI_TEMPORANEI = "SELECT idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone FROM lotto_tmp ORDER BY idcatalogo ASC";
+        private static String SELECT_LOTTI_SCARTATI = "SELECT idlotto_scartato, testo FROM lotto_scartato ORDER BY idlotto_scartato ASC";
 
         private static String SELECT_LOTTI_BY_ID = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE idlotto = @idlotto";
         private static String SELECT_LOTTI_TEMPORANEI_BY_ID = "SELECT idcatalogo, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone FROM lotto_tmp WHERE idcatalogo = @idcatalogo";
