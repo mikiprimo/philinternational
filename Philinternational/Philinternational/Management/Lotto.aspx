@@ -33,7 +33,7 @@
             <br />
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"
                 OnPageIndexChanged="gvLottiPubblicati_PageIndexChanged" OnPageIndexChanging="gvLottiPubblicati_PageIndexChanging"
-                AutoGenerateColumns="False" ShowHeader="False" DataKeyNames="idlotto" OnRowDataBound="gvLottiPubblicati_RowDataBound"
+                AutoGenerateColumns="False" DataKeyNames="idlotto" OnRowDataBound="gvLottiPubblicati_RowDataBound"
                 GridLines="None" EmptyDataText="Non é presente alcun lotto." PageSize="50">
                 <RowStyle CssClass="RowStyle" />
                 <AlternatingRowStyle CssClass="AlternatingRowStyle" />
@@ -41,11 +41,11 @@
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="lotto">
                         <ItemTemplate>
                             <asp:Label ID="lblIdLotto" runat="server" Text='<%# Bind("idlotto") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="descrizione">
                         <ItemTemplate>
                             <asp:HyperLink ID="hlEditLotto" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=pub&id=" + DataBinder.Eval (Container.DataItem,"idlotto")%>'>
                                 <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
@@ -53,15 +53,15 @@
                             </asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="anno">
                         <ItemTemplate>
                             <asp:Label ID="lblAnno" runat="server" Text='<%# Bind("anno") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="prezzo base">
                         <ItemTemplate>
                             <asp:Label ID="lblPrezzoBase" runat="server" Text='<%# Bind("prezzo_base") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="€">
                         <ItemTemplate>
                             <asp:Label ID="lblEuro" runat="server" Text='<%# Bind("euro") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
@@ -86,7 +86,7 @@
             <asp:ImageButton ID="ibtnOpenTransferPanel" runat="server" AlternateText="Trasferisci lotti..."
                 OnClick="ibtnOpenTransferPanel_Click" />
             <div id="divTransferOptionsPanel" runat="server" visible="false">
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
                     <ContentTemplate>
                         <table>
                             <tr>
@@ -138,8 +138,8 @@
                 </asp:UpdatePanel>
             </div>
             <asp:GridView ID="gvLottiTemporanei" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiTemporanei_PageIndexChanged"
-                OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging" AutoGenerateColumns="false"
-                ShowHeader="false" DataKeyNames="idcatalogo" GridLines="None" EmptyDataText="Non é presente alcun lotto temporaneo."
+                OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging" 
+                AutoGenerateColumns="false" DataKeyNames="idcatalogo" GridLines="None" EmptyDataText="Non é presente alcun lotto temporaneo."
                 PageSize="50">
                 <RowStyle CssClass="RowStyle" />
                 <AlternatingRowStyle CssClass="AlternatingRowStyle" />
@@ -147,11 +147,11 @@
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="lotto">
                         <ItemTemplate>
                             <asp:Label ID="lblIdCatalogo" runat="server" Text='<%# Bind("idcatalogo") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField  HeaderText="descrizione">
                         <ItemTemplate>
                             <asp:HyperLink ID="hlEditLottoTemp" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=tmp&id=" + DataBinder.Eval (Container.DataItem,"idcatalogo")%>'>
                                 <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
@@ -159,15 +159,15 @@
                             </asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="anno">
                         <ItemTemplate>
                             <asp:Label ID="lblAnno" runat="server" Text='<%# Bind("anno") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="prezzo base">
                         <ItemTemplate>
                             <asp:Label ID="lblPrezzoBase" runat="server" Text='<%# Bind("prezzo_base") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="€">
                         <ItemTemplate>
                             <asp:Label ID="lblEuro" runat="server" Text='<%# Bind("euro") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
@@ -176,8 +176,8 @@
         </asp:View>
         <asp:View ID="viewLottiScartati" runat="server">
             <asp:GridView ID="gvLottiScartati" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiScartati_PageIndexChanged"
-                OnPageIndexChanging="gvLottiScartati_PageIndexChanging" AutoGenerateColumns="false"
-                ShowHeader="false" DataKeyNames="idlotto_scartato" GridLines="None" EmptyDataText="Non é presente alcun lotto scartato."
+                OnPageIndexChanging="gvLottiScartati_PageIndexChanging" 
+                AutoGenerateColumns="false" DataKeyNames="idlotto_scartato" GridLines="None" EmptyDataText="Non é presente alcun lotto scartato."
                 PageSize="50">
                 <RowStyle CssClass="RowStyle" />
                 <AlternatingRowStyle CssClass="AlternatingRowStyle" />
@@ -185,7 +185,7 @@
                     <asp:TemplateField>
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" /></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="descrizione">
                         <ItemTemplate>
                             <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
                                 Text='<%# " [ " + ((String)Eval("descrizione")).Substring(0, 15) + "... ] " %>'></asp:Label></ItemTemplate>
