@@ -156,7 +156,7 @@ ul li.subargomento a:hover{text-decoration:underline;color:#920000;}
 
 .RowStyle   {   font-weight:normal;   color:#000000;   background-color:#FFFFFF;   }   
 .AlternatingRowStyle   {      font-weight:normal;   color:#000000;   background-color:#EEEEEE;   }   
-.RowStyle:hover, .AlternatingRowStyle:hover   {   font-weight:bold;   color:#FFFFFF;   background-color:#000066;   cursor:hand;   }   >>>>>>> .r338
+.RowStyle:hover, .AlternatingRowStyle:hover   {   font-weight:bold;   color:#FFFFFF;   background-color:#666666;   cursor:hand;   }   >>>>>>> .r338
 
 /*shadowbox */
 #sb-title-inner,#sb-info-inner,#sb-loading-inner,div.sb-message{font-family:"HelveticaNeue-Light","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:200;color:#fff;}

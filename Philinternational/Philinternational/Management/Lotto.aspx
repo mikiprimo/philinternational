@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="Lotto.aspx.cs" Inherits="Philinternational.Management.Lotto" EnableEventValidation="false" %>
+    CodeBehind="Lotto.aspx.cs" Inherits="Philinternational.Management.Lotto" %>
 
 <%@ Import Namespace="System" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
@@ -86,8 +86,6 @@
             <asp:ImageButton ID="ibtnOpenTransferPanel" runat="server" AlternateText="Trasferisci lotti..."
                 OnClick="ibtnOpenTransferPanel_Click" />
             <div id="divTransferOptionsPanel" runat="server" visible="false">
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
                         <table>
                             <tr>
                                 <td>
@@ -134,8 +132,6 @@
                                 </tr>
                             </div>
                         </table>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
             </div>
             <asp:GridView ID="gvLottiTemporanei" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiTemporanei_PageIndexChanged"
                 OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging" 
