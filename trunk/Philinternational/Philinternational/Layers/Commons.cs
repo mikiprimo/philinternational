@@ -63,7 +63,7 @@ namespace Philinternational.Layers {
                 if (convertedPw < 126) nuovoPrezzo = nuovoPrezzo + prezzo[counter];
                 counter++;
             }
-            nuovoPrezzo = nuovoPrezzo.Replace(",",".").Trim();
+            nuovoPrezzo = nuovoPrezzo.Replace(",", ".").Trim();
             return nuovoPrezzo;
         }
 
@@ -75,7 +75,7 @@ namespace Philinternational.Layers {
             Int32 convertedPw;
             while (charEnum.MoveNext()) {
                 convertedPw = Convert.ToInt32(p[counter]);
-                if (convertedPw < 126) aux = aux + p[counter];
+                if (convertedPw < 126 | convertedPw == 8364) aux = aux + p[counter];
                 counter++;
             }
 
