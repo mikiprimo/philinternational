@@ -3,9 +3,9 @@
 
 <%@ Import Namespace="System" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Gestione
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h3>Gestione
     Lotti
-    <asp:Label ID="lblLottiSection" runat="server" Text="Pubblicati"></asp:Label></h1>
+    <asp:Label ID="lblLottiSection" runat="server" Text="Pubblicati"></asp:Label></h3>
     <br />
     <asp:Panel ID="pnlChooseView" runat="server" ClientIDMode="Static" Direction="LeftToRight"
         HorizontalAlign="Left" ViewStateMode="Enabled" Wrap="False"><span style="text-align: center;">
@@ -57,7 +57,7 @@
                         <ItemTemplate>
                             <asp:Label ID="lblAnno" runat="server" Text='<%# Bind("anno") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="prezzo base">
+                    <asp:TemplateField HeaderText="€ base">
                         <ItemTemplate>
                             <asp:Label ID="lblPrezzoBase" runat="server" Text='<%# Bind("prezzo_base") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
@@ -159,7 +159,7 @@
                         <ItemTemplate>
                             <asp:Label ID="lblAnno" runat="server" Text='<%# Bind("anno") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="prezzo base">
+                    <asp:TemplateField HeaderText="€ base">
                         <ItemTemplate>
                             <asp:Label ID="lblPrezzoBase" runat="server" Text='<%# Bind("prezzo_base") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
