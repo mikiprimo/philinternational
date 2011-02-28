@@ -68,12 +68,14 @@ namespace Philinternational.UserControls {
         }
 
         private void ActivateTransferPanel(Boolean active) {
-            divParagrafiPanel.Visible = active;
+            if (this.currentType == "pub") divParagrafiPanel.Visible = true;
+            else divParagrafiPanel.Visible = active;
             divTransferPanel.Visible = active;
             divUpdatePanel.Visible = !active;
             divInsertPanel.Visible = false;
 
             if (active) PopulateParagrafi();
+            if (this.currentType == "pub") PopulateParagrafi();
         }
 
         private void PopulateParagrafi() {
