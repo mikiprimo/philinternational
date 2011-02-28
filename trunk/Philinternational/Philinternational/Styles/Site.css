@@ -16,19 +16,19 @@ h1{font-size:1.6em}
 ----------------------------------------------------------*/
 #page
 {
-    width: 990px;
-    background-color:transparent;
-    clear:both;
-    margin:0px auto;
+	width: 990px;
+	background-color:transparent;
+	clear:both;
+	margin:0px auto;
 }
 
 #header
 {
-    clear: both;
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-    height:120px;
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height:120px;
 }
 #header .Logo{float:left;width:200px;height:100px; }
 #header .Logo img{ border:0px}
@@ -36,13 +36,13 @@ h1{font-size:1.6em}
 #header .BannerDisplay img{padding:20px 1px;margin:0px;border:0px;}
 #header .loginDisplay
 {
-    width:280px;
-    float:right;    
-    font-size: 1.1em;
-    text-align: right;
-    padding: 10px;
-    color: #000;
-    margin-left: 0px;
+	width:280px;
+	float:right;    
+	font-size: 1.1em;
+	text-align: right;
+	padding: 10px;
+	color: #000;
+	margin-left: 0px;
 }
 
 #header .loginDisplay a:link{color: #000;}
@@ -58,13 +58,13 @@ h1{font-size:1.6em}
 
 #footer
 {
-    color:#999;
-    float:left;
-    height:50px;
-    margin: 0px auto;
-    text-align:center;
-    font-size:11px;
-    width: 100%;
+	color:#999;
+	float:left;
+	height:50px;
+	margin: 0px auto;
+	text-align:center;
+	font-size:11px;
+	width: 100%;
 }
 #footer .piva{text-align:center;margin:5px 0px;display:block}
 #footer a{font-size:11px;margin:0px 3px;text-decoration:none;color:#999}
@@ -138,25 +138,25 @@ h3.paragrafo a{display:block; font-family: "Arial";color:#000;text-decoration:no
 h3.paragrafo a:hover,.paragrafo a:active{color:#920000;border:none;overflow:hidden}
 ul li.argomento a
 {
-    height:15px;
-    background:url(../images/styles/ul_argomento.png) no-repeat 0px 0px;
-    display:block;
-    color: #000;
-    text-decoration:none;
-    margin:1px 0px;
-    padding:0px 0px 0px 20px;
+	height:15px;
+	background:url(../images/styles/ul_argomento.png) no-repeat 0px 0px;
+	display:block;
+	color: #000;
+	text-decoration:none;
+	margin:1px 0px;
+	padding:0px 0px 0px 20px;
 }
 ul li.argomento a:hover
 {
-    background:url(../images/styles/ul_argomento.png) no-repeat 0px -15px;
-    text-decoration:underline;color:#920000;
-    }
+	background:url(../images/styles/ul_argomento.png) no-repeat 0px -15px;
+	text-decoration:underline;color:#920000;
+	}
 ul li.subargomento a{display:block;text-decoration:none;margin:1px 0px;color:#060}
 ul li.subargomento a:hover{text-decoration:underline;color:#920000;}
 
 .RowStyle   {   font-weight:normal;   color:#000000;   background-color:#FFFFFF;   }   
 .AlternatingRowStyle   {      font-weight:normal;   color:#000000;   background-color:#EEEEEE;   }   
-.RowStyle:hover, .AlternatingRowStyle:hover   {   font-weight:bold;   color:#FFFFFF;   background-color:#666666;   cursor:hand;   }   >>>>>>> .r338
+.RowStyle:hover, .AlternatingRowStyle:hover   {   font-weight:bold;   color:#FFFFFF;   background-color:#666666;   cursor:hand;   } 
 
 /*shadowbox */
 #sb-title-inner,#sb-info-inner,#sb-loading-inner,div.sb-message{font-family:"HelveticaNeue-Light","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:200;color:#fff;}
@@ -197,7 +197,7 @@ div#info ul {margin-top: 10px;}
 div#info ul li {float: left;margin-right: 10px}
 div#info ul li a:hover img {border: 1px solid #666;}
 div#info ul li img {border: 1px solid #ccc;}
-        
+		
 ul#ticker {height:130px;overflow: hidden;}
 ul#ticker li {width:100%;height:130px;overflow:hidden }
 ul#ticker li p{padding:5px;overflow:hidden;height:90px; text-align:justify}
@@ -246,7 +246,7 @@ a.bottone:hover{ border:1px solid #060;color:#060;cursor:auto}
 
 .scrollable img {
 	float:left;
-    margin:5px;
+	margin:5px;
 	background-color:#fff;
 	padding:2px;
 	border:1px solid #ccc;
@@ -273,15 +273,15 @@ a.disabled {visibility:hidden !important;}
 .navi a.active {	background-position:0 -16px;}
 
 .linkOpen a{
-    background:url(../images/styles/openClose.png) no-repeat 0px -12px;
-    text-decoration:none;
-    border:0px;
-    margin:0px;
-    height:12px;
-    display:inline;
+	background:url(../images/styles/openClose.png) no-repeat 0px -12px;
+	text-decoration:none;
+	border:0px;
+	margin:0px;
+	height:12px;
+	display:inline;
 }
 .linkOpen a:hover{background:url(../images/styles/openClose.png) no-repeat 0px -12px;}
 ul.listAdmin li{color:#000;}
-ul.listAdmin li a{ display:block;color:#090} 
+ul.listAdmin li a{ display:block;color:#090;} 
 .AdminMenu{margin:0px 0px 5px 0px;}
-.AdminMenu h3{border-bottom:1px solid #eee}
+.AdminMenu h3{border-bottom:1px solid #eee;}
