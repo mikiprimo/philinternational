@@ -86,7 +86,7 @@
             <asp:ImageButton ID="ibtnOpenTransferPanel" runat="server" AlternateText="Trasferisci lotti..."
                 OnClick="ibtnOpenTransferPanel_Click" />
             <div id="divTransferOptionsPanel" runat="server" visible="false">
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <table>
                             <tr>
