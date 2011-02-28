@@ -23,7 +23,7 @@
     <br />
     <p>
         <asp:Label ID="lblTesto" runat="server">Testo: </asp:Label>
-        <asp:TextBox ID="txtTesto" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtTesto" runat="server" TextMode="MultiLine" Rows="20" Columns="50"></asp:TextBox>
     </p>
     <br />
     <p>
