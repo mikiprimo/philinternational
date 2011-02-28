@@ -255,7 +255,7 @@ namespace Philinternational.Management {
             divArgPanel.Visible = true;
             ddlArg.DataSource = ParagrafoGateway.SelectArgomenti(Convert.ToInt32(selectedParagraph));
             ddlArg.DataBind();
-            if (ddlArg.Items.Count == 1) PopulateDdlSubArgs(ddlArg.SelectedValue);
+            PopulateDdlSubArgs(ddlArg.SelectedValue);
         }
 
         protected void ddlArg_SelectedIndexChanged(object sender, EventArgs e) {
