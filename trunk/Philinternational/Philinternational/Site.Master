@@ -7,8 +7,8 @@
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/commonFunction.js") %>"></script>
         <link rel="icon" href="~/images/favicon.ico" type="image/gif"  />
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-        <asp:ContentPlaceHolder ID="HeadContent" runat="server">
-            <title>Offerta filatelica per corrsipondenza</title>
+        <title>Offerta filatelica per corrispondenza</title>
+        <asp:ContentPlaceHolder ID="HeadContent" runat="server">    
             <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />
             <meta name="DESCRIPTION" content="PhilInternarional è un sito di offerta filatelica per corrispondenza." />
             <meta name="ROBOTS" content="INDEX,FOLLOW" />
@@ -17,9 +17,6 @@
             <meta name="revisit-after" content="15 days" />
             <meta http-equiv="Cache-Control" content="no-cache" />
         </asp:ContentPlaceHolder>
-            <style type="text/css">
-            
-            </style>
 </head>
 <body>
     <form runat="server" enctype="multipart/form-data">
