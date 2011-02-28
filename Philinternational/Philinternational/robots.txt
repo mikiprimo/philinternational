@@ -1,2 +1,5 @@
 User-agent: *
 Disallow: /motore/
+Disallow: /Scripts/
+Disallow: /Management/
+Disallow: /images/
