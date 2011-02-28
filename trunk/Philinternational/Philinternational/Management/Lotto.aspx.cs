@@ -21,7 +21,6 @@ namespace Philinternational.Management {
                 this.BindData(gvLottiPubblicati, tabellaLotto.LottiPubblicati);
             }
             if (txtStringaRicerca.Text.Trim() == "") this.gvFilter = String.Empty;
-            divTransferOptionsPanel.Visible = false;
         }
 
         public String gvFilter {
