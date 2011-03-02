@@ -19,7 +19,7 @@
             <ItemTemplate>
                 <tr class="alternate">
                     <td><asp:CheckBox ID="chkErase" runat="server" MyIDNewsToErase='<%#Eval("idofferta")%>' /></td>
-                    <td style="width:15%"><a href="~/Management/offertaGilardiFilateliaDetail.aspx?cod=<%#Eval("idofferta")%>"><%# Eval("idlotto")%></a></td>
+                    <td style="width:15%"><a href="<%=Page.ResolveClientUrl("~/Management/offertaGilardiFilateliaDetail.aspx?cod=")%><%#Eval("idofferta")%>"><%# Eval("idlotto")%></a></td>
                     <td><%#Eval("anno")%></td>
                     <td style="text-align:left;"><asp:CheckBox ID="chkStatus" runat="server" AutoPostBack="true" MyIDNews='<%#Eval("idofferta")%>' OnDataBinding="chkStatus_OnDataBinding" OnCheckedChanged="chkStatus_OnCheckedChanged" /></td>
                 </tr>
@@ -27,7 +27,7 @@
             <AlternatingItemTemplate>
             <tr>
                     <td><asp:CheckBox ID="chkErase" runat="server" MyIDNewsToErase='<%#Eval("idofferta")%>' /></td>
-                    <td style="width:15%"><a href="~/Management/offertaGilardiFilateliaDetail.aspx?cod=<%#Eval("idofferta")%>"><%# Eval("idlotto")%></a></td>
+                    <td style="width:15%"><a href="<%=Page.ResolveClientUrl("~/Management/offertaGilardiFilateliaDetail.aspx?cod=")%><%#Eval("idofferta")%>"><%# Eval("idlotto")%></a></td>
                     <td><%#Eval("anno")%></td>
                     <td style="text-align:left;"><asp:CheckBox ID="chkStatus" runat="server" AutoPostBack="true" MyIDNews='<%#Eval("idofferta")%>' OnDataBinding="chkStatus_OnDataBinding" OnCheckedChanged="chkStatus_OnCheckedChanged" /></td>
                 </tr>
