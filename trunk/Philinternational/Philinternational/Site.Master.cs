@@ -50,7 +50,7 @@ namespace Philinternational
             String argomento="";
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
-            String sql = "SELECT idparagrafo,descrizione FROM paragrafo order by idparagrafo";
+            String sql = "SELECT idparagrafo,descrizione FROM paragrafo where stato = 1 order by idparagrafo";
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.CommandType = System.Data.CommandType.Text;            
             try

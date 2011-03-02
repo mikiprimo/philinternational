@@ -58,24 +58,6 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.Panel PanelAdmin;
         
         /// <summary>
-        /// linkNews control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkNews;
-        
-        /// <summary>
-        /// HyperParagrafo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperParagrafo;
-        
-        /// <summary>
         /// linkAnagrafica control.
         /// </summary>
         /// <remarks>
@@ -85,6 +67,15 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.HyperLink linkAnagrafica;
         
         /// <summary>
+        /// linkNews control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkNews;
+        
+        /// <summary>
         /// linkNewsletter control.
         /// </summary>
         /// <remarks>
@@ -92,6 +83,24 @@ namespace Philinternational {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink linkNewsletter;
+        
+        /// <summary>
+        /// linkGilardiFilatelia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkGilardiFilatelia;
+        
+        /// <summary>
+        /// HyperParagrafo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperParagrafo;
         
         /// <summary>
         /// linkLotto control.
@@ -121,6 +130,15 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.HyperLink linkUploadFlusso;
         
         /// <summary>
+        /// HyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        
+        /// <summary>
         /// linkOfferte control.
         /// </summary>
         /// <remarks>
@@ -128,15 +146,6 @@ namespace Philinternational {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink linkOfferte;
-        
-        /// <summary>
-        /// linkGilardiFilatelia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkGilardiFilatelia;
         
         /// <summary>
         /// menuLeftAdministration control.
