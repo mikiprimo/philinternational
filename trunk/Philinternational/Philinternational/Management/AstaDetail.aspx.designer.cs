@@ -31,6 +31,15 @@ namespace Philinternational.Management {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// lbldatafine control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbldatafine;
+        
+        /// <summary>
         /// txtDataFine control.
         /// </summary>
         /// <remarks>
@@ -58,30 +67,30 @@ namespace Philinternational.Management {
         protected global::System.Web.UI.WebControls.CheckBox chkStatus;
         
         /// <summary>
-        /// btnConferma control.
+        /// ibtnConferma control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConferma;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnConferma;
         
         /// <summary>
-        /// buttonReset control.
+        /// ibtnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonReset;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnReset;
         
         /// <summary>
-        /// btnComeBack control.
+        /// ibntTornaIndietro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnComeBack;
+        protected global::System.Web.UI.WebControls.ImageButton ibntTornaIndietro;
     }
 }
