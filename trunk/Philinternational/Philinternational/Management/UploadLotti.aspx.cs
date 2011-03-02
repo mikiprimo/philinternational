@@ -44,7 +44,7 @@ namespace Philinternational.Management {
                 list.Add(line[39]);
                 list.Add(line[40]);
 
-                if (i != 0) LottiGateway.InsertLotto(list);
+                if (i != 0) LottiGateway.InsertLottiTemporanei(list);
                 i++;
             }
             //}

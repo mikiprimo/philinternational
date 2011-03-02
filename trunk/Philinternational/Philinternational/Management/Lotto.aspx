@@ -20,7 +20,7 @@
     <br />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:TextBox ID="txtStringaRicerca" runat="server" />
-    <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca"  OnClick="ibtnCercaLotto_Click" />
+    <asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" OnClick="ibtnCercaLotto_Click" />
     <br />
     <asp:MultiView ID="mvLotti" runat="server" ActiveViewIndex="0">
         <asp:View ID="viewLottiPubblicati" runat="server"><asp:ImageButton ID="ibtnCancellaLottiSelezionati"
@@ -29,6 +29,9 @@
                 OnClick="ibtnAttivaLottiSelezionati_Click" />
             <asp:ImageButton ID="ibtnInsertNewLotto" runat="server" AlternateText="Inserisci lotto"
                 OnClick="ibtnInsertNewLotto_Click" />
+            <asp:ImageButton ID="ibtnDisassociaLotti" runat="server" 
+                AlternateText="Disassocia lotti selezionati" 
+                onclick="ibtnDisassociaLotti_Click" />
             <br />
             <br />
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"
@@ -86,56 +89,56 @@
             <asp:ImageButton ID="ibtnOpenTransferPanel" runat="server" AlternateText="Trasferisci lotti..."
                 OnClick="ibtnOpenTransferPanel_Click" />
             <div id="divTransferOptionsPanel" runat="server" visible="false">
-                        <table>
-                            <tr>
-                                <td>
-                                    Paragrafo:
-                                </td>
-                                <td>
-                                    <asp:DropDownList ID="ddlPar" runat="server" DataValueField="idparagrafo" DataTextField="descrizione"
-                                        AutoPostBack="true" OnSelectedIndexChanged="ddlPar_SelectedIndexChanged" OnDataBound="ddlPar_DataBound">
-                                    </asp:DropDownList>
-                                </td>
-                            </tr>
-                            <div id="divArgPanel" runat="server" visible="false">
-                                <tr>
-                                    <td>
-                                        Argomento
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="ddlArg" runat="server" DataValueField="idargomento" DataTextField="descrizione"
-                                            AutoPostBack="true" OnSelectedIndexChanged="ddlArg_SelectedIndexChanged"></asp:DropDownList>
-                                    </td>
-                                </tr>
-                            </div>
-                            <div id="divSubArgPanel" runat="server" visible="false">
-                                <tr>
-                                    <td>
-                                        SubArgomento
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="ddlSubArg" runat="server" DataValueField="idsub_argomento"
-                                            DataTextField="descrizione" AutoPostBack="true"></asp:DropDownList>
-                                        <asp:Label ID="lblNotPresentSubArg" runat="server" Visible="false">Nessun sub argomento presente</asp:Label>
-                                    </td>
-                                </tr>
-                            </div>
-                            <div id="divAttivaFinalPanel" runat="server" visible="false">
-                                <tr>
-                                    <td>
-                                        <asp:CheckBox ID="chkAtt" runat="server" Text="Attiva i trasferiti" AutoPostBack="true" />
-                                    </td>
-                                    <td>
-                                        <asp:ImageButton ID="ibtnTranferMultipleLottiAction" runat="server" AlternateText="Trasferisci"
-                                            OnClick="ibtnTranferMultipleLottiAction_Click" Width="16px" />
-                                    </td>
-                                </tr>
-                            </div>
-                        </table>
+                <table>
+                    <tr>
+                        <td>
+                            Paragrafo:
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlPar" runat="server" DataValueField="idparagrafo" DataTextField="descrizione"
+                                AutoPostBack="true" OnSelectedIndexChanged="ddlPar_SelectedIndexChanged" OnDataBound="ddlPar_DataBound">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <div id="divArgPanel" runat="server" visible="false">
+                        <tr>
+                            <td>
+                                Argomento
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlArg" runat="server" DataValueField="idargomento" DataTextField="descrizione"
+                                    AutoPostBack="true" OnSelectedIndexChanged="ddlArg_SelectedIndexChanged"></asp:DropDownList>
+                            </td>
+                        </tr>
+                    </div>
+                    <div id="divSubArgPanel" runat="server" visible="false">
+                        <tr>
+                            <td>
+                                SubArgomento
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlSubArg" runat="server" DataValueField="idsub_argomento"
+                                    DataTextField="descrizione" AutoPostBack="true"></asp:DropDownList>
+                                <asp:Label ID="lblNotPresentSubArg" runat="server" Visible="false">Nessun sub argomento presente</asp:Label>
+                            </td>
+                        </tr>
+                    </div>
+                    <div id="divAttivaFinalPanel" runat="server" visible="false">
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="chkAtt" runat="server" Text="Attiva i trasferiti" AutoPostBack="true" />
+                            </td>
+                            <td>
+                                <asp:ImageButton ID="ibtnTranferMultipleLottiAction" runat="server" AlternateText="Trasferisci"
+                                    OnClick="ibtnTranferMultipleLottiAction_Click" Width="16px" />
+                            </td>
+                        </tr>
+                    </div>
+                </table>
             </div>
             <asp:GridView ID="gvLottiTemporanei" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiTemporanei_PageIndexChanged"
-                OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging" 
-                AutoGenerateColumns="false" DataKeyNames="idcatalogo" GridLines="None" EmptyDataText="Non é presente alcun lotto temporaneo."
+                OnPageIndexChanging="gvLottiTemporanei_PageIndexChanging" AutoGenerateColumns="false"
+                DataKeyNames="idcatalogo" GridLines="None" EmptyDataText="Non é presente alcun lotto temporaneo."
                 PageSize="50">
                 <RowStyle CssClass="RowStyle" />
                 <AlternatingRowStyle CssClass="AlternatingRowStyle" />
@@ -147,7 +150,7 @@
                         <ItemTemplate>
                             <asp:Label ID="lblIdCatalogo" runat="server" Text='<%# Bind("idcatalogo") %>'></asp:Label></ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField  HeaderText="descrizione">
+                    <asp:TemplateField HeaderText="descrizione">
                         <ItemTemplate>
                             <asp:HyperLink ID="hlEditLottoTemp" runat="server" NavigateUrl='<%# "~/Management/LottoDetail.aspx?type=tmp&id=" + DataBinder.Eval (Container.DataItem,"idcatalogo")%>'>
                                 <asp:Label ID="lblDescrizione" runat="server" ToolTip='<%# Bind("descrizione") %>'
@@ -172,8 +175,8 @@
         </asp:View>
         <asp:View ID="viewLottiScartati" runat="server">
             <asp:GridView ID="gvLottiScartati" runat="server" AllowPaging="True" OnPageIndexChanged="gvLottiScartati_PageIndexChanged"
-                OnPageIndexChanging="gvLottiScartati_PageIndexChanging" 
-                AutoGenerateColumns="false" DataKeyNames="idlotto_scartato" GridLines="None" EmptyDataText="Non é presente alcun lotto scartato."
+                OnPageIndexChanging="gvLottiScartati_PageIndexChanging" AutoGenerateColumns="false"
+                DataKeyNames="idlotto_scartato" GridLines="None" EmptyDataText="Non é presente alcun lotto scartato."
                 PageSize="50">
                 <RowStyle CssClass="RowStyle" />
                 <AlternatingRowStyle CssClass="AlternatingRowStyle" />
