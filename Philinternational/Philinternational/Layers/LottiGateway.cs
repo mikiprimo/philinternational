@@ -121,7 +121,7 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        internal static Boolean InsertLotto(List<String> list) {
+        internal static Boolean InsertLottiTemporanei(List<String> list) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(INSERT_LOTTO_TEMPORANEO, conn);
@@ -172,7 +172,33 @@ namespace Philinternational.Layers {
                 conn.Open();
                 command.ExecuteNonQuery();
             } catch (MySqlException) {
-                return false; //TODO: sbattere nella scartati quelli che non é riuscita a piazzare nella tmp
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
+
+        internal static Boolean InsertLottoTemporaneo(lottoEntity newLotto) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(INSERT_LOTTO_TEMPORANEO, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idcatalogo", newLotto.id);
+            command.Parameters.AddWithValue("conferente", newLotto.conferente);
+            command.Parameters.AddWithValue("anno", newLotto.anno);
+            command.Parameters.AddWithValue("tipo_lotto", newLotto.tipo_lotto);
+            command.Parameters.AddWithValue("numero_pezzi", newLotto.numero_pezzi);
+            command.Parameters.AddWithValue("descrizione", newLotto.descrizione);
+            command.Parameters.AddWithValue("prezzo_base", newLotto.prezzo_base);
+            command.Parameters.AddWithValue("euro", newLotto.euro);
+            command.Parameters.AddWithValue("riferimento_sassone", newLotto.riferimento_sassone);
+
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException) {
+                return false;
             } finally {
                 conn.Close();
             }
@@ -512,6 +538,13 @@ namespace Philinternational.Layers {
             return true;
         }
 
+        /// <summary>
+        /// Trasferisce dalla tabella lotti temporanei alla tabella lotti
+        /// </summary>
+        /// <param name="listLottiTemporaneiId">Lista dei lotti temporanei da trasferire</param>
+        /// <param name="ArgId">Argomento</param>
+        /// <param name="subArgId">Sub Argomento</param>
+        /// <param name="isStateActive">Stato con cui verrà trasferito</param>
         internal static void TransferLotti(List<Int32> listLottiTemporaneiId, String ArgId, String subArgId, Boolean isStateActive) {
             foreach (Int32 thisLottoId in listLottiTemporaneiId) {
                 lottoEntity toBeTransferedLotto = new lottoEntity();
@@ -527,7 +560,7 @@ namespace Philinternational.Layers {
                 toBeTransferedLotto.tipo_lotto = lotto[0]["tipo_lotto"].ToString();
                 toBeTransferedLotto.numero_pezzi = Convert.ToInt32(lotto[0]["numero_pezzi"].ToString());
                 toBeTransferedLotto.descrizione = lotto[0]["descrizione"].ToString();
-                toBeTransferedLotto.prezzo_base = Convert.ToDouble(lotto[0]["prezzo_base"].ToString()); //TODO: da verificare se scrive il prezzo giusto
+                toBeTransferedLotto.prezzo_base = Convert.ToDouble(lotto[0]["prezzo_base"].ToString());
                 toBeTransferedLotto.euro = lotto[0]["euro"].ToString();
                 toBeTransferedLotto.riferimento_sassone = lotto[0]["riferimento_sassone"].ToString();
                 if (isStateActive) toBeTransferedLotto.state = new Stato(1, "attivo");
@@ -537,6 +570,33 @@ namespace Philinternational.Layers {
                 lotto.Delete(0);
             }
             DeleteLottiTemporanei(listLottiTemporaneiId);
+        }
+
+        /// <summary>
+        /// Trasferisce dalla tabella lotti alla tabella lotti temporanei
+        /// </summary>
+        /// <param name="listLottiPubblicatiId">Lista dei lotti da ritrasferire in temporanei</param>
+        internal static void DetachLotti(List<Int32> listLottiPubblicatiId) {
+
+            foreach (Int32 thisLottoId in listLottiPubblicatiId) {
+                lottoEntity toBeTransferedLotto = new lottoEntity();
+                DataView lotto = new DataView();
+                lotto = SelectLottiById(thisLottoId);
+
+                toBeTransferedLotto.id = Convert.ToInt32(lotto[0]["idlotto"].ToString());
+                toBeTransferedLotto.conferente = lotto[0]["conferente"].ToString();
+                toBeTransferedLotto.anno = lotto[0]["anno"].ToString();
+                toBeTransferedLotto.tipo_lotto = lotto[0]["tipo_lotto"].ToString();
+                toBeTransferedLotto.numero_pezzi = Convert.ToInt32(lotto[0]["numero_pezzi"].ToString());
+                toBeTransferedLotto.descrizione = lotto[0]["descrizione"].ToString();
+                toBeTransferedLotto.prezzo_base = Convert.ToDouble(lotto[0]["prezzo_base"].ToString());
+                toBeTransferedLotto.euro = lotto[0]["euro"].ToString();
+                toBeTransferedLotto.riferimento_sassone = lotto[0]["riferimento_sassone"].ToString();
+
+                InsertLottoTemporaneo(toBeTransferedLotto);
+                lotto.Delete(0);
+            }
+            DeleteLotti(listLottiPubblicatiId);
         }
     }
 }

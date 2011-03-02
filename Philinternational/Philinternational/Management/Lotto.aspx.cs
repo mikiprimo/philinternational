@@ -99,15 +99,14 @@ namespace Philinternational.Management {
             }
         }
 
-        //Tab TMP
-        protected void ibtnPubblicaLottiSelezionati_Click(object sender, ImageClickEventArgs e) {
-            //Muove la riga dalla tabella lotti_tmp alla tabella lotti e mette lo stato (su quest'ultima) in disattivo
-        }
-
         protected void ibtnCercaLotto_Click(object sender, ImageClickEventArgs e) {
             if (txtStringaRicerca.Text.Trim() == String.Empty) this.gvFilter = "";
             else this.gvFilter = txtStringaRicerca.Text;
             BindData(GetGridFromActiveView(), GetTableFromActiveView());
+        }
+
+        protected void ibtnInsertNewLotto_Click(object sender, ImageClickEventArgs e) {
+            Response.Redirect("~/Management/LottoDetail.aspx?type=ins");
         }
 
         #region LOTTI PUBBLICATI
@@ -213,22 +212,6 @@ namespace Philinternational.Management {
 
         #endregion
 
-        //TODO: Transfer Obsoleto (da togliere)
-        protected void ibtnTransferLotto_Click(object sender, ImageClickEventArgs e) {
-            String idcatalogo = "";
-
-            foreach (GridViewRow row in gvLottiTemporanei.Rows) {
-                if (row.RowType == DataControlRowType.DataRow) {
-                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
-                    if (chk.Checked) {
-                        idcatalogo = gvLottiTemporanei.DataKeys[row.RowIndex]["idcatalogo"].ToString();
-                        break;
-                    }
-                }
-            }
-            if (idcatalogo != "") Response.Redirect("~/Management/LottoDetail.aspx?type=trf&id=" + idcatalogo);
-        }
-
         #region TRANSFER OPERATIONS
 
         protected void ibtnOpenTransferPanel_Click(object sender, ImageClickEventArgs e) {
@@ -299,8 +282,40 @@ namespace Philinternational.Management {
 
         #endregion
 
-        protected void ibtnInsertNewLotto_Click(object sender, ImageClickEventArgs e) {
-            Response.Redirect("~/Management/LottoDetail.aspx?type=ins");
+        #region DISASSOCIA LOTTI
+
+        //TODO: Disassociazione da testare
+        protected void ibtnDisassociaLotti_Click(object sender, ImageClickEventArgs e) {
+            List<Int32> list = new List<Int32>();
+
+            foreach (GridViewRow row in gvLottiPubblicati.Rows) {
+                if (row.RowType == DataControlRowType.DataRow) {
+                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
+                    if (chk.Checked) {
+                        list.Add(Convert.ToInt32(gvLottiPubblicati.DataKeys[row.RowIndex]["idlotto"]));
+                    }
+                }
+            }
+            LottiGateway.DetachLotti(list);
+            Response.Redirect("~/Management/Lotto.aspx");
+        }
+
+        #endregion
+
+        //TODO: Transfer Obsoleto (da togliere)
+        protected void ibtnTransferLotto_Click(object sender, ImageClickEventArgs e) {
+            String idcatalogo = "";
+
+            foreach (GridViewRow row in gvLottiTemporanei.Rows) {
+                if (row.RowType == DataControlRowType.DataRow) {
+                    CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
+                    if (chk.Checked) {
+                        idcatalogo = gvLottiTemporanei.DataKeys[row.RowIndex]["idcatalogo"].ToString();
+                        break;
+                    }
+                }
+            }
+            if (idcatalogo != "") Response.Redirect("~/Management/LottoDetail.aspx?type=trf&id=" + idcatalogo);
         }
     }
 }
