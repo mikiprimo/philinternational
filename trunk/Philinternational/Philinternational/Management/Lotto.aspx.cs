@@ -265,7 +265,7 @@ namespace Philinternational.Management {
 
         private void PopulateDdlSubArgs(String selectedArgument) {
             divSubArgPanel.Visible = true;
-            ddlSubArg.DataSource = ParagrafoGateway.SelectSubArgs(Convert.ToInt32(selectedArgument));
+            ddlSubArg.DataSource = ParagrafoGateway.SelectSubArgomentiByIdArgomento(Convert.ToInt32(selectedArgument));
             ddlSubArg.DataBind();
             if (ddlSubArg.Items.Count == 0) {
                 ddlSubArg.Visible = false;

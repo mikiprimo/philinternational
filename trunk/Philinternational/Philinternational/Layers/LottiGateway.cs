@@ -21,7 +21,7 @@ namespace Philinternational.Layers {
         private static String INSERT_LOTTO = "INSERT INTO lotto (idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato) VALUES (@idlotto, @id_argomento, @id_subargomento, @conferente, @anno, @tipo_lotto, @numero_pezzi, @descrizione, @prezzo_base, @euro, @riferimento_sassone, @stato)";
         private static String TRUNCATE_ALL_LOTTO_TABLES = "TRUNCATE TABLE       lotto_tmp; TRUNCATE TABLE       lotto_scartato; TRUNCATE TABLE       lotto;";
         private static String UPDATE_STATO_BY_ID_LOTTO = "UPDATE lotto SET stato = @stato WHERE idlotto = @idlotto";
-        private static String UPDATE_LOTTO_DETAIL = "UPDATE lotto SET conferente = @conferente, anno = @anno, tipo_lotto = @tipo_lotto, numero_pezzi = @numero_pezzi, descrizione = @descrizione, prezzo_base = @prezzo_base, euro = @euro, riferimento_sassone = @riferimento_sassone WHERE idlotto = @idlotto";
+        private static String UPDATE_LOTTO_DETAIL = "UPDATE lotto SET id_argomento = @id_argomento, id_subargomento = @id_subargomento, conferente = @conferente, anno = @anno, tipo_lotto = @tipo_lotto, numero_pezzi = @numero_pezzi, descrizione = @descrizione, prezzo_base = @prezzo_base, euro = @euro, riferimento_sassone = @riferimento_sassone WHERE idlotto = @idlotto";
         private static String UPDATE_LOTTO_TEMPORANEO_DETAIL = "UPDATE lotto_tmp SET conferente = @conferente, anno = @anno, tipo_lotto = @tipo_lotto, numero_pezzi = @numero_pezzi, descrizione = @descrizione, prezzo_base = @prezzo_base, euro = @euro, riferimento_sassone = @riferimento_sassone WHERE idcatalogo = @idcatalogo";
 
         internal static DataView SelectLotti() {
@@ -433,20 +433,23 @@ namespace Philinternational.Layers {
             return true;
         }
 
-        internal static Boolean UpdateLotti(lottoEntity newLotto) {
+        internal static Boolean UpdateLotti(lottoEntity updateLotto) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
             MySqlCommand command = new MySqlCommand(UPDATE_LOTTO_DETAIL, conn);
             command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("idlotto", newLotto.id);
-            command.Parameters.AddWithValue("conferente", newLotto.conferente);
-            command.Parameters.AddWithValue("anno", newLotto.anno);
-            command.Parameters.AddWithValue("tipo_lotto", newLotto.tipo_lotto);
-            command.Parameters.AddWithValue("numero_pezzi", newLotto.numero_pezzi);
-            command.Parameters.AddWithValue("descrizione", newLotto.descrizione);
-            command.Parameters.AddWithValue("prezzo_base", newLotto.prezzo_base);
-            command.Parameters.AddWithValue("euro", newLotto.euro);
-            command.Parameters.AddWithValue("riferimento_sassone", newLotto.riferimento_sassone);
+
+            command.Parameters.AddWithValue("id_argomento", updateLotto.id_argomento);
+            command.Parameters.AddWithValue("id_subargomento", updateLotto.id_subargomento);
+            command.Parameters.AddWithValue("idlotto", updateLotto.id);
+            command.Parameters.AddWithValue("conferente", updateLotto.conferente);
+            command.Parameters.AddWithValue("anno", updateLotto.anno);
+            command.Parameters.AddWithValue("tipo_lotto", updateLotto.tipo_lotto);
+            command.Parameters.AddWithValue("numero_pezzi", updateLotto.numero_pezzi);
+            command.Parameters.AddWithValue("descrizione", updateLotto.descrizione);
+            command.Parameters.AddWithValue("prezzo_base", updateLotto.prezzo_base);
+            command.Parameters.AddWithValue("euro", updateLotto.euro);
+            command.Parameters.AddWithValue("riferimento_sassone", updateLotto.riferimento_sassone);
 
             try {
                 conn.Open();

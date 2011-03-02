@@ -31,13 +31,13 @@ namespace Philinternational.UserControls {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// divParagrafiPanel control.
+        /// divDDLPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divParagrafiPanel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDDLPanel;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -92,6 +92,24 @@ namespace Philinternational.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblnoSubArgs;
+        
+        /// <summary>
+        /// lblIdLottoDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIdLottoDesc;
+        
+        /// <summary>
+        /// lblIdLotto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIdLotto;
         
         /// <summary>
         /// lblConferente control.

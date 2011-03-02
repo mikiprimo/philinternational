@@ -29,7 +29,7 @@ namespace Philinternational.Styles {
             gvArguments.DataSource = ParagrafoGateway.SelectArgomenti(this.selectedParagrafoID);
             gvArguments.DataBind();
             try {
-                gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgs(this.selectedArgumentID);
+                gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgomentiByIdArgomento(this.selectedArgumentID);
                 gvSubArguments.DataBind();
             } catch (Exception) { }
         }
@@ -56,7 +56,7 @@ namespace Philinternational.Styles {
 
         protected void gvArguments_SelectedIndexChanging(object sender, GridViewSelectEventArgs e) {
             this.selectedArgumentID = Convert.ToInt32(gvArguments.DataKeys[e.NewSelectedIndex]["idargomento"]);
-            gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgs(this.selectedArgumentID);
+            gvSubArguments.DataSource = ParagrafoGateway.SelectSubArgomentiByIdArgomento(this.selectedArgumentID);
             gvSubArguments.DataBind();
         }
 
