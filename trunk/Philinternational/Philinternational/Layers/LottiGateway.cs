@@ -179,34 +179,34 @@ namespace Philinternational.Layers {
             return true;
         }
 
-        internal static Boolean InsertNewLotto(lottoEntity newLotto) {
-            MySqlConnection conn = ConnectionGateway.ConnectDB();
+        //internal static Boolean InsertNewLotto(lottoEntity newLotto) {
+        //    MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(INSERT_LOTTO, conn);
-            command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("idlotto", newLotto.id);
-            command.Parameters.AddWithValue("id_argomento", newLotto.id_argomento);
-            command.Parameters.AddWithValue("id_subargomento", newLotto.id_subargomento);
-            command.Parameters.AddWithValue("conferente", newLotto.conferente);
-            command.Parameters.AddWithValue("anno", newLotto.anno);
-            command.Parameters.AddWithValue("tipo_lotto", newLotto.tipo_lotto);
-            command.Parameters.AddWithValue("numero_pezzi", newLotto.numero_pezzi);
-            command.Parameters.AddWithValue("descrizione", newLotto.descrizione);
-            command.Parameters.AddWithValue("prezzo_base", newLotto.prezzo_base);
-            command.Parameters.AddWithValue("euro", newLotto.euro);
-            command.Parameters.AddWithValue("riferimento_sassone", newLotto.riferimento_sassone);
-            command.Parameters.AddWithValue("stato", newLotto.state.id);
+        //    MySqlCommand command = new MySqlCommand(INSERT_LOTTO, conn);
+        //    command.CommandType = CommandType.Text;
+        //    command.Parameters.AddWithValue("idlotto", newLotto.id);
+        //    command.Parameters.AddWithValue("id_argomento", newLotto.id_argomento);
+        //    command.Parameters.AddWithValue("id_subargomento", newLotto.id_subargomento);
+        //    command.Parameters.AddWithValue("conferente", newLotto.conferente);
+        //    command.Parameters.AddWithValue("anno", newLotto.anno);
+        //    command.Parameters.AddWithValue("tipo_lotto", newLotto.tipo_lotto);
+        //    command.Parameters.AddWithValue("numero_pezzi", newLotto.numero_pezzi);
+        //    command.Parameters.AddWithValue("descrizione", newLotto.descrizione);
+        //    command.Parameters.AddWithValue("prezzo_base", newLotto.prezzo_base);
+        //    command.Parameters.AddWithValue("euro", newLotto.euro);
+        //    command.Parameters.AddWithValue("riferimento_sassone", newLotto.riferimento_sassone);
+        //    command.Parameters.AddWithValue("stato", newLotto.state.id);
 
-            try {
-                conn.Open();
-                command.ExecuteNonQuery();
-            } catch (MySqlException) {
-                return false;
-            } finally {
-                conn.Close();
-            }
-            return true;
-        }
+        //    try {
+        //        conn.Open();
+        //        command.ExecuteNonQuery();
+        //    } catch (MySqlException) {
+        //        return false;
+        //    } finally {
+        //        conn.Close();
+        //    }
+        //    return true;
+        //}
 
         /// <summary>
         /// 
@@ -533,7 +533,7 @@ namespace Philinternational.Layers {
                 if (isStateActive) toBeTransferedLotto.state = new Stato(1, "attivo");
                 else toBeTransferedLotto.state = new Stato(99, "da attivare");
 
-                InsertNewLotto(toBeTransferedLotto);
+                InsertLotto(toBeTransferedLotto);
                 lotto.Delete(0);
             }
             DeleteLottiTemporanei(listLottiTemporaneiId);
