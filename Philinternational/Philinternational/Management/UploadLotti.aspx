@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<h3>Caricamento Asta</h3>
+<h3 class="titlePanel">Caricamento Asta</h3>
     <fieldset>
         <legend>Seleziona il file in formato .txt</legend>
         <p></p><asp:FileUpload ID="FileLotto" runat="server"  />

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<h3>Offerte Gilardi Filatelia</h3>
+<h3 class="titlePanel">Offerte Gilardi Filatelia</h3>
 <fieldset>
     <legend>Opzioni</legend>
     <asp:HyperLink runat="server" ID="insNuovaOfferta" ToolTip="Inserisci un nuovo lotto dal sito Gilardi Filatelia"  CssClass="bottone" NavigateUrl="~/Management/offertaGilardiFilateliaDetail.aspx?cod=-1">Inserisci una nuova offerta</asp:HyperLink>

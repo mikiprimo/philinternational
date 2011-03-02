@@ -3,11 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>
-        Dettaglio news
-        <label runat="server" id="titoloDettaglioNews">
-        </label>
-    </h1>
+    <h3 class="titlePanel">Dettaglio news <label runat="server" id="titoloDettaglioNews"></label>
+    </h3>
     <p>
         <label runat="server" id="esitoMessaggio">
         </label>

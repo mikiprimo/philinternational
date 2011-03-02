@@ -2,8 +2,8 @@
     CodeBehind="Aste.aspx.cs" Inherits="Philinternational.Styles.Aste" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h3>Gestione
-    Aste</h3>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<h3 class="titlePanel">Gestione Aste</h3>
     <br />
     <asp:GridView ID="gvAste" runat="server" AllowPaging="True" AutoGenerateColumns="False"
         DataKeyNames="idasta" EmptyDataText="Nessuna asta attualmente presente." GridLines="None"
