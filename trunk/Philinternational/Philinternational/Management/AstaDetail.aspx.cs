@@ -19,7 +19,6 @@ namespace Philinternational.Management {
 
         protected void ibtnConferma_Click(object sender, ImageClickEventArgs e) {
             astaEntity newAsta = new astaEntity();
-            Boolean esito = false;
 
             newAsta.id = Layers.ConnectionGateway.CreateNewIndex("idasta", "asta_elenco");
             newAsta.data_fine = DateTime.Parse(txtDataFine.Text);
@@ -27,6 +26,7 @@ namespace Philinternational.Management {
             else newAsta.state = new Stato(99, "da attivare");
 
             AsteGateway.InsertAsta(newAsta);
+            Response.Redirect("~/Management/Aste.aspx");
         }
 
         protected void ibtnReset_Click(object sender, ImageClickEventArgs e) {
