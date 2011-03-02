@@ -3,7 +3,7 @@
 <div id="divRegPanel" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <fieldset class="register"><legend>Modifica lotto</legend><br />
-        <div id="divParagrafiPanel" runat="server">
+        <div id="divDDLPanel" runat="server" visible="false">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <table>
@@ -44,6 +44,9 @@
             </asp:UpdatePanel>
         </div>
         <br />
+        <p>
+            <asp:Label ID="lblIdLottoDesc" runat="server">Identificativo Lotto: </asp:Label><asp:Label ID="lblIdLotto" runat="server"></asp:Label>
+        </p>
         <p>
             <asp:Label ID="lblConferente" runat="server" AssociatedControlID="txtConferente">Conferente: </asp:Label>
             <asp:TextBox ID="txtConferente" runat="server" CssClass="textEntry"></asp:TextBox>
@@ -99,14 +102,14 @@
                 ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
         </p>
         <br />
-        <div id="divUpdatePanel" runat="server">
+        <div id="divUpdatePanel" runat="server" visible="false">
             <asp:ImageButton ID="ibtnUpdateLotto" runat="server" AlternateText="Aggiorna" OnClick="ibtnUpdateLotto_Click" />
         </div>
-        <div id="divTransferPanel" runat="server">
+        <div id="divTransferPanel" runat="server" visible="false">
             <asp:ImageButton ID="ibtnTransferLotto" runat="server" AlternateText="Trasferisci Lotto temporaneo sulla tabella Lotti"
                 OnClick="ibtnTransferLotto_Click" Style="width: 14px" />
         </div>
-        <div id="divInsertPanel" runat="server">
+        <div id="divInsertPanel" runat="server" visible="false">
             <asp:ImageButton ID="ibtnInsertNewLotto" runat="server" AlternateText="Inserisci"
                 OnClick="ibtnInsertNewLotto_Click" />
         </div>

@@ -12,17 +12,19 @@ namespace Philinternational.Layers {
     /// </summary>
     public class ParagrafoGateway {
         //PARAGRAFI
-        private static String _SELECT = "SELECT idparagrafo, descrizione, stato FROM paragrafo";
-        private static String _UPDATE = "UPDATE paragrafo SET descrizione = @descrizione, stato =@stato WHERE idparagrafo = @idparagrafo";
+        private static String SELECT_PARAGRAFI = "SELECT idparagrafo, descrizione, stato FROM paragrafo";
+        private static String SELECT_ID_PARAGRAFO = "SELECT idparagrafo FROM paragrafo_argomento WHERE idargomento = @idargomento";
+        private static String UPDATE_PARAGRAFO = "UPDATE paragrafo SET descrizione = @descrizione, stato =@stato WHERE idparagrafo = @idparagrafo";
         //ARGOMENTI
-        private static String SELECT_ALL_ARGUMENTS = "SELECT idargomento, idparagrafo, descrizione, stato FROM paragrafo_argomento";
-        private static String _SELECT_ARGUMENTS = "SELECT idargomento, idparagrafo, descrizione, stato FROM paragrafo_argomento WHERE idparagrafo = @idparagrafo";
-        private static String _UPDATE_ARGUMENTS = "UPDATE paragrafo_argomento SET descrizione = @descrizione, stato = @stato WHERE idargomento = @idargomento";
-        private static String _INSERT_ARGUMENT = "INSERT INTO paragrafo_argomento (idargomento, idparagrafo, descrizione, stato) VALUES (@idargomento, @idparagrafo, @descrizione, @stato)";
+        private static String SELECT_ARGOMENTI = "SELECT idargomento, idparagrafo, descrizione, stato FROM paragrafo_argomento";
+        private static String SELECT_ARGOMENTI_BY_IDPARAGRAFO = "SELECT idargomento, idparagrafo, descrizione, stato FROM paragrafo_argomento WHERE idparagrafo = @idparagrafo";
+        private static String UPDATE_ARGOMENTI = "UPDATE paragrafo_argomento SET descrizione = @descrizione, stato = @stato WHERE idargomento = @idargomento";
+        private static String INSERT_ARGOMENTI = "INSERT INTO paragrafo_argomento (idargomento, idparagrafo, descrizione, stato) VALUES (@idargomento, @idparagrafo, @descrizione, @stato)";
         //SUB ARGOMENTI
-        private static String _SELECT_SUBARGUMENTS = "SELECT idsub_argomento, idargomento, descrizione, stato FROM paragrafo_subargomento WHERE idargomento = @idargomento";
-        private static String _UPDATE_SUBARGUMENT = "UPDATE paragrafo_subargomento SET descrizione = @descrizione, stato = @stato WHERE idsub_argomento = @idsub_argomento";
-        private static String _INSERT_SUBARGUMENT = "INSERT INTO paragrafo_subargomento (idsub_argomento, idargomento, descrizione, stato) VALUES (@idsub_argomento, @idargomento, @descrizione, @stato)";
+        private static String SELECT_SUBARGOMENTI_BYIDARGOMENTO = "SELECT idsub_argomento, idargomento, descrizione, stato FROM paragrafo_subargomento WHERE idargomento = @idargomento";
+        private static String UPDATE_SUBARGOMENTI = "UPDATE paragrafo_subargomento SET descrizione = @descrizione, stato = @stato WHERE idsub_argomento = @idsub_argomento";
+        private static String INSERT_SUBARGOMENTI = "INSERT INTO paragrafo_subargomento (idsub_argomento, idargomento, descrizione, stato) VALUES (@idsub_argomento, @idargomento, @descrizione, @stato)";
+        
 
         //----------PARAGRAFI-------------//
 
@@ -34,7 +36,7 @@ namespace Philinternational.Layers {
         internal static Boolean UpdateParagrafi(paragrafoEntity MyParagrafo) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_UPDATE, conn);
+            MySqlCommand command = new MySqlCommand(UPDATE_PARAGRAFO, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idparagrafo", MyParagrafo.idparagrafo);
             command.Parameters.AddWithValue("descrizione", MyParagrafo.descrizione);
@@ -58,7 +60,7 @@ namespace Philinternational.Layers {
         internal static DataView SelectParagrafi() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECT, conn))
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_PARAGRAFI, conn))
             using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
                 try {
                     conn.Open();
@@ -73,6 +75,20 @@ namespace Philinternational.Layers {
             }
         }
 
+        internal static Int32 SelectIdParagrafo(Int32 actualIdArg) {
+            using (MySqlConnection conn = ConnectionGateway.ConnectDB())
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_ID_PARAGRAFO, conn)) {
+                try {
+                    cmd.Parameters.AddWithValue("idargomento", actualIdArg);
+                    conn.Open();
+                    Int32 res = ((Int32) cmd.ExecuteScalar());
+                    return res;
+                } catch (MySqlException) {
+                    return -1;
+                }
+            }
+        }
+
         //----------ARGOMENTI-------------//
 
         /// <summary>
@@ -82,7 +98,7 @@ namespace Philinternational.Layers {
         internal static DataView SelectArgomenti(Int32 idparagrafo) {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECT_ARGUMENTS, conn)) {
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_ARGOMENTI_BY_IDPARAGRAFO, conn)) {
                 try {
                     cmd.Parameters.AddWithValue("idparagrafo", idparagrafo);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
@@ -106,7 +122,7 @@ namespace Philinternational.Layers {
         internal static DataView SelectAllArgomenti() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(SELECT_ALL_ARGUMENTS, conn)) {
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_ARGOMENTI, conn)) {
                 try {
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
 
@@ -130,7 +146,7 @@ namespace Philinternational.Layers {
         internal static Boolean UpdateParagrafoArgomento(paragArgomentoEntity MyArgument) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_UPDATE_ARGUMENTS, conn);
+            MySqlCommand command = new MySqlCommand(UPDATE_ARGOMENTI, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idargomento", MyArgument.id);
             command.Parameters.AddWithValue("descrizione", MyArgument.descrizione);
@@ -222,7 +238,7 @@ namespace Philinternational.Layers {
         internal static Boolean InsertArgomento(paragArgomentoEntity MyArgument) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_INSERT_ARGUMENT, conn);
+            MySqlCommand command = new MySqlCommand(INSERT_ARGOMENTI, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idargomento", MyArgument.id);
             command.Parameters.AddWithValue("idparagrafo", MyArgument.idparagrafo);
@@ -246,10 +262,10 @@ namespace Philinternational.Layers {
         /// </summary>
         /// <param name="selectedArgumentID"></param>
         /// <returns></returns>
-        internal static DataView SelectSubArgs(int selectedArgumentID) {
+        internal static DataView SelectSubArgomentiByIdArgomento(Int32 selectedArgumentID) {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
-            using (MySqlCommand cmd = new MySqlCommand(_SELECT_SUBARGUMENTS, conn)) {
+            using (MySqlCommand cmd = new MySqlCommand(SELECT_SUBARGOMENTI_BYIDARGOMENTO, conn)) {
                 try {
                     cmd.Parameters.AddWithValue("idargomento", selectedArgumentID);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
@@ -274,7 +290,7 @@ namespace Philinternational.Layers {
         internal static Boolean UpdateParagSubArgomento(paragSubArgomentoEntity MySubArgument) {
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_UPDATE_SUBARGUMENT, conn);
+            MySqlCommand command = new MySqlCommand(UPDATE_SUBARGOMENTI, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idsub_argomento", MySubArgument.id);
             command.Parameters.AddWithValue("descrizione", MySubArgument.descrizione);
@@ -330,7 +346,7 @@ namespace Philinternational.Layers {
             //TODO: Da testare (inserimento sub argomento)
             MySqlConnection conn = ConnectionGateway.ConnectDB();
 
-            MySqlCommand command = new MySqlCommand(_INSERT_SUBARGUMENT, conn);
+            MySqlCommand command = new MySqlCommand(INSERT_SUBARGOMENTI, conn);
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("idsub_argomento", MySubArgument.id);
             command.Parameters.AddWithValue("idargomento", MySubArgument.idargomento);
@@ -346,5 +362,7 @@ namespace Philinternational.Layers {
             }
             return true;
         }
+
+      
     }
 }
