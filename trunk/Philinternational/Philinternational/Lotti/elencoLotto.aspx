@@ -15,7 +15,7 @@
                 <div style="width:30%;float:right;text-align:left;">
                     <p style="line-height:20px"><span style="text-decoration:underline">Anno:</span>&nbsp;<span id="annoLotto"><%# Eval("anno")%></span></p>
                     <p style="line-height:20px"><span style="text-decoration:underline">Condizione:</span>&nbsp;<span id="statoLotto" runat="server"><%# Eval("tipo_lotto")%></span></p>
-                    <p style="line-height:20px"><span style="text-decoration:underline">Prezzo base:</span>&nbsp;<span id="prezzoLotto" runat="server" style="text-align:right"><b><%# Eval("euro")%></b>&nbsp;&euro;</span></p>
+                    <p style="line-height:20px"><span style="text-decoration:underline">Prezzo base:</span>&nbsp;<span id="prezzoLotto" runat="server" style="text-align:right"><b><%# Eval("prezzo_base")%></b>&nbsp;&euro;</span></p>
                     <p><span style="text-decoration:underline">Lotto</span>&nbsp;<span id="idlotto" runat="server" style="font-size:1.6em;font-weight:bold"><%#Eval("idlotto")%></span></p>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                 <div style="width:30%;float:right;text-align:left;">
                     <p style="line-height:20px"><span style="text-decoration:underline">Anno:</span>&nbsp;<span id="annoLotto"><%# Eval("anno")%></span></p>
                     <p style="line-height:20px"><span style="text-decoration:underline">Condizione:</span>&nbsp;<span id="statoLotto" runat="server"><%# Eval("tipo_lotto")%></span></p>
-                    <p style="line-height:20px"><span style="text-decoration:underline">Prezzo base:</span>&nbsp;<span id="prezzoLotto" runat="server" style="text-align:right"><b><%# Eval("euro")%></b>&nbsp;&euro;</span></p>
+                    <p style="line-height:20px"><span style="text-decoration:underline">Prezzo base:</span>&nbsp;<span id="prezzoLotto" runat="server" style="text-align:right"><b><%# Eval("prezzo_base")%></b>&nbsp;&euro;</span></p>
                     <p><span style="text-decoration:underline">Lotto</span>&nbsp;<span id="idlotto" runat="server" style="font-size:1.6em;font-weight:bold"><%#Eval("idlotto")%></span></p>
                 </div>
             </div>
