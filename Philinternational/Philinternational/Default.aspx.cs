@@ -48,7 +48,7 @@ namespace Philinternational
             String elencoNews;
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
-            String sql = "SELECT data_pubblicazione, titolo,testo FROM news where stato=1 order by data_pubblicazione DESC";
+            String sql = "SELECT data_pubblicazione, titolo,testo FROM news WHERE stato=1 ORDER BY data_pubblicazione DESC";
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.CommandType = System.Data.CommandType.Text;
             try

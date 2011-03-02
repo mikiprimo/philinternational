@@ -30,8 +30,8 @@ namespace Philinternational
             {
                 idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
             }
-            
-            String sql = "SELECT a.idcarrello idcarrello,a.idlotto idlotto,a.idanagrafica idanagrafica,b.tipo_lotto tipo_lotto,b.descrizione descrizione,b.anno anno,b.euro euro  FROM carrello a, lotto b where a.idlotto =  b.idlotto and b.idlotto not in (select c.idlotto from offerta_per_corrispondenza c where a.idanagrafica = a.idanagrafica) and a.idanagrafica =" + idAnagrafica + " ORDER BY a.data_inserimento DESC";
+
+            String sql = "SELECT a.idcarrello idcarrello,a.idlotto idlotto,a.idanagrafica idanagrafica,b.tipo_lotto tipo_lotto,b.descrizione descrizione,b.anno anno,b.prezzo_base euro  FROM carrello a, lotto b where a.idlotto =  b.idlotto and b.idlotto not in (select c.idlotto from offerta_per_corrispondenza c where a.idanagrafica = a.idanagrafica) and a.idanagrafica =" + idAnagrafica + " ORDER BY a.data_inserimento DESC";
             CarrelloConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
             CarrelloConnector.SelectCommand = sql;
             CarrelloConnector.DataBind();
