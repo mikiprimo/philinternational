@@ -44,7 +44,6 @@ namespace Philinternational.Styles
             this.BindData();
         }
 
-        //TODO: Da testare ancora
         protected void gvAste_RowUpdating(object sender, GridViewUpdateEventArgs e) {
             GridViewRow row = gvAste.Rows[e.RowIndex];
             var newValues = Commons.GetValuesGridViewRow(row);
