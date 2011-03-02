@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Proposte ricevute</h3>
+    <h3 class="titlePanel">Proposte ricevute</h3>
     <fieldset>
         <legend>Opzioni</legend>
         <asp:LinkButton runat="server" id="estraiLotto" OnClick="estraiDati" CssClass="bottone">Estrai Lotti</asp:LinkButton>&nbsp;

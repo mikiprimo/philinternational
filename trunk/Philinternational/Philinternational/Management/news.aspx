@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Elenco news</h3>
+    <h3 class="titlePanel">Elenco news</h3>
     <fieldset>
         <legend>Opzioni</legend>
         <asp:HyperLink ID="hlNewNews" runat="server"  CssClass="bottone" ToolTip="Inserisci una nuova news" NavigateUrl="newsDetail.aspx">Inserisci una nuova news</asp:HyperLink>
