@@ -12,28 +12,29 @@ namespace Philinternational.Management {
             if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
         }
 
-        protected void btnConferma_Click(object sender, EventArgs e) {
-            astaEntity MyAsta = new astaEntity();
-            Boolean esito = false;
-
-            MyAsta.id = Layers.ConnectionGateway.CreateNewIndex("idasta", "asta_elenco");
-            MyAsta.data_fine = DateTime.Parse(txtDataFine.Text);
-            MyAsta.state = new Stato(Commons.GetCheckedState(chkStatus.Checked), "");
-
-            esito = AsteGateway.InsertAsta(MyAsta);
-        }
-
         protected void calDataFine_SelectionChanged(object sender, EventArgs e) {
             Calendar cal = ((Calendar)sender);
             txtDataFine.Text = String.Format("{0:dd/MM/yyyy}", cal.SelectedDate);
         }
 
-        protected void pulisci(object sender, EventArgs e) {
+        protected void ibtnConferma_Click(object sender, ImageClickEventArgs e) {
+            astaEntity newAsta = new astaEntity();
+            Boolean esito = false;
+
+            newAsta.id = Layers.ConnectionGateway.CreateNewIndex("idasta", "asta_elenco");
+            newAsta.data_fine = DateTime.Parse(txtDataFine.Text);
+            if(chkStatus.Checked) newAsta.state = new Stato(1, "attivo");
+            else newAsta.state = new Stato(99, "da attivare");
+
+            AsteGateway.InsertAsta(newAsta);
+        }
+
+        protected void ibtnReset_Click(object sender, ImageClickEventArgs e) {
             txtDataFine.Text = "";
             chkStatus.Checked = false;
         }
 
-        protected void comeBack(object sender, EventArgs e) {
+        protected void ibntTornaIndietro_Click(object sender, ImageClickEventArgs e) {
             Response.Redirect("Aste.aspx");
         }
     }

@@ -51,7 +51,7 @@ namespace Philinternational.Styles
 
             astaEntity MyAsta = new astaEntity();
             MyAsta.id = Convert.ToInt32(gvAste.DataKeys[e.RowIndex]["idasta"]);
-            MyAsta.data_fine = DateTime.Parse((String)newValues["data_fine"]);
+            MyAsta.data_fine = DateTime.Parse(((Label)gvAste.Rows[e.RowIndex].FindControl("lblEditDataUpdate")).Text);
             MyAsta.state = new Stato(((CheckBox)gvAste.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1 : 0, "");
 
             AsteGateway.UpdateAsta(MyAsta);

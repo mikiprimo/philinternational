@@ -29,7 +29,7 @@
                     <asp:Label ID="lblEditData" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("data_fine")) %>'></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:Label ID="lblEditData" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("data_fine")) %>'></asp:Label>
+                    <asp:Label ID="lblEditDataUpdate" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("data_fine")) %>'></asp:Label>
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
