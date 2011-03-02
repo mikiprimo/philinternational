@@ -223,7 +223,7 @@ namespace Philinternational.UserControls {
             insertLotto.id = ConnectionGateway.CreateNewIndex("idlotto", "lotto");
             insertLotto.state = new Stato(99, "da attivare");
 
-            LottiGateway.InsertNewLotto(insertLotto);
+            LottiGateway.InsertLotto(insertLotto);
             Response.Redirect("~/Management/Lotto.aspx");
         }
     }
