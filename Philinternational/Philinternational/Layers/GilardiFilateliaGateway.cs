@@ -60,12 +60,12 @@ namespace Philinternational.Layers
                 {
                     while (dr.Read())
                     {
-                        DateTime.TryParse(dr["data_inserimento"].ToString(), out myOnlyNews.dataInserimento);
+                        DateTime.TryParse(dr["data_pubblicazione"].ToString(), out myOnlyNews.dataInserimento);
                         myOnlyNews.idOfferta= (int)dr["idofferta"];
                         myOnlyNews.idLotto = (int)dr["idlotto"];
                         myOnlyNews.prezzo = (float)dr["prezzo"];
                         myOnlyNews.anno = (String)dr["anno"];
-                        myOnlyNews.descrizione = (String)dr["testo"];
+                        myOnlyNews.descrizione = (String)dr["descrizione"];
                         myOnlyNews.state = new Stato((int)dr["stato"], Layers.Commons.GetStato((int)dr["stato"]));
                     }
                 }
