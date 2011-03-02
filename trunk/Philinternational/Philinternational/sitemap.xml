@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <url>
-		<loc>http://www.philinternational.it/</loc>
-		<lastmod>2011-02-13</lastmod>
-		<priority>0.8</priority>
-   </url>
-   <url>
-		<loc>http://www.philinternational.it/index.php</loc>
-		<lastmod>2010-02-13</lastmod>
-   </url>
+	 <url><loc>http://www.philinternational.it/</loc><lastmod>2011-03-03</lastmod><priority>0.8</priority></url>
+	 <url><loc>http://www.philinternational.it/default.aspx</loc><lastmod>2011-03-03</lastmod></url>
+	 <url><loc>http://www.philinternational.it/Varie/chi-siamo.aspx</loc><lastmod>2011-03-03</lastmod></url>
+	<url>
+		<loc>http://www.philinternational.it/Varie/contatti.aspx</loc>
+		<lastmod>2011-03-03</lastmod>
+	</url>
+	<url>
+		<loc>http://www.philinternational.it/Varie/condizioniVendita.aspx</loc>
+		<lastmod>2011-03-03</lastmod>
+	</url>
+	<url>
+		<loc>http://www.philinternational.it/Varie/dovesiamo.aspx</loc>
+		<lastmod>2011-03-03</lastmod>
+	</url>
 </urlset>
