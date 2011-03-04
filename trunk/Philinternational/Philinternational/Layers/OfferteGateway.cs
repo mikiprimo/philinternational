@@ -33,9 +33,9 @@ namespace Philinternational.Layers
             }
             return esito;
         }
-        public Boolean checkOffertaGiaPresente(int IdAnagrafica, String idLotto) {
+        public Boolean checkOffertaGiaPresente(String IdAnagrafica, String idLotto) {
 
-            String sql = "SELECT idlotto, idanagrafica FROM offerta_per_corrispondenza WHERE idlotto="+ idLotto+" AND idanagrafica="+ IdAnagrafica+"";
+            String sql = "SELECT idlotto, idanagrafica FROM offerta_per_corrispondenza WHERE idlotto="+ idLotto+" AND idanagrafica='"+ IdAnagrafica+"'";
             DataView dr = ConnectionGateway.SelectQuery(sql);
             if (dr.Count > 0)
                 return true;
@@ -126,6 +126,19 @@ namespace Philinternational.Layers
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
             if (dr.Count>0) esito=true;
             return esito;
+        
+        }
+        public Boolean CheckLottiBySelect(String idAnagrafica) {
+            Boolean esito = false;
+            String sql = "SELECT count(*) conteggio FROM carrello WHERE idanagrafica='" + idAnagrafica + "'";
+
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+            if (dr.Count > 0) {
+                int a = Int32.Parse(dr[0]["conteggio"].ToString());
+                if (a > 0) esito = true;
+            } 
+            return esito;
+
         
         }
     }

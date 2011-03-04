@@ -78,7 +78,7 @@ namespace Philinternational
         public String loadImmagine(Object idLotto){
             LottiGateway a = new LottiGateway();
             String  chiave = idLotto.ToString();
-            String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
+            String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"), Server.MapPath(Page.ResolveClientUrl("~/images/asta/")),Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
             
             return outputImmagine;
         }
@@ -96,7 +96,7 @@ namespace Philinternational
             String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai immediatamente l'offerta</a>\n";
             if (AccountLayer.IsLogged()) {
                 OfferteGateway a = new OfferteGateway();
-                int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+                String idAnagrafica = Convert.ToString(((logInfos)Session["log"]).idAnagrafica);
                 bool checkOfferta = a.checkOffertaGiaPresente(idAnagrafica, chiave);
                 if (checkOfferta == true) { outputVerifica = "Offerta già effettuata"; }
                 switch (stato)

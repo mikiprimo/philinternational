@@ -20,27 +20,33 @@ namespace Philinternational
             {
                 BindData();
             }
-            else {            
-               // Response.Write("Sono in PostBack");
-            }
         }
         private void BindData() {
-            int idAnagrafica = 0; 
+            String idAnagrafica = "0";
+            String sql ="";
             if (AccountLayer.IsLogged())
             {
-                idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+                idAnagrafica = Convert.ToString(((logInfos)Session["log"]).idAnagrafica);
+                sql = "SELECT a.idcarrello idcarrello,a.idlotto idlotto,a.idanagrafica idanagrafica,b.tipo_lotto tipo_lotto,b.descrizione descrizione,b.anno anno,b.prezzo_base euro  FROM carrello a, lotto b where a.idlotto =  b.idlotto AND b.idlotto not in (select c.idlotto from offerta_per_corrispondenza c where a.idanagrafica = a.idanagrafica) and a.idanagrafica ='" + idAnagrafica + "' ORDER BY a.data_inserimento DESC";
             }
-
-            String sql = "SELECT a.idcarrello idcarrello,a.idlotto idlotto,a.idanagrafica idanagrafica,b.tipo_lotto tipo_lotto,b.descrizione descrizione,b.anno anno,b.prezzo_base euro  FROM carrello a, lotto b where a.idlotto =  b.idlotto and b.idlotto not in (select c.idlotto from offerta_per_corrispondenza c where a.idanagrafica = a.idanagrafica) and a.idanagrafica =" + idAnagrafica + " ORDER BY a.data_inserimento DESC";
+            else {
+                idAnagrafica = Session.SessionID;
+                sql = "SELECT a.idcarrello idcarrello,a.idlotto idlotto,a.idanagrafica idanagrafica,b.tipo_lotto tipo_lotto,b.descrizione descrizione,b.anno anno,b.prezzo_base euro  FROM carrello a, lotto b where a.idlotto =  b.idlotto AND a.idanagrafica ='" + idAnagrafica + "' ORDER BY a.data_inserimento DESC";
+            }
+            
+            
             CarrelloConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
             CarrelloConnector.SelectCommand = sql;
             CarrelloConnector.DataBind();
+            OfferteGateway a = new OfferteGateway();
+            Boolean esito = a.CheckLottiBySelect(idAnagrafica);
+            if (esito) { noLotti.Visible = false; }
         }
         public String loadImmagine(Object idLotto)
         {
             LottiGateway a = new LottiGateway();
             String chiave = idLotto.ToString();
-            String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
+            String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"),Server.MapPath(Page.ResolveClientUrl("~/images/asta/")), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
             return outputImmagine;
         }
         private String FaiOfferta(String idLotto, float offerta)
@@ -67,7 +73,7 @@ namespace Philinternational
             }
             else
             {
-                return "Login";
+                return "Per effettuare un'offerta devi prima effettuare il login";
             }
             return esito;
         }
@@ -109,8 +115,16 @@ namespace Philinternational
             Button btn = ((Button)sender);
             String idLotto = btn.Attributes["myIdLotto"].ToString();
             OfferteGateway off = new OfferteGateway();
-            int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
-            if (off.checkOffertaGiaPresente(idAnagrafica,idLotto) ) {
+            String idAnagrafica = "0";
+            if (AccountLayer.IsLogged())
+            {
+                idAnagrafica = Convert.ToString(((logInfos)Session["log"]).idAnagrafica);
+            }else{
+                idAnagrafica = Session.SessionID;
+            }
+            
+            if (off.checkOffertaGiaPresente(idAnagrafica, idLotto))
+            {
                 btn.Visible=false;
             }
         }

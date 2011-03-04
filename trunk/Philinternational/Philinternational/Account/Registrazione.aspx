@@ -1,7 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Registrazione.aspx.cs" Inherits="Philinternational.Account.Registrazione" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+    </style>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <div id="divTitolo" runat="server">
@@ -123,12 +130,12 @@
                     ToolTip="Nazione di residenza é obbligatorio" ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
             </p>
             <asp:UpdatePanel ID="updPanel" runat="server">
-                <ContentTemplate>Residenza diversa da domicilio? <br />
+                <ContentTemplate>Residenza diversa da domicilio? 
                     <asp:RadioButton ID="rbSi" runat="server" Text="Si" Checked="false" GroupName="DomicilioGroup"
-                        OnCheckedChanged="rb_CheckedChanged" AutoPostBack="true" />
-                    <br />
+                        OnCheckedChanged="rb_CheckedChanged" AutoPostBack="true" Width="49px" st
+                        TextAlign="Right" />
                     <asp:RadioButton ID="rbNo" runat="server" Text="No" Checked="true" GroupName="DomicilioGroup"
-                        OnCheckedChanged="rb_CheckedChanged" AutoPostBack="true" />
+                        OnCheckedChanged="rb_CheckedChanged" AutoPostBack="true" width="100px" />
                     <br />
                     <div id="divDomicilio" runat="server">
                         <legend>Indirizzo di domicilio</legend><p>
@@ -188,14 +195,13 @@
                 <ContentTemplate><p>
                     <table>
                         <tr>
-                            <td>
+                            <td class="style1">
                                 <asp:CheckBox ID="chkAccettaCondizioni" runat="server" AutoPostBack="True" OnCheckedChanged="chkAccettaCondizioni_CheckedChanged" />
-                                Accetto le <a href="#" onclick="javascript:window.open('CondizioniDiUtilizzo.htm');">
-                                    condizioni di utilizzo</a>
+                                Accetto le <a href="#" onclick="javascript:window.open('CondizioniDiUtilizzo.htm');"> condizioni di utilizzo</a>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style1">
                                 <asp:CheckBox ID="chkNewsLetters" runat="server" Text="Iscriviti alle Newsletters" />
                             </td>
                         </tr>
