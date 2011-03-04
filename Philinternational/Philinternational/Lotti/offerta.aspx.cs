@@ -51,11 +51,11 @@ namespace Philinternational
             testoH1.InnerHtml = "Offerta per lotto <span style=\"color:#F00\">[" + idlotto + "]</span>";
             annoLotto.InnerHtml = a.getValueByField(idlotto, "anno");
             descrizioneLotto.InnerHtml = a.getValueByField(idlotto, "descrizione");
-            prezzoLotto.InnerHtml = a.getValueByField(idlotto, "euro");
+            prezzoLotto.InnerHtml = a.getValueByField(idlotto, "prezzo_base");
             statoLotto.InnerHtml = a.getValueByField(idlotto, "tipo_lotto");
             if (AccountLayer.IsLogged())
             {
-                int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+                String idAnagrafica = Convert.ToString(((logInfos)Session["log"]).idAnagrafica);
                 Boolean esito = o.checkOffertaGiaPresente(idAnagrafica,idlotto);
                 if (esito) showButton.Visible = false;
             }
@@ -96,7 +96,7 @@ namespace Philinternational
         {
             LottiGateway a = new LottiGateway();
             String chiave = idLotto.ToString();
-            String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
+            String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"),Server.MapPath(Page.ResolveClientUrl("~/images/asta/")), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
 
             return outputImmagine;
         }

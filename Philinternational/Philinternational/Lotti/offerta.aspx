@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h1 id="testoH1" runat="server" style="text-transform:uppercase;color:#000"></h1>
+    <h3 id="testoH1" runat="server" class="titlePanel" style="text-transform:uppercase;color:#000"></h3>
     <div class="bloccoOfferta">
         <p id="LoadImmagineOutput" runat="server">Immagine</p>
         <p>Anno: <span id="annoLotto" runat="server"></span></p>

@@ -23,7 +23,7 @@ namespace Philinternational.Layers {
         private static String UPDATE_STATO_BY_ID_LOTTO = "UPDATE lotto SET stato = @stato WHERE idlotto = @idlotto";
         private static String UPDATE_LOTTO_DETAIL = "UPDATE lotto SET id_argomento = @id_argomento, id_subargomento = @id_subargomento, conferente = @conferente, anno = @anno, tipo_lotto = @tipo_lotto, numero_pezzi = @numero_pezzi, descrizione = @descrizione, prezzo_base = @prezzo_base, euro = @euro, riferimento_sassone = @riferimento_sassone WHERE idlotto = @idlotto";
         private static String UPDATE_LOTTO_TEMPORANEO_DETAIL = "UPDATE lotto_tmp SET conferente = @conferente, anno = @anno, tipo_lotto = @tipo_lotto, numero_pezzi = @numero_pezzi, descrizione = @descrizione, prezzo_base = @prezzo_base, euro = @euro, riferimento_sassone = @riferimento_sassone WHERE idcatalogo = @idcatalogo";
-
+        private static String UPDATE_IMAGE_LOTTO = "UPDATE lotto SET imageIsPresente=1  WHERE idlotto=@idlotto";
         internal static DataView SelectLotti() {
             DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
@@ -381,13 +381,23 @@ namespace Philinternational.Layers {
 
         }
 
+        private Boolean checkImageFromPath(String FileName)
+        {
+            Boolean stato = false;
+            FileInfo myFile = new FileInfo(FileName);
+            if (myFile.Exists) stato = true;
+            return stato;
+        }
 
-        public String LoadImageByLotto(String NamePageYes, String NamePageNo, String idLotto) {
+
+        public String LoadImageByLotto(String PathImage, String NamePageYes, String NamePageNo, String idLotto) {
 
             String outputImmagine = "";
-            bool esito = searchImageFromDisk(idLotto);
+            //bool esito = searchImageFromDisk(idLotto);
+            String checkpath = NamePageYes + idLotto + ".jpg";
+            bool esito = checkImageFromPath(checkpath);
             if (esito) {
-                String path = NamePageYes + idLotto + ".jpg";
+                String path = PathImage + idLotto + ".jpg"; 
                 outputImmagine = "<a href=\"" + path + "\" rel=\"shadowbox;handleOversize:resize\" title=\"Lotto " + idLotto + "\" id=\"shadowimages\"><img src=\"" + path + "\" width=\"100\" height=\"100\" alt=\"Lotto " + idLotto + "\"/></a>\n";
             } else {
                 outputImmagine = "<img src=\"" + NamePageNo + "\" width=\"100\" height=\"100\" alt=\"Lotto " + idLotto + "\"/>";
@@ -538,6 +548,28 @@ namespace Philinternational.Layers {
             return true;
         }
 
+        public Boolean UpdateImageLotto(int idlotto)
+        {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(UPDATE_IMAGE_LOTTO, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idlotto", idlotto);
+            try
+            {
+                conn.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (MySqlException)
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
         /// <summary>
         /// Trasferisce dalla tabella lotti temporanei alla tabella lotti
         /// </summary>

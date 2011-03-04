@@ -9,7 +9,7 @@
     <asp:Repeater runat="server" ID="listaLotti" DataSourceID="LottoConnector" OnItemDataBound="R1_ItemDataBound" OnItemCommand="R_ItemCommand">
         <ItemTemplate>
             <div class="elencoLotto" style="width:100%;clear:both;border-bottom:1px solid #707070;height:180px;background-color:#eee;">
-            <div style="clear:both;background-color:green">
+            <div style="clear:both;">
                 <div style="height:140px;width:20%;float:left;text-align:center;padding:2px 0px 0px 0px"><%# loadImmagine(DataBinder.Eval(Container.DataItem, "idlotto")) %></div>
                 <div style="width:49%;float:left;line-height:14px;text-align: justify;padding:2px"><p id="descrizioneLotto" runat="server"><%# Eval("descrizione")%></p></div>
                 <div style="width:30%;float:right;text-align:left;">
