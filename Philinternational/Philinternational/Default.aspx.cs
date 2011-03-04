@@ -34,7 +34,7 @@ namespace Philinternational
 
         private void BindData()
         {
-            String sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto where stato !=0 order by rand() limit 4";
+            String sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE stato !=0 AND imageIsPresente=1 ORDER BY rand() limit 4";
             LottoConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
             LottoConnector.SelectCommand = sql;
             LottoConnector.DataBind();
@@ -60,7 +60,7 @@ namespace Philinternational
                     while (dr.Read())
                     {
                         elencoNews_body += "<li>";
-                        elencoNews_body += "<span>" + (String)dr["titolo"] + "</span>\n";
+                        elencoNews_body += "<span class=\"titlePanel\">" + (String)dr["titolo"] + "</span>\n";
                         elencoNews_body += "<p>" + (String)dr["testo"] + "</p>\n";
                         elencoNews_body += "</li>\n";
                     }//end while
@@ -87,7 +87,8 @@ namespace Philinternational
      {
          LottiGateway a = new LottiGateway();
          String chiave = idLotto.ToString();
-         String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"), Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
+         String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"),Server.MapPath(Page.ResolveClientUrl("~/images/asta/"))
+             , Server.MapPath(Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg")), chiave);
 
          return outputImmagine;
      }
@@ -109,7 +110,7 @@ namespace Philinternational
               try
                 {
                     OfferteGateway a = new OfferteGateway();
-                    int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+                    String idAnagrafica = Convert.ToString(((logInfos)Session["log"]).idAnagrafica);
                     bool checkOfferta = a.checkOffertaGiaPresente(idAnagrafica, chiave);
                     if (checkOfferta == true) { outputVerifica = "L'Offerta è già stata effettuata"; }
                     switch (stato)
@@ -177,9 +178,9 @@ namespace Philinternational
      protected void R1_ItemDataBound(Object Sender, RepeaterItemEventArgs e)
      {
          object idlotto = e.Item.FindControl("idlotto");
-         String chiave = "0"; //((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
-//         ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
-//         ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
+         String chiave = ((System.Web.UI.HtmlControls.HtmlContainerControl)(idlotto)).InnerHtml;
+         ((System.Web.UI.WebControls.LinkButton)(e.Item.FindControl("linkBasket"))).CommandName = "AddToBasket";
+         ((LinkButton)(e.Item.FindControl("linkBasket"))).CommandArgument = chiave;
         OfferteGateway o = new OfferteGateway();
             String idAnagrafica = "";
             if (AccountLayer.IsLogged())
@@ -193,8 +194,8 @@ namespace Philinternational
             Boolean esitoCheck = o.CheckLottoCarrello(idAnagrafica, chiave);
             if (esitoCheck)
             {
-//                ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
-                //((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+                ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
+                ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
             }
 
             

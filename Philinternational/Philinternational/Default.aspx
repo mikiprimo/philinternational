@@ -24,12 +24,12 @@
 	<ItemTemplate>
 		<div>
 			<p><%# loadImmagine(DataBinder.Eval(Container.DataItem, "idlotto")) %></p>
-			<p style="line-height:20px"><span style="text-decoration:underline">Lotto </span>:<span id="idlotto" runat="server" ><%#Eval("idlotto")%></span></p>
+			<p style="line-height:20px"><span style="text-decoration:underline">Lotto </span>:<span id="idlotto" runat="server" style="font-size:1.6em;font-weight:bold"><%#Eval("idlotto")%></span></p>
 			<p style="line-height:20px"><span style="text-decoration:underline">Anno</span>: <span id="annoLotto"><%# Eval("anno")%></span></p>
 			<p style="line-height:20px"><span style="text-decoration:underline">Condizione</span>: <span id="statoLotto" runat="server"><%# Eval("tipo_lotto")%></span></p>
-			<p style="line-height:20px"><span style="text-decoration:underline">Prezzo</span> : <span id="prezzoLotto" runat="server"><%# Eval("euro")%></span></p>
+			<p style="line-height:20px"><span style="text-decoration:underline">Prezzo</span> : <span id="prezzoLotto" runat="server" style="text-align:right"><b><%# Eval("prezzo_base")%></b>&nbsp;&euro;</span></p>
 			<p id="descrizioneLotto" class="lottoOffertadescrizione" runat="server"><%# Eval("descrizione")%></p>
-			<p class="lottoOfferta"><asp:LinkButton ID="linkBasket" runat="server">Aggiungi al carrello</asp:LinkButton><asp:Label runat="server" ID="linkBasketAdded" Visible="false">Lotto aggiunto al carrello</asp:Label>&nbsp;<%# VerificaOfferta(DataBinder.Eval(Container.DataItem, "stato"), DataBinder.Eval(Container.DataItem, "idlotto"))%></p>            
+			<p class="lottoOfferta"><asp:LinkButton ID="linkBasket" runat="server">Aggiungi al carrello</asp:LinkButton><asp:Label runat="server" ID="linkBasketAdded" Visible="false">Lotto aggiunto al carrello</asp:Label>&nbsp;<%# VerificaOfferta(DataBinder.Eval(Container.DataItem, "stato"), DataBinder.Eval(Container.DataItem, "idlotto"))%></p>
 		 </div>
 	</ItemTemplate>
 	</asp:Repeater>
