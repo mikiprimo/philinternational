@@ -272,14 +272,7 @@ a.disabled {visibility:hidden !important;}
 .navi a.active {	background-position:0 -16px;}
 .navi a.active {	background-position:0 -16px;}
 
-.linkOpen a{
-	background:url(../images/styles/openClose.png) no-repeat 0px -12px;
-	text-decoration:none;
-	border:0px;
-	margin:0px;
-	height:12px;
-	display:inline;
-}
+.linkOpen a      {background:url(../images/styles/openClose.png) no-repeat 0px 0px;}
 .linkOpen a:hover{background:url(../images/styles/openClose.png) no-repeat 0px -12px;}
 ul.listAdmin li{color:#000;}
 ul.listAdmin li a{ display:block;color:#090;} 
