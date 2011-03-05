@@ -88,7 +88,7 @@ namespace Philinternational
          LottiGateway a = new LottiGateway();
          String chiave = idLotto.ToString();
          String outputImmagine = a.LoadImageByLotto(Page.ResolveClientUrl("~/images/asta/"),Server.MapPath(Page.ResolveClientUrl("~/images/asta/"))
-             , Server.MapPath(Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg")), chiave);
+             , Page.ResolveClientUrl("~/images/immagine_non_disponibile.jpg"), chiave);
 
          return outputImmagine;
      }

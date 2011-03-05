@@ -42,27 +42,32 @@
         <div id="leftmenu">
             <asp:Panel runat="server" Visible="false" ID="PanelAdmin">
             <div class="AdminMenu">
-                <h3>Amministrazione&nbsp;<a href="#"  id="admin1" class="linkOpen"></a></h3>
-               <ul class="listAdmin">                    
+                <h3>Amministrazione&nbsp;<a href="#"  id="admin1">[ Chiudi ]</a></h3>
+               <ul class="listAdmin" id="list1">                    
                     <li><asp:HyperLink runat="server" ID="linkAnagrafica" NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" ></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkNews" NavigateUrl="~/Management/news.aspx" Text="News"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkNewsletter" NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkGilardiFilatelia" NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it"></asp:HyperLink></li>
                 </ul> 
-                <h3>Gestione aste <a href="#"  id="admin2" class="linkOpen"></a></h3>
-                <ul class="listAdmin">
+                <h3>Gestione aste&nbsp;<a href="#"  id="admin2">[ Chiudi ]</a></h3>
+                <ul class="listAdmin"  id="list2">
                     <li><asp:HyperLink runat="server" ID="HyperParagrafo" NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkLotto" NavigateUrl="~/Management/Lotto.aspx" Text="Gestione Lotti"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkAsta" NavigateUrl="~/Management/Aste.aspx" Text="Asta Attiva"></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" ID="linkUploadFlusso" NavigateUrl="~/Management/UploadLotti.aspx" Text="Carica Asta"></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" ID="HyperLink1"  Text="Carica Immagini[in progress]"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkOfferte" NavigateUrl="~/Management/Offerta.aspx" Text="Elenco Offerte" Value="Offerte"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="varie" NavigateUrl="~/Management/Varie.aspx" Text="Varie" Value="Varie"></asp:HyperLink></li>
                  </ul>
             <script type="text/javascript" language="javascript">
-
-                $("#admin1").click(function () { $(".listAdmin").slideToggle("slow"); });
-                $("#admin2").click(function () { $(".listAdmin").slideToggle("slow"); });
+                $("#admin1").click(function () {
+                    $("#list1").slideToggle("slow", function () {
+                        var text = $("#admin1").html(); if (text == "[ Chiudi ]") $("#admin1").html("[ Apri ]"); else $("#admin1").html("[ Chiudi ]")
+                    });
+                });
+                $("#admin2").click(function () {
+                    $("#list2").slideToggle("slow", function () {
+                        var text = $("#admin2").html(); if (text == "[ Chiudi ]") $("#admin2").html("[ Apri ]"); else $("#admin1").html("[ Chiudi ]")
+                    });
+                });
                 
             </script>   
             </div>
