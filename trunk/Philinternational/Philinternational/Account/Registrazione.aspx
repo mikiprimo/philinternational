@@ -217,13 +217,15 @@
         </fieldset>
     </div>
     <div id="divSuccess" runat="server">
-        <h1>REGISTRAZIONE EFFETTUATA CON SUCCESSO!</h1>
+        <h1>REGISTRAZIONE EFFETTUATA CON SUCCESSO</h1>
         <br />
         <br />
-        <h1>Nelle prossime ore la tua posizione verrà verificata e attivata.</h1>
+        <p>
+        <h1>Nelle prossime ore la tua posizione verrà verificata e attivata.</h1></p>
         <br />
-        <asp:HyperLink ID="hlHomePage" runat="server" NavigateUrl="~/Default.aspx">VAI ALL'HOME PAGE</asp:HyperLink>
+        <p style="text-align:center"><asp:HyperLink ID="hlHomePage" runat="server" NavigateUrl="~/Default.aspx">VAI ALL'HOME PAGE</asp:HyperLink></p>
         <br />
+        
     </div>
     <br />
 </asp:Content>
