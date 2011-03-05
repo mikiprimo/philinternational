@@ -12,7 +12,7 @@ namespace Philinternational.Styles {
     public partial class Paragrafo : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
             if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
-            if(!IsPostBack) BindData();
+            if (!IsPostBack) BindData();
         }
 
         private void BindData() {
@@ -32,7 +32,7 @@ namespace Philinternational.Styles {
             paragrafoEntity MyParagrafo = new paragrafoEntity();
             MyParagrafo.descrizione = (String)newValues["descrizione"];
             MyParagrafo.id = Convert.ToInt32(gvParagrafi.DataKeys[e.RowIndex]["idparagrafo"]);
-            MyParagrafo.state = new Stato(((CheckBox)gvParagrafi.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1:0, "");
+            MyParagrafo.state = new Stato(((CheckBox)gvParagrafi.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1 : 0, "");
 
             ParagrafoGateway.UpdateParagrafi(MyParagrafo);
 
@@ -56,7 +56,7 @@ namespace Philinternational.Styles {
         }
 
         protected void ibtnNuovoParagrafo_Click(object sender, ImageClickEventArgs e) {
-
+            Response.Redirect("ParagrafoDetail.aspx");
         }
     }
 }
