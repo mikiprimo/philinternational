@@ -5,7 +5,8 @@
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jqueryCollection.js") %>"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/commonFunction.js") %>"></script>
-        <link rel="icon" href="~/images/favicon.ico" type="image/gif"  />
+
+                    <link rel="icon" href="~/images/favicon.png" type="image/png" />
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
         <title>Offerta filatelica per corrispondenza</title>
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">    
