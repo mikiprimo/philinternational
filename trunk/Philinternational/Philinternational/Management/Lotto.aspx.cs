@@ -284,7 +284,6 @@ namespace Philinternational.Management {
 
         #region DISASSOCIA LOTTI
 
-        //TODO: Disassociazione da testare
         protected void ibtnDisassociaLotti_Click(object sender, ImageClickEventArgs e) {
             List<Int32> list = new List<Int32>();
 
