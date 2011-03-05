@@ -86,11 +86,15 @@
     <Content Include="images\banner\banner_gilardifilatelia_468_60.png" />
     <Content Include="images\banner\banner_segretibacco.png" />
     <Content Include="images\commands\aggiorna.png" />
+    <Content Include="images\commands\attiva.png" />
     <Content Include="images\commands\cancella.png" />
     <Content Include="images\commands\conferma.png" />
+    <Content Include="images\commands\creanuova.png" />
     <Content Include="images\commands\creanuovo.png" />
+    <Content Include="images\commands\disassocia.png" />
     <Content Include="images\commands\indietro.png" />
     <Content Include="images\commands\pulisci.png" />
+    <Content Include="images\commands\trasferisci.png" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\commands\cerca.png" />
     <Content Include="images\favicon.png" />
