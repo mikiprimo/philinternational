@@ -127,6 +127,13 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
                 command.ExecuteNonQuery();
+                if (stato == 1) {
+                    
+                    int idAnagrafica =Int32.Parse( AccountGateway.GetIdAnagraficaByEmail(mailAnagrafica));
+                    String persona = AccountGateway.GetPersonaFromIdAnagrafica(idAnagrafica);
+                    String esito = Layers.MailList.AttivazioneUtente(persona, mailAnagrafica);
+                }
+
             } catch (MySqlException) {
                 return false;
             } finally {
