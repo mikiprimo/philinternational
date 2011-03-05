@@ -118,8 +118,6 @@
     <Content Include="images\styles\navigator.png" />
     <Content Include="images\styles\openClose.png" />
     <Content Include="images\styles\ul_argomento.png" />
-    <Content Include="images\webControls\gridview_update.png" />
-    <Content Include="images\webControls\select_gridview.png" />
     <Content Include="Lotti\carrello.aspx" />
     <Content Include="Lotti\elencoLotto.aspx" />
     <Content Include="Lotti\offerta.aspx" />
