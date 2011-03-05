@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Gestione delle news" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="news.aspx.cs" Inherits="Philinternational.Management.News" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>

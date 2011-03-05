@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Gestione singoli Lotti" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Lotto.aspx.cs" Inherits="Philinternational.Management.Lotto" %>
 
 <%@ Import Namespace="System" %>
