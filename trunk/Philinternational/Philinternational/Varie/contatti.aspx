@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="contatti.aspx.cs" Inherits="Philinternational.contatti" %>
+﻿<%@ Page Title="contatti, richiesta informazioni al sito di offerta filatelica philinternational" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="contatti.aspx.cs" Inherits="Philinternational.contatti" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
 .spanText{height:20px;width:250px;display:block;font-size:1.2em;font-style:italic}
