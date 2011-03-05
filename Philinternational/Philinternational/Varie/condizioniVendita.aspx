@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="condizioniVendita.aspx.cs" Inherits="Philinternational.condizioniVendita" %>
+﻿<%@ Page Title="Condizioni di vendita per offerta filateliaca philinternational.it" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="condizioniVendita.aspx.cs" Inherits="Philinternational.condizioniVendita" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <style type="text/css">
     p,ul li,ol li{text-align:justify;padding:0px 5px; line-height:20px}

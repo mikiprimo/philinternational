@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="chi-siamo.aspx.cs" Inherits="Philinternational.chi_siamo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-<title>PhilInternational: Chi siamo, la nostra storia</title>
+<title>Phil International: Chi siamo, la nostra storia</title>
 <style type="text/css">
 p{text-align:justify;padding:6px;font-size:1.2em}
 </style>

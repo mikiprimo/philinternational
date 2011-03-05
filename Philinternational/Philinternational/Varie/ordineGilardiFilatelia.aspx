@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ordineGilardiFilatelia.aspx.cs" Inherits="Philinternational.ordinaToGilardiFilatelia" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <title>ordine del lotto presente su www.gilardifilatelia.it</title>
+    <title>Modulo ordine del lotto presente su www.gilardifilatelia.it</title>
     <style type="text/css">
         .spanText{height:20px;width:250px;display:block;font-size:1.2em;font-style:italic}
     </style>
