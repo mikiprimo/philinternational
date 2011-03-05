@@ -56,7 +56,8 @@ namespace Philinternational.Account {
             newUser.res_comune = txtCitta.Text;
             newUser.res_nazione = txtNazione.Text;
             //Dati domicilio
-            if (rbSi.Checked) {
+            if (rbSi.Checked)
+            {
                 newUser.dom_via = txtViaDom.Text;
                 newUser.dom_indirizzo = txtIndirizzoDom.Text;
                 newUser.dom_num_civico = txtNumCivicoDom.Text;
@@ -64,6 +65,15 @@ namespace Philinternational.Account {
                 newUser.dom_provincia = txtProvinciaDom.Text;
                 newUser.dom_comune = txtCittaDom.Text;
                 newUser.dom_nazione = txtNazioneDom.Text;
+            }
+            else {
+                newUser.dom_via = txtVia.Text;
+                newUser.dom_indirizzo = txtIndirizzo.Text;
+                newUser.dom_num_civico = txtNumCivico.Text;
+                newUser.dom_cap = txtCap.Text;
+                newUser.dom_provincia = txtProvincia.Text;
+                newUser.dom_comune = txtCitta.Text;
+                newUser.dom_nazione = txtNazione.Text;
             }
             Boolean result = false;
 
