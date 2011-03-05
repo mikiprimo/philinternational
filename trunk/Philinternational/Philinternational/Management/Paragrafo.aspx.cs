@@ -49,11 +49,12 @@ namespace Philinternational.Styles {
             this.BindData();
         }
 
-        protected void gvParagrafi_RowDataBound(object sender, GridViewRowEventArgs e) {
-            if (e.Row.RowType == DataControlRowType.DataRow) {
-                ((HyperLink)e.Row.Cells[0].FindControl("hlGoToArgumentsView")).NavigateUrl = "~/Management/ArgoAndSubArgomento.aspx?Query=" + gvParagrafi.DataKeys[e.Row.RowIndex]["idparagrafo"];
-            }
-        }
+        //TODO: Lasciarlo come esempio/modello
+        //protected void gvParagrafi_RowDataBound(object sender, GridViewRowEventArgs e) {
+        //    if (e.Row.RowType == DataControlRowType.DataRow) {
+        //        ((HyperLink)e.Row.Cells[0].FindControl("hlGoToArgumentsView")).NavigateUrl = "~/Management/ArgoAndSubArgomento.aspx?Query=" + gvParagrafi.DataKeys[e.Row.RowIndex]["idparagrafo"];
+        //    }
+        //}
 
         protected void ibtnNuovoParagrafo_Click(object sender, ImageClickEventArgs e) {
             Response.Redirect("ParagrafoDetail.aspx");

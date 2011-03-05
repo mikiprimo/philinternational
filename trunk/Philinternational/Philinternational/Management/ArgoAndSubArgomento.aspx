@@ -1,21 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="ArgoAndSubArgomento.aspx.cs" Inherits="Philinternational.Styles.SubArgomento" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"><style
-    type="text/css">
-                                                                                 .style1
-                                                                                 {
-                                                                                     width: 300px;
-                                                                                 }
-                                                                             </style>
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <table style="width: 100%;">
+    <table>
         <tr>
-            <td class="style1">
-                <asp:HyperLink ID="lnkSelectOtherParagraph" runat="server" NavigateUrl="~/Management/Paragrafo.aspx">Seleziona un altro paragrafo</asp:HyperLink>
+            <td>
+                <h3>ARGOMENTI</h3>
             </td>
             <td>
+                <h3>SUB ARGOMENTI</h3>
             </td>
         </tr>
         <tr>
@@ -102,17 +96,40 @@
             </td>
         </tr>
         <tr>
-            <td class="style1">
-                <asp:ImageButton ID="ibtnDeleteSelectedArgs" runat="server" AlternateText="Cancella selezionati"
-                    ToolTip="Argomenti selezionati" OnClick="ibtnDeleteSelectedArgs_Click" /><br />
-                <asp:ImageButton ID="ibtnCreateNewArgument" runat="server" AlternateText="Crea un nuovo argomento"
-                    OnClick="ibtnCreateNewArgument_Click" />
+            <td>
+                <table>
+                    <tr class="commandPanel">
+                        <td>
+                            <asp:ImageButton ID="ibtnDeleteSelectedArgs" runat="server" AlternateText="Cancella selezionati"
+                                CssClass="cleanButtons" ToolTip="Argomenti selezionati" OnClick="ibtnDeleteSelectedArgs_Click"
+                                ImageUrl="~/images/commands/cancella.png" />
+                        </td>
+                        <td>
+                            <asp:ImageButton ID="ibtnCreateNewArgument" runat="server" AlternateText="Crea un nuovo argomento"
+                                CssClass="cleanButtons" OnClick="ibtnCreateNewArgument_Click" ImageUrl="~/images/commands/creanuovo.png" />
+                        </td>
+                    </tr>
+                </table>
             </td>
             <td>
-                <asp:ImageButton ID="ibtnDeleteSelectedSubArgs" runat="server" AlternateText="Cancella selezionati"
-                    ToolTip="Sub argomenti selezionati" OnClick="ibtnDeleteSelectedSubArgs_Click" /><br />
-                <asp:ImageButton ID="ibtnCreateNewSubArgument" runat="server" AlternateText="Crea un nuovo sub argomento"
-                    OnClick="ibtnCreateNewSubArgument_Click" />
+                <table>
+                    <tr class="commandPanel">
+                        <td>
+                            <asp:ImageButton ID="ibtnDeleteSelectedSubArgs" runat="server" AlternateText="Cancella selezionati"
+                                CssClass="cleanButtons" ToolTip="Sub argomenti selezionati" OnClick="ibtnDeleteSelectedSubArgs_Click"
+                                ImageUrl="~/images/commands/cancella.png" />
+                        </td>
+                        <td>
+                            <asp:ImageButton ID="ibtnCreateNewSubArgument" runat="server" AlternateText="Crea un nuovo sub argomento"
+                                CssClass="cleanButtons" OnClick="ibtnCreateNewSubArgument_Click" ImageUrl="~/images/commands/creanuovo.png" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <asp:HyperLink ID="lnkSelectOtherParagraph" runat="server" NavigateUrl="~/Management/Paragrafo.aspx">Seleziona un altro paragrafo</asp:HyperLink>
             </td>
         </tr>
     </table>
