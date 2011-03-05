@@ -39,7 +39,7 @@
     Ci trovi in via Domenico Cimarosa, n° 11 <br />
     20144, Milano<br />
     <br />
-    <div id="map_canvas">
+    <div id="map_canvas" style="border: 1px solid #C0C0C0">
     </div>
     <br />
     <div>
