@@ -69,6 +69,22 @@ namespace Philinternational.Layers {
             return esito;
 
         }
+
+        public static String AttivazioneUtente(String persona, String email)
+        {
+            String esito = "";
+            String soggetto = "";
+            String BodyMail = "";
+            soggetto = "[philinternational.it] Conferma attivazione utenza";
+            BodyMail = "G.le " + persona + ",<br/>";
+            BodyMail += "la sua utenza è stata processata ed attivata correttamente.<br/>";
+            BodyMail += "Le auguriamo una buona navigazione<br/>";
+            BodyMail += "Cordiali Saluti<br/>Lo staff<br/>";
+            esito = SendGenericMail(email, soggetto, BodyMail);
+            return esito;
+
+        }
+
         public static String AvvisoAdminNuovaRegistrazione(String email) {
             String esito = "";
             String soggetto = "";
