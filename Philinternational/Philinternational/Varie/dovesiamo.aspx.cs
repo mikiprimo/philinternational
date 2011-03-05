@@ -8,13 +8,15 @@ using System.Web.UI.WebControls;
 namespace Philinternational {
     public partial class dovesiamo : System.Web.UI.Page {
         protected void Page_PreInit(object sender, EventArgs e) {
+
         }
 
         protected void Page_Init(object sender, EventArgs e) {
+            
         }
 
         protected void Page_Load(object sender, EventArgs e) {
-
+            ClientScript.RegisterStartupScript(typeof(Page), "", "<script type='text/javascript'>initialize();</script>");
         }
     }
 }
