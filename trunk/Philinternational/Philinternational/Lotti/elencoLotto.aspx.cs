@@ -64,11 +64,11 @@ namespace Philinternational
             String limite = calcLimitForPage(codargomento, subargomento, numPage, limitForPage);
             if (subargomento == null || subargomento == "0")
             {
-                sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE id_argomento=" + codargomento + "" + limite;
+                sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE id_argomento=" + codargomento + " ORDER BY idlotto " + limite;
             }
             else
             {
-                sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE id_subargomento=" + subargomento + "" + limite;
+                sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE id_subargomento=" + subargomento + " ORDER BY idlotto " + limite;
             }
             numPagineOutput.InnerHtml= showNumberPage( codargomento,  subargomento,  numPage,  limitForPage);
             LottoConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
