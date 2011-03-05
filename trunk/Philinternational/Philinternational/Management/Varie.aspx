@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Varie.aspx.cs" Inherits="Philinternational.Styles.Varie" %>
+﻿<%@ Page Title="Funzionalità varie" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Varie.aspx.cs" Inherits="Philinternational.Styles.Varie" %>
 <asp:Content ID="VarieHead" ContentPlaceHolderID="HeadContent" runat="server">
 <style type="text/css">
     #loadLotti { display:none; }

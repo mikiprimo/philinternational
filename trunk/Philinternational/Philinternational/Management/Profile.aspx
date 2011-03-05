@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Gestione del profilo utente" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Profile.aspx.cs" Inherits="Philinternational.Management.Profile" %>
 
 <%@ Register Src="~/UserControls/UserProfileMask.ascx" TagName="UserProfileMask"

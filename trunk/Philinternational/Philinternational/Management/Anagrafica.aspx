@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Gestione delle anagrafiche" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Anagrafica.aspx.cs" Inherits="Philinternational.Styles.Anagrafica" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
