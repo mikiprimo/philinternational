@@ -1,7 +1,7 @@
-﻿<%@ Page Title="Offerta per lotto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="offerta.aspx.cs" Inherits="Philinternational.offerta" %>
+﻿<%@ Page Title="Offerta per singolo lotto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="offerta.aspx.cs" Inherits="Philinternational.offerta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="OffertaMain" ContentPlaceHolderID="MainContent" runat="server">
     <h3 id="testoH1" runat="server" class="titlePanel" style="text-transform:uppercase;color:#000"></h3>
     <div class="bloccoOfferta">
         <p id="LoadImmagineOutput" runat="server">Immagine</p>
