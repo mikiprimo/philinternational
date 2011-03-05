@@ -81,7 +81,8 @@ namespace Philinternational.Account {
             result = AnagraficaGateway.ManageNewsletterStateByIDAnagrafica(newUser.idanagrafica, chkNewsLetters.Checked);
 
             if (result) {
-                MailList.RegistrazioneUtente(newUser.nome + " " + newUser.cognome, newUser.email, newUser.password);
+                String esitoUtente = MailList.RegistrazioneUtente(newUser.nome + " " + newUser.cognome, newUser.email, newUser.password);
+                String esitoAdmin = MailList.AvvisoAdminNuovaRegistrazione(newUser.email);
                 Response.Redirect("~/Account/Registrazione.aspx?R=success");
             }
         }
