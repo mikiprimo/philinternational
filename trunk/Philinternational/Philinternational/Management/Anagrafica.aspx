@@ -1,18 +1,31 @@
-﻿<%@ Page Title="Gestione delle anagrafiche" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="Anagrafica.aspx.cs" Inherits="Philinternational.Styles.Anagrafica" %>
+﻿<%@ Page Title="Gestione delle anagrafiche" Language="C#" MasterPageFile="~/Site.Master"
+    AutoEventWireup="true" CodeBehind="Anagrafica.aspx.cs" Inherits="Philinternational.Styles.Anagrafica" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <h3 class="titlePanel">Gestione Anagrafica </h3>
     <br />
-    <asp:TextBox ID="txtStringaRicercaCognome" runat="server" class="water" ToolTip="Cognome"
-        Text="Cognome" />
-    <asp:TextBox ID="txtStringaRicercaMail" runat="server" class="water" ToolTip="E-Mail"
-        Text="E-Mail" />
-    <asp:ImageButton ID="ibtnCercaAnagrafica" runat="server" AlternateText="Cerca" OnClick="ibtnCercaAnagrafica_Click" />
-    <asp:ImageButton ID="ibtnCancellaAnagraficheSelezionate" runat="server" AlternateText="Cancella lotti selezionati"
-        OnClick="ibtnCancellaAnagraficheSelezionate_Click" />
+    <table>
+        <tr class="commandPanel">
+            <td>
+                <asp:TextBox ID="txtStringaRicercaCognome" runat="server" class="water" ToolTip="Cognome"
+                    Text="Cognome" />
+            </td>
+            <td>
+                <asp:TextBox ID="txtStringaRicercaMail" runat="server" class="water" ToolTip="E-Mail"
+                    Text="E-Mail" />
+            </td>
+            <td>
+                <asp:ImageButton ID="ibtnCercaAnagrafica" runat="server" AlternateText="Cerca" CssClass="cleanButtons"
+                    OnClick="ibtnCercaAnagrafica_Click" ImageUrl="~/images/commands/cerca.png" />
+            </td>
+            <td>
+                <asp:ImageButton ID="ibtnCancellaAnagraficheSelezionate" runat="server" AlternateText="Cancella lotti selezionati"
+                   CssClass="cleanButtons" OnClick="ibtnCancellaAnagraficheSelezionate_Click" ImageUrl="~/images/commands/cancella.png" />
+            </td>
+        </tr>
+    </table>
     <br />
     <br />
     <asp:GridView ID="gvAnagrafica" runat="server" AllowPaging="True" EnableTheming="True"

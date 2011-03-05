@@ -85,6 +85,7 @@
     <Content Include="images\add.png" />
     <Content Include="images\banner\banner_gilardifilatelia_468_60.png" />
     <Content Include="images\banner\banner_segretibacco.png" />
+    <Content Include="images\commands\cancella.png" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\commands\cerca.png" />
     <Content Include="images\favicon.png" />
