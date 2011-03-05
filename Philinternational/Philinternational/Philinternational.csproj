@@ -88,8 +88,8 @@
     <Content Include="images\commands\aggiorna.png" />
     <Content Include="images\commands\cancella.png" />
     <Content Include="images\commands\conferma.png" />
+    <Content Include="images\commands\creanuovo.png" />
     <Content Include="images\commands\indietro.png" />
-    <Content Include="images\commands\nuovo.png" />
     <Content Include="images\commands\pulisci.png" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\commands\cerca.png" />
