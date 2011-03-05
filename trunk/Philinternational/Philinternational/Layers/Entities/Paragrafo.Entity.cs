@@ -4,7 +4,7 @@ using System.Web;
 
 namespace Philinternational {
     public class paragrafoEntity {
-        public int idparagrafo;
+        public int id;
         public String descrizione;
         public Stato state;
     }

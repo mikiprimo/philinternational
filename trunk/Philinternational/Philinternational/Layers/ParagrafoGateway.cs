@@ -24,7 +24,8 @@ namespace Philinternational.Layers {
         private static String SELECT_SUBARGOMENTI_BYIDARGOMENTO = "SELECT idsub_argomento, idargomento, descrizione, stato FROM paragrafo_subargomento WHERE idargomento = @idargomento";
         private static String UPDATE_SUBARGOMENTI = "UPDATE paragrafo_subargomento SET descrizione = @descrizione, stato = @stato WHERE idsub_argomento = @idsub_argomento";
         private static String INSERT_SUBARGOMENTI = "INSERT INTO paragrafo_subargomento (idsub_argomento, idargomento, descrizione, stato) VALUES (@idsub_argomento, @idargomento, @descrizione, @stato)";
-        
+        private static string INSERT_PARAGRAFO = "INSERT INTO paragrafo (idparagrafo, descrizione, stato) VALUES (@idparagrafo, @descrizione, @stato)";
+
 
         //----------PARAGRAFI-------------//
 
@@ -38,7 +39,7 @@ namespace Philinternational.Layers {
 
             MySqlCommand command = new MySqlCommand(UPDATE_PARAGRAFO, conn);
             command.CommandType = CommandType.Text;
-            command.Parameters.AddWithValue("idparagrafo", MyParagrafo.idparagrafo);
+            command.Parameters.AddWithValue("idparagrafo", MyParagrafo.id);
             command.Parameters.AddWithValue("descrizione", MyParagrafo.descrizione);
             command.Parameters.AddWithValue("stato", MyParagrafo.state.id);
 
@@ -81,7 +82,7 @@ namespace Philinternational.Layers {
                 try {
                     cmd.Parameters.AddWithValue("idargomento", actualIdArg);
                     conn.Open();
-                    Int32 res = ((Int32) cmd.ExecuteScalar());
+                    Int32 res = ((Int32)cmd.ExecuteScalar());
                     return res;
                 } catch (MySqlException) {
                     return -1;
@@ -363,6 +364,28 @@ namespace Philinternational.Layers {
             return true;
         }
 
-      
+        /// <summary>
+        /// Inserimento nuovo paragrafo
+        /// </summary>
+        /// <param name="newParagrafo"></param>
+        /// <returns></returns>
+        internal static Boolean InsertParagrafo(paragrafoEntity newParagrafo) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(INSERT_PARAGRAFO, conn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("idparagrafo", newParagrafo.id);
+            command.Parameters.AddWithValue("descrizione", newParagrafo.descrizione);
+            command.Parameters.AddWithValue("stato", newParagrafo.state.id);
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySql.Data.MySqlClient.MySqlException) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
+        }
     }
 }

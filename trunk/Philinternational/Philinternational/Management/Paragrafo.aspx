@@ -5,6 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <h3 class="titlePanel">Gestione Paragrafi</h3>
     <br />
+    <table>
+        <tr class="commandPanel">
+            <td>
+            <asp:ImageButton ID="ibtnNuovoParagrafo" runat="server" 
+                    AlternateText="Inserisci nuovo paragrafo" CssClass="cleanButtons"
+                    ImageUrl="~/images/commands/nuovo.png" 
+                    onclick="ibtnNuovoParagrafo_Click" />
+            </td>
+        </tr>
+    </table>
     <br />
     <asp:GridView ID="gvParagrafi" runat="server" AllowPaging="True" AutoGenerateColumns="False"
         DataKeyNames="idparagrafo" OnRowUpdating="gvParagrafi_RowUpdating" OnPageIndexChanged="gvParagrafi_PageIndexChanged"

@@ -31,7 +31,7 @@ namespace Philinternational.Styles {
 
             paragrafoEntity MyParagrafo = new paragrafoEntity();
             MyParagrafo.descrizione = (String)newValues["descrizione"];
-            MyParagrafo.idparagrafo = Convert.ToInt32(gvParagrafi.DataKeys[e.RowIndex]["idparagrafo"]);
+            MyParagrafo.id = Convert.ToInt32(gvParagrafi.DataKeys[e.RowIndex]["idparagrafo"]);
             MyParagrafo.state = new Stato(((CheckBox)gvParagrafi.Rows[e.RowIndex].FindControl("chkUpdateStatus")).Checked == true ? 1:0, "");
 
             ParagrafoGateway.UpdateParagrafi(MyParagrafo);
@@ -53,6 +53,10 @@ namespace Philinternational.Styles {
             if (e.Row.RowType == DataControlRowType.DataRow) {
                 ((HyperLink)e.Row.Cells[0].FindControl("hlGoToArgumentsView")).NavigateUrl = "~/Management/ArgoAndSubArgomento.aspx?Query=" + gvParagrafi.DataKeys[e.Row.RowIndex]["idparagrafo"];
             }
+        }
+
+        protected void ibtnNuovoParagrafo_Click(object sender, ImageClickEventArgs e) {
+
         }
     }
 }
