@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -75,6 +76,13 @@
     <Content Include="Documentation\load_paragrafi.sql" />
     <Content Include="Documentation\philinternational.sql" />
     <Content Include="Documentation\philinternational_20110222.sql" />
+    <Content Include="Documentation\sql\alter_table_anagrafica.sql" />
+    <Content Include="Documentation\sql\esempio_dati_tabella_lotto.sql" />
+    <Content Include="Documentation\sql\load_paragrafi.sql" />
+    <Content Include="Documentation\sql\philinternational.sql" />
+    <Content Include="Documentation\sql\philinternational_20110222.sql" />
+    <Content Include="Documentation\sql\table_carrello.sql" />
+    <Content Include="Documentation\sql\table_lotto_tmp.sql" />
     <Content Include="Documentation\table_carrello.sql" />
     <Content Include="Documentation\table_lotto_tmp.sql" />
     <Content Include="Error.aspx" />
@@ -89,8 +97,9 @@
     <Content Include="images\asta\7.jpg" />
     <Content Include="images\asta\8.jpg" />
     <Content Include="images\asta\9.jpg" />
-    <Content Include="images\banner\banner_gilardi_468_60.jpg" />
-    <Content Include="images\banner\banner_test_468_60.png" />
+    <Content Include="images\banner\banner_gilardifilatelia_468_60.png" />
+    <Content Include="images\banner\banner_segretibacco.png" />
+    <Content Include="images\favicon.ico" />
     <Content Include="images\commands\cerca.png" />
     <Content Include="images\gilardifilatelia\288.jpg" />
     <Content Include="images\gilardifilatelia\45.jpg" />
@@ -102,6 +111,7 @@
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
     <Content Include="images\newsletters\email.png" />
     <Content Include="images\newsletters\email_delete.png" />
+    <Content Include="images\openClose.png" />
     <Content Include="images\select.png" />
     <Content Include="images\selectfull.png" />
     <Content Include="images\shadowbox\close.png" />
@@ -110,9 +120,11 @@
     <Content Include="images\shadowbox\pause.png" />
     <Content Include="images\shadowbox\play.png" />
     <Content Include="images\shadowbox\previous.png" />
+    <Content Include="images\styles\barra.gif" />
     <Content Include="images\styles\bottone.png" />
     <Content Include="images\styles\hori_large.png" />
     <Content Include="images\styles\navigator.png" />
+    <Content Include="images\styles\openClose.png" />
     <Content Include="images\styles\ul_argomento.png" />
     <Content Include="images\webControls\gridview_update.png" />
     <Content Include="images\webControls\select_gridview.png" />
@@ -138,9 +150,11 @@
     <Content Include="Management\Paragrafo.aspx" />
     <Content Include="Management\UploadLotti.aspx" />
     <Content Include="robots.txt" />
+    <Content Include="Scripts\commonFunction.js" />
     <Content Include="Scripts\google_analytics_tracks.js" />
     <Content Include="Scripts\jquery-1.5.min.js" />
     <Content Include="Scripts\jquery.tools.min.js" />
+    <Content Include="Scripts\jqueryCollection.js" />
     <Content Include="sitemap.xml" />
     <Content Include="UserControls\LottoDetailEditingMask.ascx" />
     <Content Include="UserControls\UserProfileMask.ascx" />
