@@ -69,38 +69,25 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registrazione.aspx" />
     <Content Include="Advertise.xml" />
-    <Content Include="Documentation\alter_table_anagrafica.sql" />
-    <Content Include="Documentation\esempio_dati_tabella_lotto.sql" />
     <Content Include="Documentation\Gestione Lotti.txt" />
     <Content Include="Documentation\GridView\GridViewCustom_EsempioCompleto.txt" />
-    <Content Include="Documentation\load_paragrafi.sql" />
-    <Content Include="Documentation\philinternational.sql" />
-    <Content Include="Documentation\philinternational_20110222.sql" />
     <Content Include="Documentation\sql\alter_table_anagrafica.sql" />
+    <Content Include="Documentation\sql\alter_table_lotto.sql" />
     <Content Include="Documentation\sql\esempio_dati_tabella_lotto.sql" />
     <Content Include="Documentation\sql\load_paragrafi.sql" />
     <Content Include="Documentation\sql\philinternational.sql" />
     <Content Include="Documentation\sql\philinternational_20110222.sql" />
     <Content Include="Documentation\sql\table_carrello.sql" />
     <Content Include="Documentation\sql\table_lotto_tmp.sql" />
-    <Content Include="Documentation\table_carrello.sql" />
-    <Content Include="Documentation\table_lotto_tmp.sql" />
     <Content Include="Error.aspx" />
     <Content Include="googlea3e06cc1203156e3.html" />
     <Content Include="images\accept.png" />
     <Content Include="images\add.png" />
-    <Content Include="images\asta\16.jpg" />
-    <Content Include="images\asta\2.jpg" />
-    <Content Include="images\asta\4.jpg" />
-    <Content Include="images\asta\5.jpg" />
-    <Content Include="images\asta\6.jpg" />
-    <Content Include="images\asta\7.jpg" />
-    <Content Include="images\asta\8.jpg" />
-    <Content Include="images\asta\9.jpg" />
     <Content Include="images\banner\banner_gilardifilatelia_468_60.png" />
     <Content Include="images\banner\banner_segretibacco.png" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\commands\cerca.png" />
+    <Content Include="images\favicon.png" />
     <Content Include="images\gilardifilatelia\288.jpg" />
     <Content Include="images\gilardifilatelia\45.jpg" />
     <Content Include="images\gilardifilatelia\54.jpg" />
@@ -111,7 +98,6 @@
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
     <Content Include="images\newsletters\email.png" />
     <Content Include="images\newsletters\email_delete.png" />
-    <Content Include="images\openClose.png" />
     <Content Include="images\select.png" />
     <Content Include="images\selectfull.png" />
     <Content Include="images\shadowbox\close.png" />
@@ -496,16 +482,20 @@
     <Content Include="Management\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="images\asta\" />
     <Folder Include="Management\uploadLotto\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Documentation\catalogo 52.rar" />
+    <None Include="Documentation\lastToDoList.xls" />
     <None Include="Documentation\mappatura_campi_upload_lotto.ods" />
     <None Include="Documentation\Philinternational - Analisi Funzionale.docx" />
     <None Include="Documentation\PhilinternationalBanner.psd" />
     <Compile Include="Layers\Commons.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="images\banner\banner_gilardifilatelia_468_60.xcf" />
+    <None Include="images\banner\banner_segretibacco.xcf" />
     <None Include="Philinternational.csproj.vs10x" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
