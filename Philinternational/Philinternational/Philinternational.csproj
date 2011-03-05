@@ -125,6 +125,7 @@
     <Content Include="Management\NewsletterDetail.aspx" />
     <Content Include="Management\offertaGilardiFilatelia.aspx" />
     <Content Include="Management\offertaGilardiFilateliaDetail.aspx" />
+    <Content Include="Management\ParagrafoDetail.aspx" />
     <Content Include="Management\Profile.aspx" />
     <Content Include="Management\SubArgomentoDetail.aspx" />
     <Content Include="Management\Lotto.aspx" />
@@ -319,6 +320,13 @@
     </Compile>
     <Compile Include="Management\offertaGilardiFilateliaDetail.aspx.designer.cs">
       <DependentUpon>offertaGilardiFilateliaDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ParagrafoDetail.aspx.cs">
+      <DependentUpon>ParagrafoDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\ParagrafoDetail.aspx.designer.cs">
+      <DependentUpon>ParagrafoDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
