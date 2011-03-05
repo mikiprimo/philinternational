@@ -278,3 +278,7 @@ ul.listAdmin li a{ display:block;color:#090;}
 .AdminMenu h3{border-bottom:1px solid #eee;}
 .titlePanel{background:url(../images/styles/barra.gif) no-repeat left bottom}
 
+/*COMMAND PANELS*/
+.cleanButtons{border: 0px;}
+.cleanButtons:hover{border: 0px;}
+.commandPanel{background-color:#FFFFFF;}
