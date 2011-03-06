@@ -8,6 +8,7 @@ using System.Data;
 
 namespace Philinternational.Styles {
     public partial class Newsletter : System.Web.UI.Page {
+
         protected void Page_Load(object sender, EventArgs e) {
             if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
             if (!IsPostBack) {
@@ -99,6 +100,7 @@ namespace Philinternational.Styles {
             }
 
             //Se l'admin ha selezionato una o più newsletters da spedire
+
             if (newsletterList.Count > 0) {
                 this.selectedNewsletters = newsletterList;
 
@@ -120,8 +122,8 @@ namespace Philinternational.Styles {
         }
 
         protected void ibtnSendMails_Click(object sender, ImageClickEventArgs e) {
-            //Questa chiamata sarebbe da fare in un thread parallelo
-            MailGateway.SendNewsletters(cblDistribution.Items, this.selectedNewsletters);
+            //TODO: Questa chiamata sarebbe da fare in un thread parallelo
+            NewsletterGateway.DistributeNewsletterMailsToSelectedUsers(cblDistribution.Items, this.selectedNewsletters);
         }
     }
 }

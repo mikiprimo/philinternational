@@ -1,9 +1,9 @@
-﻿<%@ Page Title="Gestione delle newsletter" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="Newsletter.aspx.cs" Inherits="Philinternational.Styles.Newsletter" %>
+﻿<%@ Page Title="Gestione delle newsletter" Language="C#" MasterPageFile="~/Site.Master"
+    AutoEventWireup="true" CodeBehind="Newsletter.aspx.cs" Inherits="Philinternational.Styles.Newsletter" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<h3 class="titlePanel">Gestione Newsletter</h3>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h3
+    class="titlePanel">Gestione Newsletter</h3>
     <br />
     <asp:MultiView ID="mvNewsletterManager" runat="server">
         <asp:View ID="viewGrid" runat="server">
@@ -15,15 +15,16 @@
                 <AlternatingRowStyle CssClass="AlternatingRowStyle" />
                 <Columns>
                     <asp:TemplateField>
-                        <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
+                        <ItemTemplate>
+                                <asp:CheckBox ID="chkUserSelection" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate><asp:ImageButton ID="ibtnEditNewsletter" runat="server" CausesValidation="False"
-                            CommandName="Edit" ImageUrl="~/images/selectfull.png" />
+                            CommandName="Edit" ImageUrl="~/images/selectfull.png" ToolTip="Modifica" />
                         </ItemTemplate>
                         <EditItemTemplate><asp:ImageButton ID="ibtnUpdateNewsletter" runat="server" CausesValidation="False"
-                            CommandName="Update" ImageUrl="~/images/accept.png" />
+                            CommandName="Update" ImageUrl="~/images/accept.png" ToolTip="Salva" />
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
@@ -54,19 +55,22 @@
             </asp:GridView>
             <br />
             <asp:ImageButton ID="ibtnCreateNewsletter" runat="server" AlternateText="Crea una nuova newsletter"
-                OnClick="ibtnCreateNewsletter_Click" />&nbsp;<asp:ImageButton ID="ibtnDeleteSelectedNewsletters"
-                    runat="server" OnClick="ibtnDeleteSelectedNewsletters_Click" AlternateText="Cancella le newsletters selezionate" />
+                OnClick="ibtnCreateNewsletter_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/creanuova.png"
+                ToolTip="Crea nuova newsletter" />&nbsp;<asp:ImageButton ID="ibtnDeleteSelectedNewsletters"
+                    runat="server" OnClick="ibtnDeleteSelectedNewsletters_Click" AlternateText="Cancella le newsletters selezionate"
+                    CssClass="cleanButtons" ImageUrl="~/images/commands/cancella.png" ToolTip="Cancella le newsletters selezionate" />
             <br />
             <br />
             <asp:ImageButton ID="ibtnSendToAll" runat="server" AlternateText="Distribuisci le newsletters selezionate"
-                OnClick="ibtnSendToAll_Click" /></asp:View>
+                OnClick="ibtnSendToAll_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/smista.png" ToolTip="Distribuisci le newsletters a tutti gli utenti selezionati" /></asp:View>
         <asp:View ID="viewDistribution" runat="server"><p>Deseleziona eventuali utenti che,
             in via eccezionale, non riceveranno la/le newsletter precedentemente selezionate.</p>
             <br />
             <asp:ImageButton ID="ibtnSendMails" runat="server" AlternateText="Spedisci le newsletters agli utenti"
-                OnClick="ibtnSendMails_Click" />
+                OnClick="ibtnSendMails_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/smista.png" ToolTip="Distribuisci le newsletters a tutti gli utenti selezionati"/>
             <asp:Panel ID="pnlDistribution" runat="server" ScrollBars="Vertical" Height="600px">
-                <asp:CheckBoxList ID="cblDistribution" runat="server" RepeatColumns="2"></asp:CheckBoxList>
+                <asp:CheckBoxList ID="cblDistribution" runat="server" RepeatColumns="2" 
+                    DataTextField="Text" DataValueField="Value"></asp:CheckBoxList>
             </asp:Panel>
             <asp:ImageButton ID="ibtnSendMailsBottom" runat="server" AlternateText="Spedisci le newsletters agli utenti"
                 OnClick="ibtnSendMails_Click" /><br />

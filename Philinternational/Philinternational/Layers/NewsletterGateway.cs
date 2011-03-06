@@ -114,5 +114,9 @@ namespace Philinternational.Layers {
             }
             return true;
         }
+
+        internal static void DistributeNewsletterMailsToSelectedUsers(System.Web.UI.WebControls.ListItemCollection listItemCollection, List<newsletterEntity> selectedNewsletters) {
+            MailGateway.SendNewsletters(listItemCollection, selectedNewsletters);
+        }
     }
 }
