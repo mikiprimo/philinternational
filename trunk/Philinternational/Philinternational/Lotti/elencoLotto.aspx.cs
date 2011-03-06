@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-
 namespace Philinternational
 {
     public partial class elencoLotto : System.Web.UI.Page
@@ -145,7 +144,7 @@ namespace Philinternational
 
             String tmpSql = "";
             String Esito="";
-            String limiteLotto = "0";
+            int limiteLotto = 0;
             /* STEP 2 -  ottengo il numero, il min ed il max per il paragrafo specifico*/
             String sql = "Select count(*) totale_lotti FROM lotto where stato!=0 and ";
             if (subargomento == null || subargomento == "0")
@@ -161,13 +160,13 @@ namespace Philinternational
 
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
             for (int i = 0; i < dr.Count; i++) {
-                limiteLotto = dr[i]["totale_lotti"].ToString();
+                limiteLotto = Int32.Parse(dr[i]["totale_lotti"].ToString());
             }
 
 
             /* STEP 3 scrittura finale della stringa*/
             Double recordperPagina;
-            recordperPagina = Convert.ToInt32(limiteLotto) / limitForPage;
+            recordperPagina = limiteLotto / limitForPage;
             if (recordperPagina <= 1)
             {
                 //Esito = "<div class=\"numPagina\">&nbsp;</div>";
@@ -175,6 +174,8 @@ namespace Philinternational
             }
             else
             {
+                int addPage = limiteLotto % limitForPage;
+                if (addPage > 0) recordperPagina++;
                 tmpSql = "<div class=\"numPagina\"><ul>";
                 for (int i = 1; i <= recordperPagina; i++)
                 {
