@@ -26,15 +26,28 @@
 <div id="loadLotti">
     <fieldset>
         <legend>Seleziona il file in formato .txt</legend>
-        <p><asp:FileUpload ID="FileLotto" runat="server"  />
-        <asp:Button ID="btnFile" runat="server" Text="Carica" onclick="loadLotti" /><br /></p>
+        <table>
+            <tr class="commandPanel">
+                <td><asp:FileUpload ID="FileLotto" runat="server"  />
+                </td>
+                <td><asp:ImageButton ID="ibtnFileLottoUpload" runat="server" ImageUrl="~/images/commands/uploadmarks.png" OnClick="loadLotti"/>
+                </td>
+            </tr>
+        </table>
+
     </fieldset>
 </div>
 <div id="loadImage">
     <fieldset>
         <legend>Seleziona la cartella di riferimento</legend>
-        <p><asp:FileUpload ID="FileUpload1" runat="server"  />
-        <asp:Button ID="btnImage" Visible="false" runat="server" Text="Carica" onclick="loadImmagini" /><br /></p>
+        <table>
+            <tr class="commandPanel">
+                <td><asp:FileUpload ID="FileUpload1" runat="server"  />
+                </td>
+                <td><asp:ImageButton ID="ibtnImageUpload" runat="server" ImageUrl="~/images/commands/uploadlotto.png" OnClick="loadImmagini"/>
+                </td>
+            </tr>
+        </table>
         <p>Work in progress</p>
     </fieldset>
 </div>

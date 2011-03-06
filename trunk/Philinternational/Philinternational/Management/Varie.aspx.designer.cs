@@ -31,13 +31,13 @@ namespace Philinternational.Styles {
         protected global::System.Web.UI.WebControls.FileUpload FileLotto;
         
         /// <summary>
-        /// btnFile control.
+        /// ibtnFileLottoUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFile;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnFileLottoUpload;
         
         /// <summary>
         /// FileUpload1 control.
@@ -49,13 +49,13 @@ namespace Philinternational.Styles {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// btnImage control.
+        /// ibtnImageUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnImage;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnImageUpload;
         
         /// <summary>
         /// esitoElaborazione control.
