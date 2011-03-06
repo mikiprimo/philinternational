@@ -103,15 +103,15 @@
         </p>
         <br />
         <div id="divUpdatePanel" runat="server" visible="false">
-            <asp:ImageButton ID="ibtnUpdateLotto" runat="server" AlternateText="Aggiorna" OnClick="ibtnUpdateLotto_Click" />
+            <asp:ImageButton ID="ibtnUpdateLotto" runat="server" AlternateText="Aggiorna" OnClick="ibtnUpdateLotto_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/aggiorna.png" />
         </div>
         <div id="divTransferPanel" runat="server" visible="false">
             <asp:ImageButton ID="ibtnTransferLotto" runat="server" AlternateText="Trasferisci Lotto temporaneo sulla tabella Lotti"
-                OnClick="ibtnTransferLotto_Click" Style="width: 14px" />
+                OnClick="ibtnTransferLotto_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/trasferisci.png" />
         </div>
         <div id="divInsertPanel" runat="server" visible="false">
             <asp:ImageButton ID="ibtnInsertNewLotto" runat="server" AlternateText="Inserisci"
-                OnClick="ibtnInsertNewLotto_Click" />
+                OnClick="ibtnInsertNewLotto_Click"  CssClass="cleanButtons" ImageUrl="~/images/commands/creanuovo.png"/>
         </div>
     </fieldset>
 </div>
