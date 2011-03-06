@@ -13,22 +13,22 @@ namespace Philinternational.Management {
     public partial class offertaGilardiFilatelia {
         
         /// <summary>
-        /// insNuovaOfferta control.
+        /// ibtnNuovaOfferta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink insNuovaOfferta;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnNuovaOfferta;
         
         /// <summary>
-        /// btnEraseSelectedNews control.
+        /// ibtnCancellaNewsSelezionati control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnEraseSelectedNews;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnCancellaNewsSelezionati;
         
         /// <summary>
         /// repeaterGeneral control.
