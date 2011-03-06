@@ -45,6 +45,8 @@ namespace Philinternational.Management.UserControls {
             txtCittaDom.Text = dv["dom_comune"].ToString();
             txtProvinciaDom.Text = dv["dom_provincia"].ToString();
             txtNazioneDom.Text = dv["dom_nazione"].ToString();
+
+            chkNewsLetters.Checked = AnagraficaGateway.IsSubscribedToNewsletters(Convert.ToInt32(hiddenIDAnagrafica.Value));
         }
 
         protected void ibtnUpdateAnagrafica_Click(object sender, ImageClickEventArgs e) {

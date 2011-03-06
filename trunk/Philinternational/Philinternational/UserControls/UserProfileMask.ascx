@@ -169,6 +169,6 @@
         </p>
         <br />
         <asp:ImageButton ID="ibtnUpdateAnagrafica" runat="server" CssClass="cleanButtons" ToolTip="Aggiorna"
-            AlternateText="Aggiorna" OnClick="ibtnUpdateAnagrafica_Click" ImageUrl="~/images/commands/aggiorna.png" />
+            AlternateText="Aggiorna" OnClick="ibtnUpdateAnagrafica_Click" ImageUrl="~/images/commands/aggiorna.png" CausesValidation="true" />
     </fieldset>
 </div>
