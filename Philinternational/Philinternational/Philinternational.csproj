@@ -108,7 +108,6 @@
     <Content Include="images\masterPage\PhilinternationalBanner.png" />
     <Content Include="images\newsletters\email.png" />
     <Content Include="images\newsletters\email_delete.png" />
-    <Content Include="images\select.png" />
     <Content Include="images\selectfull.png" />
     <Content Include="images\shadowbox\close.png" />
     <Content Include="images\shadowbox\loading.gif" />
