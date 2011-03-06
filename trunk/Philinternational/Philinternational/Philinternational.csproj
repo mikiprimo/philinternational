@@ -96,6 +96,7 @@
     <Content Include="images\commands\pulisci.png" />
     <Content Include="images\commands\smista.png" />
     <Content Include="images\commands\trasferisci.png" />
+    <Content Include="images\commands\uploadlotto.png" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\commands\cerca.png" />
     <Content Include="images\favicon.png" />
