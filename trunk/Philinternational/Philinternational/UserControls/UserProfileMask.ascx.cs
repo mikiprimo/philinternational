@@ -76,7 +76,7 @@ namespace Philinternational.Management.UserControls {
             AnagraficaGateway.UpdateAnagrafica(this.oldEmail, newAnagrafica);
             AnagraficaGateway.ManageNewsletterStateByIDAnagrafica(Convert.ToInt32(hiddenIDAnagrafica.Value), chkNewsLetters.Checked);
             if (txtPassword.Text != this.oldPassword) MailList.CambioPassword(txtNome.Text + txtCognome.Text, txtEmail.Text, txtPassword.Text);
+            Response.Redirect("~/Management/Anagrafica.aspx");
         }
-
     }
 }
