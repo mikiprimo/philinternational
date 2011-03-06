@@ -13,15 +13,6 @@ namespace Philinternational.Management {
     public partial class newsDetails {
         
         /// <summary>
-        /// titoloDettaglioNews control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl titoloDettaglioNews;
-        
-        /// <summary>
         /// esitoMessaggio control.
         /// </summary>
         /// <remarks>
@@ -85,39 +76,30 @@ namespace Philinternational.Management {
         protected global::System.Web.UI.WebControls.CheckBox chkStato;
         
         /// <summary>
-        /// labelStato control.
+        /// ibtnConferma control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelStato;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnConferma;
         
         /// <summary>
-        /// btnConferma control.
+        /// ibtnPulisci control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConferma;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnPulisci;
         
         /// <summary>
-        /// buttonReset control.
+        /// ibntTornaIndietro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonReset;
-        
-        /// <summary>
-        /// btnComeBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnComeBack;
+        protected global::System.Web.UI.WebControls.ImageButton ibntTornaIndietro;
     }
 }
