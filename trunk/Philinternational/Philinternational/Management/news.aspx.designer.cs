@@ -13,22 +13,22 @@ namespace Philinternational.Management {
     public partial class News {
         
         /// <summary>
-        /// hlNewNews control.
+        /// ibtnCreaNews control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlNewNews;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnCreaNews;
         
         /// <summary>
-        /// btnEraseSelectedNews control.
+        /// ibtnCancellaNews control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnEraseSelectedNews;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnCancellaNews;
         
         /// <summary>
         /// repeaterNews control.
@@ -38,5 +38,23 @@ namespace Philinternational.Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repeaterNews;
+        
+        /// <summary>
+        /// ImageButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        
+        /// <summary>
+        /// ImageButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
     }
 }

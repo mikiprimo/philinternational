@@ -17,12 +17,12 @@
                     Text="E-Mail" />
             </td>
             <td>
-                <asp:ImageButton ID="ibtnCercaAnagrafica" runat="server" AlternateText="Cerca" CssClass="cleanButtons"
+                <asp:ImageButton ID="ibtnCercaAnagrafica" runat="server" AlternateText="Cerca" ToolTip="Cerca" CssClass="cleanButtons"
                     OnClick="ibtnCercaAnagrafica_Click" ImageUrl="~/images/commands/cerca.png" />
             </td>
             <td>
                 <asp:ImageButton ID="ibtnCancellaAnagraficheSelezionate" runat="server" AlternateText="Cancella lotti selezionati"
-                   CssClass="cleanButtons" OnClick="ibtnCancellaAnagraficheSelezionate_Click" ImageUrl="~/images/commands/cancella.png" />
+                   CssClass="cleanButtons" ToolTip="Cancella le anagrafiche selezionate" OnClick="ibtnCancellaAnagraficheSelezionate_Click" ImageUrl="~/images/commands/cancella.png" />
             </td>
         </tr>
     </table>
