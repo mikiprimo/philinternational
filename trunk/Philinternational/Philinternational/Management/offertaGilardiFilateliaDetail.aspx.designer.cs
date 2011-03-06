@@ -193,30 +193,30 @@ namespace Philinternational.Management {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelStato;
         
         /// <summary>
-        /// btnConferma control.
+        /// ibtnConferma control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConferma;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnConferma;
         
         /// <summary>
-        /// buttonReset control.
+        /// ibtnPulisci control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonReset;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnPulisci;
         
         /// <summary>
-        /// btnComeBack control.
+        /// ibntTornaIndietro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnComeBack;
+        protected global::System.Web.UI.WebControls.ImageButton ibntTornaIndietro;
     }
 }

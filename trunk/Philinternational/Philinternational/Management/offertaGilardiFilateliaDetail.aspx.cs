@@ -8,25 +8,20 @@ using System.Web.UI.WebControls;
 using Philinternational.Layers;
 using System.Text;
 
-namespace Philinternational.Management
-{
-    public partial class offertaGilardiFilateliaDetail : System.Web.UI.Page
-    {
-        public String Codice
-        {
+namespace Philinternational.Management {
+    public partial class offertaGilardiFilateliaDetail : System.Web.UI.Page {
+        public String Codice {
             get { return ((String)ViewState["operationCode"]); }
             set { ViewState.Add("operationCode", value); }
         }
 
-        protected void Page_Load(object sender, EventArgs e){
-            if (!IsPostBack)
-            {
+        protected void Page_Load(object sender, EventArgs e) {
+            if (!IsPostBack) {
                 String codice = Request["cod"];
                 if ((codice == null) || (codice == "-1")) codice = "-1";
                 this.Codice = codice;
 
-                if (this.Codice != "-1")
-                {
+                if (this.Codice != "-1") {
                     GilardiFilateliaEntity myNews = GilardiFilateliaGateway.GetLottoById(codice);
                     lblDataPubblicazione.Text = myNews.dataInserimento.ToString("dd/MM/yyyy");
                     txtLotto.Text = myNews.idLotto.ToString();
@@ -37,15 +32,25 @@ namespace Philinternational.Management
                 }
             }
         }
+
         public void conferma(object sender, EventArgs e) {
+
+        }
+
+        private void ExamineResults(Boolean esito) {
+            if (esito) ErrorUploadFile.InnerHtml = "Operazione effettuato con successo.";
+            else ErrorUploadFile.InnerHtml = "Operazione non effettuata";
+        }
+
+        protected void ibtnConferma_Click(object sender, ImageClickEventArgs e) {
             ErrorUploadFile.InnerHtml = "";
             bool esito = false;
-            if (uploadLotto.PostedFile != null && uploadLotto.PostedFile.ContentLength>0) {
+            if (uploadLotto.PostedFile != null && uploadLotto.PostedFile.ContentLength > 0) {
                 string fn = System.IO.Path.GetFileName(uploadLotto.PostedFile.FileName);
                 GilardiFilateliaEntity myEntity = new GilardiFilateliaEntity();
                 string SaveLocation = Server.MapPath("..\\images\\gilardifilatelia\\") + fn;
-                try{
-                    if (this.Codice == "-1"){
+                try {
+                    if (this.Codice == "-1") {
                         myEntity.idOfferta = Layers.ConnectionGateway.CreateNewIndex("idofferta", "offerta_gilardifilatelia");
                         myEntity.idLotto = Int32.Parse(txtLotto.Text);
                         myEntity.dataInserimento = DateTime.Now;
@@ -55,9 +60,7 @@ namespace Philinternational.Management
                         myEntity.state = new Stato(Commons.GetCheckedState(chkStato.Checked), "");
 
                         esito = GilardiFilateliaGateway.InsertRow(myEntity);
-                    }
-                    else
-                    {
+                    } else {
                         myEntity.idOfferta = Convert.ToInt32(this.Codice);
                         myEntity.idLotto = Int32.Parse(txtLotto.Text);
                         myEntity.dataInserimento = DateTime.Now;
@@ -68,32 +71,31 @@ namespace Philinternational.Management
                         esito = GilardiFilateliaGateway.UpdateRow(myEntity);
                     }
                     if (esito) {
-                        uploadLotto.PostedFile.SaveAs(SaveLocation);                    
+                        uploadLotto.PostedFile.SaveAs(SaveLocation);
                     }
 
                     ExamineResults(esito);
 
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     Response.Write("Error: " + ex.Message);
                     //Note: Exception.Message returns a detailed message that describes the current exception. 
                     //For security reasons, we do not recommend that you return Exception.Message to end users in 
                     //production environments. It would be better to put a generic error message. 
                 }
-            }
-            else {
+            } else {
                 ErrorUploadFile.InnerHtml = "File non caricato";
             }
-        }        
-        public void pulisci(object sender, EventArgs e) { }
-        public void comeBack(object sender, EventArgs e) { }
-
-        private void ExamineResults(Boolean esito)
-        {
-            if (esito) ErrorUploadFile.InnerHtml = "Operazione effettuato con successo.";
-            else ErrorUploadFile.InnerHtml = "Operazione non effettuata";
         }
 
+        protected void ibtnReset_Click(object sender, ImageClickEventArgs e) {
+            txtLotto.Text = "";
+            txtAnno.Text = "";
+            txtPrezzo.Text = "";
+            txtTesto.Text = "";
+        }
+
+        protected void ibntTornaIndietro_Click(object sender, ImageClickEventArgs e) {
+            Response.Redirect("~/Management/offertaGilardiFilatelia.aspx");
+        }
     }
 }
