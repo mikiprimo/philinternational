@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 namespace Philinternational {
+    [Serializable]
     public class newsletterEntity {
         public Int32 id;
         public DateTime data_creazione;
