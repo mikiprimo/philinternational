@@ -12,7 +12,18 @@ namespace Philinternational.Management {
             if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
         }
 
-        protected void btnConferma_Click(object sender, EventArgs e) {
+        protected void calDataCreazione_SelectionChanged(object sender, EventArgs e) {
+            Calendar cal = ((Calendar)sender);
+            txtDataCreazione.Text = String.Format("{0:dd/MM/yyyy}", cal.SelectedDate);
+        }
+
+        private void pulisci() {
+            txtDataCreazione.Text = "";
+            txtTitolo.Text = "";
+            txtTesto.Text = "";
+        }
+        
+        protected void ibtnConferma_Click(object sender, ImageClickEventArgs e) {
             newsletterEntity MyNewsletter = new newsletterEntity();
             Boolean esito = false;
 
@@ -25,22 +36,11 @@ namespace Philinternational.Management {
             pulisci();
         }
 
-        protected void calDataCreazione_SelectionChanged(object sender, EventArgs e) {
-            Calendar cal = ((Calendar)sender);
-            txtDataCreazione.Text = String.Format("{0:dd/MM/yyyy}", cal.SelectedDate);
-        }
-
-        protected void pulisci(object sender, EventArgs e) {
+        protected void ibtnPulisci_Click(object sender, ImageClickEventArgs e) {
             pulisci();
         }
 
-        private void pulisci() {
-            txtDataCreazione.Text = "";
-            txtTitolo.Text = "";
-            txtTesto.Text = "";
-        }
-
-        protected void comeBack(object sender, EventArgs e) {
+        protected void ibntTornaIndietro_Click(object sender, ImageClickEventArgs e) {
             Response.Redirect("Newsletter.aspx");
         }
     }
