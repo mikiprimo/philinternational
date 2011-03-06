@@ -168,7 +168,7 @@
             <asp:CheckBox ID="chkNewsLetters" runat="server" Text="Iscriviti alla Newsletter" CssClass="inline"/>
         </p>
         <br />
-        <asp:ImageButton ID="ibtnUpdateAnagrafica" runat="server" CssClass="cleanButtons"
+        <asp:ImageButton ID="ibtnUpdateAnagrafica" runat="server" CssClass="cleanButtons" ToolTip="Aggiorna"
             AlternateText="Aggiorna" OnClick="ibtnUpdateAnagrafica_Click" ImageUrl="~/images/commands/aggiorna.png" />
     </fieldset>
 </div>

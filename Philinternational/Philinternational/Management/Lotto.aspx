@@ -1,10 +1,10 @@
-﻿<%@ Page Title="Gestione singoli Lotti" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="Lotto.aspx.cs" Inherits="Philinternational.Management.Lotto" %>
+﻿<%@ Page Title="Gestione singoli Lotti" Language="C#" MasterPageFile="~/Site.Master"
+    AutoEventWireup="true" CodeBehind="Lotto.aspx.cs" Inherits="Philinternational.Management.Lotto" %>
 
 <%@ Import Namespace="System" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<h3 class="titlePanel">Gestione Lotti
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h3
+    class="titlePanel">Gestione Lotti
     <asp:Label ID="lblLottiSection" runat="server" Text="Pubblicati"></asp:Label></h3>
     <br />
     <asp:Panel ID="pnlChooseView" runat="server" ClientIDMode="Static" Direction="LeftToRight"
@@ -19,19 +19,23 @@
     <br />
     <br />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:TextBox ID="txtStringaRicerca" runat="server" />
-    &nbsp;<asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" OnClick="ibtnCercaLotto_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/cerca.png" />
+    <asp:TextBox ID="txtStringaRicerca" runat="server" CssClass="water" ToolTip="Termine da cercare" Text="Termine da cercare" />
+    &nbsp;<asp:ImageButton ID="ibtnCercaLotto" runat="server" AlternateText="Cerca" ToolTip="Cerca un lotto"
+        OnClick="ibtnCercaLotto_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/cerca.png" />
     <br />
     <asp:MultiView ID="mvLotti" runat="server" ActiveViewIndex="0">
-        <asp:View ID="viewLottiPubblicati" runat="server"><br /><asp:ImageButton ID="ibtnCancellaLottiSelezionati"
-            runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiSelezionati_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/cancella.png" />&nbsp;
-            <asp:ImageButton ID="ibtnAttivaLottiSelezionati" runat="server" AlternateText="Attiva lotti selezionati"
-                OnClick="ibtnAttivaLottiSelezionati_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/attiva.png" />&nbsp;
+        <asp:View ID="viewLottiPubblicati" runat="server"><br />
+            <asp:ImageButton ID="ibtnCancellaLottiSelezionati" runat="server" AlternateText="Cancella lotti selezionati"
+                ToolTip="Cancella i lotti selezionati" OnClick="ibtnCancellaLottiSelezionati_Click"
+                CssClass="cleanButtons" ImageUrl="~/images/commands/cancella.png" />&nbsp; <asp:ImageButton
+                    ID="ibtnAttivaLottiSelezionati" runat="server" AlternateText="Attiva lotti selezionati"
+                    ToolTip="Attiva i lotti selezionati" OnClick="ibtnAttivaLottiSelezionati_Click"
+                    CssClass="cleanButtons" ImageUrl="~/images/commands/attiva.png" />&nbsp;
             <asp:ImageButton ID="ibtnInsertNewLotto" runat="server" AlternateText="Inserisci lotto"
-                OnClick="ibtnInsertNewLotto_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/creanuovo.png" />&nbsp;
-            <asp:ImageButton ID="ibtnDisassociaLotti" runat="server" 
-                AlternateText="Disassocia lotti selezionati" 
-                onclick="ibtnDisassociaLotti_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/disassocia.png" />&nbsp;
+                ToolTip="Inseisci un nuovo lotto" OnClick="ibtnInsertNewLotto_Click" CssClass="cleanButtons"
+                ImageUrl="~/images/commands/creanuovo.png" />&nbsp; <asp:ImageButton ID="ibtnDisassociaLotti"
+                    runat="server" ToolTip="Disassocia i lotti selezionati" AlternateText="Disassocia lotti selezionati"
+                    OnClick="ibtnDisassociaLotti_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/disassocia.png" />&nbsp;
             <br />
             <br />
             <asp:GridView ID="gvLottiPubblicati" runat="server" AllowPaging="True" EnableTheming="True"
@@ -82,12 +86,16 @@
                 </Columns>
             </asp:GridView>
         </asp:View>
-        <asp:View ID="viewLottiTemporanei" runat="server"><br /><asp:ImageButton ID="ibtnCancellaLottiTemporaneiSelezionati"
-            runat="server" AlternateText="Cancella lotti selezionati" OnClick="ibtnCancellaLottiTemporaneiSelezionati_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/cancella.png" />&nbsp;
-            <asp:ImageButton ID="ibtnTransferLotto" runat="server" AlternateText="Trasferisci lotto nella tabella lotti"
-                OnClick="ibtnTransferLotto_Click" Visible="false" CssClass="cleanButtons" ImageUrl="~/images/commands/trasferisci.png"/>&nbsp;
+        <asp:View ID="viewLottiTemporanei" runat="server"><br />
+            <asp:ImageButton ID="ibtnCancellaLottiTemporaneiSelezionati" runat="server" AlternateText="Cancella lotti selezionati"
+                OnClick="ibtnCancellaLottiTemporaneiSelezionati_Click" ToolTip="Cancella i lotti selezionati"
+                CssClass="cleanButtons" ImageUrl="~/images/commands/cancella.png" />&nbsp; <asp:ImageButton
+                    ID="ibtnTransferLotto" runat="server" AlternateText="Trasferisci lotto nella tabella lotti"
+                    OnClick="ibtnTransferLotto_Click" ToolTip="Trasferisci i lotti selezionati nella tabella dei lotti pubblicati"
+                    Visible="false" CssClass="cleanButtons" ImageUrl="~/images/commands/trasferisci.png" />&nbsp;
             <asp:ImageButton ID="ibtnOpenTransferPanel" runat="server" AlternateText="Trasferisci lotti..."
-                OnClick="ibtnOpenTransferPanel_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/trasferisci.png" />
+                ToolTip="Apri il pannello per aggiornare i dati dei lotti da trasferire" OnClick="ibtnOpenTransferPanel_Click"
+                CssClass="cleanButtons" ImageUrl="~/images/commands/trasferisci.png" />
             <div id="divTransferOptionsPanel" runat="server" visible="false">
                 <table>
                     <tr>
@@ -130,7 +138,8 @@
                             </td>
                             <td>
                                 <asp:ImageButton ID="ibtnTranferMultipleLottiAction" runat="server" AlternateText="Trasferisci"
-                                    OnClick="ibtnTranferMultipleLottiAction_Click" Width="16px" />
+                                    OnClick="ibtnTranferMultipleLottiAction_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/trasferisci.png"
+                                    ToolTip="Trasferisci nella tabella lotti pubblicati tutti i lotti selezionati" />
                             </td>
                         </tr>
                     </div>
@@ -193,4 +202,5 @@
             </asp:GridView>
         </asp:View>
     </asp:MultiView>
+    <br />
 </asp:Content>
