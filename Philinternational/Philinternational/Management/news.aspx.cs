@@ -35,20 +35,22 @@ namespace Philinternational.Management {
             chk.Text = Commons.GetStatoDescription(chk.Checked ? 1 : 0);
         }
 
-        //CANCELLAZIONE NEWS
-        protected void btnEraseSelectedNews_OnClick(object sender, EventArgs e) {
+        protected void ibtnCreaNews_Click(object sender, ImageClickEventArgs e) {
+            Response.Redirect("~/Management/newsDetail.aspx");
+        }
+
+        protected void ibtnCancellaNews_Click(object sender, ImageClickEventArgs e) {
             List<String> NewsIdToBeErased = new List<String>();
-            foreach (RepeaterItem item in repeaterNews.Items) { 
+            foreach (RepeaterItem item in repeaterNews.Items) {
                 CheckBox chk = ((CheckBox)item.FindControl("chkErase"));
-                if(chk.Checked) 
-                {
+                if (chk.Checked) {
                     String MyIDNewsToErase = chk.Attributes["MyIDNewsToErase"].ToString();
                     NewsIdToBeErased.Add(MyIDNewsToErase);
                 }
             }
-            if (NewsIdToBeErased.Count > 0) { 
+            if (NewsIdToBeErased.Count > 0) {
                 //Prevedere un dato di ritorno per il controllo delle avvenute cancellazioni
-                NewsGateway.DeleteNewsByIdList(NewsIdToBeErased); 
+                NewsGateway.DeleteNewsByIdList(NewsIdToBeErased);
             }
             BindData();
         }
