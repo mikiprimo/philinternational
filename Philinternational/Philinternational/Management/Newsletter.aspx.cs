@@ -124,6 +124,7 @@ namespace Philinternational.Styles {
         protected void ibtnSendMails_Click(object sender, ImageClickEventArgs e) {
             //TODO: Questa chiamata sarebbe da fare in un thread parallelo
             NewsletterGateway.DistributeNewsletterMailsToSelectedUsers(cblDistribution.Items, this.selectedNewsletters);
+            Response.Redirect("~/Management/Newsletter.aspx");
         }
     }
 }
