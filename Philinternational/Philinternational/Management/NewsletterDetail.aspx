@@ -26,9 +26,24 @@
         <asp:TextBox ID="txtTesto" runat="server" TextMode="MultiLine" Rows="20" Columns="50"></asp:TextBox>
     </p>
     <br />
-    <p>
-        <asp:Button ID="btnConferma" runat="server" Text="Conferma" OnClick="btnConferma_Click" />&nbsp;
-        <asp:Button ID="buttonReset" runat="server" Text="Reset" OnClick="pulisci" />&nbsp;
-        <asp:Button ID="btnComeBack" runat="server" Text="Torna Indietro" OnClick="comeBack" />
-    </p>
+    <table>
+        <tr class="commandPanel">
+            <td>
+                <asp:ImageButton ID="ibtnConferma" runat="server" AlternateText="Conferma" ToolTip="Conferma"
+                    Text="Conferma" OnClick="ibtnConferma_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/conferma.png"
+                    ValidationGroup="RegisterUserValidationGroup" />
+            </td>
+            <td>
+                <asp:ImageButton ID="ibtnPulisci" runat="server" AlternateText="Pulisci" ToolTip="Pulisci"
+                    CssClass="cleanButtons" ImageUrl="~/images/commands/pulisci.png" OnClick="ibtnPulisci_Click" />
+            </td>
+            <td>
+                <asp:ImageButton ID="ibntTornaIndietro" runat="server" AlternateText="Torna indietro"
+                    ToolTip="Torna indietro" OnClick="ibntTornaIndietro_Click" CssClass="cleanButtons"
+                    ImageUrl="~/images/commands/indietro.png" />
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
 </asp:Content>
