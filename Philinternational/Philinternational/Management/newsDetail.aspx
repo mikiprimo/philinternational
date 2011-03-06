@@ -2,34 +2,43 @@
     CodeBehind="newsDetail.aspx.cs" Inherits="Philinternational.Management.newsDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h3 class="titlePanel">Dettaglio news <label runat="server" id="titoloDettaglioNews"></label>
-    </h3>
-    <p>
-        <label runat="server" id="esitoMessaggio">
-        </label>
-    </p>
-    <p>
-        <label>Data Pubblicazione:</label><label style="font-weight: bold" runat="server" id="labelDataPubblicazione"></label>
-        <asp:Label ID="lblDataPubblicazione" runat="server"></asp:Label>
-    </p>
-    <p>
-        <label id="labelTitolo" runat="server">
-            Titolo</label><asp:TextBox runat="server" ID="txtTitolo"></asp:TextBox>
-    </p>
-    <p>
-        <label>
-            testo</label><br />
-        <asp:TextBox runat="server" ID="txtTesto" Rows="10" Columns="50" TextMode="MultiLine"></asp:TextBox>
-    </p>
-    <p>
-        <label>
-            Stato</label><asp:CheckBox runat="server" ID="chkStato" /><label id="labelStato"
-                runat="server"></label>
-    </p>
-    <p>
-        <asp:Button runat="server" Text="Conferma" ID="btnConferma" OnClick="conferma" />&nbsp;
-        <asp:Button runat="server" Text="Reset" ID="buttonReset" OnClick="pulisci" />&nbsp;
-        <asp:Button runat="server" Text="Torna Indietro" ID="btnComeBack" OnClick="comeBack" />
-    </p>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h3
+    class="titlePanel">Dettaglio news</h3>
+    <br />
+    <label runat="server" id="esitoMessaggio"></label>
+    <br />
+    <label>Data Pubblicazione: </label>
+    <label style="font-weight: bold" runat="server" id="labelDataPubblicazione"></label>
+    <asp:Label ID="lblDataPubblicazione" runat="server"></asp:Label>
+    <br />
+    <br />
+    <label id="labelTitolo" runat="server">Titolo: </label>
+    <asp:TextBox runat="server" ID="txtTitolo"></asp:TextBox>
+    <br />
+    <br />
+    <label>Testo</label><br />
+    <asp:TextBox runat="server" ID="txtTesto" Rows="10" Columns="50" TextMode="MultiLine"> </asp:TextBox><br />
+    <br />
+    <asp:CheckBox ID="chkStato" runat="server" Text="Attiva" /><br />
+    <br />
+    <br />
+    <table>
+        <tr class="commandPanel">
+            <td>
+                <asp:ImageButton ID="ibtnConferma" runat="server" AlternateText="Conferma" ToolTip="Conferma"
+                    Text="Conferma" OnClick="ibtnConferma_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/conferma.png" />
+            </td>
+            <td>
+                <asp:ImageButton ID="ibtnPulisci" runat="server" AlternateText="Pulisci" ToolTip="Pulisci"
+                    OnClick="ibtnReset_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/pulisci.png" />
+            </td>
+            <td>
+                <asp:ImageButton ID="ibntTornaIndietro" runat="server" AlternateText="Torna indietro"
+                    ToolTip="Torna indietro" OnClick="ibntTornaIndietro_Click" CssClass="cleanButtons"
+                    ImageUrl="~/images/commands/indietro.png" />
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
 </asp:Content>
