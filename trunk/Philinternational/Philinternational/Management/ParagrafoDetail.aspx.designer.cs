@@ -13,6 +13,15 @@ namespace Philinternational.Management {
     public partial class ParagrafoDetail {
         
         /// <summary>
+        /// lblDescrizione control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDescrizione;
+        
+        /// <summary>
         /// txtDescrizione control.
         /// </summary>
         /// <remarks>
