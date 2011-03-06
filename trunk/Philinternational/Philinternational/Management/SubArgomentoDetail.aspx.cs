@@ -26,7 +26,7 @@ namespace Philinternational.Management {
             set { ViewState.Add("selectedParagrafoID", value); }
         }
 
-        protected void conferma(object sender, EventArgs e) {
+        protected void ibtnConferma_Click(object sender, ImageClickEventArgs e) {
             paragSubArgomentoEntity MySubArgument = new paragSubArgomentoEntity();
             Boolean esito = false;
 
@@ -38,12 +38,12 @@ namespace Philinternational.Management {
             esito = ParagrafoGateway.InsertSubArgomento(MySubArgument);
         }
 
-        protected void pulisci(object sender, EventArgs e) {
+        protected void ibtnPulisci_Click(object sender, ImageClickEventArgs e) {
             txtDescrizione.Text = "";
             chkStato.Checked = false;
         }
 
-        protected void comeBack(object sender, EventArgs e) {
+        protected void ibntTornaIndietro_Click(object sender, ImageClickEventArgs e) {
             Response.Redirect("ArgoAndSubArgomento.aspx?Query=" + this.selectedParagrafoID.ToString());
         }
     }
