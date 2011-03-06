@@ -9,7 +9,7 @@
         <tr class="commandPanel">
             <td>
                 <asp:ImageButton ID="ibtnNuovoParagrafo" runat="server" AlternateText="Inserisci nuovo paragrafo"
-                    CssClass="cleanButtons" ImageUrl="~/images/commands/nuovo.png" OnClick="ibtnNuovoParagrafo_Click" />
+                    CssClass="cleanButtons" ImageUrl="~/images/commands/creanuovo.png" OnClick="ibtnNuovoParagrafo_Click" />
             </td>
         </tr>
     </table>
