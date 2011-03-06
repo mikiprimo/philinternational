@@ -13,8 +13,6 @@ namespace Philinternational.Styles
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
-            btnImage.Visible = false;
         }
 
         protected void aggiornaDatabase(object sender, EventArgs e)
