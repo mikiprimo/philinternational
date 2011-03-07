@@ -215,6 +215,7 @@ namespace Philinternational
             else {
                 idAnagrafica = Session.SessionID;
             }
+
             Boolean esitoCheck = o.CheckLottoCarrello(idAnagrafica, idLotto);
             if (esitoCheck)
             {
@@ -245,13 +246,23 @@ namespace Philinternational
             {
                 idAnagrafica = Session.SessionID;
             }
-            Boolean esitoCheck = o.CheckLottoCarrello(idAnagrafica, chiave);
-            if (esitoCheck)
+            Boolean esitoOfferta = o.checkOffertaGiaPresente(idAnagrafica, chiave);
+            if (esitoOfferta == false)
             {
-                ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
-                ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
-
+                Boolean esitoCheck = o.CheckLottoCarrello(idAnagrafica, chiave);
+                if (esitoCheck)
+                {
+                    ((Label)e.Item.FindControl("linkBasketAdded")).Visible = true;
+                    ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+                }
             }
+            else {
+                ((Label)e.Item.FindControl("linkBasketAdded")).Visible = false;
+                ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
+            
+            }
+
+
         }    
     }
     

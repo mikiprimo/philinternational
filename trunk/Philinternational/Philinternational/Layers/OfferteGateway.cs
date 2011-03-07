@@ -16,15 +16,20 @@ namespace Philinternational.Layers
 
             String data_inserimento = String.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now);
             
-            String sql = "INSERT INTO offerta_per_corrispondenza(idofferta,idlotto,idanagrafica,prezzo_offerto,data_inserimento) VALUES ";
-            sql += "("+ idOfferta+","+ idLotto+","+ idAnagrafica+","+ offerta+",'"+ data_inserimento +"')";
+            String sql = "INSERT INTO offerta_per_corrispondenza(idofferta,idlotto,idanagrafica,prezzo_offerto,data_inserimento,assegnazione) VALUES ";
+            sql += "("+ idOfferta+","+ idLotto+","+ idAnagrafica+","+ offerta+",'"+ data_inserimento +"','')";
             
             int a = ConnectionGateway.ExecuteQuery(sql, "offerta_per_corrispondenza");
             if (a == 0)
             {
+
                 AsteGateway Asta = new AsteGateway();
                 String[] esitoAsta = new String[2];
                 esitoAsta = Asta.GetDatiAsta();
+                String eMail =  AccountGateway.GetEmailByIdAnagrafica(idAnagrafica);
+                String userName = AccountGateway.GetPersonaFromIdAnagrafica(idAnagrafica);
+                String esitoOfferta = MailList.SendOffertaToUser(userName, eMail, idLotto, offerta.ToString(), esitoAsta.GetValue(0).ToString());
+                String esitoAdmin =  MailList.AvvisoOffertaAdmin(userName,idLotto,offerta.ToString());
                 Boolean esitoMovimento = insertMovimento(idAnagrafica, esitoAsta.GetValue(0).ToString());
                 if (esitoMovimento == false) esito = "Offerta non effettuata";
             }
@@ -130,7 +135,7 @@ namespace Philinternational.Layers
         }
         public Boolean CheckLottiBySelect(String idAnagrafica) {
             Boolean esito = false;
-            String sql = "SELECT count(*) conteggio FROM carrello WHERE idanagrafica='" + idAnagrafica + "'";
+            String sql = "SELECT count(*) conteggio  FROM carrello a, lotto b where a.idlotto =  b.idlotto AND b.idlotto not in (select c.idlotto from offerta_per_corrispondenza c where a.idanagrafica = a.idanagrafica) and a.idanagrafica ='" + idAnagrafica + "'";
 
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
             if (dr.Count > 0) {

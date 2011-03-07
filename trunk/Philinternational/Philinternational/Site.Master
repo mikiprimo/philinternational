@@ -2,13 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server" >
+
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jqueryCollection.js") %>"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
         <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/commonFunction.js") %>"></script>
-
-                    <link rel="icon" href="~/images/favicon.png" type="image/png" />
+        <link rel="icon" href="~/images/favicon.png" type="image/png" />
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-        <title>Offerta filatelica per corrispondenza</title>
+        <title>Offerta filatelica per corrispondenza. Asta 54 - scadenza 4 aprile 2011</title>
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">    
             <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />
             <meta name="DESCRIPTION" content="PhilInternarional è un sito di offerta filatelica per corrispondenza." />
@@ -24,9 +24,7 @@
     <div id="page">
         <div id="header">
             <div runat="server" id="LogoOutput"></div>
-            <div class="BannerDisplay">
-                <asp:AdRotator runat="server" AdvertisementFile="~/Advertise.xml" Target="_blank"  Width="468" Height="60" ID="adBanner" />
-            </div>
+            <div class="BannerDisplay"><asp:AdRotator runat="server" AdvertisementFile="~/Advertise.xml" Target="_blank"  Width="468" Height="60" ID="adBanner" /></div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>[<a href="<%=Page.ResolveClientUrl("~/Lotti/carrello.aspx") %>">Carrello</a>][<a href="~/Account/Registrazione.aspx" id="HeadRegisterStatus" runat="server">Registrati</a>][<a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Accedi</a>]</AnonymousTemplate>
@@ -41,6 +39,17 @@
             </div>
         </div>
         <div id="leftmenu">
+            <div runat="server" id="panelUser"></div>
+                
+                <script type="text/javascript" language="javascript">
+                    $("#user1").click(function () {
+                        $("#listuser").slideToggle("slow", function () {
+                            var text = $("#user1").html(); if (text == "[ Chiudi ]") $("#user1").html("[ Apri ]"); else $("#user1").html("[ Chiudi ]")
+                        });
+                    });
+                
+            </script>               
+            
             <asp:Panel runat="server" Visible="false" ID="PanelAdmin">
             <div class="AdminMenu">
                 <h3>Amministrazione&nbsp;<a href="#"  id="admin1">[ Chiudi ]</a></h3>
@@ -70,48 +79,19 @@
                     });
                 });
                 
-            </script>   
+            </script>
             </div>
             </asp:Panel>
-            <asp:Menu ID="menuLeftAdministration" runat="server" CssClass="menu" EnableViewState="False"
-                IncludeStyleBlock="False" Visible="False" BackColor="#E3EAEB" DynamicHorizontalOffset="2" Font-Names="Verdana" 
-                Font-Size="0.8em" ForeColor="#666666" StaticSubMenuIndent="10px">
-                <DynamicHoverStyle BackColor="#666666" ForeColor="White" />
-                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                <DynamicMenuStyle BackColor="#E3EAEB" />
-                <DynamicSelectedStyle BackColor="#1C5E55" />
-                <DynamicItemTemplate>
-                    <%# Eval("Text") %>
-                </DynamicItemTemplate>
-                <Items>
-                    <asp:MenuItem Text="Amministrazione" Value="Amministrazione" Selectable="False" Enabled="false"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo" Value="Paragrafo">
-                    </asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/news.aspx" Text="News" />
-                    <asp:MenuItem NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" />
-                    <asp:MenuItem NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter" />
-                    <asp:MenuItem Text="Gestione Asta" Value="Gestione Asta" Selectable="False"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/Lotto.aspx" Text="Lotto" Value="Lotto"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/Aste.aspx" Text="Nuova Asta" Value="Nuova Asta"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/UploadLotti.aspx" Text="Carica Asta" Value="Carica Asta"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/Offerta.aspx" Text="Elenco Offerte" Value="Offerte"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it" Value="Offerte"></asp:MenuItem>
-                    
-                </Items>
-                <StaticHoverStyle BackColor="#666666" ForeColor="White" />
-                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                <StaticSelectedStyle BackColor="#1C5E55" />
-            </asp:Menu>
             <div runat="server" id="loadMenuccordion"></div>
         </div>
         <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
         <div id="rightmenu">
-            <div id="shortBasketOutput" runat="server"></div>
             <div id="areaGilardi" runat="server"></div>
         </div>
         <div id="footer">
+            <a href="#" onclick='javascript:addBook()' title="Aggiungimi ai preferiti">Aggiungimi ai preferiti</a>
             <asp:HyperLink ID="condizionivendita" NavigateUrl="~/Varie/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
             <asp:HyperLink ID="chisiamo" NavigateUrl="~/Varie/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
             <asp:HyperLink ID="dovesiamo" NavigateUrl="~/Varie/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>

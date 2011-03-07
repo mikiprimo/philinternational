@@ -17,7 +17,7 @@ namespace Philinternational
 {   
     public partial class OffertaFinale : System.Web.UI.Page
     {
-        String sqlOfferta = "SELECT a.idofferta idofferta,a.idanagrafica idanagrafica,a.idlotto idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento,a.assegnazione assegnazione FROM offerta_per_corrispondenza a, anagrafica b WHERE a.idanagrafica = b.idanagrafica AND assegnazione ='' ORDER BY idlotto ASC, prezzo_offerto DESC , data_inserimento ASC";
+        String sqlOfferta = "SELECT a.idofferta idofferta,a.idanagrafica idanagrafica,a.idlotto idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento,a.assegnazione assegnazione FROM offerta_per_corrispondenza a, anagrafica b WHERE a.idanagrafica = b.idanagrafica ORDER BY idlotto ASC, prezzo_offerto DESC , data_inserimento ASC";
         String sqlShowAssegnati = "SELECT a.idofferta idofferta,a.idanagrafica idanagrafica,a.idlotto idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento,a.assegnazione assegnazione FROM offerta_per_corrispondenza a, anagrafica b WHERE a.idanagrafica = b.idanagrafica AND assegnazione !='' ORDER BY idlotto ASC, prezzo_offerto DESC , data_inserimento ASC";
         String sqlSwhowAll = "SELECT a.idofferta idofferta,a.idanagrafica idanagrafica,a.idlotto idlotto, CONCAT( b.nome,  ' ', b.cognome ) persona, b.email email, a.prezzo_offerto, a.data_inserimento,a.assegnazione assegnazione FROM offerta_per_corrispondenza a, anagrafica b WHERE a.idanagrafica = b.idanagrafica ORDER BY idlotto ASC, prezzo_offerto DESC , data_inserimento ASC";
         protected void Page_Load(object sender, EventArgs e)

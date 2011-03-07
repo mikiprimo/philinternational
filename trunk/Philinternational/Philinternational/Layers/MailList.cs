@@ -27,10 +27,9 @@ namespace Philinternational.Layers {
             String esito = "";
             String soggetto = "";
             String BodyMail = "";
-            soggetto = "[philinternational.it] offerta di " + userName + " per lotto " + idLotto;
-            BodyMail = "G.le " + userName + ",<br/>";
-            BodyMail += "le comunichiamo che l'offerta di " + offerta + " euro relativa al lotto num&deg;" + idLotto + " è stata effettuata con successo.<br/>";
-            BodyMail += "Al termine della seduta la contatteremo per comunicarle l'esito della sua offerta<br/>";
+            soggetto = "[Offerta lotto] offerta di " + userName + " per lotto " + idLotto;
+            BodyMail = "<p>Il cliente  " + userName + ",<br/>";
+            BodyMail += "ha appena effettuato un'offerta di <b>" + offerta + "</b> euro relativa al lotto num&deg;" + idLotto + ".<br/></p>";
             BodyMail += "Cordiali Saluti<br/>Lo staff<br/>";
             DataView mailAmministratori = Layers.AccountGateway.ListEmailAdministration();
             if (mailAmministratori.Count > 0) {

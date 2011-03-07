@@ -23,6 +23,7 @@ namespace Philinternational.Styles
             DirectoryInfo listDir = new DirectoryInfo(pathImage);
             if (listDir.Exists)
             {
+                int i = 1;
                 foreach (FileInfo fi in listDir.GetFiles())
                 {
                     int idLotto = 0;
@@ -34,11 +35,12 @@ namespace Philinternational.Styles
                         idLotto = Int32.Parse( tmpName2);
                         Boolean esitoLotto =  lotti.UpdateImageLotto(idLotto);
                         if (esitoLotto)
-                            listaFile += idLotto + "<b> OK</b><br/>";
+                            listaFile += i + "]"+ idLotto + "..........<b>OK</b><br/>";
                         else
-                            listaFile += idLotto + "<b> non aggiornato</b><br/>";
+                            listaFile += i + "]" + idLotto + "..........<b> non aggiornato</b><br/>";
+                        i++;
                     }catch{
-                        listaFile += tmpName2 + "<b> non aggiornato</b><br/>";
+                        listaFile += tmpName2 + "..........<b> non aggiornato</b><br/>";
                     }
                 }
                 esitoElaborazione.Text = listaFile;

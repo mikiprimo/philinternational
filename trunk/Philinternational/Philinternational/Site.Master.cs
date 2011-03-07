@@ -24,7 +24,11 @@ namespace Philinternational
             if (AccountLayer.IsLogged())
             {
                 this.PanelAdmin.Visible = AccountLayer.IsAdministrator();
-                this.menuLeftAdministration.Visible = false;//AccountLayer.IsAdministrator();
+                String esitoOfferta = ViewShortBasket();
+                if (esitoOfferta != "") {
+
+                    panelUser.InnerHtml = esitoOfferta;
+                }
                 try
                 {
                     ((Label)this.HeadLoginView.FindControl("LoginName")).Text = ((logInfos)Session["log"]).nome;
@@ -33,7 +37,6 @@ namespace Philinternational
                 {
                     RefreshUnloggedUser();
                 }
-                shortBasketOutput.InnerHtml = ViewShortBasket();
             }
         }
         protected void HeadLoginStatus_LoggingOut(object sender, LoginCancelEventArgs e)
@@ -122,17 +125,18 @@ namespace Philinternational
         
         }
         private String ViewShortBasket() {
-            int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+            int idAnagrafica = 0; 
             String showBasket = "";
             String tmpRow = "";
             float totale =0;
             try
             {
+                idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
                 String sql = "SELECT idlotto, prezzo_offerto FROM offerta_per_corrispondenza WHERE idanagrafica ="+ idAnagrafica +"";
                 DataView dr = ConnectionGateway.SelectQuery(sql);
                 if (dr.Count > 0) {
-                    showBasket += "\n<a href=\"#\" id=\"openOfferte\">Offerte già effettuate</a><div class=\"testo\">\n";
-                    showBasket += "<table>";
+                    showBasket += "<h3>Le mie offerte&nbsp;<a href=\"#\"  id=\"user1\">[ Chiudi ]</a></h3>\n";
+                    showBasket += "<table id=\"listuser\">";
                     for (int i = 0; i < dr.Count; i++)
                     {
                         tmpRow = "<tr>";
@@ -142,16 +146,15 @@ namespace Philinternational
                         totale = totale + float.Parse(dr[i]["prezzo_offerto"].ToString());
                         showBasket += tmpRow;
                     }
-                    String rowTotalPrice = "<tr><td colspan=\"2\" style=\"text-align:right;font-weight:bold\">" + totale + " &euro;</td></tr>\n";
-                    showBasket += rowTotalPrice;
-                    showBasket += "<tr><td colspan=\"2\" style=\"text-align:right;font-weight:bold\"><a href=\"#\" id=\"closeOfferte\" >Chiudi</a></td></tr></table\n></div>\n";
+                    String rowTotalPrice = "<tr><td colspan=\"2\" style=\"margin:1px 0px 0px 0px;text-align:right;font-weight:bold;border-top:1px solid #920000;background-color:#fff\">" + totale + " &euro;</td></tr>\n";
+                    showBasket += rowTotalPrice + "</table>\n";
                 }
             }
             catch {
                 showBasket = "";
             }
 
-            return "";// showBasket;
+            return showBasket;
         }
         private String viewOfferteFilatelia() {
             String showOfferte = "";
