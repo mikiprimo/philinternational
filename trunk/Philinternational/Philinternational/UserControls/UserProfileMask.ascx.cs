@@ -27,6 +27,8 @@ namespace Philinternational.Management.UserControls {
             txtPassword.Text = dv["password"].ToString();
             this.oldPassword = dv["password"].ToString();
 
+            txtConfermaPassword.Text = dv["password"].ToString();
+
             txtNome.Text = dv["nome"].ToString();
             txtCognome.Text = dv["cognome"].ToString();
             txtCodiceFiscale.Text = dv["codice_fiscale"].ToString();
@@ -75,8 +77,15 @@ namespace Philinternational.Management.UserControls {
 
             AnagraficaGateway.UpdateAnagrafica(this.oldEmail, newAnagrafica);
             AnagraficaGateway.ManageNewsletterStateByIDAnagrafica(Convert.ToInt32(hiddenIDAnagrafica.Value), chkNewsLetters.Checked);
-            if (txtPassword.Text != this.oldPassword) MailList.CambioPassword(txtNome.Text + txtCognome.Text, txtEmail.Text, txtPassword.Text);
-            Response.Redirect("~/Management/Anagrafica.aspx");
+            if (isPasswordChanged()) MailList.CambioPassword(txtNome.Text + txtCognome.Text, txtEmail.Text, txtPassword.Text);
+            if (((logInfos)Session["log"]).IsAdmin) Response.Redirect("~/Management/Anagrafica.aspx");
+            else Response.Redirect("~/Default.aspx");
+        }
+
+        private Boolean isPasswordChanged() {
+            Boolean isPasswChanged = false;
+            if (txtPassword.Text != this.oldPassword & txtPassword.Text != "") isPasswChanged = true;
+            return isPasswChanged;
         }
     }
 }
