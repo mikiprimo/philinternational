@@ -49,6 +49,15 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
         
         /// <summary>
+        /// panelUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl panelUser;
+        
+        /// <summary>
         /// PanelAdmin control.
         /// </summary>
         /// <remarks>
@@ -139,15 +148,6 @@ namespace Philinternational {
         protected global::System.Web.UI.WebControls.HyperLink varie;
         
         /// <summary>
-        /// menuLeftAdministration control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu menuLeftAdministration;
-        
-        /// <summary>
         /// loadMenuccordion control.
         /// </summary>
         /// <remarks>
@@ -164,15 +164,6 @@ namespace Philinternational {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
-        
-        /// <summary>
-        /// shortBasketOutput control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl shortBasketOutput;
         
         /// <summary>
         /// areaGilardi control.

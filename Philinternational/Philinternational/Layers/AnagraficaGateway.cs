@@ -176,6 +176,7 @@ namespace Philinternational.Layers {
                 conn.Open();
                 command.ExecuteNonQuery();
             } catch (MySqlException ex) {
+                String a = ex.Message;
                 return false;
             } finally {
                 conn.Close();

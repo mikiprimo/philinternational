@@ -5,7 +5,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 	<div id="presentazione">
 		<h1>Phil International è un sito di offerta Filatelica per corrispondenza</h1>
-		<p class="lato1">Al momento è attiva l'asta<span id="numeroAsta" runat="server"></span></p>
+		<p class="lato1">Al momento è attiva la vendita<span id="numeroAsta" runat="server"></span></p>
 		<p class="lato2">Data di scadenza <span id="dataScadenza" runat="server"></span></p>
 		<div style="clear:both;width:100%">
 			<p>Prima di registrarsi, leggere attentamente le <asp:HyperLink NavigateUrl="~/Varie/condizioniVendita.aspx" Text="condizioni di vendita" runat="server" ></asp:HyperLink> e di pagamento</p>
