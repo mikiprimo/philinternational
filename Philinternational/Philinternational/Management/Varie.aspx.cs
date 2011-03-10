@@ -19,6 +19,8 @@ namespace Philinternational.Styles
 
         protected void aggiornaDatabase(object sender, EventArgs e)
         {
+            spoolTesto.Visible = true;
+            esitoElaborazione.Text = "";
             String pathImage = Server.MapPath(Page.ResolveClientUrl("~/images/asta/"));
             String listaFile = "";
             LottiGateway lotti = new LottiGateway();
@@ -39,7 +41,7 @@ namespace Philinternational.Styles
                         if (esitoLotto)
                             listaFile += i + "]"+ idLotto + "..........<b>OK</b><br/>";
                         else
-                            listaFile += i + "]" + idLotto + "..........<b> non aggiornato</b><br/>";
+                            listaFile += i + "]" + idLotto + "..........<b><span style=\"color:#f00\"> non aggiornato</span></b><br/>";
                         i++;
                     }catch{
                         listaFile += tmpName2 + "..........<b> non aggiornato</b><br/>";
@@ -51,7 +53,39 @@ namespace Philinternational.Styles
             }            
         }
 
-        protected void loadImmagini(object sender, EventArgs e) {}
+        protected void loadImmagini(object sender, EventArgs e) {
+            spoolTesto.Visible = true;
+            esitoElaborazione.Text = "";
+        
+                DirectoryInfo dirName = new DirectoryInfo(@"c:\philinternational.it\immagini_asta\");
+                if (dirName.Exists)
+                {
+                    String listaFile="";
+                    int i = 1;
+                    foreach (FileInfo fi in dirName.GetFiles())
+                    {
+                        try
+                        {
+                            String pathImage = Server.MapPath(Page.ResolveClientUrl("~/images/asta/"));
+                            String nameDestination = fi.Name;
+                            String finalcopy = pathImage + nameDestination;
+                            fi.CopyTo(finalcopy);
+                            listaFile += i +"] " + fi.Name + "...caricato con successo<br/>";
+                        }
+                        catch {
+                            listaFile += "<b><span style=\"color:#f00\">" + i + "] " + fi.Name + "... non aggiornato</span></b><br/>";
+                        }
+                        i++;
+                    }
+                    esitoElaborazione.Text = listaFile;
+                
+                }
+                else {                 
+                    esitoElaborazione.Text ="La directory C:\\philinternational.it\\immagini_asta non esiste";
+                }
+
+                  
+        }
 
         protected void loadLotti(object sender, EventArgs e)
         {
