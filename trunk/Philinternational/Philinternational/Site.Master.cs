@@ -77,12 +77,12 @@ namespace Philinternational
                             if (drArg != null)
                             {
                                 if (drArg.HasRows) {
-                                    paragrafo += "<h3 class=\"paragrafo\"><a href=\"#\">" + (String)dr["descrizione"] + "</a></h3>\n";
+                                    paragrafo += "<h3 class=\"paragrafo\"><a href=\"#\" title=\"" + (String)dr["descrizione"] + "\">" + (String)dr["descrizione"] + "</a></h3>\n";
                                     String rowArg = "";
                                     argomento = "<div class=\"evidenziatore\">\n<ul>\n";
                                     while (drArg.Read())
                                     {
-                                        rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0") + "\" />" + (String)drArg["descrizione"] + "</a></li>\n";
+                                        rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&subarg=0") + "\" title=\""+ (String)drArg["descrizione"] + "\" >" + (String)drArg["descrizione"] + "</a></li>\n";
                                     }
                                     argomento += rowArg + "</ul>\n</div>\n";
                                     paragrafo += argomento;
