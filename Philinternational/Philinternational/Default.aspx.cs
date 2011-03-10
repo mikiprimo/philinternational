@@ -105,14 +105,14 @@ namespace Philinternational
          idArgomento = esito.GetValue(0).ToString();
          idSubArgomento = esito.GetValue(1).ToString();
 
-         String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai l'offerta</a>\n";
+         String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&amp;arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\" title=\"Fai l'offerta\">Fai l'offerta</a>\n";
          if (AccountLayer.IsLogged()==true){
               try
                 {
                     OfferteGateway a = new OfferteGateway();
                     String idAnagrafica = Convert.ToString(((logInfos)Session["log"]).idAnagrafica);
                     bool checkOfferta = a.checkOffertaGiaPresente(idAnagrafica, chiave);
-                    if (checkOfferta == true) { outputVerifica = "L'Offerta è già stata effettuata"; }
+                    if (checkOfferta == true) { outputVerifica = "L'offerta è già stata effettuata"; }
                     switch (stato)
                     {
                         case "0": outputVerifica = "Lotto non disponibile"; break;
