@@ -24,50 +24,47 @@
     <div id="page">
         <div id="header">
             <div runat="server" id="LogoOutput"></div>
-            <div class="BannerDisplay"><asp:AdRotator runat="server" AdvertisementFile="~/Advertise.xml" Target="_blank"  Width="468" Height="60" ID="adBanner" /></div>
+            <div class="BannerDisplay"><asp:AdRotator runat="server" AdvertisementFile="~/Advertise.xml"  Width="468" Height="60" ID="adBanner"  /></div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>[<a href="<%=Page.ResolveClientUrl("~/Lotti/carrello.aspx") %>">Carrello</a>][<a href="~/Account/Registrazione.aspx" id="HeadRegisterStatus" runat="server">Registrati</a>][<a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Accedi</a>]</AnonymousTemplate>
+                    <AnonymousTemplate>[<a href="<%=Page.ResolveClientUrl("~/Lotti/carrello.aspx") %>" title="Carrello">Carrello</a>][<a href="~/Account/Registrazione.aspx" id="HeadRegisterStatus" runat="server" title="Registrati al sito">Registrati</a>][<a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server" title="Accedi al sito">Accedi</a>]</AnonymousTemplate>
                     <LoggedInTemplate>Benvenuto <span class="bold"><asp:Label ID="LoginName" runat="server" />
                     </span><br />
-                        [<a href="<%=Page.ResolveClientUrl("~/Lotti/carrello.aspx") %>">Carrello</a> ]<br />
-                        [<a href="<%=Page.ResolveClientUrl("~/Management/Profile.aspx") %>">Profilo</a>]<br />
+                        [<a href="<%=Page.ResolveClientUrl("~/Lotti/carrello.aspx") %>" title="Carrello">Carrello</a> ]<br />
+                        [<a href="<%=Page.ResolveClientUrl("~/Management/Profile.aspx") %>" title="Accedi al tuo profilo">Profilo</a>]<br />
                         [<asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
-                            OnLoggingOut="HeadLoginStatus_LoggingOut" />
+                            OnLoggingOut="HeadLoginStatus_LoggingOut" ToolTip="Logout" />
                         ]</LoggedInTemplate>
                 </asp:LoginView>
             </div>
         </div>
         <div id="leftmenu">
             <div runat="server" id="panelUser"></div>
-                
-                <script type="text/javascript" language="javascript">
+                <script type="text/javascript">
                     $("#user1").click(function () {
                         $("#listuser").slideToggle("slow", function () {
                             var text = $("#user1").html(); if (text == "[ Chiudi ]") $("#user1").html("[ Apri ]"); else $("#user1").html("[ Chiudi ]")
                         });
                     });
-                
-            </script>               
-            
+            </script>
             <asp:Panel runat="server" Visible="false" ID="PanelAdmin">
             <div class="AdminMenu">
                 <h3>Amministrazione&nbsp;<a href="#"  id="admin1">[ Chiudi ]</a></h3>
                <ul class="listAdmin" id="list1">                    
                     <li><asp:HyperLink runat="server" ToolTip="Anagrafica" ID="linkAnagrafica" NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" ></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" ID="linkNews" NavigateUrl="~/Management/news.aspx" Text="News"></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" ID="linkNewsletter" NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter"></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" ID="linkGilardiFilatelia" NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ToolTip="News" ID="linkNews" NavigateUrl="~/Management/news.aspx" Text="News"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ToolTip="Newsletter" ID="linkNewsletter" NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ToolTip="Offerte Gilardi Filatelia" ID="linkGilardiFilatelia" NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it"></asp:HyperLink></li>
                 </ul> 
-                <h3>Gestione aste&nbsp;<a href="#"  id="admin2">[ Chiudi ]</a></h3>
+                <h3>Gestione aste&nbsp;<a href="#"  id="admin2" title="gestione aste">[ Chiudi ]</a></h3>
                 <ul class="listAdmin"  id="list2">
-                    <li><asp:HyperLink runat="server" ID="HyperParagrafo" NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo"></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" ID="linkLotto" NavigateUrl="~/Management/Lotto.aspx" Text="Gestione Lotti"></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" ID="linkAsta" NavigateUrl="~/Management/Aste.aspx" Text="Asta Attiva"></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" ID="linkOfferte" NavigateUrl="~/Management/Offerta.aspx" Text="Elenco Offerte" Value="Offerte"></asp:HyperLink></li>
-                    <li><asp:HyperLink runat="server" ID="varie" NavigateUrl="~/Management/Varie.aspx" Text="Varie" Value="Varie"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ToolTip="Paragrago"  ID="HyperParagrafo" NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" Tooltip="Gestione lotti" ID="linkLotto" NavigateUrl="~/Management/Lotto.aspx" Text="Gestione Lotti"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" tooltip="Asta attiva" ID="linkAsta" NavigateUrl="~/Management/Aste.aspx" Text="Asta Attiva"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" toolTip="Elenco Offerte" ID="linkOfferte" NavigateUrl="~/Management/Offerta.aspx" Text="Elenco Offerte" Value="Offerte"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ToolTip="Varie" ID="varie" NavigateUrl="~/Management/Varie.aspx" Text="Varie" Value="Varie"></asp:HyperLink></li>
                  </ul>
-            <script type="text/javascript" language="javascript">
+            <script type="text/javascript">
                 $("#admin1").click(function () {
                     $("#list1").slideToggle("slow", function () {
                         var text = $("#admin1").html(); if (text == "[ Chiudi ]") $("#admin1").html("[ Apri ]"); else $("#admin1").html("[ Chiudi ]")
@@ -92,10 +89,10 @@
         </div>
         <div id="footer">
             <a href="#" onclick='javascript:addBook()' title="Aggiungimi ai preferiti">Aggiungimi ai preferiti</a>
-            <asp:HyperLink ID="condizionivendita" NavigateUrl="~/Varie/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
-            <asp:HyperLink ID="chisiamo" NavigateUrl="~/Varie/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
-            <asp:HyperLink ID="dovesiamo" NavigateUrl="~/Varie/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
-            <asp:HyperLink id="contatti" NavigateUrl="~/Varie/contatti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
+            <asp:HyperLink ID="condizionivendita"  ToolTip="Condizioni di vendita" NavigateUrl="~/Varie/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
+            <asp:HyperLink ID="chisiamo" toolTip="Chi siamo" NavigateUrl="~/Varie/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
+            <asp:HyperLink ID="dovesiamo" ToolTip="Dove Siamo" NavigateUrl="~/Varie/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
+            <asp:HyperLink id="contatti" toolTip="Contatti" NavigateUrl="~/Varie/contatti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
             <p class="piva">Phil International srl di Gilardi Gian Antonio – socio unico P.IVA: 06137730963</p>
         </div>
 </div>

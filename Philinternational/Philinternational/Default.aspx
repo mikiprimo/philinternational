@@ -29,7 +29,7 @@
 			<p style="line-height:20px"><span style="text-decoration:underline">Condizione</span>: <span id="statoLotto" runat="server"><%# Eval("tipo_lotto")%></span></p>
 			<p style="line-height:20px"><span style="text-decoration:underline">Prezzo</span> : <span id="prezzoLotto" runat="server" style="text-align:right"><b><%# Eval("prezzo_base")%></b>&nbsp;&euro;</span></p>
 			<p id="descrizioneLotto" class="lottoOffertadescrizione" runat="server"><%# Eval("descrizione")%></p>
-			<p class="lottoOfferta"><asp:LinkButton ID="linkBasket" runat="server">Aggiungi al carrello</asp:LinkButton><asp:Label runat="server" ID="linkBasketAdded" Visible="false">Lotto aggiunto al carrello</asp:Label>&nbsp;<%# VerificaOfferta(DataBinder.Eval(Container.DataItem, "stato"), DataBinder.Eval(Container.DataItem, "idlotto"))%></p>
+			<p class="lottoOfferta"><asp:LinkButton ID="linkBasket" runat="server" ToolTip="Aggiungi al carrello">Aggiungi al carrello</asp:LinkButton><asp:Label runat="server" ID="linkBasketAdded" Visible="false">Lotto aggiunto al carrello</asp:Label>&nbsp;<%# VerificaOfferta(DataBinder.Eval(Container.DataItem, "stato"), DataBinder.Eval(Container.DataItem, "idlotto"))%></p>
 		 </div>
 	</ItemTemplate>
 	</asp:Repeater>
@@ -37,7 +37,7 @@
 	</div>
 	<a class="next browse right"></a>  
 	<br clear="all" /> 
-	<script type="text/javascript" language="javascript">
+	<script type="text/javascript">
 	$(document).ready(function () {
 	$("#chained").scrollable({ circular: true, mousewheel: true }).navigator().autoscroll({interval: 3000});
 	});
