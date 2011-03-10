@@ -13,9 +13,9 @@
 <fieldset>
     <legend>Lotti</legend>
     <ul class="insidelista">
-        <li><asp:LinkButton runat="server" ID="allineaImmagine" OnClick="aggiornaDatabase" Text="Aggiorna DataBase Immagini"></asp:LinkButton></li>
         <li><a href="#" id="toggle1">Carica il file dei lotti</a></li>
         <li><a href="#" id="toggle2">Carica le immagini dei lotti</a></li>
+        <li><asp:LinkButton runat="server" ID="allineaImmagine" OnClick="aggiornaDatabase" Text="Aggiorna DataBase Immagini"></asp:LinkButton></li>
     </ul>    
     <script type="text/javascript">
         $("#toggle1").click(function () { $("#loadLotti").slideToggle("slow", function () { $("#spoolTesto").html(""); $("#loadImage").css("display", "none"); }); });
@@ -39,17 +39,18 @@
 </div>
 <div id="loadImage">
     <fieldset>
-        <legend>Seleziona la cartella di riferimento</legend>
-        <table>
-            <tr class="commandPanel">
-                <td><asp:FileUpload ID="FileUpload1" runat="server"  />
-                </td>
-                <td><asp:ImageButton ID="ibtnImageUpload" runat="server" ImageUrl="~/images/commands/uploadlotto.png" OnClick="loadImmagini"/>
-                </td>
-            </tr>
-        </table>
-        <p>Work in progress</p>
+        <legend>Caricamento immagini</legend>
+        <p>
+            I file che si vogliono caricare devono essere posizionati in questa directory<br />
+            <b>C:\philinternational.it\immagini_asta</b><br />
+            Successivamente premere il bottone<br />
+        </p>
+        <br />
+        <p>al termine dell'operazione premere il link "Aggiorna DataBase Immagini"</p>
+        <p><asp:ImageButton ID="ibtnImageUpload" runat="server" ImageUrl="~/images/commands/uploadlotto.png" OnClick="loadImmagini"/></p>
     </fieldset>
 </div>
-<p id="spoolTesto"><asp:Label runat="server" ID="esitoElaborazione" ></asp:Label></p>
+<p id="spoolTesto" runat="server" visible="false">
+<h3  class="titlePanel">Esito elaborazione</h3>
+<asp:Label runat="server" ID="esitoElaborazione" ></asp:Label></p>
 </asp:Content>

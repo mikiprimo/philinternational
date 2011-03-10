@@ -40,15 +40,6 @@ namespace Philinternational.Styles {
         protected global::System.Web.UI.WebControls.ImageButton ibtnFileLottoUpload;
         
         /// <summary>
-        /// FileUpload1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-        
-        /// <summary>
         /// ibtnImageUpload control.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,15 @@ namespace Philinternational.Styles {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ibtnImageUpload;
+        
+        /// <summary>
+        /// spoolTesto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spoolTesto;
         
         /// <summary>
         /// esitoElaborazione control.
