@@ -173,8 +173,7 @@ namespace Philinternational
                         showOfferte += "<p style=\"line-height:20px\"><span style=\"text-decoration:underline\">Anno</span>: <span>" + dr[i]["anno"] + "</span></p>\n";
                         showOfferte += "<p style=\"line-height:20px\"><span style=\"text-decoration:underline\">Prezzo</span>: <span>" + dr[i]["prezzo"] + "</span></p>\n";
                         showOfferte += "<p>" + dr[i]["descrizione"] + "</p>";
-                        //showOfferte += "<a href=\"" + Page.ResolveClientUrl("~/Varie/ordineGilardiFilatelia.aspx?cod=" + dr[i]["idlotto"]) + "\">Ordina subito</a><br/><br/>\n";
-                        showOfferte += "<a href=\"" + Page.ResolveClientUrl("~/Varie/ordineGilardiFilatelia.aspx") +"\">Ordina subito</a><br/><br/>\n";
+                        showOfferte += "<a href=\"" + Page.ResolveClientUrl("~/Varie/ordineGilardiFilatelia.aspx") +"\" title=\"Ordina subito\">Ordina subito</a><br/><br/>\n";
                         showOfferte += "</div>\n";
                     }
                 }
