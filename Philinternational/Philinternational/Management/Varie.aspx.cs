@@ -5,6 +5,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 using Philinternational.Layers;
+using System.Net;
+using System.Configuration;
 
 namespace Philinternational.Styles
 {
@@ -49,7 +51,7 @@ namespace Philinternational.Styles
             }            
         }
 
-        protected void loadImmagini(object sender, EventArgs e) { }
+        protected void loadImmagini(object sender, EventArgs e) {}
 
         protected void loadLotti(object sender, EventArgs e)
         {
