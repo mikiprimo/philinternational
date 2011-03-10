@@ -156,7 +156,7 @@ ul li.subargomento a:hover{text-decoration:underline;color:#920000;}
 
 .RowStyle   {   font-weight:normal;   color:#000000;   background-color:#FFFFFF;   }   
 .AlternatingRowStyle   {      font-weight:normal;   color:#000000;   background-color:#EEEEEE;   }   
-.RowStyle:hover, .AlternatingRowStyle:hover   {   font-weight:bold;   color:#FFFFFF;   background-color:#666666;   cursor:hand;   } 
+.RowStyle:hover, .AlternatingRowStyle:hover   {   font-weight:bold;   color:#FFFFFF;   background-color:#666666;} 
 
 /*shadowbox */
 #sb-title-inner,#sb-info-inner,#sb-loading-inner,div.sb-message{font-family:"HelveticaNeue-Light","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:200;color:#fff;}
@@ -252,8 +252,6 @@ a.bottone:hover{ border:1px solid #060;color:#060;cursor:auto}
 	border:1px solid #ccc;
 	width:100px;
 	height:100px;	
-	-moz-border-radius:4px;
-	-webkit-border-radius:4px;
 }
 
 .scrollable .active {border:2px solid #000;position:relative;cursor:default;}
