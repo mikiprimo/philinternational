@@ -3,9 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server" >
 
-        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jqueryCollection.js") %>"></script>
-        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
-        <script language="javascript" type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/commonFunction.js") %>"></script>
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jqueryCollection.js") %>"></script>
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
+        <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/commonFunction.js") %>"></script>
         <link rel="icon" href="~/images/favicon.png" type="image/png" />
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
         <title>Offerta filatelica per corrispondenza. Asta 54 - scadenza 4 aprile 2011</title>
@@ -54,7 +54,7 @@
             <div class="AdminMenu">
                 <h3>Amministrazione&nbsp;<a href="#"  id="admin1">[ Chiudi ]</a></h3>
                <ul class="listAdmin" id="list1">                    
-                    <li><asp:HyperLink runat="server" ID="linkAnagrafica" NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" ></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" ToolTip="Anagrafica" ID="linkAnagrafica" NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" ></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkNews" NavigateUrl="~/Management/news.aspx" Text="News"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkNewsletter" NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ID="linkGilardiFilatelia" NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it"></asp:HyperLink></li>
