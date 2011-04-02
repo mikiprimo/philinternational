@@ -52,12 +52,19 @@ namespace Philinternational.Styles
                 esitoElaborazione.Text = "aggiornamento non possible. directory non esistente";
             }            
         }
-
         protected void loadImmagini(object sender, EventArgs e) {
-            spoolTesto.Visible = true;
-            esitoElaborazione.Text = "";
-        
+
+            ftpGateway myFtp = new ftpGateway();
+
+         //   myFtp.FileName
+        }
+        protected void loadImmaginiOld(object sender, EventArgs e) {
+                spoolTesto.Visible = true;
+                esitoElaborazione.Text = "";
                 DirectoryInfo dirName = new DirectoryInfo(@"c:\philinternational.it\immagini_asta\");
+              //  FtpWebRequest a = new FtpWebRequest(ConfigurationManager.AppSettings["ftpPUrl"].ToString());
+            
+
                 if (dirName.Exists)
                 {
                     String listaFile="";
