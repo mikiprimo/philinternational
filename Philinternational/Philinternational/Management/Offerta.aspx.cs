@@ -75,9 +75,10 @@ namespace Philinternational
             MySqlConnection conn = ConnectionGateway.ConnectDB();
             String orario = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day + "_" + DateTime.Now.Hour + DateTime.Now.Minute;
             String fileName = "estrazione_philinternational_" +  orario  +".csv";
-            DirectoryInfo dirName = new DirectoryInfo(@"c:\philinternational.it\");
+            //DirectoryInfo dirName = new DirectoryInfo(@"c:\philinternational.it\");
 
-            if (!dirName.Exists)  dirName.Create();
+            //if (!dirName.Exists)  dirName.Create();
+            String dirName = Server.MapPath("uploadLotto\\");
             String pathName = dirName + fileName;
             FileInfo tmpFile = new FileInfo(pathName);
             if (tmpFile.Exists)  tmpFile.Delete();
@@ -102,13 +103,12 @@ namespace Philinternational
                     sw.Close();
                 }
                 fldMessaggi.Visible = true;
-                esitoEstrazione.InnerHtml = "[File " + tmpFile.ToString()  + " estratto]";
+                esitoEstrazione.InnerHtml = "<a href=\"uploadLotto\\" + fileName + "\" title=\"" + fileName  + "\">" + fileName + "</a>";
             }
             catch (MySqlException){
                 esitoEstrazione.InnerHtml = "File NON estratto";
             }
-            finally{
-            }
+            finally{}
         }
 
         protected void R1_ItemDataBound(object sender, RepeaterItemEventArgs e)
