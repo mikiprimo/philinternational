@@ -93,7 +93,8 @@
             <asp:HyperLink ID="chisiamo" toolTip="Chi siamo" NavigateUrl="~/Varie/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
             <asp:HyperLink ID="dovesiamo" ToolTip="Dove Siamo" NavigateUrl="~/Varie/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
             <asp:HyperLink id="contatti" toolTip="Contatti" NavigateUrl="~/Varie/contatti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
-            <p class="piva">Phil International srl di Gilardi Gian Antonio – socio unico P.IVA: 06137730963</p>
+            <p class="piva">Phil International srl di Gilardi Gian Antonio – socio unico | Partita Iva e Codice Fiscale: 06137730963 | R.E.A. Milano 1872505</p>
+            <p class="copyright">Il sito è stata realizzato da <a href="http://www.michelbenedetti.it" title="realizzazione di michel benedetti">Michel Benedetti</a></p>
         </div>
 </div>
     </form>
