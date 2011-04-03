@@ -23,17 +23,52 @@ namespace Philinternational.Layers {
             esito = SendGenericMail(eMail, soggetto, BodyMail);
             return esito;
         }
+
+        public static String SendOffertaNoAstaToUser(String userName, String eMail, String idLotto)
+        {
+            String esito = "";
+            String soggetto = "";
+            String BodyMail = "";
+            soggetto = "[philinternational.it] Comunicazione aggiudicazione lotto " + idLotto;
+            BodyMail = "Egregio " + userName + ",<br/>";
+            BodyMail += "grazie per aver ordinato il lotto num&deg; " + idLotto + " come da condizioni di vendita al prezzo sono da aggiungere il 20% di commissione e le eventuali spese postali.<br/>";
+            BodyMail += "A breve riceverà una mail con la nota di aggiudicazione ed i metodi di pagamento accettati.<br/>";
+            BodyMail += "Cordiali Saluti<br/>Lo staff<br/>";
+            esito = SendGenericMail(eMail, soggetto, BodyMail);
+            return esito;
+        }
         public static String AvvisoOffertaAdmin(String userName, String idLotto, String offerta) {
             String esito = "";
             String soggetto = "";
             String BodyMail = "";
             soggetto = "[Offerta lotto] offerta di " + userName + " per lotto " + idLotto;
-            BodyMail = "<p>Il cliente  " + userName + ",<br/>";
+            BodyMail = "<p style=\"font-family:'Arial'\">Il cliente  " + userName + ",<br/>";
             BodyMail += "ha appena effettuato un'offerta di <b>" + offerta + "</b> euro relativa al lotto num&deg;" + idLotto + ".<br/></p>";
             BodyMail += "Cordiali Saluti<br/>Lo staff<br/>";
             DataView mailAmministratori = Layers.AccountGateway.ListEmailAdministration();
             if (mailAmministratori.Count > 0) {
                 for (int i = 0; i < mailAmministratori.Count; i++) {
+                    esito = SendGenericMail(mailAmministratori[i]["email"].ToString(), soggetto, BodyMail);
+                }
+            }
+
+            return esito;
+        }
+
+        public static String AvvisoAcquistoLottoNoAstaAdmin(String userName, String idLotto, String offerta)
+        {
+            String esito = "";
+            String soggetto = "";
+            String BodyMail = "";
+            soggetto = "[lotto fuori asta] Proposta acquisto lotto " + idLotto + " fuori asta dell'utente " + userName;
+            BodyMail = "<p>Il cliente  " + userName + ",<br/>";
+            BodyMail += "ha appena richiesto di acquistare il lotto num&deg;" + idLotto + " del valore di <b>" + offerta + "</b> euro <br/></p>";
+            BodyMail += "Cordiali Saluti<br/>Lo staff<br/>";
+            DataView mailAmministratori = Layers.AccountGateway.ListEmailAdministration();
+            if (mailAmministratori.Count > 0)
+            {
+                for (int i = 0; i < mailAmministratori.Count; i++)
+                {
                     esito = SendGenericMail(mailAmministratori[i]["email"].ToString(), soggetto, BodyMail);
                 }
             }
