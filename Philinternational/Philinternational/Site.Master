@@ -8,8 +8,8 @@
         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/commonFunction.js") %>"></script>
         <link rel="icon" href="~/images/favicon.png" type="image/png" />
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-        <title>Offerta filatelica per corrispondenza. Asta 54 - scadenza 4 aprile 2011</title>
-        <asp:ContentPlaceHolder ID="HeadContent" runat="server">    
+        <title>Offerta filatelica per corrispondenza. Lotti da acquistare.</title>
+        <asp:ContentPlaceHolder ID="HeadContent" runat="server">
             <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />
             <meta name="DESCRIPTION" content="PhilInternarional è un sito di offerta filatelica per corrispondenza." />
             <meta name="ROBOTS" content="INDEX,FOLLOW" />
