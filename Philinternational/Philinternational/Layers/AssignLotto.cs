@@ -11,6 +11,7 @@ namespace Philinternational.Layers
     {
         private const String _assegnaLottoVincente = "assegnato";
         private const String _assegnaLottoNonVincente = "non assegnato";
+        private const String _lottoFuoriAsta = "fuori asta";
         public static int aggiudicaLottoVincente(int idOfferta,string idLotto, int idAnagrafica){
             int esitoLotto = -1;
             String sql = "UPDATE offerta_per_corrispondenza SET assegnazione ='" + _assegnaLottoVincente +"' WHERE idofferta = "+ idOfferta;
@@ -37,9 +38,21 @@ namespace Philinternational.Layers
             return esitoLotto;
         
         }
+
+        private static Boolean segnaOffertaFuoriAsta(String idLotto)
+        {
+            Boolean esitoLotto = false;
+            String sql = "UPDATE offerta_per_corrispondenza SET assegnazione ='" + _lottoFuoriAsta + "' WHERE idlotto = " + idLotto + "";
+            int esito = ConnectionGateway.ExecuteQuery(sql, "offerta_per_corrispondenza");
+            if (esito == 0) esitoLotto = true;
+            return esitoLotto;
+
+        }
         public static void checkStatoOfferta(String idOfferta) { }
 
         public static String getAssegnaLottoVincente() { return _assegnaLottoVincente; }
         public static String getAssegnaLottoNonVincente() { return _assegnaLottoNonVincente; }
+        public static String getLottoFuoriAsta() { return _lottoFuoriAsta; }
+        
     }
 }

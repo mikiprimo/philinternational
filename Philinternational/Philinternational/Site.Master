@@ -49,19 +49,20 @@
             </script>
             <asp:Panel runat="server" Visible="false" ID="PanelAdmin">
             <div class="AdminMenu">
-                <h3>Amministrazione&nbsp;<a href="#"  id="admin1">[ Chiudi ]</a></h3>
+                <h3 style="text-transform:uppercase">Amministrazione&nbsp;<a href="#"  id="admin1">[ Chiudi ]</a></h3>
                <ul class="listAdmin" id="list1">                    
                     <li><asp:HyperLink runat="server" ToolTip="Anagrafica" ID="linkAnagrafica" NavigateUrl="~/Management/Anagrafica.aspx" Text="Anagrafica" ></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ToolTip="News" ID="linkNews" NavigateUrl="~/Management/news.aspx" Text="News"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ToolTip="Newsletter" ID="linkNewsletter" NavigateUrl="~/Management/Newsletter.aspx" Text="Newsletter"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ToolTip="Offerte Gilardi Filatelia" ID="linkGilardiFilatelia" NavigateUrl="~/Management/offertaGilardiFilatelia.aspx" Text="Elenco Offerte GilardiFilatelia.it"></asp:HyperLink></li>
                 </ul> 
-                <h3>Gestione aste&nbsp;<a href="#"  id="admin2" title="gestione aste">[ Chiudi ]</a></h3>
+                <h3 style="text-transform:uppercase">Gestione aste&nbsp;<a href="#"  id="admin2" title="gestione aste">[ Chiudi ]</a></h3>
                 <ul class="listAdmin"  id="list2">
                     <li><asp:HyperLink runat="server" ToolTip="Paragrago"  ID="HyperParagrafo" NavigateUrl="~/Management/Paragrafo.aspx" Text="Paragrafo"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" Tooltip="Gestione lotti" ID="linkLotto" NavigateUrl="~/Management/Lotto.aspx" Text="Gestione Lotti"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" tooltip="Asta attiva" ID="linkAsta" NavigateUrl="~/Management/Aste.aspx" Text="Asta Attiva"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" toolTip="Elenco Offerte" ID="linkOfferte" NavigateUrl="~/Management/Offerta.aspx" Text="Elenco Offerte" Value="Offerte"></asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" toolTip="Storico Offerte" ID="storicoOfferte" NavigateUrl="~/Management/StoricoOfferte.aspx" Text="Storico Offerte" Value="Storico Offerte"></asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" ToolTip="Varie" ID="varie" NavigateUrl="~/Management/Varie.aspx" Text="Varie" Value="Varie"></asp:HyperLink></li>
                  </ul>
             <script type="text/javascript">

@@ -112,7 +112,7 @@ namespace Philinternational
         }
 
         protected void R1_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {            
+            {            
 
 
             LinkButton btn = ((LinkButton)e.Item.FindControl("assegnaLotto"));

@@ -15,23 +15,37 @@ namespace Philinternational.Layers
             Int32 idOfferta = ConnectionGateway.CreateNewIndex("idofferta", "offerta_per_corrispondenza");
 
             String data_inserimento = String.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now);
-            
+
+            AsteGateway myAsta = new AsteGateway();
+            Boolean astaAttiva = myAsta.GetAstaAttiva();
+            String assegnazione ="";
+            if (!astaAttiva) assegnazione = "fuori asta";
+
             String sql = "INSERT INTO offerta_per_corrispondenza(idofferta,idlotto,idanagrafica,prezzo_offerto,data_inserimento,assegnazione) VALUES ";
-            sql += "("+ idOfferta+","+ idLotto+","+ idAnagrafica+","+ offerta+",'"+ data_inserimento +"','')";
+            sql += "(" + idOfferta + "," + idLotto + "," + idAnagrafica + "," + offerta + ",'" + data_inserimento + "','" + assegnazione + "')";
             
             int a = ConnectionGateway.ExecuteQuery(sql, "offerta_per_corrispondenza");
             if (a == 0)
             {
-
-                AsteGateway Asta = new AsteGateway();
-                String[] esitoAsta = new String[2];
-                esitoAsta = Asta.GetDatiAsta();
-                String eMail =  AccountGateway.GetEmailByIdAnagrafica(idAnagrafica);
-                String userName = AccountGateway.GetPersonaFromIdAnagrafica(idAnagrafica);
-                String esitoOfferta = MailList.SendOffertaToUser(userName, eMail, idLotto, offerta.ToString(), esitoAsta.GetValue(0).ToString());
-                String esitoAdmin =  MailList.AvvisoOffertaAdmin(userName,idLotto,offerta.ToString());
-                Boolean esitoMovimento = insertMovimento(idAnagrafica, esitoAsta.GetValue(0).ToString());
-                if (esitoMovimento == false) esito = "Offerta non effettuata";
+                if (astaAttiva)
+                {
+                    String[] esitoAsta = new String[2];
+                    esitoAsta = myAsta.GetDatiAsta();
+                    String eMail = AccountGateway.GetEmailByIdAnagrafica(idAnagrafica);
+                    String userName = AccountGateway.GetPersonaFromIdAnagrafica(idAnagrafica);
+                    String esitoOfferta = MailList.SendOffertaToUser(userName, eMail, idLotto, offerta.ToString(), esitoAsta.GetValue(0).ToString());
+                    String esitoAdmin = MailList.AvvisoOffertaAdmin(userName, idLotto, offerta.ToString());
+                    Boolean esitoMovimento = insertMovimento(idAnagrafica, esitoAsta.GetValue(0).ToString());
+                    if (esitoMovimento == false) esito = "Offerta non effettuata";
+                }
+                else {
+                    String eMail = AccountGateway.GetEmailByIdAnagrafica(idAnagrafica);
+                    String userName = AccountGateway.GetPersonaFromIdAnagrafica(idAnagrafica);
+                    String esitoOfferta = MailList.SendOffertaNoAstaToUser(userName, eMail, idLotto);
+                    String esitoAdmin = MailList.AvvisoAcquistoLottoNoAstaAdmin(userName, idLotto, offerta.ToString());
+                    Boolean esitoMovimento = insertMovimento(idAnagrafica, "EXT");
+                    if (esitoMovimento == false) esito = "Offerta non effettuata";                
+                }
             }
             else {
                 esito = "Offerta non effettuata";
@@ -70,8 +84,8 @@ namespace Philinternational.Layers
             if (a == 0) return true; else return false;
         }
         private Boolean insertMovimento(int idAnagrafica, String idAsta) {
-            String sqlCheck = "SELECT idanagrafica,numero_asta from anagrafica_movimenti where idanagrafica= "+ idAnagrafica +" and numero_asta="+ idAsta +"";
-            String sqlInsert ="INSERT INTO anagrafica_movimenti(idanagrafica,numero_asta) VALUES("+ idAnagrafica +","+ idAsta+")";
+            String sqlCheck = "SELECT idanagrafica,numero_asta from anagrafica_movimenti where idanagrafica= "+ idAnagrafica +" and numero_asta='"+ idAsta +"'";
+            String sqlInsert ="INSERT INTO anagrafica_movimenti(idanagrafica,numero_asta) VALUES("+ idAnagrafica +",'"+ idAsta+"')";
 
             DataView dr = Layers.ConnectionGateway.SelectQuery(sqlCheck);
             if (dr.Count > 0)

@@ -21,8 +21,7 @@
             <th>Data Offerta</th>
             <th>Offerta</th>
             <th>&nbsp;</th>
-        </tr>
-    
+        </tr>    
     <asp:Repeater runat="server" ID="listaLotti" DataSourceID="OfferteConnector" OnItemCommand="R_ItemCommand" OnItemDataBound="R1_ItemDataBound">
         <ItemTemplate>
             <tr>

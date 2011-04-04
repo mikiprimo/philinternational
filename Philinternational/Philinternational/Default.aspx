@@ -5,8 +5,8 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 	<div id="presentazione">
 		<h1>Phil International è un sito di offerta Filatelica per corrispondenza</h1>
-		<p class="lato1">Al momento è attiva la vendita<span id="numeroAsta" runat="server"></span></p>
-		<p class="lato2">Data di scadenza <span id="dataScadenza" runat="server"></span></p>
+		<p class="lato1"></label> <span id="testoAstaForNumero" runat="server" class="normal"></span><span id="numeroAsta" runat="server"></span></p>
+		<p class="lato2"><span id="testoScadenza" runat="server" class="normal"></span><span id="dataScadenza" runat="server"></span></p>
 		<div style="clear:both;width:100%">
 			<p>Prima di registrarsi, leggere attentamente le <asp:HyperLink NavigateUrl="~/Varie/condizioniVendita.aspx" Text="condizioni di vendita" runat="server" ></asp:HyperLink> e di pagamento</p>
 		</div>
@@ -29,7 +29,11 @@
 			<p style="line-height:20px"><span style="text-decoration:underline">Condizione</span>: <span id="statoLotto" runat="server"><%# Eval("tipo_lotto")%></span></p>
 			<p style="line-height:20px"><span style="text-decoration:underline">Prezzo</span> : <span id="prezzoLotto" runat="server" style="text-align:right"><b><%# Eval("prezzo_base")%></b>&nbsp;&euro;</span></p>
 			<p id="descrizioneLotto" class="lottoOffertadescrizione" runat="server"><%# Eval("descrizione")%></p>
-			<p class="lottoOfferta"><asp:LinkButton ID="linkBasket" runat="server" ToolTip="Aggiungi al carrello">Aggiungi al carrello</asp:LinkButton><asp:Label runat="server" ID="linkBasketAdded" Visible="false" ToolTip="Lotto agginto al carrello">Lotto aggiunto al carrello</asp:Label>&nbsp;<%# VerificaOfferta(DataBinder.Eval(Container.DataItem, "stato"), DataBinder.Eval(Container.DataItem, "idlotto"))%></p>
+			<p class="lottoOfferta">
+                <asp:LinkButton ID="linkBasket" runat="server" ToolTip="Aggiungi al carrello">Aggiungi al carrello</asp:LinkButton>
+                <asp:Label runat="server" ID="linkBasketAdded" Visible="false" ToolTip="Lotto agginto al carrello">Lotto aggiunto al carrello</asp:Label>&nbsp;
+                <%# VerificaOfferta(DataBinder.Eval(Container.DataItem, "stato"), DataBinder.Eval(Container.DataItem, "idlotto"))%>
+            </p>
 		 </div>
 	</ItemTemplate>
 	</asp:Repeater>

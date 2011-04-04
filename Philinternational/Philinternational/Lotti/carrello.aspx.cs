@@ -95,21 +95,49 @@ namespace Philinternational
                         if (esito) Response.Redirect("carrello.aspx");
                         break;
                 case "makeOffert":
-                        String tmp = ((TextBox)e.Item.FindControl("txt_offerta")).Text;
-                        if (tmp == "") tmp = "0";
-                        int a = Int32.Parse(tmp);
+                        AsteGateway myAsta = new AsteGateway();
+                        Boolean astaAttiva = myAsta.GetAstaAttiva();
+                        int  a=0;
+
                         Button btn = ((Button)e.Item.FindControl("btnOfferta"));
-                        String idLotto =btn.Attributes["myIdLotto"].ToString();
                         int idCarrello = Int32.Parse(btn.Attributes["myIdcarrello"].ToString());
+                        String idLotto = btn.Attributes["myIdLotto"].ToString();
+                        if (astaAttiva)
+                        {
+                            String tmp = ((TextBox)e.Item.FindControl("txt_offerta")).Text;
+                            if (tmp == "") tmp = "0";
+                            a = Int32.Parse(tmp);
+                        }
+                        else {
+                            LottiGateway Lotti = new LottiGateway();
+                            a = int.Parse(  Lotti.getValueByField(idLotto, "prezzo_base").ToString());
+                        }
                         String esitoOfferta = FaiOfferta(idLotto, a);
-                        if (esitoOfferta == ""){
+                        if (esitoOfferta == "")
+                        {
                             Boolean esitoCarrello = RemoveToBasket(idCarrello);
                             Response.Redirect("carrello.aspx");
-                        } 
+                        }
                         else ((System.Web.UI.HtmlControls.HtmlContainerControl)e.Item.FindControl("esitoOfferta")).InnerHtml = esitoOfferta;
+
                         break;
             }
 
+        }
+        protected void txtOfferta_OnDataBinding(Object sender, EventArgs e)
+        {
+            AsteGateway myAsta = new AsteGateway();
+            Boolean astaAttiva = myAsta.GetAstaAttiva();
+            TextBox txt_offerta = ((TextBox)sender);
+            if (astaAttiva)
+            {
+                txt_offerta.Visible = true;
+            }
+            else
+            {
+                txt_offerta.Visible = false;
+            }
+        
         }
         protected void offerta_OnDataBinding(Object sender, EventArgs e) {
             Button btn = ((Button)sender);
