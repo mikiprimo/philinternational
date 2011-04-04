@@ -14,6 +14,7 @@
     <AssemblyName>Philinternational</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -240,6 +241,7 @@
     <Compile Include="Layers\Entities\lotto.Entity.cs" />
     <Compile Include="Layers\Entities\newsletter.Entity.cs" />
     <Compile Include="Layers\Entities\offerta.Entity.cs" />
+    <Compile Include="Layers\ftpGateway.cs" />
     <Compile Include="Layers\GilardiFilateliaGateway.cs" />
     <Compile Include="Layers\LottiGateway.cs" />
     <Compile Include="Layers\Entities\news.Entity.cs">
