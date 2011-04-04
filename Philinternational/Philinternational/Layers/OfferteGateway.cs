@@ -84,8 +84,9 @@ namespace Philinternational.Layers
             if (a == 0) return true; else return false;
         }
         private Boolean insertMovimento(int idAnagrafica, String idAsta) {
+            String data_inserimento = String.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now);
             String sqlCheck = "SELECT idanagrafica,numero_asta from anagrafica_movimenti where idanagrafica= "+ idAnagrafica +" and numero_asta='"+ idAsta +"'";
-            String sqlInsert ="INSERT INTO anagrafica_movimenti(idanagrafica,numero_asta) VALUES("+ idAnagrafica +",'"+ idAsta+"')";
+            String sqlInsert = "INSERT INTO anagrafica_movimenti(idanagrafica,numero_asta,data_inserimento) VALUES(" + idAnagrafica + ",'" + idAsta + "','" + data_inserimento + "')";
 
             DataView dr = Layers.ConnectionGateway.SelectQuery(sqlCheck);
             if (dr.Count > 0)
