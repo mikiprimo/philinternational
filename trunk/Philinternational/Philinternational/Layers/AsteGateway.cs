@@ -140,7 +140,7 @@ namespace Philinternational.Layers {
             Boolean esito = false;
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
             for (int i = 0; i < dr.Count; i++) {
-                stato = dr[i]["data_fine"].ToString();
+                stato = dr[i]["stato"].ToString();
                 if (stato == "0") esito = false; else esito = true;
             }
             return esito;

@@ -20,7 +20,7 @@
             </li>
         </ul>
             <div>
-                <asp:TextBox ID="txt_offerta" runat="server" Width="60px"></asp:TextBox>
+                <asp:TextBox ID="txt_offerta" runat="server" Width="60px" OnDataBinding="txtOfferta_OnDataBinding"></asp:TextBox>
                 <asp:Button runat="server" ID="btnOfferta" Text="Fai l'offerta" OnDataBinding="offerta_OnDataBinding"
                     CommandName="makeOffert" myIdLotto='<%#Eval("idlotto")%>' myIdcarrello='<%#Eval("idcarrello")%>' />
                 <asp:LinkButton runat="server" ID="removeBasket" CssClass="remove" Text="Rimuovi dal carrello"

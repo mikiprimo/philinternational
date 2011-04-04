@@ -7,64 +7,46 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Philinternational {
+namespace Philinternational.Management {
     
     
-    public partial class _Default {
+    public partial class StoricoOfferte {
         
         /// <summary>
-        /// testoAstaForNumero control.
+        /// fldMessaggi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl testoAstaForNumero;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fldMessaggi;
         
         /// <summary>
-        /// numeroAsta control.
+        /// estraiStorico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl numeroAsta;
+        protected global::System.Web.UI.WebControls.LinkButton estraiStorico;
         
         /// <summary>
-        /// testoScadenza control.
+        /// esitoEstrazione control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl testoScadenza;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl esitoEstrazione;
         
         /// <summary>
-        /// dataScadenza control.
+        /// OfferteConnector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dataScadenza;
-        
-        /// <summary>
-        /// infoOutput control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infoOutput;
-        
-        /// <summary>
-        /// LottoConnector control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource LottoConnector;
+        protected global::System.Web.UI.WebControls.SqlDataSource OfferteConnector;
         
         /// <summary>
         /// listaLotti control.

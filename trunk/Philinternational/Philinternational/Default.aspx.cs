@@ -18,15 +18,28 @@ namespace Philinternational
             AsteGateway Asta = new AsteGateway();
             String[] esito = new String[2];
             DateTime a = new DateTime();
-            esito = Asta.GetDatiAsta();
-            String tmp = esito.GetValue(1).ToString();
-            numeroAsta.InnerHtml = esito.GetValue(0).ToString();
-            if (tmp.Length > 10)
-                tmp = tmp.Substring(0, 10);
-            else {
-                tmp = "";
+            Boolean astaAttiva = Asta.GetAstaAttiva();
+            if (astaAttiva)
+            {
+                esito = Asta.GetDatiAsta();
+                String tmp = esito.GetValue(1).ToString();
+                numeroAsta.InnerHtml = esito.GetValue(0).ToString();
+                if (tmp.Length > 10)
+                    tmp = tmp.Substring(0, 10);
+                else
+                {
+                    tmp = "";
+                }
+                testoAstaForNumero.InnerHtml = "Al momento è attiva la vendita";
+                dataScadenza.InnerHtml = a.ToString(tmp);
+                testoScadenza.InnerHtml="Data di scadenza";
             }
-            dataScadenza.InnerHtml = a.ToString(tmp);
+            else {
+                testoAstaForNumero.InnerHtml = "<b>La vendita è chiusa</b>";
+                testoScadenza.InnerHtml = "I lotti disponibili si vendono al primo richiedente";
+                dataScadenza.InnerHtml = "";
+            }
+
             infoOutput.InnerHtml = lodRotationNews();
             BindData();
 

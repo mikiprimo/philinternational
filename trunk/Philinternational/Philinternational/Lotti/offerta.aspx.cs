@@ -20,28 +20,58 @@ namespace Philinternational
 
             }else {
                 String esito = "";
-                String offertaUtente = txtOfferta.Text;
-                if (offertaUtente == "") offertaUtente = "0";
-                esito = FaiOfferta(codiceLotto.Value, float.Parse(offertaUtente));
-                if (esito =="" )
+                AsteGateway myAsta = new AsteGateway();
+                Boolean astaAttiva = myAsta.GetAstaAttiva();
+                if (astaAttiva)
                 {
-                    int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
-                    String emailUtente = Layers.AccountGateway.GetEmailByIdAnagrafica(idAnagrafica);
-                    AsteGateway Asta = new AsteGateway();
-                    String[] esitoAsta = new String[2];
-                    esitoAsta = Asta.GetDatiAsta();
-                    buttonOfferta.Visible = false;
-                    String esitoMail = Layers.MailList.SendOffertaToUser(emailUtente, emailUtente, codiceLotto.Value, offertaUtente, esitoAsta.GetValue(0).ToString());
-                    EsitoOperazione.InnerHtml = "<span class=\"ok\">Offerta Effettuata con successo<br/>" + esitoMail  + "<br/></span>\n";
+                    String offertaUtente = txtOfferta.Text;
+                    if (offertaUtente == "") offertaUtente = "0";
+                    esito = FaiOfferta(codiceLotto.Value, float.Parse(offertaUtente));
+                    if (esito == "")
+                    {
+                        int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+                        String emailUtente = Layers.AccountGateway.GetEmailByIdAnagrafica(idAnagrafica);
+                        AsteGateway Asta = new AsteGateway();
+                        String[] esitoAsta = new String[2];
+                        esitoAsta = Asta.GetDatiAsta();
+                        buttonOfferta.Visible = false;
+                        String esitoMail = Layers.MailList.SendOffertaToUser(emailUtente, emailUtente, codiceLotto.Value, offertaUtente, esitoAsta.GetValue(0).ToString());
+                        EsitoOperazione.InnerHtml = "<span class=\"ok\">Offerta Effettuata con successo<br/>" + esitoMail + "<br/></span>\n";
+                    }
+                    else
+                    {
+                        String outputEsito = "<span class=\"ko\">Offerta Non Effettuata per [" + esito + "]</span>\n";
+                        switch (esito)
+                        {
+                            case "Login": outputEsito = "<span class=\"ko\">Per fare l'offerta devi essere autenticato. Effettua il Login</span>\n"; break;
+
+                        }
+                        EsitoOperazione.InnerHtml = outputEsito;
+                    }
                 }
                 else {
-                    String outputEsito = "<span class=\"ko\">Offerta Non Effettuata per [" + esito + "]</span>\n";
-                    switch (esito) {
-                        case "Login": outputEsito = "<span class=\"ko\">Per fare l'offerta devi essere autenticato. Effettua il Login</span>\n"; break;
-                    
+                    String offertaUtente = prezzoLotto.InnerText;
+                    esito = FaiOfferta(codiceLotto.Value, float.Parse(offertaUtente));
+                    if (esito == "")
+                    {
+                        int idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
+                        String emailUtente = Layers.AccountGateway.GetEmailByIdAnagrafica(idAnagrafica);
+                        buttonOfferta.Visible = false;
+                        String esitoMail = Layers.MailList.SendOffertaNoAstaToUser(emailUtente, emailUtente, codiceLotto.Value);
+                        EsitoOperazione.InnerHtml = "<span class=\"ok\">Offerta Effettuata con successo<br/>" + esitoMail + "<br/></span>\n";
                     }
-                    EsitoOperazione.InnerHtml = outputEsito;
-                }    
+                    else
+                    {
+                        String outputEsito = "<span class=\"ko\">Offerta Non Effettuata per [" + esito + "]</span>\n";
+                        switch (esito)
+                        {
+                            case "Login": outputEsito = "<span class=\"ko\">Per fare l'offerta devi essere autenticato. Effettua il Login</span>\n"; break;
+
+                        }
+                        EsitoOperazione.InnerHtml = outputEsito;
+                    }                
+                }
+     
             }
         }
         private void loadData(String idlotto) {
@@ -53,12 +83,21 @@ namespace Philinternational
             descrizioneLotto.InnerHtml = a.getValueByField(idlotto, "descrizione");
             prezzoLotto.InnerHtml = a.getValueByField(idlotto, "prezzo_base");
             statoLotto.InnerHtml = a.getValueByField(idlotto, "tipo_lotto");
-            if (AccountLayer.IsLogged())
+            AsteGateway myAsta = new AsteGateway();
+            Boolean astaAttiva = myAsta.GetAstaAttiva();
+            if (astaAttiva)
             {
-                String idAnagrafica = Convert.ToString(((logInfos)Session["log"]).idAnagrafica);
-                Boolean esito = o.checkOffertaGiaPresente(idAnagrafica,idlotto);
-                if (esito) showButton.Visible = false;
+                if (AccountLayer.IsLogged())
+                {
+                    String idAnagrafica = Convert.ToString(((logInfos)Session["log"]).idAnagrafica);
+                    Boolean esito = o.checkOffertaGiaPresente(idAnagrafica, idlotto);
+                    if (esito) showButton.Visible = false;
+                }
             }
+            else {
+                txtOfferta.Visible = false;
+            }
+            
 
 
 
@@ -87,8 +126,6 @@ namespace Philinternational
             else {
                 return "Login";
             }
-
-
             
             return esito;
         }

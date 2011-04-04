@@ -1,6 +1,6 @@
 ﻿/* DEFAULTS ------------------------------------*/
 html{background-color:transparent;}
-body{background-color:#FFF;width:990px;height:100%;font-family: Verdana, Geneva, sans-serif;font-size: 10px;clear:both;color:#000000;margin:0px auto;}
+body{background-color:/*#FEE*/transparent;width:990px;height:100%;font-family: Verdana, Geneva, sans-serif;font-size: 10px;clear:both;color:#000000;margin:0px auto;}
 select,input,textarea{clear:both;color:#000000;background-color:#FFC;border:1px solid #000;}
 select:hover,input:hover,textarea:hover{background-color:#eaeaea;border:1px solid #000;}
 select:focus,input:focus,textarea:focus{color:#920000;border:1px solid #000}
@@ -17,7 +17,6 @@ h1{font-size:1.6em}
 #page
 {
 	width: 990px;
-	background-color:transparent;
 	clear:both;
 	margin:0px auto;
 }
@@ -49,7 +48,7 @@ h1{font-size:1.6em}
 #header .loginDisplay a:visited{color: #000}
 #header .loginDisplay a:hover{color: #920000;}
 
-#main  {float: left;width:55%;  }
+#main  {float: left;width:55%; background-color:transparent }
 #main  h1{text-align:center;font-weight:bold;font-size:1.4em;color:#000;padding:3px}
 #main  h2,h3{line-height:20px;font-weight:bold;font-size:1.2em;color:#000}
 #main  h4{line-height:18px;font-weight:bold;font-size:1.0em;color:#000}
@@ -74,6 +73,7 @@ h1{font-size:1.6em}
 
 #presentazione h1{color:#000;text-transform:uppercase;padding:10px 5px;font-size:2.0em;letter-spacing:3px;}
 #presentazione span{font-size:2.0em;font-weight:bold;display:block;padding:5px 0px;color:#F00;}
+#presentazione .normal{font-size:1.0em;font-weight:normal;display:block;padding:5px 0px;color:#000;}
 #presentazione a{text-decoration:none;}
 #presentazione a:hover{text-decoration:underline}
  .lato1 {float:left;width:48%;padding:5px;font-size:1.5em;height:80px;text-align:center;}
@@ -190,7 +190,7 @@ ul li.subargomento a:hover{text-decoration:underline;color:#920000;}
 div.sb-message{font-size:12px;padding:10px;text-align:center;}
 div.sb-message a:link,div.sb-message a:visited{color:#fff;text-decoration:underline;}
 /* news ticker*/
-div#info {float:left;width:100%;background-color:#eaeaea}
+div#info {float:left;width:100%;background-color:#ededed}
 div#info.ok {border-left-color: #ACD083;}
 div#info.otravez {border-left-color: #DC7873}
 div#info ul {margin-top: 10px;}
@@ -271,7 +271,8 @@ a.disabled {visibility:hidden !important;}
 .navi a.active {	background-position:0 -16px;}
 
 ul.listAdmin li{color:#000;}
-ul.listAdmin li a{ display:block;color:#090;} 
+ul.listAdmin li a{ display:block;color:#000;} 
+ul.listAdmin li a:hover{ color:#920000;} 
 .AdminMenu{margin:0px 0px 5px 0px;}
 .AdminMenu h3{border-bottom:1px solid #eee;}
 .titlePanel{background:url(../images/styles/barra.gif) no-repeat left bottom}
