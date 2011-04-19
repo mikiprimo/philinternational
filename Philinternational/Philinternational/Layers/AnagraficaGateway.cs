@@ -80,20 +80,15 @@ namespace Philinternational.Layers {
         }
 
         internal static DataView SelectAnagrafica() {
-            DataView dv = new DataView();
             using (MySqlConnection conn = ConnectionGateway.ConnectDB())
             using (MySqlCommand cmd = new MySqlCommand(SELECT_ANAGRAFICA, conn))
-            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) {
-                try {
-                    conn.Open();
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    dv = dt.DefaultView;
-
-                    return dv;
-                } catch (MySqlException) {
-                    return dv;
-                }
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) 
+            using (DataTable dt = new DataTable()){
+                DataView dv;
+                conn.Open();
+                adapter.Fill(dt);
+                dv = dt.DefaultView;
+                return dv;
             }
         }
 
@@ -128,8 +123,8 @@ namespace Philinternational.Layers {
                 conn.Open();
                 command.ExecuteNonQuery();
                 if (stato == 1) {
-                    
-                    int idAnagrafica =Int32.Parse( AccountGateway.GetIdAnagraficaByEmail(mailAnagrafica));
+
+                    int idAnagrafica = Int32.Parse(AccountGateway.GetIdAnagraficaByEmail(mailAnagrafica));
                     String persona = AccountGateway.GetPersonaFromIdAnagrafica(idAnagrafica);
                     String esito = Layers.MailList.AttivazioneUtente(persona, mailAnagrafica);
                 }
