@@ -31,7 +31,7 @@ namespace Philinternational.UserControls {
         /// A seconda della funzionalità scelta nella querystring type definisco e svolgo determinate operazioni sulla form
         /// </summary>
         private void LoadFormData() {
-            DataView lotto = new DataView();
+            DataView lotto = null;
             switch (this.currentType) {
                 //Voglio agire su un oggetto di lotti pubblicati
                 case operationType.lottiPubblicati: lotto = LottiGateway.SelectLottiById(Convert.ToInt32(this.currentIdLotto));

@@ -8,6 +8,9 @@ using System.Configuration;
 
 namespace Philinternational.Layers {
     public class AccountGateway {
+
+        public static String USERINFOS = "SELECT anagrafica.email, anagrafica.password, anagrafica.idanagrafica, anagrafica.nome, anagrafica.cognome, anagrafica.codice_fiscale, anagrafica.dom_via, anagrafica.dom_indirizzo, anagrafica.dom_num_civico, anagrafica.dom_cap, anagrafica.dom_comune, anagrafica.dom_provincia,anagrafica.dom_nazione, anagrafica.stato, anagrafica.data_inserimento, profilo.descrizione AS RoleDescription, profilo.amministrazione AS Role, anagrafica.idprofilo FROM anagrafica INNER JOIN profilo ON anagrafica.idprofilo = profilo.idprofilo WHERE  (anagrafica.email = @email) AND (anagrafica.password = @password)";
+
         public static logInfos GetUserInfos(string eMail, string password) {
             logInfos myLogInfos = new logInfos();
             MySqlConnection conn = ConnectionGateway.ConnectDB();
@@ -15,7 +18,7 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
 
-                MySqlCommand command = new MySqlCommand(ConfigurationManager.AppSettings["UserInfos"].ToString(), conn);
+                MySqlCommand command = new MySqlCommand(USERINFOS, conn);
                 command.CommandType = System.Data.CommandType.Text;
                 command.Parameters.AddWithValue("email", eMail);
                 command.Parameters.AddWithValue("password", password);
