@@ -44,9 +44,9 @@
                         </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
-                        <ItemTemplate>
+                        <%--<ItemTemplate>
                             <asp:Label ID="lblTesto" runat="server" Text='<%# Bind("testo") %>'></asp:Label>
-                        </ItemTemplate>
+                        </ItemTemplate>--%>
                         <EditItemTemplate>
                             <asp:TextBox ID="txtUpdateTesto" runat="server" Text='<%# Bind("testo") %>'></asp:TextBox>
                         </EditItemTemplate>
