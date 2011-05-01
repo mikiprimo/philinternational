@@ -33,7 +33,7 @@ namespace Philinternational.Management {
             MyNewsletter.testo = txtTesto.Text;
 
             esito = NewsletterGateway.InsertNewsletter(MyNewsletter);
-            pulisci();
+            Response.Redirect("Newsletter.aspx");
         }
 
         protected void ibtnPulisci_Click(object sender, ImageClickEventArgs e) {
