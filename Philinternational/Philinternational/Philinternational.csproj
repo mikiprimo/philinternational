@@ -72,6 +72,7 @@
     <Content Include="Advertise.xml" />
     <Content Include="Documentation\Gestione Lotti.txt" />
     <Content Include="Documentation\GridView\GridViewCustom_EsempioCompleto.txt" />
+    <Content Include="Documentation\sql\alter_anagrafica_movimenti.sql" />
     <Content Include="Documentation\sql\alter_table_anagrafica.sql" />
     <Content Include="Documentation\sql\alter_table_lotto.sql" />
     <Content Include="Documentation\sql\esempio_dati_tabella_lotto.sql" />
