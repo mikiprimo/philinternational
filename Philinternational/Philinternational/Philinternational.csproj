@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CKEditor.NET">
+      <HintPath>ExternalAssemblies\CKEditor.NET.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.3.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.3.5\Assemblies\v2.0\MySql.Data.dll</HintPath>
       <Private>True</Private>
@@ -512,6 +515,7 @@
     <Content Include="Management\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ExternalAssemblies\" />
     <Folder Include="images\asta\" />
     <Folder Include="Management\uploadLotto\" />
   </ItemGroup>

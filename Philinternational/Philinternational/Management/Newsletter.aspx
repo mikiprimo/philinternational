@@ -60,7 +60,7 @@
                     runat="server" OnClick="ibtnDeleteSelectedNewsletters_Click" AlternateText="Cancella le newsletters selezionate"
                     CssClass="cleanButtons" ImageUrl="~/images/commands/cancella.png" ToolTip="Cancella le newsletters selezionate" />
             <br />
-            <br />
+
             <asp:ImageButton ID="ibtnSendToAll" runat="server" AlternateText="Distribuisci le newsletters selezionate"
                 OnClick="ibtnSendToAll_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/smista.png"
                 ToolTip="Distribuisci le newsletters a tutti gli utenti selezionati" /></asp:View>
