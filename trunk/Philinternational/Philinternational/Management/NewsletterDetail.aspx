@@ -27,7 +27,7 @@
         <%--<asp:TextBox ID="txtTesto" runat="server" TextMode="MultiLine" Rows="20" Columns="50"></asp:TextBox>--%>
         <CKEditor:CKEditorControl ID="CKEditNewsletter" runat="server" 
             ResizeEnabled="False" ResizeMaxHeight="300" ResizeMaxWidth="550" 
-            ResizeMinHeight="300" ResizeMinWidth="550"></CKEditor:CKEditorControl>
+            ResizeMinHeight="300" ResizeMinWidth="550" DefaultLanguage="it"></CKEditor:CKEditorControl>
     </p>
     <br />
     <table>
