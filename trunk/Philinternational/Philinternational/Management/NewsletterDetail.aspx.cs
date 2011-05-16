@@ -20,7 +20,7 @@ namespace Philinternational.Management {
         private void pulisci() {
             txtDataCreazione.Text = "";
             txtTitolo.Text = "";
-            txtTesto.Text = "";
+            CKEditNewsletter.Text = "";
         }
         
         protected void ibtnConferma_Click(object sender, ImageClickEventArgs e) {
@@ -30,7 +30,7 @@ namespace Philinternational.Management {
             MyNewsletter.id = Layers.ConnectionGateway.CreateNewIndex("idnewsletter", "newsletter");
             MyNewsletter.data_creazione = DateTime.Parse(txtDataCreazione.Text);
             MyNewsletter.titolo = txtTitolo.Text;
-            MyNewsletter.testo = txtTesto.Text;
+            MyNewsletter.testo = CKEditNewsletter.Text = "";
 
             esito = NewsletterGateway.InsertNewsletter(MyNewsletter);
             Response.Redirect("Newsletter.aspx");

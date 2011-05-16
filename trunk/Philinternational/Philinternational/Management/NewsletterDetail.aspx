@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="NewsletterDetail.aspx.cs" Inherits="Philinternational.Management.NewsletterDetail" %>
 
+<%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Nuova
     newsletter</h1>
@@ -22,8 +23,11 @@
     </p>
     <br />
     <p>
-        <asp:Label ID="lblTesto" runat="server">Testo: </asp:Label>
-        <asp:TextBox ID="txtTesto" runat="server" TextMode="MultiLine" Rows="20" Columns="50"></asp:TextBox>
+        <asp:Label ID="lblTesto" runat="server">Testo: </asp:Label><br />
+        <%--<asp:TextBox ID="txtTesto" runat="server" TextMode="MultiLine" Rows="20" Columns="50"></asp:TextBox>--%>
+        <CKEditor:CKEditorControl ID="CKEditNewsletter" runat="server" 
+            ResizeEnabled="False" ResizeMaxHeight="300" ResizeMaxWidth="550" 
+            ResizeMinHeight="300" ResizeMinWidth="550"></CKEditor:CKEditorControl>
     </p>
     <br />
     <table>
