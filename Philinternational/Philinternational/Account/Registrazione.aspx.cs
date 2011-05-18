@@ -42,7 +42,7 @@ namespace Philinternational.Account {
             anagraficaEntity newUser = new anagraficaEntity();
             newUser.idanagrafica = ConnectionGateway.CreateNewIndex("idanagrafica", "anagrafica");
             newUser.email = txtEmail.Text;
-            newUser.password = txtPassword.Text;
+            newUser.password = GeneralUtilities.Encrypt(txtPassword.Text);
             newUser.nome = txtNome.Text;
             newUser.cognome = txtCognome.Text;
             newUser.codice_fiscale = txtCodiceFiscale.Text;
