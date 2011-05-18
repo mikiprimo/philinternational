@@ -18,6 +18,9 @@ namespace Philinternational.Layers {
             try {
                 conn.Open();
 
+                //Encrypt Password
+                password = GeneralUtilities.Encrypt(password);
+
                 MySqlCommand command = new MySqlCommand(USERINFOS, conn);
                 command.CommandType = System.Data.CommandType.Text;
                 command.Parameters.AddWithValue("email", eMail);
