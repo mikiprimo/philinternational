@@ -25,9 +25,7 @@
     <p>
         <asp:Label ID="lblTesto" runat="server">Testo: </asp:Label><br />
         <%--<asp:TextBox ID="txtTesto" runat="server" TextMode="MultiLine" Rows="20" Columns="50"></asp:TextBox>--%>
-        <CKEditor:CKEditorControl ID="CKEditNewsletter" runat="server" 
-            ResizeEnabled="False" ResizeMaxHeight="300" ResizeMaxWidth="550" 
-            ResizeMinHeight="300" ResizeMinWidth="550" DefaultLanguage="it"></CKEditor:CKEditorControl>
+        <CKEditor:CKEditorControl ID="CKEditNewsletter" runat="server"></CKEditor:CKEditorControl>
     </p>
     <br />
     <table>
