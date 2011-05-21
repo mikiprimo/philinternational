@@ -8,7 +8,13 @@ using Philinternational.Layers;
 
 namespace Philinternational.Management {
     public partial class NewsletterDetail : System.Web.UI.Page {
+
         protected void Page_Load(object sender, EventArgs e) {
+            CKEditNewsletter.config.toolbar = new object[]
+            {
+                new object[] { "Bold", "Italic", "-", "NumberedList", "BulletedList", "-", "Link", "Unlink", "-", "About" },
+                new object[] { "Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Print", "SpellChecker", "Scayt" },
+            };
             if (!((logInfos)HttpContext.Current.Session["log"]).IsAdmin) Response.Redirect("~/Default.aspx");
         }
 
@@ -22,7 +28,7 @@ namespace Philinternational.Management {
             txtTitolo.Text = "";
             CKEditNewsletter.Text = "";
         }
-        
+
         protected void ibtnConferma_Click(object sender, ImageClickEventArgs e) {
             newsletterEntity MyNewsletter = new newsletterEntity();
             Boolean esito = false;
