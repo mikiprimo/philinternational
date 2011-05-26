@@ -276,8 +276,8 @@ namespace Philinternational.Layers {
                 conn.Open();
                 command.ExecuteNonQuery();
 
-            } catch (MySqlException) {
-                return false;
+            } catch (MySqlException ex) {
+                return UpdateNewsletterSubScription(idAnagrafica,active);
             } finally {
                 conn.Close();
             }
