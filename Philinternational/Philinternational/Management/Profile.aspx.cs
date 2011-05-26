@@ -15,8 +15,6 @@ namespace Philinternational.Management {
                     this.userProfileMask.oldEmail = ((logInfos)HttpContext.Current.Session["log"]).eMail;
                     this.userProfileMask.LoadFormData();
                 }
-                //if (this.userProfileMask.oldEmail != null) this.userProfileMask.LoadFormData();
-                //Response.Redirect("~/Default.aspx");
             }
         }
     }
