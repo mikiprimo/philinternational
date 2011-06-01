@@ -73,6 +73,9 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registrazione.aspx" />
     <Content Include="Advertise.xml" />
+    <Content Include="bin\MySql.Data.dll" />
+    <Content Include="bin\MySql.Data.Entity.dll" />
+    <Content Include="bin\MySql.Web.dll" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\CHANGES.html" />
     <Content Include="ckeditor\ckeditor.js" />
