@@ -33,7 +33,7 @@ namespace Philinternational {
             BindData();
 
         }
-
+         
         private void BindData() {
             String sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE stato !=0 AND imageIsPresente=1 ORDER BY rand() limit 4";
             LottoConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
