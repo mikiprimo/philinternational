@@ -73,6 +73,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registrazione.aspx" />
     <Content Include="Advertise.xml" />
+    <Content Include="bin\CKEditor.NET.dll" />
     <Content Include="bin\MySql.Data.dll" />
     <Content Include="bin\MySql.Data.Entity.dll" />
     <Content Include="bin\MySql.Web.dll" />
