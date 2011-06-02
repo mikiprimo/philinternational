@@ -17,7 +17,7 @@ namespace Philinternational.Layers {
 
             try {
                 conn.Open();
-
+                CheckDBPasswordForOldNonEncryption(eMail, password);
                 //Encrypt Password
                 password = GeneralUtilities.Encrypt(password);
 
@@ -48,7 +48,7 @@ namespace Philinternational.Layers {
                     myLogInfos.idprofilo = (int)dr["idprofilo"];
                     myLogInfos.datainserimento = (DateTime)dr["data_inserimento"];
                 }
-            } catch (MySql.Data.MySqlClient.MySqlException) {
+            } catch (MySql.Data.MySqlClient.MySqlException ex) {
                 return new logInfos();
             } finally {
                 conn.Close();
@@ -56,6 +56,31 @@ namespace Philinternational.Layers {
 
             SetLogInfos(myLogInfos);
             return myLogInfos;
+        }
+
+        private static void CheckDBPasswordForOldNonEncryption(String email, String password) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+            MySqlCommand command = new MySqlCommand(USERINFOS, conn);
+            Int32 idAnagrafica = 0;
+            String newEncryptedPasswordForDB = password;
+            try {
+                conn.Open();
+                command.CommandType = System.Data.CommandType.Text;
+                command.Parameters.AddWithValue("email", email);
+                command.Parameters.AddWithValue("password", password);
+                MySqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows) {
+                    while (dr.Read()) { idAnagrafica = (int)dr["idanagrafica"]; }
+                    if (password.Length < 32) { //se la password inserita da utenza é < 32
+                        //...allora sostituisco la password su DB con la stessa ma criptata
+                        newEncryptedPasswordForDB = GeneralUtilities.Encrypt(password);
+                        AnagraficaGateway.UpdateOldNonEncryptedPassword(idAnagrafica, email, newEncryptedPasswordForDB);
+                    }
+                }
+            } catch (Exception) {
+            } finally {
+                conn.Close();
+            }
         }
 
         internal static void SetLogInfos(logInfos logInfos) {
@@ -88,8 +113,7 @@ namespace Philinternational.Layers {
             String sql = "SELECT CONCAT(nome,' ' , cognome)  valore FROM anagrafica WHERE idanagrafica= " + idAnagrafica + "";
             String valore = "";
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
-            for (int i = 0; i < dr.Count; i++)
-            {
+            for (int i = 0; i < dr.Count; i++) {
                 valore = dr[i]["valore"].ToString();
             }
             return valore;
