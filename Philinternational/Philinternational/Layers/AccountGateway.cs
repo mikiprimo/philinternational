@@ -48,7 +48,7 @@ namespace Philinternational.Layers {
                     myLogInfos.idprofilo = (int)dr["idprofilo"];
                     myLogInfos.datainserimento = (DateTime)dr["data_inserimento"];
                 }
-            } catch (MySql.Data.MySqlClient.MySqlException ex) {
+            } catch (MySql.Data.MySqlClient.MySqlException) {
                 return new logInfos();
             } finally {
                 conn.Close();
