@@ -17,6 +17,7 @@ namespace Philinternational.Layers {
         private static String SELECT_NEWSLETTER_ENABLED_USERS = "SELECT nome, cognome, email FROM anagrafica aa, anagrafica_dettaglio ad WHERE aa.idanagrafica = ad.idanagrafica AND ad.newsletter = 1";
         private static String IS_SUBSCRIBED_TO_NEWSLETTER = "SELECT Count(*) FROM anagrafica_dettaglio WHERE idanagrafica = @idanagrafica AND newsletter = 1";
         private static String UPDATE_ANAGRAFICA = "UPDATE anagrafica  SET nome = @nome, cognome = @cognome, codice_fiscale = @codice_fiscale, partita_iva = @partita_iva, res_via = @res_via, res_indirizzo = @res_indirizzo, res_num_civico = @res_num_civico, res_cap = @res_cap, res_comune = @res_comune, res_provincia = @res_provincia, res_nazione = @res_nazione, dom_via = @dom_via, dom_indirizzo = @dom_indirizzo, dom_num_civico = @dom_num_civico, dom_cap = @dom_cap, dom_comune = @dom_comune, email = @email, dom_provincia = @dom_provincia, dom_nazione = @dom_nazione, password = @password WHERE email = @oldmail";
+        private static String UPDATE_PASSWORD_WITH_ENCRIPTEDONE = "UPDATE anagrafica SET password = @encpassword WHERE  email = @email AND idanagrafica = @idanagrafica";
         private static String UPDATE_ANAGRAFICA_STATO = "UPDATE anagrafica SET stato = @stato WHERE email = @email";
         private static String UPDATE_NEWSLETTER_SUBSCRIPTION = "UPDATE anagrafica_dettaglio SET newsletter = @newsletter WHERE idanagrafica = @idanagrafica";
         private static String INSERT_NEWSLETTER_SUBSCRIPTION = "INSERT INTO anagrafica_dettaglio (idanagrafica, newsletter) VALUES (@idanagrafica, @newsletter)";
@@ -276,7 +277,7 @@ namespace Philinternational.Layers {
                 conn.Open();
                 command.ExecuteNonQuery();
 
-            } catch (MySqlException ex) {
+            } catch (MySqlException) {
                 return UpdateNewsletterSubScription(idAnagrafica,active);
             } finally {
                 conn.Close();
@@ -290,6 +291,27 @@ namespace Philinternational.Layers {
             } else {
                 return InsertNewsletterSubScription(idAnagrafica, active);
             }
+        }
+
+        internal static Boolean UpdateOldNonEncryptedPassword(int idAnagrafica, string email, string newEncryptedPasswordForDB) {
+            MySqlConnection conn = ConnectionGateway.ConnectDB();
+
+            MySqlCommand command = new MySqlCommand(UPDATE_PASSWORD_WITH_ENCRIPTEDONE, conn);
+            command.CommandType = CommandType.Text;
+
+            command.Parameters.AddWithValue("encpassword", newEncryptedPasswordForDB);
+            command.Parameters.AddWithValue("idanagrafica", idAnagrafica);
+            command.Parameters.AddWithValue("email", email);
+
+            try {
+                conn.Open();
+                command.ExecuteNonQuery();
+            } catch (MySqlException ex) {
+                return false;
+            } finally {
+                conn.Close();
+            }
+            return true;
         }
     }
 }
