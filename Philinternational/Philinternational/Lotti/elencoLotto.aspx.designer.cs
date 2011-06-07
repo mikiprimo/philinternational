@@ -13,13 +13,13 @@ namespace Philinternational {
     public partial class elencoLotto {
         
         /// <summary>
-        /// titlePage control.
+        /// testoTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl titlePage;
+        protected global::System.Web.UI.WebControls.Literal testoTitle;
         
         /// <summary>
         /// navigazioneOutput control.

@@ -3,6 +3,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using Philinternational.Layers;
+using System.Web;
 
 namespace Philinternational {
     public partial class _Default : System.Web.UI.Page {
@@ -23,10 +24,13 @@ namespace Philinternational {
                 testoAstaForNumero.InnerHtml = "Al momento è attiva la vendita";
                 dataScadenza.InnerHtml = a.ToString(tmp);
                 testoScadenza.InnerHtml = "Data di scadenza";
+                testoTitle.Text = "Offerta filatelica per corrispondenza. Chiusura asta " + a.ToString(tmp) + "  - Philinternational";
+
             } else {
                 testoAstaForNumero.InnerHtml = "<b>La vendita è chiusa</b>";
                 testoScadenza.InnerHtml = "I lotti disponibili si vendono al primo richiedente";
                 dataScadenza.InnerHtml = "";
+                testoTitle.Text = "Offerta filatelica per corrispondenza. I lotti disponibili si vendono al primo richiedente  - Philinternational";
             }
 
             infoOutput.InnerHtml = LoadRotationNews();

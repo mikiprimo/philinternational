@@ -7,6 +7,8 @@ using System.IO;
 using Philinternational.Layers;
 using System.Net;
 using System.Configuration;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Philinternational.Styles
 {
@@ -28,6 +30,7 @@ namespace Philinternational.Styles
             if (listDir.Exists)
             {
                 int i = 1;
+                System.Drawing.Image imgPhoto = null;
                 foreach (FileInfo fi in listDir.GetFiles())
                 {
                     int idLotto = 0;
@@ -38,8 +41,20 @@ namespace Philinternational.Styles
                     try { 
                         idLotto = Int32.Parse( tmpName2);
                         Boolean esitoLotto =  lotti.UpdateImageLotto(idLotto);
-                        if (esitoLotto)
-                            listaFile += i + "]"+ idLotto + "..........<b>OK</b><br/>";
+                        if (esitoLotto){
+                            ImageResize imageResize = new ImageResize();
+                            String pathImageThumb = Server.MapPath(Page.ResolveClientUrl("~/images/")) + "immagine_non_disponibile.jpg";
+                            //Response.Write (pathImageThumb + "<br/>");
+                            String nomeFile    = pathImage + fi.Name.ToString();
+                            String fileNameThumb = Server.MapPath(Page.ResolveClientUrl("~/images/asta/thumb/")) + fi.Name.ToString();
+                            //Response.Write(fileNameThumb + "<br/>");
+                            System.Drawing.Image imgPhotoOrig = System.Drawing.Image.FromFile(nomeFile);
+                            imgPhoto = imageResize.ConstrainProportions(imgPhotoOrig, 100, ImageResize.Dimensions.Width);
+                            imgPhoto.Save(fileNameThumb, ImageFormat.Jpeg);
+			                imgPhoto.Dispose();
+                            listaFile += i + "]" + idLotto + "..........<b>OK</b><br/>";
+                        }
+
                         else
                             listaFile += i + "]" + idLotto + "..........<b><span style=\"color:#f00\"> non aggiornato</span></b><br/>";
                         i++;

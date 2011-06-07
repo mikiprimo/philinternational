@@ -40,15 +40,6 @@ namespace Philinternational.Styles {
         protected global::System.Web.UI.WebControls.ImageButton ibtnFileLottoUpload;
         
         /// <summary>
-        /// ibtnImageUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibtnImageUpload;
-        
-        /// <summary>
         /// spoolTesto control.
         /// </summary>
         /// <remarks>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Elenco Lotto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="elencoLotto.aspx.cs" Inherits="Philinternational.elencoLotto" %>
+<%@ OutputCache CacheProfile="Cache24Hours" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
-    <title runat="server" id="titlePage"></title>
+    <title><asp:Literal runat="server" ID="testoTitle"></asp:Literal></title>
 </asp:Content>
 <asp:Content ID="MainElenco" ContentPlaceHolderID="MainContent" runat="server">
     <div runat="server" id="navigazioneOutput"></div>

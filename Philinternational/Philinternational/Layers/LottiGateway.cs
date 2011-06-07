@@ -397,8 +397,9 @@ namespace Philinternational.Layers {
             String checkpath = NamePageYes + idLotto + ".jpg";
             bool esito = checkImageFromPath(checkpath);
             if (esito) {
-                String path = PathImage + idLotto + ".jpg"; 
-                outputImmagine = "<a href=\"" + path + "\" rel=\"shadowbox;handleOversize:resize\" title=\"Lotto " + idLotto + "\" id=\"shadowimages\"><img src=\"" + path + "\" width=\"100\" height=\"100\" alt=\"Lotto " + idLotto + "\"/></a>\n";
+                String path = PathImage + idLotto + ".jpg";
+                String pathThumb = PathImage + "thumb/" +  idLotto + ".jpg";
+                outputImmagine = "<a href=\"" + path + "\" rel=\"shadowbox;handleOversize:resize\" title=\"Lotto " + idLotto + "\" id=\"shadowimages\"><img src=\"" + pathThumb + "\" width=\"100\" alt=\"Lotto " + idLotto + "\"/></a>\n";
             } else {
                 outputImmagine = "<img src=\"" + NamePageNo + "\" width=\"100\" height=\"100\" alt=\"Lotto " + idLotto + "\"/>";
             }
