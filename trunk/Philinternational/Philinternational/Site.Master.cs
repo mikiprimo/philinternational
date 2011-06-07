@@ -17,6 +17,7 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             loadMenuccordion.InnerHtml = LoadMenuAccordion();
             LogoOutput.InnerHtml = loadLogo();
             areaGilardi.InnerHtml = viewOfferteFilatelia();
@@ -53,7 +54,7 @@ namespace Philinternational
             String argomento="";
             MySqlDataReader dr;
             MySqlConnection conn = ConnectionGateway.ConnectDB();
-            String sql = "SELECT idparagrafo,descrizione FROM paragrafo where stato = 1 order by idparagrafo";
+            String sql = "SELECT idparagrafo,descrizione FROM paragrafo where stato = 1 order by descrizione";
             MySqlCommand command = new MySqlCommand(sql, conn);
             command.CommandType = System.Data.CommandType.Text;            
             try
@@ -166,7 +167,7 @@ namespace Philinternational
                     showOfferte += "<h3 style=\"text-transform:uppercase;text-align:center\">Offerte www.gilardifilatelia.it</h3>\n";
                     for (int i = 0; i < dr.Count; i++) {
                         /* fase temporanea in attesa di ottimizzare il codice*/
-                        String imgName = Page.ResolveClientUrl("~/images/gilardifilatelia/") + dr[i]["idlotto"] + ".jpg";
+                        String imgName = Page.ResolveClientUrl("~/images/gilardifilatelia/thumb/") + dr[i]["idlotto"] + ".jpg";
                         showOfferte += "<div class=\"gilardiFilatelia center\">";
                         showOfferte += "<h3>"+dr[i]["idlotto"] +"</h3>";
                         showOfferte += "<img src=\"" + imgName + "\" width=\"100\" height=\"100\" alt=\"Lotto " + dr[i]["idlotto"]  + "\"/>";

@@ -52,10 +52,8 @@ namespace Philinternational
                 descrizione_argomento = dr[i]["descrizione_argomento"].ToString();
                 descrizione_paragrafo = dr[i]["descrizione_paragrafo"].ToString();
             }
-            titlePage.InnerText = "Lotti presenti per l'argomento:" + descrizione_argomento;
-            navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>--><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
-            
-        
+            testoTitle.Text = "Lotti disponibili per l'argomento:" + descrizione_argomento;
+            navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>--><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";         
         }
         private void BindData(String codargomento, String subargomento, int numPage, int limitForPage)
         {

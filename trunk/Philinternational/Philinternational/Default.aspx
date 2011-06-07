@@ -1,11 +1,15 @@
-﻿<%@ Page Title="Offerta filatelica per corrsipondenza, affrettatevi chiude il 4 aprile 2011. PhilInternational" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
 	CodeBehind="Default.aspx.cs" Inherits="Philinternational._Default" %>
-
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent"></asp:Content>
+<%@ OutputCache CacheProfile="Cache24Hours" %>
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+        <title><asp:Literal runat="server" ID="testoTitle"></asp:Literal></title>
+        <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, gilardi,philinternational, offerta per corrispondenza" />
+        <meta name="DESCRIPTION" content="PhilInternational è un sito di offerta filatelica per corrispondenza." />
+</asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 	<div id="presentazione">
 		<h1>Phil International è un sito di offerta Filatelica per corrispondenza</h1>
-		<p class="lato1"></label> <span id="testoAstaForNumero" runat="server" class="normal"></span><span id="numeroAsta" runat="server"></span></p>
+		<p class="lato1"><span id="testoAstaForNumero" runat="server" class="normal"></span><span id="numeroAsta" runat="server"></span></p>
 		<p class="lato2"><span id="testoScadenza" runat="server" class="normal"></span><span id="dataScadenza" runat="server"></span></p>
 		<div style="clear:both;width:100%">
 			<p>Prima di registrarsi, leggere attentamente le <asp:HyperLink NavigateUrl="~/Varie/condizioniVendita.aspx" Text="condizioni di vendita" runat="server" ></asp:HyperLink> e di pagamento</p>

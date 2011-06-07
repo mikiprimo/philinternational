@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Carrello per offerta dei lotti di philinternational" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="carrello.aspx.cs" Inherits="Philinternational.carrello" %>
-
+<%@ OutputCache CacheProfile="Cache24Hours" %>
 <asp:Content ID="carrelloHead" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
 <asp:Content ID="carrelloMain" ContentPlaceHolderID="MainContent" runat="server"><h3  class="titlePanel">
     Carrello</h3>

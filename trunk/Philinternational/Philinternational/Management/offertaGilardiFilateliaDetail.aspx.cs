@@ -7,6 +7,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Philinternational.Layers;
 using System.Text;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Philinternational.Management {
     public partial class offertaGilardiFilateliaDetail : System.Web.UI.Page {
@@ -49,6 +51,14 @@ namespace Philinternational.Management {
                 string fn = System.IO.Path.GetFileName(uploadLotto.PostedFile.FileName);
                 GilardiFilateliaEntity myEntity = new GilardiFilateliaEntity();
                 string SaveLocation = Server.MapPath("..\\images\\gilardifilatelia\\") + fn;
+                string SaveLocationThumb = Server.MapPath("..\\images\\gilardifilatelia\\thumb\\") + fn;
+                //resize image
+                ImageResize imageResize = new ImageResize();
+                System.Drawing.Image imgPhoto = null;
+                System.Drawing.Image imgPhotoOrig = System.Drawing.Image.FromFile(SaveLocation);
+                imgPhoto = imageResize.ConstrainProportions(imgPhotoOrig, 100, ImageResize.Dimensions.Width);
+                imgPhoto.Save(SaveLocationThumb, ImageFormat.Jpeg);
+                imgPhoto.Dispose();
                 try {
                     if (this.Codice == "-1") {
                         myEntity.idOfferta = Layers.ConnectionGateway.CreateNewIndex("idofferta", "offerta_gilardifilatelia");

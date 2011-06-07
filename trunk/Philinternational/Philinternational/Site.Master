@@ -2,21 +2,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server" >
-
         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jqueryCollection.js") %>"></script>
         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/commonFunction.js") %>"></script>
         <link rel="icon" href="~/images/favicon.png" type="image/png" />
         <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-        <title>Offerta filatelica per corrispondenza. Lotti da acquistare.</title>
+        <meta name="ROBOTS" content="INDEX,FOLLOW" />
+        <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+        <meta name="rating" content="General" />
+        <meta name="revisit-after" content="7 days" />
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <title>philinternational.it</title>
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+            <title>Offerta filatelica per corrispondenza. Lotti da acquistare.</title>
             <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />
             <meta name="DESCRIPTION" content="PhilInternarional è un sito di offerta filatelica per corrispondenza." />
-            <meta name="ROBOTS" content="INDEX,FOLLOW" />
-            <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
-            <meta name="rating" content="General" />
-            <meta name="revisit-after" content="7 days" />
-            <meta http-equiv="Cache-Control" content="no-cache" />
         </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -89,13 +89,13 @@
             <div id="areaGilardi" runat="server"></div>
         </div>
         <div id="footer">
-            <a href="#" onclick='javascript:addBook()' title="Aggiungimi ai preferiti">Aggiungimi ai preferiti</a>
+            <a href="javascript:addBook()" title="Aggiungi philinternational ai preferiti">Aggiungimi ai preferiti</a>
             <asp:HyperLink ID="condizionivendita"  ToolTip="Condizioni di vendita" NavigateUrl="~/Varie/condizioniVendita.aspx" runat="server" Text="Condizioni di vendita"></asp:HyperLink>
             <asp:HyperLink ID="chisiamo" toolTip="Chi siamo" NavigateUrl="~/Varie/chi-siamo.aspx" runat="server" Text="Chi Siamo"></asp:HyperLink>
             <asp:HyperLink ID="dovesiamo" ToolTip="Dove Siamo" NavigateUrl="~/Varie/dovesiamo.aspx" runat="server" Text="Dove siamo"></asp:HyperLink>
             <asp:HyperLink id="contatti" toolTip="Contatti" NavigateUrl="~/Varie/contatti.aspx" runat="server" Text="Contatti"></asp:HyperLink>
             <p class="piva">Phil International srl di Gilardi Gian Antonio – socio unico | Partita Iva e Codice Fiscale: 06137730963 | R.E.A. Milano 1872505</p>
-            <p class="copyright">Il sito è stata realizzato da <a href="http://www.michelbenedetti.it" title="realizzazione di michel benedetti">Michel Benedetti</a></p>
+            <p class="copyright">Il sito è stata realizzato da <a href="http://www.michelbenedetti.it" title="realizzazione michel benedetti">Michel Benedetti</a></p>
         </div>
 </div>
     </form>
