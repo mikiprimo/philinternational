@@ -12,7 +12,6 @@
         <meta name="rating" content="General" />
         <meta name="revisit-after" content="7 days" />
         <meta http-equiv="Cache-Control" content="no-cache" />
-        <title>philinternational.it</title>
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
             <title>Offerta filatelica per corrispondenza. Lotti da acquistare.</title>
             <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />

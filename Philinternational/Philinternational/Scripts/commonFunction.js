@@ -39,17 +39,10 @@ $(function () {
     });
 });
 
-
-function addBook() {
-    var title = "Offerta filatelica per corrispondenza - philinternational.it";
+function addBook(title, url) {
+    var title = "www.philinternational.it - Offerta filatelica per corrispondenza";
     var url = "http://www.philinternational.it";
+    if (document.all) window.external.AddFavorite(url, title);
+    else if (window.sidebar) window.sidebar.addPanel(title, url, "");
+ }
 
-    if (window.sidebar) { // Mozilla Firefox Bookmark
-        window.sidebar.addPanel(title, url, "");
-    } else if (window.external) { // IE Favorite
-        window.external.AddFavorite(url, title);
-    }
-    else if (window.opera && window.print) { // Opera Hotlist
-        return true;
-    }
-}
