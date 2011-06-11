@@ -5,9 +5,9 @@
     <h3 class="titlePanel">Proposte ricevute</h3>
     <fieldset>
         <legend>Opzioni</legend>
-        <asp:LinkButton runat="server" id="estraiLotto" OnClick="estraiDati" CssClass="bottone">Estrai Lotti</asp:LinkButton>&nbsp;
-        <asp:LinkButton runat="server" id="elencoCompleto" OnClick="showElencoCompleto" CssClass="bottone">Mostra elenco completo</asp:LinkButton>
-        <asp:LinkButton runat="server" id="elencoAssegnati" OnClick="showElencoAssegnati" CssClass="bottone">Mostra elenco assegnati</asp:LinkButton>
+        <asp:LinkButton runat="server" id="estraiLotto" OnClick="EstraiDati" CssClass="bottone">Estrai Lotti</asp:LinkButton>&nbsp;
+        <asp:LinkButton runat="server" id="elencoCompleto" OnClick="ShowElencoCompleto" CssClass="bottone">Mostra elenco completo</asp:LinkButton>
+        <asp:LinkButton runat="server" id="elencoAssegnati" OnClick="ShowElencoAssegnati" CssClass="bottone">Mostra elenco assegnati</asp:LinkButton>
     </fieldset>
     <fieldset runat="server" id="fldMessaggi">
         <legend>Messaggi</legend>
