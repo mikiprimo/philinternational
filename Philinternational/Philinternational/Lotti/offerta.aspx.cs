@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Philinternational.Layers;
+using System.Web.Routing;
 
 namespace Philinternational
 {
@@ -12,7 +13,8 @@ namespace Philinternational
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack){
-                String chiave = Request["cod"];
+                String chiave = Page.RouteData.Values["idlotto"].ToString();
+                //String chiave = Request["cod"];
                 String codargomento = Request["arg"];
                 String subargomento = Request["subarg"];
                 codiceLotto.Value = chiave;

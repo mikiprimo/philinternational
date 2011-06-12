@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Web.Routing;
 
 namespace Philinternational
 {
@@ -13,6 +14,7 @@ namespace Philinternational
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
+            RegisterRoutes(RouteTable.Routes);
         }
 
         void Application_End(object sender, EventArgs e)
@@ -41,6 +43,15 @@ namespace Philinternational
             // is set to InProc in the Web.config file. If session mode is set to StateServer 
             // or SQLServer, the event is not raised.
         }
+
+        void RegisterRoutes(RouteCollection routes) {
+            routes.MapPageRoute("ElencoLotto", "{capitolo}/{idpar}/{paragrafo}", "~/Lotti/elencoLotto.aspx");
+            routes.MapPageRoute("InsideElencoLotto", "{capitolo}/{idpar}/{paragrafo}/{page}", "~/Lotti/elencoLotto.aspx");
+            routes.MapPageRoute("OffertaLotto", "{capitolo}/{idpar}/{paragrafo}/lotto/{idlotto}", "~/Lotti/offerta.aspx");
+            //routes.MapPageRoute("All Product", "Products/All", "~/AllProduct.aspx");
+            //routes.MapPageRoute("Selected Product", "Products/Selected/{name}", "~/ParticularProduct.aspx");
+        }
+
 
     }
 }

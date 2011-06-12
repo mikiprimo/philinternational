@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Web.Routing;
 
 namespace Philinternational
 {
@@ -18,8 +19,8 @@ namespace Philinternational
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            LogoOutput.InnerHtml = loadLogo();            
             loadMenuccordion.InnerHtml = LoadMenuAccordion();
-            LogoOutput.InnerHtml = loadLogo();
             areaGilardi.InnerHtml = viewOfferteFilatelia();
             //Verifica della visualizzazione Menu left
             if (AccountLayer.IsLogged())
@@ -83,7 +84,12 @@ namespace Philinternational
                                     argomento = "<div class=\"evidenziatore\">\n<ul>\n";
                                     while (drArg.Read())
                                     {
-                                        rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&amp;subarg=0") + "\" title=\""+ (String)drArg["descrizione"] + "\" >" + (String)drArg["descrizione"] + "</a></li>\n";
+                                        String vpdCapitolo = (String)dr["descrizione"];
+                                        String vpdParagrafo =  (String)drArg["descrizione"];
+                                        RouteValueDictionary parameters = new RouteValueDictionary { { "capitolo", vpdCapitolo.Replace(" ","-") }, { "paragrafo",vpdParagrafo.Replace(" ","-") }, { "idpar", (int)drArg["idargomento"] } };
+                                        VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(null, "ElencoLotto", parameters);
+                                       // rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&amp;subarg=0") + "\" title=\""+ (String)drArg["descrizione"] + "\" >" + (String)drArg["descrizione"] + "</a></li>\n";
+                                         rowArg += "<li class=\"argomento\"><a href=\"" + vpd.VirtualPath + "\" title=\""+ (String)drArg["descrizione"] + "\" >" + (String)drArg["descrizione"] + "</a></li>\n";
                                     }
                                     argomento += rowArg + "</ul>\n</div>\n";
                                     paragrafo += argomento;
@@ -120,7 +126,7 @@ namespace Philinternational
             String logoend = "</div>\n";
             String logoOutput = "";
 
-            logobody = "<a href=\"" + Page.ResolveClientUrl("~/default.aspx") + "\"><img src=\"" + Page.ResolveClientUrl("~/images/masterPage/logo_philtinternational.png") + "\" height=\"91\" width=\"197\" alt=\"Home Page PhilInternational\"/></a>\n";
+            logobody = "<a href=\"" + Page.ResolveClientUrl("~/Default.aspx") + "\"><img src=\"" + Page.ResolveClientUrl("~/images/masterPage/logo_philtinternational.png") + "\" height=\"91\" width=\"197\" alt=\"Home Page PhilInternational\"/></a>\n";
             logoOutput = (String)(logohead + logobody + logoend);
             return logoOutput;
         
@@ -133,15 +139,38 @@ namespace Philinternational
             try
             {
                 idAnagrafica = ((logInfos)Session["log"]).idAnagrafica;
-                String sql = "SELECT idlotto, prezzo_offerto FROM offerta_per_corrispondenza WHERE idanagrafica ="+ idAnagrafica +"";
+                //String sql = "SELECT idlotto, prezzo_offerto FROM offerta_per_corrispondenza WHERE idanagrafica ="+ idAnagrafica +"";
+                String  sql ="SELECT o.idlotto idlotto ";
+                        sql += ",o.prezzo_offerto prezzo_offerto ";
+                        sql += ", b.id_argomento idargomento ";
+                        sql += ",p.descrizione capitolo ";
+                        sql += ",pa.descrizione paragrafo ";
+                        sql += "from offerta_per_corrispondenza o";
+                        sql +="    ,lotto b";
+                        sql +="    ,paragrafo_argomento pa";
+                        sql +="    ,paragrafo p ";
+                        sql +=" where o.idlotto = b.idlotto";
+                        sql +="  and b.id_argomento = pa.idargomento";
+                        sql +=" and pa.idparagrafo = p.idparagrafo";
+                        sql += " and o.idAnagrafica = " + idAnagrafica + "";
+                        sql +=" order by data_inserimento DESC";
+                        //Response.Write("gestioneordini[" + sql + "]");
+                 
                 DataView dr = ConnectionGateway.SelectQuery(sql);
                 if (dr.Count > 0) {
                     showBasket += "<h3>Le mie offerte&nbsp;<a href=\"#\"  id=\"user1\">[ Chiudi ]</a></h3>\n";
                     showBasket += "<table id=\"listuser\">";
                     for (int i = 0; i < dr.Count; i++)
                     {
+                        String vpdCapitolo = dr[i]["capitolo"].ToString();
+                        String vpdParagrafo = dr[i]["paragrafo"].ToString();
+                        RouteValueDictionary parameters = new RouteValueDictionary { { "capitolo", vpdCapitolo.Replace(" ", "-") }, { "paragrafo", vpdParagrafo.Replace(" ", "-") }, { "idpar", dr[i]["idargomento"] }, { "idlotto", dr[i]["idlotto"] } };
+                        VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(null, "OffertaLotto", parameters);
+
+
                         tmpRow = "<tr>";
-                        tmpRow += "<td style=\"width:20%\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + dr[i]["idlotto"] + "") + "\">" + dr[i]["idlotto"] + "</a></td>";
+                        //tmpRow += "<td style=\"width:20%\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + dr[i]["idlotto"] + "") + "\">" + dr[i]["idlotto"] + "</a></td>";
+                        tmpRow += "<td style=\"width:20%\"><a href=\"" + vpd.VirtualPath + "\">" + dr[i]["idlotto"] + "</a></td>";
                         tmpRow += "<td style=\"width:80%;text-align:right\">" + dr[i]["prezzo_offerto"] + " &euro;</td>";
                         tmpRow += "</tr>\n";
                         totale = totale + float.Parse(dr[i]["prezzo_offerto"].ToString());

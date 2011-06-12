@@ -175,11 +175,7 @@ namespace Philinternational {
             } else {
                 ((Label)e.Item.FindControl("linkBasketAdded")).Visible = false;
                 ((LinkButton)e.Item.FindControl("linkBasket")).Visible = false;
-
             }
-
-
-
         }
 
     }

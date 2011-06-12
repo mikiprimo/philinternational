@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ordineGilardiFilatelia.aspx.cs" Inherits="Philinternational.ordinaToGilardiFilatelia" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <meta name="KEYWORDS" content ="gilardi, gilardifilatelia,aste,cartoline d'epoca, catroline, milano, italia, collezione, numismatica" />
+    <meta name="DESCRIPTION" content="Modulo d'ordine dei lotti presenti sul sito www.gilardifilatelia.it. PhilInternational è un sito di offerta filatelica per corrispondenza." />
     <title>Modulo ordine del lotto presente su www.gilardifilatelia.it</title>
     <style type="text/css">
         .spanText{height:20px;width:250px;display:block;font-size:1.2em;font-style:italic}
