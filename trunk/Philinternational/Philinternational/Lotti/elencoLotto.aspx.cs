@@ -11,36 +11,54 @@ using System.Web.UI;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Web.Routing;
+
 
 namespace Philinternational
 {
     public partial class elencoLotto : System.Web.UI.Page
     {
-        
+        private String descrizionaCapitolo="";
+        private String descrizioneParagrafo = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-           // string qualePagina = this.Context.Items["fileName"].ToString();
             if (!IsPostBack)
             {
                 int? numPage = 1;
-                if (Request["p"] != null) numPage = Int32.Parse(Request["p"]);
                 int limitForPage = 10;
-
-                String codargomento = Request["arg"];
-                String subargomento = Request["subarg"];
+                String codargomento = Page.RouteData.Values["idpar"].ToString();
+                String subargomento = "0";
+                if (Request["p"] != null) numPage = Int32.Parse(Request["p"]);
+                if (Request["arg"] != null) codargomento = Request["arg"];   
+                if (Request["subarg"] != null) subargomento = Request["subarg"];
                
+                descrizioneParagrafoArgomentoForRoute(codargomento, subargomento);
                 getTitle(codargomento, subargomento);
                 BindData(codargomento, subargomento, (int)numPage, limitForPage);
             }
+        }
+        protected int clearNumber(String value) {
+            int newValue;
+            try
+            {
+                newValue = Int32.Parse(value);
+            }
+            catch
+            {
+                newValue = 0;
+            }
+            return newValue;
         }
         protected void getTitle(String codargomento, String subargomento)
         {
             String sql = "";
             String descrizione_argomento = "";
             String descrizione_paragrafo = "";
-            if (subargomento == null || subargomento == "0")
+            int newcodArgomento = clearNumber(codargomento);
+            int newcodSubArgomento = clearNumber(subargomento);
+            if (newcodSubArgomento == 0)
             {
-                sql = "Select a.descrizione descrizione_argomento,b.descrizione descrizione_paragrafo from paragrafo_argomento a, paragrafo b  where a.idparagrafo = b.idparagrafo and idargomento=" + codargomento + "";
+                sql = "Select a.descrizione descrizione_argomento,b.descrizione descrizione_paragrafo from paragrafo_argomento a, paragrafo b  where a.idparagrafo = b.idparagrafo and idargomento=" + newcodArgomento + "";
             }
             else {
                 sql = "Select a.descrizione descrizione_argomento,c.descrizione descrizione_paragrafo from paragrafo_subargomento a, paragrafo_argomento b,paragrafo c  where c.idparagrafo = b.idparagrafo and a.idargomento = b.idparagrafo and a.idsub_argomento=" + codargomento + "";
@@ -52,20 +70,58 @@ namespace Philinternational
                 descrizione_argomento = dr[i]["descrizione_argomento"].ToString();
                 descrizione_paragrafo = dr[i]["descrizione_paragrafo"].ToString();
             }
-            testoTitle.Text = "Lotti disponibili per l'argomento:" + descrizione_argomento;
-            navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>--><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";         
+            if (descrizione_argomento.Trim() != "")
+            {
+                RouteValueDictionary parameters = new RouteValueDictionary { { "capitolo", descrizione_paragrafo }, { "idpar", newcodArgomento }, { "paragrafo", descrizione_argomento } };
+                VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(null, "ElencoLotto", parameters);
+
+                testoTitle.Text = "Lotti disponibili per l'argomento:" + descrizione_argomento;
+                navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>-><li class=\"navTit2\"><a href=\"" + vpd.VirtualPath + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
+                //navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>-><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
+            }
+            else {
+                testoTitle.Text = "Lotti disponibili per l'argomento";
+                navigazioneOutput.InnerHtml = "<div class=\"navigazione\">Nessun Lotto Presente</li></ul></div>\n";
+            
+            }
+        }
+        private void descrizioneParagrafoArgomentoForRoute(String codargomento, String subargomento){
+            String sql = "";
+            String descrizione_argomento = "";
+            String descrizione_paragrafo = "";
+            if (subargomento == null || subargomento == "0")
+            {
+                sql = "Select a.descrizione descrizione_argomento,b.descrizione descrizione_paragrafo from paragrafo_argomento a, paragrafo b  where a.idparagrafo = b.idparagrafo and idargomento=" + codargomento + "";
+            }
+            else
+            {
+                sql = "Select a.descrizione descrizione_argomento,c.descrizione descrizione_paragrafo from paragrafo_subargomento a, paragrafo_argomento b,paragrafo c  where c.idparagrafo = b.idparagrafo and a.idargomento = b.idparagrafo and a.idsub_argomento=" + codargomento + "";
+            }
+
+            DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
+
+            for (int i = 0; i < dr.Count; i++)
+            {
+                descrizione_argomento = dr[i]["descrizione_argomento"].ToString();
+                descrizione_paragrafo = dr[i]["descrizione_paragrafo"].ToString();
+            }
+            descrizionaCapitolo = descrizione_paragrafo.Replace(" ","-");
+            descrizioneParagrafo = descrizione_argomento.Replace(" ", "-");
         }
         private void BindData(String codargomento, String subargomento, int numPage, int limitForPage)
         {
             String sql="";
             String limite = calcLimitForPage(codargomento, subargomento, numPage, limitForPage);
+
+            int newCodArgomento = clearNumber(codargomento);
+            int newSubArgomento = clearNumber(subargomento);
             if (subargomento == null || subargomento == "0")
             {
-                sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE id_argomento=" + codargomento + " ORDER BY idlotto " + limite;
+                sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE id_argomento=" + newCodArgomento + " AND stato=1 ORDER BY idlotto " + limite;
             }
             else
             {
-                sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE id_subargomento=" + subargomento + " ORDER BY idlotto " + limite;
+                sql = "SELECT idlotto, id_argomento, id_subargomento, conferente, anno, tipo_lotto, numero_pezzi, descrizione, prezzo_base, euro, riferimento_sassone, stato FROM lotto WHERE id_subargomento=" + newSubArgomento + " AND stato=1 ORDER BY idlotto " + limite;
             }
             numPagineOutput.InnerHtml= showNumberPage( codargomento,  subargomento,  numPage,  limitForPage);
             LottoConnector.ConnectionString = Layers.ConnectionGateway.StringConnectDB();
@@ -90,7 +146,11 @@ namespace Philinternational
             esito = Lotti.getArgumentsByLotto(chiave);
             idArgomento = esito.GetValue(0).ToString();
             idSubArgomento = esito.GetValue(1).ToString();
-            String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai immediatamente l'offerta</a>\n";
+
+            RouteValueDictionary parameters = new RouteValueDictionary { { "capitolo", descrizionaCapitolo }, { "idpar", idArgomento }, { "paragrafo", descrizioneParagrafo }, { "idlotto", chiave } };
+            VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(null, "OffertaLotto", parameters);
+            String outputVerifica = "<a href=\"" + vpd.VirtualPath + "\">Fai immediatamente l'offerta</a>\n";
+            //String outputVerifica = "<a href=\"" + Page.ResolveClientUrl("~/Lotti/offerta.aspx?cod=" + chiave + "&arg=" + idArgomento + "&subarg=" + idSubArgomento) + "\">Fai immediatamente l'offerta</a>\n";
             if (AccountLayer.IsLogged()) {
                 OfferteGateway a = new OfferteGateway();
                 String idAnagrafica = Convert.ToString(((logInfos)Session["log"]).idAnagrafica);
@@ -110,12 +170,14 @@ namespace Philinternational
             String Esito;
             String limiteLotto = "0";
             int partenza = 0;
+            int newCodArgomento = clearNumber(codargomento);
+            int newcodSubArgomento = clearNumber(subargomento);
             /* STEP 2 -  ottengo il numero, il min ed il max per il paragrafo specifico*/
             String sql = "Select count(*) totale_lotti FROM lotto where stato!=0 and ";
             if (subargomento == null || subargomento == "0")
-                tmpSql = "id_argomento=" + codargomento;
+                tmpSql = "id_argomento=" + newCodArgomento;
             else
-                tmpSql = "id_subargomento=" + subargomento;
+                tmpSql = "id_subargomento=" + newcodSubArgomento;
 
             sql += tmpSql;
 
@@ -143,15 +205,17 @@ namespace Philinternational
             String tmpSql = "";
             String Esito="";
             int limiteLotto = 0;
+            int newcodArgomento = clearNumber(codargomento);
+            int newcodSubArgomento = clearNumber(subargomento);
             /* STEP 2 -  ottengo il numero, il min ed il max per il paragrafo specifico*/
             String sql = "Select count(*) totale_lotti FROM lotto where stato!=0 and ";
-            if (subargomento == null || subargomento == "0")
+            if (newcodSubArgomento == 0)
             {
-                tmpSql = "id_argomento=" + codargomento;
+                tmpSql = "id_argomento=" + newcodArgomento;
             }
             else
             {
-                tmpSql = "id_subargomento=" + subargomento;
+                tmpSql = "id_subargomento=" + newcodSubArgomento;
             }
 
             sql += tmpSql;
@@ -177,9 +241,14 @@ namespace Philinternational
                 tmpSql = "<div class=\"numPagina\"><ul>";
                 for (int i = 1; i <= recordperPagina; i++)
                 {
+
+                    RouteValueDictionary parameters = new RouteValueDictionary { { "capitolo", descrizionaCapitolo }, { "idpar", codargomento }, { "paragrafo", descrizioneParagrafo }, { "page", i } };
+                    VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(null, "InsideElencoLotto", parameters);
                     String iSelected = "";
                     if (i == numPage) iSelected = "class=\"bold\"";
-                    tmpSql += "<li " + iSelected  + "><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento + "&p=" + i + "") + "\">" + i + "</a></li>";
+
+                      tmpSql += "<li " + iSelected + "><a href=\"" + vpd.VirtualPath + "\">" + i + "</a></li>";
+                    //tmpSql += "<li " + iSelected  + "><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento + "&p=" + i + "") + "\">" + i + "</a></li>";
                 }
                 tmpSql += "</ul></div>";
                 Esito = tmpSql;

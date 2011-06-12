@@ -35,8 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKEditor.NET">
-      <HintPath>ExternalAssemblies\CKEditor.NET.dll</HintPath>
+    <Reference Include="CKEditor.NET, Version=3.5.3.0, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CKEditor.NET.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.3.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.3.5\Assemblies\v2.0\MySql.Data.dll</HintPath>
@@ -305,6 +306,207 @@
     <Content Include="googlea3e06cc1203156e3.html" />
     <Content Include="images\accept.png" />
     <Content Include="images\add.png" />
+    <Content Include="images\asta\thumb\100.jpg" />
+    <Content Include="images\asta\thumb\101.jpg" />
+    <Content Include="images\asta\thumb\104.jpg" />
+    <Content Include="images\asta\thumb\106.jpg" />
+    <Content Include="images\asta\thumb\107.jpg" />
+    <Content Include="images\asta\thumb\109.jpg" />
+    <Content Include="images\asta\thumb\116.jpg" />
+    <Content Include="images\asta\thumb\118.jpg" />
+    <Content Include="images\asta\thumb\119.jpg" />
+    <Content Include="images\asta\thumb\123.jpg" />
+    <Content Include="images\asta\thumb\129.jpg" />
+    <Content Include="images\asta\thumb\132.jpg" />
+    <Content Include="images\asta\thumb\155.jpg" />
+    <Content Include="images\asta\thumb\176.jpg" />
+    <Content Include="images\asta\thumb\183.jpg" />
+    <Content Include="images\asta\thumb\184.jpg" />
+    <Content Include="images\asta\thumb\189.jpg" />
+    <Content Include="images\asta\thumb\190.jpg" />
+    <Content Include="images\asta\thumb\192.jpg" />
+    <Content Include="images\asta\thumb\194.jpg" />
+    <Content Include="images\asta\thumb\196.jpg" />
+    <Content Include="images\asta\thumb\197.jpg" />
+    <Content Include="images\asta\thumb\206.jpg" />
+    <Content Include="images\asta\thumb\218.jpg" />
+    <Content Include="images\asta\thumb\219.jpg" />
+    <Content Include="images\asta\thumb\221.jpg" />
+    <Content Include="images\asta\thumb\222.jpg" />
+    <Content Include="images\asta\thumb\224.jpg" />
+    <Content Include="images\asta\thumb\225.jpg" />
+    <Content Include="images\asta\thumb\227.jpg" />
+    <Content Include="images\asta\thumb\23.jpg" />
+    <Content Include="images\asta\thumb\235.jpg" />
+    <Content Include="images\asta\thumb\238.jpg" />
+    <Content Include="images\asta\thumb\239.jpg" />
+    <Content Include="images\asta\thumb\24.jpg" />
+    <Content Include="images\asta\thumb\241.jpg" />
+    <Content Include="images\asta\thumb\244.jpg" />
+    <Content Include="images\asta\thumb\251.jpg" />
+    <Content Include="images\asta\thumb\252.jpg" />
+    <Content Include="images\asta\thumb\253.jpg" />
+    <Content Include="images\asta\thumb\254.jpg" />
+    <Content Include="images\asta\thumb\258.jpg" />
+    <Content Include="images\asta\thumb\260.jpg" />
+    <Content Include="images\asta\thumb\261.jpg" />
+    <Content Include="images\asta\thumb\263.jpg" />
+    <Content Include="images\asta\thumb\264.jpg" />
+    <Content Include="images\asta\thumb\265.jpg" />
+    <Content Include="images\asta\thumb\266.jpg" />
+    <Content Include="images\asta\thumb\267.jpg" />
+    <Content Include="images\asta\thumb\272.jpg" />
+    <Content Include="images\asta\thumb\278.jpg" />
+    <Content Include="images\asta\thumb\279.jpg" />
+    <Content Include="images\asta\thumb\28.jpg" />
+    <Content Include="images\asta\thumb\280.jpg" />
+    <Content Include="images\asta\thumb\281.jpg" />
+    <Content Include="images\asta\thumb\285.jpg" />
+    <Content Include="images\asta\thumb\287.jpg" />
+    <Content Include="images\asta\thumb\290.jpg" />
+    <Content Include="images\asta\thumb\295.jpg" />
+    <Content Include="images\asta\thumb\312.jpg" />
+    <Content Include="images\asta\thumb\316.jpg" />
+    <Content Include="images\asta\thumb\317.jpg" />
+    <Content Include="images\asta\thumb\318.jpg" />
+    <Content Include="images\asta\thumb\319.jpg" />
+    <Content Include="images\asta\thumb\321.jpg" />
+    <Content Include="images\asta\thumb\322.jpg" />
+    <Content Include="images\asta\thumb\326.jpg" />
+    <Content Include="images\asta\thumb\327.jpg" />
+    <Content Include="images\asta\thumb\33.jpg" />
+    <Content Include="images\asta\thumb\333.jpg" />
+    <Content Include="images\asta\thumb\335.jpg" />
+    <Content Include="images\asta\thumb\338.jpg" />
+    <Content Include="images\asta\thumb\339.jpg" />
+    <Content Include="images\asta\thumb\340.jpg" />
+    <Content Include="images\asta\thumb\341.jpg" />
+    <Content Include="images\asta\thumb\343.jpg" />
+    <Content Include="images\asta\thumb\345.jpg" />
+    <Content Include="images\asta\thumb\346.jpg" />
+    <Content Include="images\asta\thumb\347.jpg" />
+    <Content Include="images\asta\thumb\348.jpg" />
+    <Content Include="images\asta\thumb\349.jpg" />
+    <Content Include="images\asta\thumb\353.jpg" />
+    <Content Include="images\asta\thumb\354.jpg" />
+    <Content Include="images\asta\thumb\355.jpg" />
+    <Content Include="images\asta\thumb\356.jpg" />
+    <Content Include="images\asta\thumb\357.jpg" />
+    <Content Include="images\asta\thumb\358.jpg" />
+    <Content Include="images\asta\thumb\366.jpg" />
+    <Content Include="images\asta\thumb\368.jpg" />
+    <Content Include="images\asta\thumb\369.jpg" />
+    <Content Include="images\asta\thumb\372.jpg" />
+    <Content Include="images\asta\thumb\373.jpg" />
+    <Content Include="images\asta\thumb\374.jpg" />
+    <Content Include="images\asta\thumb\375.jpg" />
+    <Content Include="images\asta\thumb\382.jpg" />
+    <Content Include="images\asta\thumb\384.jpg" />
+    <Content Include="images\asta\thumb\385.jpg" />
+    <Content Include="images\asta\thumb\386.jpg" />
+    <Content Include="images\asta\thumb\389.jpg" />
+    <Content Include="images\asta\thumb\390.jpg" />
+    <Content Include="images\asta\thumb\392.jpg" />
+    <Content Include="images\asta\thumb\396.jpg" />
+    <Content Include="images\asta\thumb\4.jpg" />
+    <Content Include="images\asta\thumb\40.jpg" />
+    <Content Include="images\asta\thumb\403.jpg" />
+    <Content Include="images\asta\thumb\411.jpg" />
+    <Content Include="images\asta\thumb\412.jpg" />
+    <Content Include="images\asta\thumb\413.jpg" />
+    <Content Include="images\asta\thumb\425.jpg" />
+    <Content Include="images\asta\thumb\427.jpg" />
+    <Content Include="images\asta\thumb\429.jpg" />
+    <Content Include="images\asta\thumb\430.jpg" />
+    <Content Include="images\asta\thumb\444.jpg" />
+    <Content Include="images\asta\thumb\447.jpg" />
+    <Content Include="images\asta\thumb\448.jpg" />
+    <Content Include="images\asta\thumb\449.jpg" />
+    <Content Include="images\asta\thumb\453.jpg" />
+    <Content Include="images\asta\thumb\457.jpg" />
+    <Content Include="images\asta\thumb\465.jpg" />
+    <Content Include="images\asta\thumb\466.jpg" />
+    <Content Include="images\asta\thumb\469.jpg" />
+    <Content Include="images\asta\thumb\478.jpg" />
+    <Content Include="images\asta\thumb\479.jpg" />
+    <Content Include="images\asta\thumb\480.jpg" />
+    <Content Include="images\asta\thumb\482.jpg" />
+    <Content Include="images\asta\thumb\490.jpg" />
+    <Content Include="images\asta\thumb\495.jpg" />
+    <Content Include="images\asta\thumb\513.jpg" />
+    <Content Include="images\asta\thumb\517.jpg" />
+    <Content Include="images\asta\thumb\519.jpg" />
+    <Content Include="images\asta\thumb\530.jpg" />
+    <Content Include="images\asta\thumb\531.jpg" />
+    <Content Include="images\asta\thumb\533.jpg" />
+    <Content Include="images\asta\thumb\535.jpg" />
+    <Content Include="images\asta\thumb\544.jpg" />
+    <Content Include="images\asta\thumb\552.jpg" />
+    <Content Include="images\asta\thumb\56.jpg" />
+    <Content Include="images\asta\thumb\561.jpg" />
+    <Content Include="images\asta\thumb\564.jpg" />
+    <Content Include="images\asta\thumb\571.jpg" />
+    <Content Include="images\asta\thumb\573.jpg" />
+    <Content Include="images\asta\thumb\581.jpg" />
+    <Content Include="images\asta\thumb\602.jpg" />
+    <Content Include="images\asta\thumb\611.jpg" />
+    <Content Include="images\asta\thumb\612.jpg" />
+    <Content Include="images\asta\thumb\616.jpg" />
+    <Content Include="images\asta\thumb\619.jpg" />
+    <Content Include="images\asta\thumb\626.jpg" />
+    <Content Include="images\asta\thumb\628.jpg" />
+    <Content Include="images\asta\thumb\629.jpg" />
+    <Content Include="images\asta\thumb\63.jpg" />
+    <Content Include="images\asta\thumb\630.jpg" />
+    <Content Include="images\asta\thumb\631.jpg" />
+    <Content Include="images\asta\thumb\632.jpg" />
+    <Content Include="images\asta\thumb\636.jpg" />
+    <Content Include="images\asta\thumb\65.jpg" />
+    <Content Include="images\asta\thumb\651.jpg" />
+    <Content Include="images\asta\thumb\656.jpg" />
+    <Content Include="images\asta\thumb\660.jpg" />
+    <Content Include="images\asta\thumb\670.jpg" />
+    <Content Include="images\asta\thumb\673.jpg" />
+    <Content Include="images\asta\thumb\681.jpg" />
+    <Content Include="images\asta\thumb\684.jpg" />
+    <Content Include="images\asta\thumb\685.jpg" />
+    <Content Include="images\asta\thumb\689.jpg" />
+    <Content Include="images\asta\thumb\691.jpg" />
+    <Content Include="images\asta\thumb\696.jpg" />
+    <Content Include="images\asta\thumb\698.jpg" />
+    <Content Include="images\asta\thumb\71.jpg" />
+    <Content Include="images\asta\thumb\710.jpg" />
+    <Content Include="images\asta\thumb\718.jpg" />
+    <Content Include="images\asta\thumb\719.jpg" />
+    <Content Include="images\asta\thumb\72.jpg" />
+    <Content Include="images\asta\thumb\721.jpg" />
+    <Content Include="images\asta\thumb\723.jpg" />
+    <Content Include="images\asta\thumb\724.jpg" />
+    <Content Include="images\asta\thumb\734.jpg" />
+    <Content Include="images\asta\thumb\738.jpg" />
+    <Content Include="images\asta\thumb\741.jpg" />
+    <Content Include="images\asta\thumb\767.jpg" />
+    <Content Include="images\asta\thumb\77.jpg" />
+    <Content Include="images\asta\thumb\78.jpg" />
+    <Content Include="images\asta\thumb\786.jpg" />
+    <Content Include="images\asta\thumb\787.jpg" />
+    <Content Include="images\asta\thumb\793.jpg" />
+    <Content Include="images\asta\thumb\794.jpg" />
+    <Content Include="images\asta\thumb\80.jpg" />
+    <Content Include="images\asta\thumb\825.jpg" />
+    <Content Include="images\asta\thumb\828.jpg" />
+    <Content Include="images\asta\thumb\837.jpg" />
+    <Content Include="images\asta\thumb\848.jpg" />
+    <Content Include="images\asta\thumb\849.jpg" />
+    <Content Include="images\asta\thumb\86.jpg" />
+    <Content Include="images\asta\thumb\868.jpg" />
+    <Content Include="images\asta\thumb\88.jpg" />
+    <Content Include="images\asta\thumb\885.jpg" />
+    <Content Include="images\asta\thumb\886.jpg" />
+    <Content Include="images\asta\thumb\889.jpg" />
+    <Content Include="images\asta\thumb\89.jpg" />
+    <Content Include="images\asta\thumb\97.jpg" />
+    <Content Include="images\asta\thumb\98.jpg" />
     <Content Include="images\banner\banner_gilardifilatelia_468_60.png" />
     <Content Include="images\banner\banner_segretibacco.png" />
     <Content Include="images\commands\aggiorna.png" />
@@ -353,6 +555,7 @@
     <Content Include="Management\AnagraficaDetail.aspx" />
     <Content Include="Management\ArgomentoDetail.aspx" />
     <Content Include="Management\AstaDetail.aspx" />
+    <Content Include="Sitemap.aspx" />
     <Content Include="Management\LottoDetail.aspx" />
     <Content Include="Management\NewsletterDetail.aspx" />
     <Content Include="Management\offertaGilardiFilatelia.aspx" />
@@ -448,34 +651,34 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Layers\AnagraficaGateway.cs" />
-    <Compile Include="Layers\Entities\anagrafica.Entity.cs" />
-    <Compile Include="Layers\Entities\asta.Entity.cs" />
-    <Compile Include="Layers\Entities\carrello.Entity.cs" />
-    <Compile Include="Layers\Entities\GilardiFilatelia.Entity.cs" />
-    <Compile Include="Layers\Entities\lottoScartato.Entity.cs" />
-    <Compile Include="Layers\Entities\lottoTemporaneo.Entity.cs" />
-    <Compile Include="Layers\Entities\legendaStato.Entity.cs">
+    <Compile Include="Layers\Utilities\Entities\anagrafica.Entity.cs" />
+    <Compile Include="Layers\Utilities\Entities\asta.Entity.cs" />
+    <Compile Include="Layers\Utilities\Entities\carrello.Entity.cs" />
+    <Compile Include="Layers\Utilities\Entities\GilardiFilatelia.Entity.cs" />
+    <Compile Include="Layers\Utilities\Entities\lottoScartato.Entity.cs" />
+    <Compile Include="Layers\Utilities\Entities\lottoTemporaneo.Entity.cs" />
+    <Compile Include="Layers\Utilities\Entities\legendaStato.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Layers\Entities\logInfos.Entity.cs">
+    <Compile Include="Layers\Utilities\Entities\logInfos.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Layers\Entities\lotto.Entity.cs" />
-    <Compile Include="Layers\Entities\newsletter.Entity.cs" />
-    <Compile Include="Layers\Entities\offerta.Entity.cs" />
+    <Compile Include="Layers\Utilities\Entities\lotto.Entity.cs" />
+    <Compile Include="Layers\Utilities\Entities\newsletter.Entity.cs" />
+    <Compile Include="Layers\Utilities\Entities\offerta.Entity.cs" />
     <Compile Include="Layers\ftpGateway.cs" />
     <Compile Include="Layers\GilardiFilateliaGateway.cs" />
     <Compile Include="Layers\LottiGateway.cs" />
-    <Compile Include="Layers\Entities\news.Entity.cs">
+    <Compile Include="Layers\Utilities\Entities\news.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Layers\Entities\paragArgomento.Entity.cs">
+    <Compile Include="Layers\Utilities\Entities\paragArgomento.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Layers\Entities\paragrafo.Entity.cs">
+    <Compile Include="Layers\Utilities\Entities\paragrafo.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Layers\Entities\paragSubArgomento.Entity.cs">
+    <Compile Include="Layers\Utilities\Entities\paragSubArgomento.Entity.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Layers\MailGateway.cs" />
@@ -485,6 +688,7 @@
     <Compile Include="Layers\ParagrafoGateway.cs" />
     <Compile Include="Layers\NewsGateway.cs" />
     <Compile Include="Layers\Utilities\GeneralUtilities.cs" />
+    <Compile Include="Layers\Utilities\imageresize.cs" />
     <Compile Include="Lotti\carrello.aspx.cs">
       <DependentUpon>carrello.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -526,6 +730,13 @@
     </Compile>
     <Compile Include="Management\AstaDetail.aspx.designer.cs">
       <DependentUpon>AstaDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sitemap.aspx.cs">
+      <DependentUpon>Sitemap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sitemap.aspx.designer.cs">
+      <DependentUpon>Sitemap.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\LottoDetail.aspx.cs">
       <DependentUpon>LottoDetail.aspx</DependentUpon>
@@ -733,7 +944,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExternalAssemblies\" />
-    <Folder Include="images\asta\" />
     <Folder Include="Management\uploadLotto\" />
   </ItemGroup>
   <ItemGroup>
@@ -749,6 +959,9 @@
     <None Include="images\banner\banner_gilardifilatelia_468_60.xcf" />
     <None Include="images\banner\banner_segretibacco.xcf" />
     <None Include="Philinternational.csproj.vs10x" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
