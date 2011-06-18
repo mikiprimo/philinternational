@@ -24,11 +24,19 @@ namespace Philinternational
         {
             if (!IsPostBack)
             {
-                int? numPage = 1;
+                int numPage = 0;
                 int limitForPage = 10;
                 String codargomento = Page.RouteData.Values["idpar"].ToString();
+                try {
+                    numPage = Int32.Parse(Page.RouteData.Values["page"].ToString());
+                }
+                catch {
+                    numPage = 1;
+                }
+
+
                 String subargomento = "0";
-                if (Request["p"] != null) numPage = Int32.Parse(Request["p"]);
+                //if (Request["p"] != null) numPage = Int32.Parse(Request["p"]);
                 if (Request["arg"] != null) codargomento = Request["arg"];   
                 if (Request["subarg"] != null) subargomento = Request["subarg"];
                
