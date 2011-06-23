@@ -13,7 +13,7 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterHyperLink.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+            RegisterHyperLink.NavigateUrl = "Registrazione.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)

@@ -74,6 +74,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Registrazione.aspx" />
     <Content Include="Advertise.xml" />
+    <Content Include="BingSiteAuth.xml" />
     <Content Include="bin\CKEditor.NET.dll" />
     <Content Include="bin\MySql.Data.dll" />
     <Content Include="bin\MySql.Data.Entity.dll" />
@@ -507,6 +508,7 @@
     <Content Include="images\asta\thumb\89.jpg" />
     <Content Include="images\asta\thumb\97.jpg" />
     <Content Include="images\asta\thumb\98.jpg" />
+    <Content Include="images\asta\thumb\fileperSvn.txt" />
     <Content Include="images\banner\banner_gilardifilatelia_468_60.png" />
     <Content Include="images\banner\banner_segretibacco.png" />
     <Content Include="images\commands\aggiorna.png" />
@@ -529,6 +531,7 @@
     <Content Include="images\gilardifilatelia\45.jpg" />
     <Content Include="images\gilardifilatelia\54.jpg" />
     <Content Include="images\gilardifilatelia\75.jpg" />
+    <Content Include="images\gilardifilatelia\thumb\fileForSvn.txt" />
     <Content Include="images\immagine_non_disponibile.jpg" />
     <Content Include="images\masterPage\banner_gilardi_468_60.jpg" />
     <Content Include="images\masterPage\logo_philtinternational.png" />
