@@ -39,9 +39,9 @@ namespace Philinternational.Layers {
             return esito;
         }
 
-        public static Boolean SendNewsletters(ListItemCollection usersList, List<newsletterEntity> newsletters) {
+        public static Boolean SendNewsletters(ListItemCollection usersList, List<NewsletterEntity> newsletters) {
             foreach (ListItem user in usersList) {
-                foreach (newsletterEntity newsletter in newsletters) {
+                foreach (NewsletterEntity newsletter in newsletters) {
                     if (user.Selected) SendGenericMail(user.Value, newsletter.titolo, newsletter.testo);
                 }
             }

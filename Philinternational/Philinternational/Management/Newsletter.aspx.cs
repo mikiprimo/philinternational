@@ -17,8 +17,8 @@ namespace Philinternational.Styles {
             }
         }
 
-        public List<newsletterEntity> selectedNewsletters {
-            get { return ((List<newsletterEntity>)ViewState["idNewsletters"]); }
+        public List<NewsletterEntity> selectedNewsletters {
+            get { return ((List<NewsletterEntity>)ViewState["idNewsletters"]); }
             set { ViewState["idNewsletters"] = value; }
         }
 
@@ -28,7 +28,7 @@ namespace Philinternational.Styles {
         }
 
         private void BindData() {
-            gvNewsletters.DataSource = NewsletterGateway.SelectNewsletter();
+            gvNewsletters.DataSource = NewsletterGateway.SelectNewsletters();
             gvNewsletters.DataBind();
         }
 
@@ -58,7 +58,7 @@ namespace Philinternational.Styles {
             GridViewRow row = gvNewsletters.Rows[e.RowIndex];
             var newValues = Commons.GetValuesGridViewRow(row);
 
-            newsletterEntity MyNewsletter = new newsletterEntity();
+            NewsletterEntity MyNewsletter = new NewsletterEntity();
             MyNewsletter.id = Convert.ToInt32(gvNewsletters.DataKeys[e.RowIndex]["idnewsletter"]);
             MyNewsletter.titolo = (String)newValues["titolo"];
             MyNewsletter.testo = (String)newValues["testo"];
@@ -84,14 +84,14 @@ namespace Philinternational.Styles {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void ibtnSendToAll_Click(object sender, ImageClickEventArgs e) {
-            List<newsletterEntity> newsletterList = new List<newsletterEntity>();
+            List<NewsletterEntity> newsletterList = new List<NewsletterEntity>();
 
             foreach (GridViewRow row in gvNewsletters.Rows) {
                 if (row.RowType == DataControlRowType.DataRow) {
                     CheckBox chk = (CheckBox)row.Cells[0].FindControl("chkUserSelection");
                     if (chk.Checked) {
                         //Convert.ToInt32(gvNewsletters.DataKeys[row.RowIndex]["idnewsletter"])
-                        newsletterEntity newsletter = new newsletterEntity();
+                        NewsletterEntity newsletter = new NewsletterEntity();
                         newsletter.titolo = ((Label)gvNewsletters.Rows[row.RowIndex].FindControl("lblTitolo")).Text;
                         newsletter.testo = ((Label)gvNewsletters.Rows[row.RowIndex].FindControl("lblTesto")).Text;
                         newsletterList.Add(newsletter);
@@ -125,6 +125,10 @@ namespace Philinternational.Styles {
             //TODO: Questa chiamata sarebbe da fare in un thread parallelo
             NewsletterGateway.DistributeNewsletterMailsToSelectedUsers(cblDistribution.Items, this.selectedNewsletters);
             Response.Redirect("~/Management/Newsletter.aspx");
+        }
+
+        protected void ibtnEditNewsletter_Click(object sender, ImageClickEventArgs e) {
+            Response.Redirect("NewsletterDetail.aspx?idnl=" + gvNewsletters.DataKeys[0]["idnewsletter"].ToString());
         }
     }
 }

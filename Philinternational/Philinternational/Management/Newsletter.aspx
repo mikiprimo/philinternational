@@ -1,7 +1,16 @@
 ﻿<%@ Page Title="Gestione delle newsletter" Language="C#" MasterPageFile="~/Site.Master"
     AutoEventWireup="true" CodeBehind="Newsletter.aspx.cs" Inherits="Philinternational.Styles.Newsletter" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script type="text/javascript" language="javascript">
+        function Check(idnewsletter) {
+            //            var pippo = "NewsletterDetail.aspx?idnl=" + idnewsletter;
+            //            window.location.href = pippo
+
+            window.location = "http://www.google.com";
+        }
+    </script>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h3
     class="titlePanel">Gestione Newsletter</h3>
     <br />
@@ -19,13 +28,18 @@
                         </ItemTemplate>
                         <EditItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" Enabled="false" /></EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <%--                    <asp:TemplateField>
                         <ItemTemplate><asp:ImageButton ID="ibtnEditNewsletter" runat="server" CausesValidation="False"
                             CommandName="Edit" ImageUrl="~/images/selectfull.png" ToolTip="Modifica" />
                         </ItemTemplate>
                         <EditItemTemplate><asp:ImageButton ID="ibtnUpdateNewsletter" runat="server" CausesValidation="False"
                             CommandName="Update" ImageUrl="~/images/accept.png" ToolTip="Salva" />
                         </EditItemTemplate>
+                    </asp:TemplateField>--%>
+                    <asp:TemplateField>
+                        <ItemTemplate><%--<asp:ImageButton ID="ibtnEditNewsletter" runat="server" CausesValidation="False" ImageUrl="~/images/selectfull.png" ToolTip="Modifica" OnClientClick=<%# "javascript:window.location.href('NewsletterDetail.aspx?idnl=" + Eval("idnewsletter") +"');return false;"%> /> --%>
+                           <%-- <asp:HyperLink ID="hlNewsDetail" runat="server" NavigateUrl='<%# "~/Management/NewsletterDetail.aspx?idnl=" + Eval("idnewsletter")%>'>Modifica</asp:HyperLink>--%>
+                        </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -37,14 +51,14 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Label ID="lblTitolo" runat="server" Text='<%# Bind("titolo") %>'></asp:Label>
+                           <%-- <asp:Label ID="lblTitolo" runat="server" Text='<%# Bind("titolo") %>'></asp:Label>--%>
+                            <asp:HyperLink ID="hlNewsDetail" runat="server" NavigateUrl='<%# "~/Management/NewsletterDetail.aspx?idnl=" + Eval("idnewsletter")%>' Text='<%# Bind("titolo") %>'></asp:HyperLink>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:TextBox ID="txtUpdateTitolo" runat="server" Text='<%# Bind("titolo") %>'></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
-                        <%--<ItemTemplate>
+                    <asp:TemplateField><%--<ItemTemplate>
                             <asp:Label ID="lblTesto" runat="server" Text='<%# Bind("testo") %>'></asp:Label>
                         </ItemTemplate>--%>
                         <EditItemTemplate>
@@ -60,7 +74,6 @@
                     runat="server" OnClick="ibtnDeleteSelectedNewsletters_Click" AlternateText="Cancella le newsletters selezionate"
                     CssClass="cleanButtons" ImageUrl="~/images/commands/cancella.png" ToolTip="Cancella le newsletters selezionate" />
             <br />
-
             <asp:ImageButton ID="ibtnSendToAll" runat="server" AlternateText="Distribuisci le newsletters selezionate"
                 OnClick="ibtnSendToAll_Click" CssClass="cleanButtons" ImageUrl="~/images/commands/smista.png"
                 ToolTip="Distribuisci le newsletters a tutti gli utenti selezionati" /></asp:View>

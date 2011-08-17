@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Philinternational {
     [Serializable]
-    public class newsletterEntity {
+    public class NewsletterEntity {
         public Int32 id;
         public DateTime data_creazione;
         public String titolo;
