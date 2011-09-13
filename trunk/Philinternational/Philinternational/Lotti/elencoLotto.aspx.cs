@@ -26,7 +26,13 @@ namespace Philinternational
             {
                 int numPage = 0;
                 int limitForPage = 10;
-                String codargomento = Page.RouteData.Values["idpar"].ToString();
+                String codargomento = "";
+                String subargomento = "";
+
+                if (Request["arg"] != null) 
+                       codargomento = Request["arg"]; 
+                else
+                    codargomento = Page.RouteData.Values["idpar"].ToString();
                 try {
                     numPage = Int32.Parse(Page.RouteData.Values["page"].ToString());
                 }
@@ -35,10 +41,12 @@ namespace Philinternational
                 }
 
 
-                String subargomento = "0";
+                
                 //if (Request["p"] != null) numPage = Int32.Parse(Request["p"]);
-                if (Request["arg"] != null) codargomento = Request["arg"];   
+                //if (Request["arg"] != null) codargomento = Request["arg"];   
                 if (Request["subarg"] != null) subargomento = Request["subarg"];
+                else
+                    subargomento = "0";
                
                 descrizioneParagrafoArgomentoForRoute(codargomento, subargomento);
                 getTitle(codargomento, subargomento);

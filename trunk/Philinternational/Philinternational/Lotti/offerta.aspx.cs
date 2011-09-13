@@ -13,7 +13,11 @@ namespace Philinternational
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack){
-                String chiave = Page.RouteData.Values["idlotto"].ToString();
+                String chiave = "";
+                if (Request["cod"] != null)
+                    chiave = Request["cod"];
+                else
+                    chiave = Page.RouteData.Values["idlotto"].ToString();
                 //String chiave = Request["cod"];
                 String codargomento = Request["arg"];
                 String subargomento = Request["subarg"];
