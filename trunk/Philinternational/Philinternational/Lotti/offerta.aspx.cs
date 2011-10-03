@@ -89,6 +89,7 @@ namespace Philinternational
             descrizioneLotto.InnerHtml = a.getValueByField(idlotto, "descrizione");
             prezzoLotto.InnerHtml = a.getValueByField(idlotto, "prezzo_base");
             statoLotto.InnerHtml = a.getValueByField(idlotto, "tipo_lotto");
+            testoTitle.Text = "Offerta filatelica per il lotto " + idlotto + ". Fai la tua offerta. Philinternational";
             AsteGateway myAsta = new AsteGateway();
             Boolean astaAttiva = myAsta.GetAstaAttiva();
             if (astaAttiva)
@@ -103,9 +104,6 @@ namespace Philinternational
             else {
                 txtOfferta.Visible = false;
             }
-            
-
-
 
         }
         private String FaiOfferta(String idLotto,float offerta) {

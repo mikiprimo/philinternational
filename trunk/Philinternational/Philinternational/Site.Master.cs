@@ -18,7 +18,6 @@ namespace Philinternational
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             LogoOutput.InnerHtml = loadLogo();            
             loadMenuccordion.InnerHtml = LoadMenuAccordion();
             areaGilardi.InnerHtml = viewOfferteFilatelia();
