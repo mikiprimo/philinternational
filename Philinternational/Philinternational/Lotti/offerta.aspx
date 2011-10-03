@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Offerta per singolo lotto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="offerta.aspx.cs" Inherits="Philinternational.offerta" %>
 <%@ OutputCache CacheProfile="Cache24Hours" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <title><asp:Literal runat="server" ID="testoTitle"></asp:Literal></title>
 </asp:Content>
 <asp:Content ID="OffertaMain" ContentPlaceHolderID="MainContent" runat="server">
     <h3 id="testoH1" runat="server" class="titlePanel" style="text-transform:uppercase;color:#000"></h3>

@@ -2,20 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server" >
+        <link rel="icon" href="~/images/favicon.png" type="image/png" />
+        <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jqueryCollection.js") %>"></script>
         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/shadowbox.js") %>"></script>
         <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/commonFunction.js") %>"></script>
-        <link rel="icon" href="~/images/favicon.png" type="image/png" />
-        <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
         <meta name="ROBOTS" content="INDEX,FOLLOW" />
-        <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Pragma" content="no-cache">
         <meta name="rating" content="General" />
-        <meta name="revisit-after" content="7 days" />
-        <meta http-equiv="Cache-Control" content="no-cache" />
+        <meta name="revisit-after" content="15 days" />
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
-            <title>Offerta filatelica per corrispondenza. Lotti da acquistare.</title>
+            <title>Offerta filatelica per corrispondenza. Lotti da acquistare. Lotti di prestigio e di qualità.</title>
             <meta name="KEYWORDS" content ="filatelica, filatelia,asta, lotti, francobolli, philinternational, offerta per corrispondenza" />
-            <meta name="DESCRIPTION" content="PhilInternarional è un sito di offerta filatelica per corrispondenza." />
+            <meta name="DESCRIPTION" content="PhilInternational è un sito di offerta filatelica per corrispondenza. Una delle vendite all'Asta per Corrispondenza tra le più longeve d'Italia" />
         </asp:ContentPlaceHolder>
 </head>
 <body>
