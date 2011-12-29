@@ -1,25 +1,13 @@
-﻿<%@ Page Title="via cimarosa 11, milano - Dove ci potete trovare- PhilInternational" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="via cimarosa 11, 20144 milano - Veniteci a trovare- PhilInternational" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="dovesiamo.aspx.cs" Inherits="Philinternational.dovesiamo" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server"><meta
-    name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<meta name="Description" content="Per conoscere le nostre altre offerte,potete venirci a trovare direttamente in negozio. Via cimarosa 11, 20144 Milano" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
-        #map_canvas
-        {
-            height: 350px;
-            width: 550px;
-        }
-        
-        .columnGoogle
-        {
-            background-color: #000000;
-            border: 0px;
-        }
-        .style1
-        {
-            width: 180px;
-            background-color: #FFFFFF;
-        }
+        #map_canvas{height: 350px;width: 550px;}
+        .columnGoogle{background-color: #000000;border: 0px;}
+        .style1{width: 180px;background-color: #FFFFFF;}
     </style>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true">
     </script>
@@ -32,12 +20,11 @@
         }
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h1>Dove
-    siamo</h1>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>Dove siamo</h1>
     <br />
     <br />
-    Ci trovi in via Domenico Cimarosa, n° 11 <br />
-    20144, Milano<br />
+    Ci trovi in via Domenico Cimarosa, n° 11 <br />20144, Milano<br />
     <br />
     <div id="map_canvas" style="border: 1px solid #C0C0C0">
     </div>
