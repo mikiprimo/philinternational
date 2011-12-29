@@ -78,8 +78,9 @@ namespace Philinternational
                             if (drArg != null)
                             {
                                 if (drArg.HasRows) {
-                                    paragrafo += "<h3 class=\"paragrafo\"><a href=\"#\" title=\"" + (String)dr["descrizione"] + "\">" + (String)dr["descrizione"] + "</a></h3>\n";
+                                    paragrafo += "<h3 class=\"paragrafo\"><a href=\"#\" title=\"Collezione " + (String)dr["descrizione"] + "\">" + (String)dr["descrizione"] + "</a></h3>\n";
                                     String rowArg = "";
+                                    String nomeArgomento = "Lotti riferiti a " +  (String)dr["descrizione"];
                                     argomento = "<div class=\"evidenziatore\">\n<ul>\n";
                                     while (drArg.Read())
                                     {
@@ -88,7 +89,7 @@ namespace Philinternational
                                         RouteValueDictionary parameters = new RouteValueDictionary { { "capitolo", vpdCapitolo.Replace(" ","-") }, { "paragrafo",vpdParagrafo.Replace(" ","-") }, { "idpar", (int)drArg["idargomento"] } };
                                         VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(null, "ElencoLotto", parameters);
                                        // rowArg += "<li class=\"argomento\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + (int)drArg["idargomento"] + "&amp;subarg=0") + "\" title=\""+ (String)drArg["descrizione"] + "\" >" + (String)drArg["descrizione"] + "</a></li>\n";
-                                         rowArg += "<li class=\"argomento\"><a href=\"" + vpd.VirtualPath + "\" title=\""+ (String)drArg["descrizione"] + "\" >" + (String)drArg["descrizione"] + "</a></li>\n";
+                                         rowArg += "<li class=\"argomento\"><a href=\"" + vpd.VirtualPath + "\" title=\""+ nomeArgomento + " " + (String)drArg["descrizione"] + "\" >" + (String)drArg["descrizione"] + "</a></li>\n";
                                     }
                                     argomento += rowArg + "</ul>\n</div>\n";
                                     paragrafo += argomento;
