@@ -2,6 +2,7 @@
 <%@ OutputCache CacheProfile="Cache24Hours" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
     <title><asp:Literal runat="server" ID="testoTitle"></asp:Literal></title>
+    <asp:Literal runat="server" ID="metaDescription"></asp:Literal>
 </asp:Content>
 <asp:Content ID="MainElenco" ContentPlaceHolderID="MainContent" runat="server">
     <div runat="server" id="navigazioneOutput"></div>

@@ -92,12 +92,14 @@ namespace Philinternational
                 VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(null, "ElencoLotto", parameters);
 
                 //testoTitle.Text = "Lotti disponibili per l'argomento:" + descrizione_argomento;
-                testoTitle.Text = "Francobolli di " + descrizione_argomento + "(" + descrizione_paragrafo + "). Offerta filatelica per corrispondenza";
+                testoTitle.Text = "Francobolli di " + descrizione_argomento.ToLower() + " (" + descrizione_paragrafo.ToLower() + "). Offerta filatelica per corrispondenza";
+                metaDescription.Text = "<meta name=\"description\" content=\"In questa pagina sono mostrati i francobolli di " + descrizione_argomento.ToLower() + "(" + descrizione_paragrafo.ToLower() + "). Offerta filatelica per corrispondenza di philinternational.it\" />";
                 navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>-><li class=\"navTit2\"><a href=\"" + vpd.VirtualPath + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
                 //navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>-><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
             }
             else {
-                testoTitle.Text = "Lotti disponibili per l'argomento";
+                testoTitle.Text = "Offerta filatelica per corrispondenza. Lotti disponibili per l'argomento";
+                metaDescription.Text = "<meta name=\"description\" content=\"Elenco dei lotti disponibili\" />";
                 navigazioneOutput.InnerHtml = "<div class=\"navigazione\">Nessun Lotto Presente</li></ul></div>\n";
             
             }
@@ -220,8 +222,8 @@ namespace Philinternational
         {
 
             String tmpSql = "";
-            String Esito="";
-            int limiteLotto = 0;
+            String Esito  = "";
+            Double limiteLotto = 0;
             int newcodArgomento = clearNumber(codargomento);
             int newcodSubArgomento = clearNumber(subargomento);
             /* STEP 2 -  ottengo il numero, il min ed il max per il paragrafo specifico*/
@@ -239,7 +241,7 @@ namespace Philinternational
 
             DataView dr = Layers.ConnectionGateway.SelectQuery(sql);
             for (int i = 0; i < dr.Count; i++) {
-                limiteLotto = Int32.Parse(dr[i]["totale_lotti"].ToString());
+                limiteLotto =  Double.Parse(dr[i]["totale_lotti"].ToString());
             }
 
 
@@ -253,7 +255,7 @@ namespace Philinternational
             }
             else
             {
-                int addPage = limiteLotto % limitForPage;
+                int addPage = int.Parse(limiteLotto.ToString()) % limitForPage;
                 if (addPage > 0) recordperPagina++;
                 tmpSql = "<div class=\"numPagina\"><ul>";
                 for (int i = 1; i <= recordperPagina; i++)
