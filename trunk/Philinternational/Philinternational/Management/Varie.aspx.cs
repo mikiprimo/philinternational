@@ -17,8 +17,67 @@ namespace Philinternational.Styles
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            String pathImage = Server.MapPath(Page.ResolveClientUrl("~/images/asta/"));
         }
 
+
+        protected void cleanAsta(object sender, EventArgs e)
+        {
+            /*
+             Passaggi
+             * - eliminazione immagini asta
+             * - truncate tabella carrello
+             * - truncate tabella lotto
+             * - truncate tabella lotto_scartato
+             * - truncate tabella_tmp
+             * - offerta_per_corrispondenza
+             */
+            esitoElaborazione.Text = "";
+            String sql = "";
+            int esitoSql = 0;
+            bool checkEsitoSql = false;
+            String pathImage = Server.MapPath(Page.ResolveClientUrl("~/images/asta/"));
+            DirectoryInfo listDir = new DirectoryInfo(pathImage);
+            ConnectionGateway myConn = new ConnectionGateway();
+            if (listDir.Exists)
+            {
+                //int i = 1;
+                foreach (FileInfo fi in listDir.GetFiles())
+                {
+                    //Response.Write (i + "]" + fi.Name.ToString() + "<br/>");
+                    fi.Delete();
+                    //i++;
+                }
+            }
+            sql = "TRUNCATE TABLE carrello";
+            esitoSql = ConnectionGateway.ExecuteQuery(sql, "carrello");
+            if (esitoSql == 1) checkEsitoSql = true;
+            
+            sql = "TRUNCATE TABLE lotto";
+            esitoSql = ConnectionGateway.ExecuteQuery(sql, "lotto");
+            if (esitoSql == 1) checkEsitoSql = true;
+            
+            sql = "TRUNCATE TABLE lotto_scartato";
+            esitoSql = ConnectionGateway.ExecuteQuery(sql, "lotto_scartato");
+            if (esitoSql == 1) checkEsitoSql = true;
+            sql = "TRUNCATE TABLE lotto_tmp";
+            esitoSql = ConnectionGateway.ExecuteQuery(sql, "lotto_tmp");
+            if (esitoSql == 1) checkEsitoSql = true;
+            sql = "TRUNCATE TABLE offerta_per_corrispondenza";
+            esitoSql = ConnectionGateway.ExecuteQuery(sql, "offerta_per_corrispondenza");
+            if (esitoSql == 1) checkEsitoSql = true;
+
+
+            if (checkEsitoSql)
+            {
+                esitoElaborazione.Text = "Pulizia asta non avvenuta correttamente. Contattare il webmaster";
+            }
+            else {
+                esitoElaborazione.Text = "LA pulizia dell'asta &egrave; avvenuta correttamente. Puoi inserire il nuovo catalogo.";
+            }
+
+        
+        }
         protected void aggiornaDatabase(object sender, EventArgs e)
         {
             spoolTesto.Visible = true;
