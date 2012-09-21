@@ -49,16 +49,25 @@ namespace Philinternational.Management {
             bool esito = false;
             if (uploadLotto.PostedFile != null && uploadLotto.PostedFile.ContentLength > 0) {
                 string fn = System.IO.Path.GetFileName(uploadLotto.PostedFile.FileName);
+                string fnTmp = "tmp" + System.IO.Path.GetFileName(uploadLotto.PostedFile.FileName);
                 GilardiFilateliaEntity myEntity = new GilardiFilateliaEntity();
+                string SaveLocationTmp = Server.MapPath("..\\images\\gilardifilatelia\\") + fnTmp;
                 string SaveLocation = Server.MapPath("..\\images\\gilardifilatelia\\") + fn;
                 string SaveLocationThumb = Server.MapPath("..\\images\\gilardifilatelia\\thumb\\") + fn;
+                uploadLotto.PostedFile.SaveAs(SaveLocationTmp);
+                uploadLotto.PostedFile.SaveAs(SaveLocation);
                 //resize image
                 ImageResize imageResize = new ImageResize();
                 System.Drawing.Image imgPhoto = null;
-                System.Drawing.Image imgPhotoOrig = System.Drawing.Image.FromFile(SaveLocation);
+                System.Drawing.Image imgPhotoOrig = System.Drawing.Image.FromFile(SaveLocationTmp);
+                
                 imgPhoto = imageResize.ConstrainProportions(imgPhotoOrig, 100, ImageResize.Dimensions.Width);
                 imgPhoto.Save(SaveLocationThumb, ImageFormat.Jpeg);
+                imgPhotoOrig.Dispose();
                 imgPhoto.Dispose();
+                uploadLotto.Dispose();
+                //FileInfo fi = new FileInfo(SaveLocationTmp);
+                //fi.Delete();
                 try {
                     if (this.Codice == "-1") {
                         myEntity.idOfferta = Layers.ConnectionGateway.CreateNewIndex("idofferta", "offerta_gilardifilatelia");
@@ -87,7 +96,8 @@ namespace Philinternational.Management {
                     ExamineResults(esito);
 
                 } catch (Exception ex) {
-                    Response.Write("Error: " + ex.Message);
+                    //Response.Write("Error: " + ex.Message);
+                    ErrorUploadFile.InnerHtml = "Error: " + ex.Message;
                     //Note: Exception.Message returns a detailed message that describes the current exception. 
                     //For security reasons, we do not recommend that you return Exception.Message to end users in 
                     //production environments. It would be better to put a generic error message. 

@@ -22,6 +22,15 @@ namespace Philinternational.Styles {
         protected global::System.Web.UI.WebControls.LinkButton allineaImmagine;
         
         /// <summary>
+        /// creaAsta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton creaAsta;
+        
+        /// <summary>
         /// FileLotto control.
         /// </summary>
         /// <remarks>

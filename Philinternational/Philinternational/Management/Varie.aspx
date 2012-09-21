@@ -14,6 +14,7 @@
     <ul class="insidelista">
         <li><a href="#" id="toggle1">Carica il file dei lotti</a></li>
         <li><asp:LinkButton runat="server" ID="allineaImmagine" OnClick="aggiornaDatabase" Text="Aggiorna DataBase Immagini"></asp:LinkButton></li>
+        <li><asp:LinkButton runat="server" ID="creaAsta" OnClick="cleanAsta" Text="Pulisci sito per nuova Asta (Attenzione! Operazione irreversibile)"></asp:LinkButton></li>
     </ul>    
     <script type="text/javascript">
         $("#toggle1").click(function () { $("#loadLotti").slideToggle("slow", function () { $("#spoolTesto").html("");}); });
