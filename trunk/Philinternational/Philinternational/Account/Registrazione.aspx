@@ -202,7 +202,7 @@
                         </tr>
                         <tr>
                             <td class="style1">
-                                <asp:CheckBox ID="chkNewsLetters" runat="server" Text="Iscriviti alle Newsletters" />
+                                <asp:CheckBox ID="chkNewsLetters" runat="server" Text="Iscriviti alle Newsletters" Checked="true" />
                             </td>
                         </tr>
                     </table>

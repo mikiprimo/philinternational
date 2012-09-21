@@ -43,10 +43,10 @@ namespace Philinternational.Account {
             newUser.idanagrafica = ConnectionGateway.CreateNewIndex("idanagrafica", "anagrafica");
             newUser.email = txtEmail.Text;
             newUser.password = GeneralUtilities.Encrypt(txtPassword.Text);
-            newUser.nome = txtNome.Text;
-            newUser.cognome = txtCognome.Text;
+            newUser.nome     = txtNome.Text;
+            newUser.cognome  = txtCognome.Text;
             newUser.codice_fiscale = txtCodiceFiscale.Text;
-            newUser.partita_iva = txtPiva.Text;
+            newUser.partita_iva    = txtPiva.Text;
             //Dati residenza
             newUser.res_via = txtVia.Text;
             newUser.res_indirizzo = txtIndirizzo.Text;
@@ -70,9 +70,9 @@ namespace Philinternational.Account {
                 newUser.dom_via = txtVia.Text;
                 newUser.dom_indirizzo = txtIndirizzo.Text;
                 newUser.dom_num_civico = txtNumCivico.Text;
-                newUser.dom_cap = txtCap.Text;
+                newUser.dom_cap   = txtCap.Text;
                 newUser.dom_provincia = txtProvincia.Text;
-                newUser.dom_comune = txtCitta.Text;
+                newUser.dom_comune  = txtCitta.Text;
                 newUser.dom_nazione = txtNazione.Text;
             }
             Boolean result = false;
@@ -81,7 +81,7 @@ namespace Philinternational.Account {
             result = AnagraficaGateway.ManageNewsletterStateByIDAnagrafica(newUser.idanagrafica, chkNewsLetters.Checked);
 
             if (result) {
-                String esitoUtente = MailList.RegistrazioneUtente(newUser.nome + " " + newUser.cognome, newUser.email, newUser.password);
+                String esitoUtente = MailList.RegistrazioneUtente(newUser.nome + " " + newUser.cognome, newUser.email, txtPassword.Text);
                 String esitoAdmin = MailList.AvvisoAdminNuovaRegistrazione(newUser.email);
                 Response.Redirect("~/Account/Registrazione.aspx?R=success");
             }
