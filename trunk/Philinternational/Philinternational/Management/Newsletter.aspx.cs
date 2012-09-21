@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MySql.Data.MySqlClient;
 using Philinternational.Layers;
 using System.Data;
 
@@ -92,9 +93,37 @@ namespace Philinternational.Styles {
                     if (chk.Checked) {
                         //Convert.ToInt32(gvNewsletters.DataKeys[row.RowIndex]["idnewsletter"])
                         NewsletterEntity newsletter = new NewsletterEntity();
-                        newsletter.titolo = ((Label)gvNewsletters.Rows[row.RowIndex].FindControl("lblTitolo")).Text;
-                        newsletter.testo = ((Label)gvNewsletters.Rows[row.RowIndex].FindControl("lblTesto")).Text;
-                        newsletterList.Add(newsletter);
+                        String idNewsletter = gvNewsletters.DataKeys[row.RowIndex]["idnewsletter"].ToString();
+
+                        String sql = "SELECT titolo, testo FROM newsletter WHERE idnewsletter = "+ idNewsletter +"";
+                        MySqlConnection conn = ConnectionGateway.ConnectDB();
+                        MySqlDataReader dr;
+                        MySqlCommand command = command = new MySqlCommand(sql, conn);
+                        command.CommandType = System.Data.CommandType.Text;
+                        String titolo = ""; 
+                        String testo = "";
+
+                        try
+                        {
+                            conn.Open();
+                            dr = command.ExecuteReader();
+                            if (dr != null){
+                                while (dr.Read()) {
+                                    titolo = (String)dr["titolo"];
+                                    testo = (String)dr["testo"];
+                                }
+                                newsletter.titolo = titolo;
+                                newsletter.testo = testo;
+                                //newsletter.titolo = (String)(row.Cells[row.RowIndex].FindControl("hlNewsDetail"));
+                                //newsletter.testo = (row.Cells[row.RowIndex].FindControl("txtUpdateTesto")).ToString();
+                                newsletterList.Add(newsletter);
+                            }
+                        }
+                        catch (Exception ex){
+                            ErrorInside.InnerHtml = "Problema in fase di lettura newsletter. contattare il webmaster [" +  ex +"]";
+                            newsletterList.Clear();
+                        }
+
                     }
                 }
             }
