@@ -2,18 +2,16 @@
     AutoEventWireup="true" CodeBehind="Newsletter.aspx.cs" Inherits="Philinternational.Styles.Newsletter" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <script type="text/javascript" language="javascript">
-        function Check(idnewsletter) {
-            //            var pippo = "NewsletterDetail.aspx?idnl=" + idnewsletter;
-            //            window.location.href = pippo
-
-            window.location = "http://www.google.com";
-        }
-    </script>
+    <title>Gestione Newsletter</title>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"><h3
-    class="titlePanel">Gestione Newsletter</h3>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h3 class="titlePanel">Gestione Newsletter</h3>
     <br />
+    <p><span class="failureNotification">
+        <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal></span> </p>
+    <p><span class="failureNotification" runat="server" id="ErrorInside"></span><br />
+    <br />
+    </p>
     <asp:MultiView ID="mvNewsletterManager" runat="server">
         <asp:View ID="viewGrid" runat="server">
             <asp:GridView ID="gvNewsletters" runat="server" AllowPaging="True" AutoGenerateColumns="False"
@@ -27,19 +25,6 @@
                         <ItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" />
                         </ItemTemplate>
                         <EditItemTemplate><asp:CheckBox ID="chkUserSelection" runat="server" Enabled="false" /></EditItemTemplate>
-                    </asp:TemplateField>
-                    <%--                    <asp:TemplateField>
-                        <ItemTemplate><asp:ImageButton ID="ibtnEditNewsletter" runat="server" CausesValidation="False"
-                            CommandName="Edit" ImageUrl="~/images/selectfull.png" ToolTip="Modifica" />
-                        </ItemTemplate>
-                        <EditItemTemplate><asp:ImageButton ID="ibtnUpdateNewsletter" runat="server" CausesValidation="False"
-                            CommandName="Update" ImageUrl="~/images/accept.png" ToolTip="Salva" />
-                        </EditItemTemplate>
-                    </asp:TemplateField>--%>
-                    <asp:TemplateField>
-                        <ItemTemplate><%--<asp:ImageButton ID="ibtnEditNewsletter" runat="server" CausesValidation="False" ImageUrl="~/images/selectfull.png" ToolTip="Modifica" OnClientClick=<%# "javascript:window.location.href('NewsletterDetail.aspx?idnl=" + Eval("idnewsletter") +"');return false;"%> /> --%>
-                           <%-- <asp:HyperLink ID="hlNewsDetail" runat="server" NavigateUrl='<%# "~/Management/NewsletterDetail.aspx?idnl=" + Eval("idnewsletter")%>'>Modifica</asp:HyperLink>--%>
-                        </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -58,7 +43,8 @@
                             <asp:TextBox ID="txtUpdateTitolo" runat="server" Text='<%# Bind("titolo") %>'></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField><%--<ItemTemplate>
+                    <asp:TemplateField>
+                        <%--<ItemTemplate>
                             <asp:Label ID="lblTesto" runat="server" Text='<%# Bind("testo") %>'></asp:Label>
                         </ItemTemplate>--%>
                         <EditItemTemplate>
