@@ -2,9 +2,11 @@
 <%@ OutputCache CacheProfile="Cache24Hours" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <title><asp:Literal runat="server" ID="testoTitle"></asp:Literal></title>
+    <asp:Literal runat="server" ID="metaDescription"></asp:Literal>
+    <asp:Literal runat="server" ID="keyWords"></asp:Literal>
 </asp:Content>
 <asp:Content ID="OffertaMain" ContentPlaceHolderID="MainContent" runat="server">
-    <h3 id="testoH1" runat="server" class="titlePanel" style="text-transform:uppercase;color:#000"></h3>
+    <h1 id="testoH1" runat="server" class="titlePanel" style="text-transform:uppercase;color:#000"></h1>
     <div class="bloccoOfferta">
         <p id="LoadImmagineOutput" runat="server">Immagine</p>
         <p>Anno: <span id="annoLotto" runat="server"></span></p>

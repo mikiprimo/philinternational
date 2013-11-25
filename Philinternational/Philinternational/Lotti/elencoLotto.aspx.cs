@@ -94,7 +94,7 @@ namespace Philinternational
                 //testoTitle.Text = "Lotti disponibili per l'argomento:" + descrizione_argomento;
                 testoTitle.Text = "Francobolli di " + descrizione_argomento.ToLower() + " (" + descrizione_paragrafo.ToLower() + "). Offerta filatelica per corrispondenza";
                 metaDescription.Text = "<meta name=\"description\" content=\"In questa pagina sono mostrati i francobolli di " + descrizione_argomento.ToLower() + "(" + descrizione_paragrafo.ToLower() + "). Offerta filatelica per corrispondenza di philinternational.it\" />";
-                navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>-><li class=\"navTit2\"><a href=\"" + vpd.VirtualPath + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
+                navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\"><h2 style='display:inline'>" + descrizione_paragrafo + "<</h2>/li>-><li class=\"navTit2\"><h1 style='display:inline'><a href=\"" + vpd.VirtualPath + "\">" + descrizione_argomento + "</a></h1></li></ul></div>\n";
                 //navigazioneOutput.InnerHtml = "<div class=\"navigazione\"><ul><li class=\"navTit1\">" + descrizione_paragrafo + "</li>-><li class=\"navTit2\"><a href=\"" + Page.ResolveClientUrl("~/Lotti/elencoLotto.aspx?arg=" + codargomento + "&subarg=" + subargomento) + "\">" + descrizione_argomento + "</a></li></ul></div>\n";
             }
             else {
